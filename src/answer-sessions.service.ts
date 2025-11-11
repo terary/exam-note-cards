@@ -7,8 +7,9 @@ import { v4 as uuid } from "uuid";
 interface AnswerRecord {
   questionId: string;
   questionText: string;
-  answerText: string;
-  correctnessPercentage: number;
+  actualAnswerText: string;
+  userAnswerText: string;
+  userCorrectnessPercentage: number;
   recordedAt: string;
 }
 
@@ -75,16 +76,18 @@ export class AnswerSessionsService {
     databaseId: string;
     questionId: string;
     questionText: string;
-    answerText: string;
-    correctnessPercentage: number;
+    actualAnswerText: string;
+    userAnswerText: string;
+    userCorrectnessPercentage: number;
   }): Promise<void> {
     const {
       sessionId,
       databaseId,
       questionId,
       questionText,
-      answerText,
-      correctnessPercentage,
+      actualAnswerText,
+      userAnswerText,
+      userCorrectnessPercentage,
     } = params;
 
     const session = await this.loadSession(sessionId);
@@ -97,8 +100,9 @@ export class AnswerSessionsService {
     const record: AnswerRecord = {
       questionId,
       questionText,
-      answerText,
-      correctnessPercentage,
+      actualAnswerText,
+      userAnswerText,
+      userCorrectnessPercentage,
       recordedAt: new Date().toISOString(),
     };
 

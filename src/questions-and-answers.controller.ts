@@ -11,8 +11,9 @@ interface RecordAnswerDto {
   databaseId: string;
   questionId: string;
   questionText: string;
-  answerText: string;
-  correctnessPercentage: number;
+  actualAnswerText: string;
+  userAnswerText: string;
+  userCorrectnessPercentage: number;
 }
 
 @Controller("questions-and-answers")
@@ -84,8 +85,9 @@ export class QuestionsAndAnswersController {
       databaseId: body.databaseId,
       questionId: body.questionId,
       questionText: body.questionText,
-      answerText: body.answerText,
-      correctnessPercentage: body.correctnessPercentage,
+      actualAnswerText: body.actualAnswerText,
+      userAnswerText: body.userAnswerText,
+      userCorrectnessPercentage: body.userCorrectnessPercentage,
     });
     return { status: "recorded" };
   }

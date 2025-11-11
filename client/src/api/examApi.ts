@@ -40,8 +40,9 @@ export async function recordAnswer(params: {
   databaseId: string;
   questionId: string;
   questionText: string;
-  answerText: string;
-  correctnessPercentage: number;
+  actualAnswerText: string;
+  userAnswerText: string;
+  userCorrectnessPercentage: number;
 }): Promise<void> {
   const { sessionId, ...rest } = params;
   const response = await fetch(

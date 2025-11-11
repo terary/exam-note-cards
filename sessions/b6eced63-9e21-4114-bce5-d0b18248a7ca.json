@@ -1,0 +1,24 @@
+{
+  "sessionId": "b6eced63-9e21-4114-bce5-d0b18248a7ca",
+  "databaseId": "database-ai-managed-services",
+  "databaseName": "AWS AI Managed Services",
+  "startedAt": "2025-11-11T04:44:09.030Z",
+  "answers": [
+    {
+      "questionId": "9f36a963-23dd-4427-bdb6-2aecde913cca",
+      "questionText": "What is a key security consideration for Amazon Rekognition workloads?",
+      "actualAnswerText": "Amazon Rekognition often handles PII such as faces, so IAM restrictions, encryption at rest/in transit, and compliance with local privacy laws are critical.",
+      "userAnswerText": "What What",
+      "userCorrectnessPercentage": 3,
+      "recordedAt": "2025-11-11T04:44:20.038Z"
+    },
+    {
+      "questionId": "d0a46be9-0c98-4740-9ebb-4b1949c31212",
+      "questionText": "What pricing dimension best describes Amazon Textract usage?",
+      "actualAnswerText": "Amazon Textract charges per page or document processed, depending on which Textract API you call.",
+      "userAnswerText": "Oh Yeah",
+      "userCorrectnessPercentage": 3,
+      "recordedAt": "2025-11-11T04:44:27.183Z"
+    }
+  ]
+}

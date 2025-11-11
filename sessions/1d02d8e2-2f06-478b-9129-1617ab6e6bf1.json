@@ -1,0 +1,24 @@
+{
+  "sessionId": "1d02d8e2-2f06-478b-9129-1617ab6e6bf1",
+  "databaseId": "database-ai-managed-services",
+  "databaseName": "AWS AI Managed Services",
+  "startedAt": "2025-11-11T04:49:24.069Z",
+  "answers": [
+    {
+      "questionId": "3b1e6199-9025-44cd-bc03-8ec7ec954f57",
+      "questionText": "Which AWS AI managed service extracts text, tables, and forms from scanned documents?",
+      "actualAnswerText": "Amazon Textract extracts text, tables, and forms from scanned documents and PDFs using managed document-understanding models.",
+      "userAnswerText": "My Awesome Answer",
+      "userCorrectnessPercentage": 2,
+      "recordedAt": "2025-11-11T04:49:39.994Z"
+    },
+    {
+      "questionId": "f7e7053d-0a42-4278-84d1-5c542f10f6cf",
+      "questionText": "Which AWS AI managed service powers semantic search across S3, SharePoint, and database repositories?",
+      "actualAnswerText": "Amazon Kendra is the AWS AI managed service used for semantic search across S3, SharePoint, databases, and similar content stores.",
+      "userAnswerText": "The other awesome answer",
+      "userCorrectnessPercentage": 1,
+      "recordedAt": "2025-11-11T04:49:51.526Z"
+    }
+  ]
+}

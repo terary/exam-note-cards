@@ -18,6 +18,7 @@ function QuizPage() {
 
   const [correctnessInput, setCorrectnessInput] = useState<number>(0);
   const [hasAdjustedSlider, setHasAdjustedSlider] = useState<boolean>(false);
+  const [userAnswerInput, setUserAnswerInput] = useState<string>("");
 
   const currentCorrectness = useMemo(() => {
     if (!quizState.currentQuestion) return undefined;
@@ -25,6 +26,11 @@ function QuizPage() {
       quizState.currentQuestion.questionId
     ];
   }, [quizState.currentQuestion, quizState.correctnessByQuestion]);
+
+  const currentUserAnswer = useMemo(() => {
+    if (!quizState.currentQuestion) return undefined;
+    return quizState.userAnswerByQuestion[quizState.currentQuestion.questionId];
+  }, [quizState.currentQuestion, quizState.userAnswerByQuestion]);
 
   useEffect(() => {
     if (!databaseId) return;
@@ -43,6 +49,14 @@ function QuizPage() {
       setHasAdjustedSlider(false);
     }
   }, [currentCorrectness, quizState.currentQuestion?.questionId]);
+
+  useEffect(() => {
+    if (currentUserAnswer !== undefined) {
+      setUserAnswerInput(currentUserAnswer);
+    } else {
+      setUserAnswerInput("");
+    }
+  }, [currentUserAnswer, quizState.currentQuestion?.questionId]);
 
   useEffect(() => {
     if (quizState.status === "error") {
@@ -72,7 +86,12 @@ function QuizPage() {
   };
 
   const handleSubmitAnswer = () => {
-    dispatch(submitAnswer({ correctnessPercentage: correctnessInput }));
+    dispatch(
+      submitAnswer({
+        correctnessPercentage: correctnessInput,
+        userAnswerText: userAnswerInput,
+      })
+    );
   };
 
   const handleBackToDatabases = () => {
@@ -118,6 +137,20 @@ function QuizPage() {
           <h2>Question</h2>
           <p className="question-text">{currentQuestion.questionText}</p>
 
+          <div className="correctness-section">
+            <label htmlFor="user-answer-input" className="label">
+              Your answer
+            </label>
+            <textarea
+              id="user-answer-input"
+              className="text-input"
+              rows={4}
+              value={userAnswerInput}
+              onChange={(event) => setUserAnswerInput(event.target.value)}
+              placeholder="Write your answer before revealing the official solution"
+            />
+          </div>
+
           {!answerRevealed && (
             <button className="primary-button" onClick={handleRevealAnswer}>
               See answer
@@ -133,7 +166,7 @@ function QuizPage() {
 
               <div className="correctness-section">
                 <label htmlFor="correctness-input" className="label">
-                  Did you get it correct? ({correctnessInput}%)
+                  How close were you? ({correctnessInput}%)
                 </label>
                 <input
                   id="correctness-input"

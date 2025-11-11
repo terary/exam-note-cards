@@ -21,6 +21,7 @@ interface QuizState {
   currentQuestion?: Question;
   answerRevealed: boolean;
   correctnessByQuestion: Record<string, number>;
+  userAnswerByQuestion: Record<string, string>;
   questionsAsked: number;
   questionsAnswered: number;
   correctnessSum: number;
@@ -33,6 +34,7 @@ const createInitialState = (): QuizState => ({
   questions: [],
   answerRevealed: false,
   correctnessByQuestion: {},
+  userAnswerByQuestion: {},
   questionsAsked: 0,
   questionsAnswered: 0,
   correctnessSum: 0,
@@ -83,12 +85,19 @@ export const startQuiz = createAsyncThunk(
 );
 
 export const submitAnswer = createAsyncThunk<
-  { questionId: string; correctnessPercentage: number },
-  { correctnessPercentage: number },
+  {
+    questionId: string;
+    correctnessPercentage: number;
+    userAnswerText: string;
+  },
+  { correctnessPercentage: number; userAnswerText: string },
   { state: RootState; rejectValue: string }
 >(
   "quiz/submitAnswer",
-  async ({ correctnessPercentage }, { getState, rejectWithValue }) => {
+  async (
+    { correctnessPercentage, userAnswerText },
+    { getState, rejectWithValue }
+  ) => {
     const state = getState().quiz;
     if (
       state.status !== "ready" ||
@@ -107,8 +116,9 @@ export const submitAnswer = createAsyncThunk<
         databaseId: state.databaseId,
         questionId: state.currentQuestion.questionId,
         questionText: state.currentQuestion.questionText,
-        answerText: state.currentQuestion.answerText,
-        correctnessPercentage: percentage,
+        actualAnswerText: state.currentQuestion.answerText,
+        userAnswerText,
+        userCorrectnessPercentage: percentage,
       });
     } catch (error) {
       const message =
@@ -119,6 +129,7 @@ export const submitAnswer = createAsyncThunk<
     return {
       questionId: state.currentQuestion.questionId,
       correctnessPercentage: percentage,
+      userAnswerText,
     };
   }
 );
@@ -150,6 +161,7 @@ const quizSlice = createSlice({
         state.sessionId = sessionId;
         state.questions = shuffleQuestions(questions);
         state.correctnessByQuestion = {};
+        state.userAnswerByQuestion = {};
         state.questionsAnswered = 0;
         state.correctnessSum = 0;
         state.questionsAsked = 0;
@@ -169,7 +181,8 @@ const quizSlice = createSlice({
         if (state.status !== "ready" || !state.currentQuestion) {
           return;
         }
-        const { questionId, correctnessPercentage } = action.payload;
+        const { questionId, correctnessPercentage, userAnswerText } =
+          action.payload;
         if (state.correctnessByQuestion[questionId] === undefined) {
           state.questionsAnswered += 1;
           state.correctnessSum += correctnessPercentage;
@@ -178,6 +191,7 @@ const quizSlice = createSlice({
           state.correctnessSum += correctnessPercentage;
         }
         state.correctnessByQuestion[questionId] = correctnessPercentage;
+        state.userAnswerByQuestion[questionId] = userAnswerText;
         selectNextQuestion(state);
       })
       .addCase(submitAnswer.rejected, (state, action) => {
