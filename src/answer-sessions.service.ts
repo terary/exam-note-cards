@@ -1,0 +1,110 @@
+import { Injectable, Logger, NotFoundException } from "@nestjs/common";
+import { promises as fs } from "fs";
+import { existsSync, mkdirSync } from "fs";
+import { join } from "path";
+import { v4 as uuid } from "uuid";
+
+interface AnswerRecord {
+  questionId: string;
+  questionText: string;
+  answerText: string;
+  correctnessPercentage: number;
+  recordedAt: string;
+}
+
+interface AnswerSession {
+  sessionId: string;
+  databaseId: string;
+  databaseName: string;
+  startedAt: string;
+  answers: AnswerRecord[];
+}
+
+@Injectable()
+export class AnswerSessionsService {
+  private readonly logger = new Logger(AnswerSessionsService.name);
+  private readonly sessionsDirectory = join(process.cwd(), "sessions");
+
+  constructor() {
+    this.ensureDirectory();
+  }
+
+  private ensureDirectory(): void {
+    if (!existsSync(this.sessionsDirectory)) {
+      mkdirSync(this.sessionsDirectory, { recursive: true });
+      this.logger.log(
+        `Created sessions directory at ${this.sessionsDirectory}`
+      );
+    }
+  }
+
+  private getSessionFilePath(sessionId: string): string {
+    return join(this.sessionsDirectory, `${sessionId}.json`);
+  }
+
+  async createSession(
+    databaseId: string,
+    databaseName: string
+  ): Promise<string> {
+    const sessionId = uuid();
+    const session: AnswerSession = {
+      sessionId,
+      databaseId,
+      databaseName,
+      startedAt: new Date().toISOString(),
+      answers: [],
+    };
+
+    const filePath = this.getSessionFilePath(sessionId);
+    await fs.writeFile(filePath, JSON.stringify(session, null, 2), "utf8");
+    return sessionId;
+  }
+
+  private async loadSession(sessionId: string): Promise<AnswerSession> {
+    const filePath = this.getSessionFilePath(sessionId);
+    try {
+      const raw = await fs.readFile(filePath, "utf8");
+      return JSON.parse(raw) as AnswerSession;
+    } catch (error) {
+      throw new NotFoundException(`Answer session '${sessionId}' not found`);
+    }
+  }
+
+  async recordAnswer(params: {
+    sessionId: string;
+    databaseId: string;
+    questionId: string;
+    questionText: string;
+    answerText: string;
+    correctnessPercentage: number;
+  }): Promise<void> {
+    const {
+      sessionId,
+      databaseId,
+      questionId,
+      questionText,
+      answerText,
+      correctnessPercentage,
+    } = params;
+
+    const session = await this.loadSession(sessionId);
+    if (session.databaseId !== databaseId) {
+      throw new NotFoundException(
+        `Session '${sessionId}' is not associated with database '${databaseId}'`
+      );
+    }
+
+    const record: AnswerRecord = {
+      questionId,
+      questionText,
+      answerText,
+      correctnessPercentage,
+      recordedAt: new Date().toISOString(),
+    };
+
+    session.answers.push(record);
+
+    const filePath = this.getSessionFilePath(sessionId);
+    await fs.writeFile(filePath, JSON.stringify(session, null, 2), "utf8");
+  }
+}

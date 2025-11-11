@@ -1,0 +1,19 @@
+{
+  "databaseName": "database-one",
+  "questionsWithAnswers": [
+    {
+      "questionId": "550e8400-e29b-41d4-a716-446655440001",
+      "questionText": "Some Question One",
+      "answerText": "The Answer to Question One",
+      "tags": ["tag1", "tag2", "tag3"],
+      "domains": ["domain1", "domain2", "domain3"]
+    },
+    {
+      "questionId": "550e8400-e29b-41d4-a716-446655440002",
+      "questionText": "Some Question Two",
+      "answerText": "The Answer to Question Two",
+      "tags": ["tag1", "tag2", "tag3"],
+      "domains": ["domain1", "domain2", "domain3"]
+    }
+  ]
+}

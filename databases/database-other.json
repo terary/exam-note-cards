@@ -1,0 +1,19 @@
+{
+  "databaseName": "database other",
+  "questionsWithAnswers": [
+    {
+      "questionId": "THE_QUESTION_ID",
+      "questionText": "Some Question One",
+      "answerText": "The Answer to Question One",
+      "tags": ["tag1", "tag2", "tag3"],
+      "domains": ["domain1", "domain2", "domain3"]
+    },
+    {
+      "questionId": "THE_QUESTION_ID",
+      "questionText": "Some Question Two",
+      "answerText": "The Answer to Question Two",
+      "tags": ["tag1", "tag2", "tag3"],
+      "domains": ["domain1", "domain2", "domain3"]
+    }
+  ]
+}

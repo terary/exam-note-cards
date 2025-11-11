@@ -1,0 +1,201 @@
+{
+  "databaseName": "AWS AI Managed Services",
+  "questionsWithAnswers": [
+    {
+      "questionId": "c9ff8d2e-5f7f-4d2f-a0d4-4af1140a8f01",
+      "questionText": "What core capability does Amazon Kendra provide within AWS AI Managed Services?",
+      "answerText": "Amazon Kendra delivers semantic enterprise search across sources like Amazon S3, SharePoint, and databases.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "f7e7053d-0a42-4278-84d1-5c542f10f6cf",
+      "questionText": "Which AWS AI managed service powers semantic search across S3, SharePoint, and database repositories?",
+      "answerText": "Amazon Kendra is the AWS AI managed service used for semantic search across S3, SharePoint, databases, and similar content stores.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "413abcc1-857f-4429-85fa-a9d723b085e2",
+      "questionText": "Which AWS AI managed service handles NLP tasks such as sentiment analysis and custom entity recognition?",
+      "answerText": "Amazon Comprehend processes natural language for sentiment, key phrases, entity recognition, and supports custom classification and entity models.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "5d4b682f-1125-487f-940e-660d2de6684d",
+      "questionText": "What is the primary pricing unit for Amazon Comprehend standard APIs?",
+      "answerText": "Amazon Comprehend standard APIs are charged per text unit, where one unit equals 100 characters with a 3-unit minimum per request.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "26f82c16-d28d-4c3a-b525-9026c5817a74",
+      "questionText": "Which AWS AI managed service translates text between languages using neural machine translation?",
+      "answerText": "Amazon Translate is the neural machine translation service that translates text between languages using AWS-managed models.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "6de9f43b-4ac7-480e-9155-3bb2165ce643",
+      "questionText": "Roughly how does Amazon Translate price its standard translation workloads?",
+      "answerText": "Amazon Translate typically charges about $15 per 1 million characters for standard translation, with rates varying by region.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "f70ab444-5373-4670-98c3-57dac2c6b2f1",
+      "questionText": "Which AWS AI managed service converts audio to text for batch and streaming workloads?",
+      "answerText": "Amazon Transcribe converts audio into text for both streaming and batch workloads, offering features like custom vocabularies.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "b1d6a1f5-40d6-4de9-bffe-1cc5789b20b8",
+      "questionText": "What pricing dimension does Amazon Transcribe use for its speech-to-text service?",
+      "answerText": "Amazon Transcribe charges per audio minute processed, with cost scaling by features such as standard or custom models.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "5c8a8bc1-bc6a-4e52-8e4c-5b1b4da5fd3b",
+      "questionText": "Which AWS AI managed service converts text inputs into lifelike speech audio?",
+      "answerText": "Amazon Polly converts text into lifelike speech audio using AWS-managed voices across many languages and styles.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "211e26b9-9113-4b70-8c41-d3cf95b7bb88",
+      "questionText": "How is usage of Amazon Polly commonly billed?",
+      "answerText": "Amazon Polly typically bills per number of characters synthesized, for example about $0.60 for 30,500 characters in sample pricing.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "b30e9a60-28d3-4f46-9191-7f4f0fc7c503",
+      "questionText": "Which AWS AI managed service analyzes images and videos for objects, faces, and text?",
+      "answerText": "Amazon Rekognition analyzes images and videos to detect objects, scenes, faces, text, and even supports custom labels.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "9f36a963-23dd-4427-bdb6-2aecde913cca",
+      "questionText": "What is a key security consideration for Amazon Rekognition workloads?",
+      "answerText": "Amazon Rekognition often handles PII such as faces, so IAM restrictions, encryption at rest/in transit, and compliance with local privacy laws are critical.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "617e3eb7-6a96-4e7f-914a-1a8ad2bfb980",
+      "questionText": "Which AWS AI managed service lets you build conversational chatbots using automatic speech recognition and NLP?",
+      "answerText": "Amazon Lex is the conversational AI service for building chatbots that combine automatic speech recognition and natural language understanding.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "42f9b564-fb3f-443f-a488-3fd46c220a0c",
+      "questionText": "How does Amazon Lex typically charge for bot interactions?",
+      "answerText": "Amazon Lex pricing is per request, with text and voice interactions priced differently and rates varying by region.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "e468fe61-5311-4406-9670-69bb3c1a3b0f",
+      "questionText": "Which AWS AI managed service builds personalized recommendations using your interaction data?",
+      "answerText": "Amazon Personalize ingests user-item interaction data to train models and deliver real-time personalized recommendations.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "6a21fef7-1f9d-430a-b9b4-ece37507f23d",
+      "questionText": "What main cost drivers should you expect when using Amazon Personalize?",
+      "answerText": "Amazon Personalize pricing covers dataset ingestion, model training hours, hosting (inference) hours, and the volume of recommendation requests.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "3b1e6199-9025-44cd-bc03-8ec7ec954f57",
+      "questionText": "Which AWS AI managed service extracts text, tables, and forms from scanned documents?",
+      "answerText": "Amazon Textract extracts text, tables, and forms from scanned documents and PDFs using managed document-understanding models.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "d0a46be9-0c98-4740-9ebb-4b1949c31212",
+      "questionText": "What pricing dimension best describes Amazon Textract usage?",
+      "answerText": "Amazon Textract charges per page or document processed, depending on which Textract API you call.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "42434d2d-23f4-4db9-8d20-f1e9d5a5d86c",
+      "questionText": "Which AWS AI managed service orchestrates human review workflows for low-confidence predictions from ML services?",
+      "answerText": "Amazon Augmented AI (A2I) orchestrates human review workflows to handle low-confidence predictions generated by services like Textract or Rekognition.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "b7d6dc29-05fd-4ecf-b2f5-7a9af4213720",
+      "questionText": "Which AWS AI managed service provides semantic enterprise search while allowing relevance tuning over time?",
+      "answerText": "Amazon Kendra offers semantic enterprise search that can adjust relevance based on feedback and usage without you training a model from scratch.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "ae79b6df-07b4-4f1c-b495-248f90eee462",
+      "questionText": "Which AWS managed service gives you specialized ML hardware such as AWS Trainium and AWS Inferentia instances?",
+      "answerText": "AWS provides specialized ML hardware through services like AWS Trainium and AWS Inferentia instances, letting you build custom ML infrastructure rather than using a fully managed model service.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "fb74dd1d-376a-4251-a5d5-98387f0ded03",
+      "questionText": "What security responsibilities accompany using AWS Trainium or AWS Inferentia hardware for AI workloads?",
+      "answerText": "When you use AWS Trainium or AWS Inferentia infrastructure, you handle full-stack security: VPC isolation, IAM on EC2, encrypted storage, secure access, and network segmentation.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "25c3e921-7c6d-42f6-81ca-539b3de11e7f",
+      "questionText": "Which AWS AI managed service detects anomalies in metrics such as business or equipment telemetry?",
+      "answerText": "Amazon Lookout for Metrics performs anomaly detection on business metrics or sensor data using managed machine learning.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "6b7ad13e-a4d1-4f9f-b3f7-acde9f45b605",
+      "questionText": "How do you typically pay for Amazon Lookout for Metrics?",
+      "answerText": "Amazon Lookout for Metrics pricing is based on the number of metrics you monitor per month, with rates that scale by usage tier.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "d99a8ade-7998-4385-bcb5-9369a6eb501e",
+      "questionText": "Which AWS AI managed service helps you build and deploy fraud detection models from your event data?",
+      "answerText": "Amazon Fraud Detector helps build, train, and deploy fraud detection models using your event data and managed features.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "8885b400-9e68-43d5-9c02-3e1d8b7d686a",
+      "questionText": "What security measures are recommended when using Amazon Fraud Detector?",
+      "answerText": "Amazon Fraud Detector works with sensitive identity and transaction data, so you should enforce IAM restrictions, encrypt data at rest and in transit, and maintain audit trails for compliance.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "7de9b0dc-2d64-4c72-b010-a0d3ba83ea75",
+      "questionText": "Which AWS AI managed service family, such as Amazon Q-Business and Amazon Q-Apps, provides generative AI capabilities over enterprise data?",
+      "answerText": "Amazon Q services (including Q-Business, Q-Apps, and Q-Developer) offer managed generative AI experiences that apply AWS’s large language models to your enterprise data and applications.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "9c32d435-d73e-4082-a96f-2aced9789efb",
+      "questionText": "What is a key pricing consideration when using Amazon Q services such as Q-Business or Q-Apps?",
+      "answerText": "Amazon Q services generally charge based on model usage, such as the volume of tokens processed or the number of agent interactions, and pricing details should be verified per region.",
+      "tags": ["aws-ai-managed-services"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    }
+  ]
+}
