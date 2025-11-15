@@ -47,3 +47,6 @@ client/coverage/
 tmp/
 temp/
 
+# Answer sessions
+sessions/
+

@@ -61,7 +61,7 @@ export class AnswerSessionsService {
     return sessionId;
   }
 
-  private async loadSession(sessionId: string): Promise<AnswerSession> {
+  async getSession(sessionId: string): Promise<AnswerSession> {
     const filePath = this.getSessionFilePath(sessionId);
     try {
       const raw = await fs.readFile(filePath, "utf8");
@@ -69,6 +69,43 @@ export class AnswerSessionsService {
     } catch (error) {
       throw new NotFoundException(`Answer session '${sessionId}' not found`);
     }
+  }
+
+  private async loadSession(sessionId: string): Promise<AnswerSession> {
+    return this.getSession(sessionId);
+  }
+
+  async listAllSessions(): Promise<
+    Array<{
+      fileId: string;
+      filename: string;
+      databaseName: string;
+      lastModified: Date;
+    }>
+  > {
+    const files = await fs.readdir(this.sessionsDirectory);
+    const jsonFiles = files.filter((file) => file.endsWith(".json"));
+
+    const sessions = await Promise.all(
+      jsonFiles.map(async (filename) => {
+        const fileId = filename.replace(".json", "");
+        const filePath = join(this.sessionsDirectory, filename);
+        const stats = await fs.stat(filePath);
+        const session = await this.getSession(fileId);
+
+        return {
+          fileId,
+          filename,
+          databaseName: session.databaseName,
+          lastModified: stats.mtime,
+        };
+      })
+    );
+
+    // Sort by last modified, newest first
+    return sessions.sort(
+      (a, b) => b.lastModified.getTime() - a.lastModified.getTime()
+    );
   }
 
   async recordAnswer(params: {

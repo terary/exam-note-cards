@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { QuestionsAndAnswersController } from "./questions-and-answers.controller";
+import { AnswersController } from "./answers.controller";
 import { QuestionsService } from "./questions.service";
 import { AnswerSessionsService } from "./answer-sessions.service";
 
@@ -16,7 +17,7 @@ import { AnswerSessionsService } from "./answer-sessions.service";
       rootPath: join(__dirname, "..", "client", "dist"),
     }),
   ],
-  controllers: [QuestionsAndAnswersController],
+  controllers: [QuestionsAndAnswersController, AnswersController],
   providers: [QuestionsService, AnswerSessionsService],
 })
 export class AppModule {}

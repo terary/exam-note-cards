@@ -42,27 +42,20 @@ const createInitialState = (): QuizState => ({
 
 const initialState: QuizState = createInitialState();
 
-function shuffleQuestions(questions: Question[]): Question[] {
-  const array = [...questions];
-  for (let i = array.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-const selectNextQuestion = (state: QuizState) => {
+function getNextQuestion(state: QuizState): void {
   if (state.questions.length === 0) {
     state.currentQuestion = undefined;
     return;
   }
 
-  const [nextQuestion, ...remaining] = state.questions;
-  state.currentQuestion = nextQuestion;
-  state.questions = [...remaining, nextQuestion];
+  // Use milliseconds mod questions.length for random index
+  // For timestamp like 2025-11-15T11:59:59.324Z, getMilliseconds() returns 324
+  // Randomness comes from user interaction timing
+  const randomIndex = new Date().getMilliseconds() % state.questions.length;
+  state.currentQuestion = state.questions[randomIndex];
   state.answerRevealed = false;
   state.questionsAsked += 1;
-};
+}
 
 export const startQuiz = createAsyncThunk(
   "quiz/start",
@@ -159,13 +152,13 @@ const quizSlice = createSlice({
         state.databaseId = databaseId;
         state.databaseName = databaseName;
         state.sessionId = sessionId;
-        state.questions = shuffleQuestions(questions);
+        state.questions = questions; // Store in original order
         state.correctnessByQuestion = {};
         state.userAnswerByQuestion = {};
         state.questionsAnswered = 0;
         state.correctnessSum = 0;
         state.questionsAsked = 0;
-        selectNextQuestion(state);
+        getNextQuestion(state);
       })
       .addCase(startQuiz.rejected, (state, action) => {
         state.status = "error";
@@ -192,7 +185,7 @@ const quizSlice = createSlice({
         }
         state.correctnessByQuestion[questionId] = correctnessPercentage;
         state.userAnswerByQuestion[questionId] = userAnswerText;
-        selectNextQuestion(state);
+        getNextQuestion(state);
       })
       .addCase(submitAnswer.rejected, (state, action) => {
         state.error =
