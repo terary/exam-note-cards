@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadDatabases } from "../store/databasesSlice";
+import { fetchWriteups, type WriteupListItem } from "../api/examApi";
 import { startQuiz } from "../store/quizSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import "../App.css";
@@ -9,6 +10,9 @@ function DatabaseListPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [pendingDatabaseId, setPendingDatabaseId] = useState<string>();
+  const [writeups, setWriteups] = useState<WriteupListItem[]>([]);
+  const [writeupsStatus, setWriteupsStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [writeupsError, setWriteupsError] = useState<string>();
 
   const databases = useAppSelector((state) => state.databases.items);
   const databasesStatus = useAppSelector((state) => state.databases.status);
@@ -20,6 +24,24 @@ function DatabaseListPage() {
       dispatch(loadDatabases());
     }
   }, [databasesStatus, dispatch]);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setWriteupsStatus("loading");
+        const items = await fetchWriteups();
+        setWriteups(items);
+        setWriteupsStatus("ready");
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to load write-ups";
+        setWriteupsError(message);
+        setWriteupsStatus("error");
+      }
+    };
+    if (writeupsStatus === "idle") {
+      load();
+    }
+  }, [writeupsStatus]);
 
   useEffect(() => {
     if (
@@ -49,11 +71,17 @@ function DatabaseListPage() {
       </header>
 
       {databasesStatus === "loading" && <p>Loading databases...</p>}
+      {writeupsStatus === "loading" && <p>Loading write-ups...</p>}
 
       {databasesStatus === "failed" && (
         <div className="error-message">
           <p>Failed to load databases: {databasesError}</p>
           <button onClick={() => dispatch(loadDatabases())}>Try again</button>
+        </div>
+      )}
+      {writeupsStatus === "error" && (
+        <div className="error-message">
+          <p>Failed to load write-ups: {writeupsError}</p>
         </div>
       )}
 
@@ -83,6 +111,26 @@ function DatabaseListPage() {
         </div>
       )}
 
+      {writeupsStatus === "ready" && (
+        <>
+          <h2 style={{ marginTop: "2rem" }}>Write-ups & Notes</h2>
+          {writeups.length === 0 ? (
+            <p>No write-ups found.</p>
+          ) : (
+            <div className="database-grid">
+              {writeups.map((w) => (
+                <div className="database-card" key={w.id}>
+                  <h2>{w.id}</h2>
+                  <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
+                  <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
+                    Open Write-up
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
       {quizState.status === "error" && (
         <div className="error-message">
           <p>Unable to start quiz: {quizState.error}</p>

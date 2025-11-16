@@ -55,3 +55,27 @@ export async function recordAnswer(params: {
   );
   await handleResponse(response);
 }
+
+// Write-up APIs
+export interface WriteupListItem {
+  id: string;
+  filename: string;
+  lastModified: string;
+}
+
+export interface WriteupPayload {
+  id: string;
+  filename: string;
+  content: string;
+  lastModified: string;
+}
+
+export async function fetchWriteups(): Promise<WriteupListItem[]> {
+  const response = await fetch(`/write-up-notes`);
+  return handleResponse<WriteupListItem[]>(response);
+}
+
+export async function fetchWriteupById(id: string): Promise<WriteupPayload> {
+  const response = await fetch(`/write-up-notes/${id}`);
+  return handleResponse<WriteupPayload>(response);
+}

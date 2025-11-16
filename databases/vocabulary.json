@@ -1,0 +1,12 @@
+{
+  "databaseName": "Vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "CNN",
+      "answerText": "Convolution Neural Network",
+      "tags": ["vocabulary"],
+      "domains": ["vocabulary"]
+    }
+  ]
+}

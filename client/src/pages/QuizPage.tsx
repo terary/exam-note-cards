@@ -9,6 +9,9 @@ import {
   submitAnswer,
 } from "../store/quizSlice";
 import "../App.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 
 function QuizPage() {
   const { databaseId } = useParams<{ databaseId: string }>();
@@ -135,7 +138,11 @@ function QuizPage() {
       {!isLoading && currentQuestion && (
         <section className="question-card">
           <h2>Question</h2>
-          <p className="question-text">{currentQuestion.questionText}</p>
+          <div className="question-text">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
+              {currentQuestion.questionText}
+            </ReactMarkdown>
+          </div>
 
           <div className="correctness-section">
             <label htmlFor="user-answer-input" className="label">
@@ -161,7 +168,11 @@ function QuizPage() {
             <>
               <div className="answer-section">
                 <h3>Answer</h3>
-                <p className="answer-text">{currentQuestion.answerText}</p>
+                <div className="answer-text">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
+                    {currentQuestion.answerText}
+                  </ReactMarkdown>
+                </div>
               </div>
 
               <div className="correctness-section">
@@ -171,7 +182,7 @@ function QuizPage() {
                 <input
                   id="correctness-input"
                   type="range"
-                  min={0}
+                  min={-1}
                   max={100}
                   value={correctnessInput}
                   onChange={(event) => {
@@ -180,7 +191,7 @@ function QuizPage() {
                   }}
                 />
                 <div className="slider-values">
-                  <span>0%</span>
+                  <span>-1%</span>
                   <span>100%</span>
                 </div>
               </div>

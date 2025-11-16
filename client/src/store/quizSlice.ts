@@ -101,7 +101,7 @@ export const submitAnswer = createAsyncThunk<
       return rejectWithValue("Quiz session is not ready");
     }
 
-    const percentage = Math.min(Math.max(correctnessPercentage, 0), 100);
+    const percentage = Math.min(Math.max(correctnessPercentage, -1), 100);
 
     try {
       await recordAnswer({

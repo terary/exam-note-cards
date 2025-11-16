@@ -6,6 +6,7 @@ import { QuestionsAndAnswersController } from "./questions-and-answers.controlle
 import { AnswersController } from "./answers.controller";
 import { QuestionsService } from "./questions.service";
 import { AnswerSessionsService } from "./answer-sessions.service";
+import { WriteupsController } from "./writeups.controller";
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AnswerSessionsService } from "./answer-sessions.service";
       rootPath: join(__dirname, "..", "client", "dist"),
     }),
   ],
-  controllers: [QuestionsAndAnswersController, AnswersController],
+  controllers: [QuestionsAndAnswersController, AnswersController, WriteupsController],
   providers: [QuestionsService, AnswerSessionsService],
 })
 export class AppModule {}
