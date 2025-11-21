@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadDatabases } from "../store/databasesSlice";
-import { fetchWriteups, type WriteupListItem } from "../api/examApi";
+import { fetchWriteups, fetchExternalIp, type WriteupListItem } from "../api/examApi";
 import { startQuiz } from "../store/quizSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import "../App.css";
@@ -13,6 +13,8 @@ function DatabaseListPage() {
   const [writeups, setWriteups] = useState<WriteupListItem[]>([]);
   const [writeupsStatus, setWriteupsStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [writeupsError, setWriteupsError] = useState<string>();
+  const [externalIp, setExternalIp] = useState<string>("");
+  const [ipStatus, setIpStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
 
   const databases = useAppSelector((state) => state.databases.items);
   const databasesStatus = useAppSelector((state) => state.databases.status);
@@ -44,6 +46,24 @@ function DatabaseListPage() {
   }, [writeupsStatus]);
 
   useEffect(() => {
+    const loadIp = async () => {
+      try {
+        setIpStatus("loading");
+        const data = await fetchExternalIp();
+        setExternalIp(data.ip);
+        setIpStatus("ready");
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Failed to load IP";
+        console.error("Failed to fetch external IP:", message);
+        setIpStatus("error");
+      }
+    };
+    if (ipStatus === "idle") {
+      loadIp();
+    }
+  }, [ipStatus]);
+
+  useEffect(() => {
     if (
       pendingDatabaseId &&
       quizState.status === "ready" &&
@@ -68,6 +88,21 @@ function DatabaseListPage() {
       <header className="page-header">
         <h1>Exam Note Cards</h1>
         <p>Select a quiz to start practicing.</p>
+        {ipStatus === "ready" && externalIp && (
+          <p style={{ fontSize: "0.9rem", color: "#64748b", marginTop: "0.5rem" }}>
+            External IP: <strong>{externalIp}</strong>
+          </p>
+        )}
+        {ipStatus === "loading" && (
+          <p style={{ fontSize: "0.9rem", color: "#64748b", marginTop: "0.5rem" }}>
+            Loading IP...
+          </p>
+        )}
+        {ipStatus === "error" && (
+          <p style={{ fontSize: "0.9rem", color: "#ef4444", marginTop: "0.5rem" }}>
+            Unable to fetch external IP
+          </p>
+        )}
       </header>
 
       {databasesStatus === "loading" && <p>Loading databases...</p>}

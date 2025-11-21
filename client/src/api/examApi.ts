@@ -79,3 +79,8 @@ export async function fetchWriteupById(id: string): Promise<WriteupPayload> {
   const response = await fetch(`/write-up-notes/${id}`);
   return handleResponse<WriteupPayload>(response);
 }
+
+export async function fetchExternalIp(): Promise<{ ip: string }> {
+  const response = await fetch(`${BASE_PATH}/external-ip`);
+  return handleResponse<{ ip: string }>(response);
+}

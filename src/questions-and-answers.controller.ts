@@ -91,4 +91,44 @@ export class QuestionsAndAnswersController {
     });
     return { status: "recorded" };
   }
+
+  @Get("external-ip")
+  async getExternalIp(): Promise<{ ip: string }> {
+    this.logger.log("GET /questions-and-answers/external-ip - Retrieving external IP");
+    try {
+      // Try multiple services for reliability
+      const services = [
+        "https://api.ipify.org?format=json",
+        "https://api64.ipify.org?format=json",
+        "https://ifconfig.me/ip",
+      ];
+
+      for (const service of services) {
+        try {
+          const response = await fetch(service, {
+            signal: AbortSignal.timeout(5000), // 5 second timeout
+          });
+          
+          if (service.includes("ipify")) {
+            const data = await response.json();
+            return { ip: data.ip };
+          } else {
+            const text = await response.text();
+            const ip = text.trim();
+            if (ip && /^\d+\.\d+\.\d+\.\d+$/.test(ip)) {
+              return { ip };
+            }
+          }
+        } catch (error) {
+          this.logger.warn(`Failed to fetch IP from ${service}: ${error.message}`);
+          continue;
+        }
+      }
+      
+      throw new Error("All IP services failed");
+    } catch (error) {
+      this.logger.error(`Failed to retrieve external IP: ${error.message}`);
+      throw error;
+    }
+  }
 }
