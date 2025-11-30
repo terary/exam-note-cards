@@ -14,6 +14,7 @@ interface RecordAnswerDto {
   actualAnswerText: string;
   userAnswerText: string;
   userCorrectnessPercentage: number;
+  answerNotes?: string;
 }
 
 @Controller("questions-and-answers")
@@ -88,6 +89,7 @@ export class QuestionsAndAnswersController {
       actualAnswerText: body.actualAnswerText,
       userAnswerText: body.userAnswerText,
       userCorrectnessPercentage: body.userCorrectnessPercentage,
+      answerNotes: body.answerNotes,
     });
     return { status: "recorded" };
   }

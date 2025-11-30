@@ -22,6 +22,7 @@ function QuizPage() {
   const [correctnessInput, setCorrectnessInput] = useState<number>(0);
   const [hasAdjustedSlider, setHasAdjustedSlider] = useState<boolean>(false);
   const [userAnswerInput, setUserAnswerInput] = useState<string>("");
+  const [answerNotes, setAnswerNotes] = useState<string>("");
 
   const currentCorrectness = useMemo(() => {
     if (!quizState.currentQuestion) return undefined;
@@ -29,11 +30,6 @@ function QuizPage() {
       quizState.currentQuestion.questionId
     ];
   }, [quizState.currentQuestion, quizState.correctnessByQuestion]);
-
-  const currentUserAnswer = useMemo(() => {
-    if (!quizState.currentQuestion) return undefined;
-    return quizState.userAnswerByQuestion[quizState.currentQuestion.questionId];
-  }, [quizState.currentQuestion, quizState.userAnswerByQuestion]);
 
   useEffect(() => {
     if (!databaseId) return;
@@ -53,13 +49,11 @@ function QuizPage() {
     }
   }, [currentCorrectness, quizState.currentQuestion?.questionId]);
 
+  // Clear answer input whenever question changes - don't persist previous answers
   useEffect(() => {
-    if (currentUserAnswer !== undefined) {
-      setUserAnswerInput(currentUserAnswer);
-    } else {
-      setUserAnswerInput("");
-    }
-  }, [currentUserAnswer, quizState.currentQuestion?.questionId]);
+    setUserAnswerInput("");
+    setAnswerNotes("");
+  }, [quizState.currentQuestion?.questionId]);
 
   useEffect(() => {
     if (quizState.status === "error") {
@@ -93,6 +87,7 @@ function QuizPage() {
       submitAnswer({
         correctnessPercentage: correctnessInput,
         userAnswerText: userAnswerInput,
+        answerNotes: answerNotes,
       })
     );
   };
@@ -194,6 +189,20 @@ function QuizPage() {
                   <span>-1%</span>
                   <span>100%</span>
                 </div>
+              </div>
+
+              <div className="correctness-section">
+                <label htmlFor="answer-notes-input" className="label">
+                  Answer Notes
+                </label>
+                <textarea
+                  id="answer-notes-input"
+                  className="text-input"
+                  rows={4}
+                  value={answerNotes}
+                  onChange={(event) => setAnswerNotes(event.target.value)}
+                  placeholder="Add notes about your answer or the solution"
+                />
               </div>
 
               <button

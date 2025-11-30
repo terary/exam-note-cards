@@ -43,6 +43,7 @@ export async function recordAnswer(params: {
   actualAnswerText: string;
   userAnswerText: string;
   userCorrectnessPercentage: number;
+  answerNotes?: string;
 }): Promise<void> {
   const { sessionId, ...rest } = params;
   const response = await fetch(

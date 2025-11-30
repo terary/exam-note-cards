@@ -10,6 +10,7 @@ interface AnswerRecord {
   actualAnswerText: string;
   userAnswerText: string;
   userCorrectnessPercentage: number;
+  answerNotes?: string;
   recordedAt: string;
 }
 
@@ -116,6 +117,7 @@ export class AnswerSessionsService {
     actualAnswerText: string;
     userAnswerText: string;
     userCorrectnessPercentage: number;
+    answerNotes?: string;
   }): Promise<void> {
     const {
       sessionId,
@@ -125,6 +127,7 @@ export class AnswerSessionsService {
       actualAnswerText,
       userAnswerText,
       userCorrectnessPercentage,
+      answerNotes,
     } = params;
 
     const session = await this.loadSession(sessionId);
@@ -140,6 +143,7 @@ export class AnswerSessionsService {
       actualAnswerText,
       userAnswerText,
       userCorrectnessPercentage,
+      answerNotes,
       recordedAt: new Date().toISOString(),
     };
 

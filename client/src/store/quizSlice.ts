@@ -83,12 +83,12 @@ export const submitAnswer = createAsyncThunk<
     correctnessPercentage: number;
     userAnswerText: string;
   },
-  { correctnessPercentage: number; userAnswerText: string },
+  { correctnessPercentage: number; userAnswerText: string; answerNotes: string },
   { state: RootState; rejectValue: string }
 >(
   "quiz/submitAnswer",
   async (
-    { correctnessPercentage, userAnswerText },
+    { correctnessPercentage, userAnswerText, answerNotes },
     { getState, rejectWithValue }
   ) => {
     const state = getState().quiz;
@@ -112,6 +112,7 @@ export const submitAnswer = createAsyncThunk<
         actualAnswerText: state.currentQuestion.answerText,
         userAnswerText,
         userCorrectnessPercentage: percentage,
+        answerNotes,
       });
     } catch (error) {
       const message =
