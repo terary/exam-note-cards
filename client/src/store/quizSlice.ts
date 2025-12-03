@@ -18,6 +18,8 @@ interface QuizState {
   databaseName?: string;
   sessionId?: string;
   questions: Question[];
+  shuffledQuestions: Question[]; // Shuffled copy for randomization
+  currentQuestionIndex: number; // Index in shuffled array
   currentQuestion?: Question;
   answerRevealed: boolean;
   correctnessByQuestion: Record<string, number>;
@@ -32,6 +34,8 @@ export type { QuizState };
 const createInitialState = (): QuizState => ({
   status: "idle",
   questions: [],
+  shuffledQuestions: [],
+  currentQuestionIndex: 0,
   answerRevealed: false,
   correctnessByQuestion: {},
   userAnswerByQuestion: {},
@@ -42,18 +46,32 @@ const createInitialState = (): QuizState => ({
 
 const initialState: QuizState = createInitialState();
 
+// Fisher-Yates shuffle algorithm
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 function getNextQuestion(state: QuizState): void {
-  if (state.questions.length === 0) {
+  if (state.shuffledQuestions.length === 0) {
     state.currentQuestion = undefined;
     return;
   }
 
-  // Use milliseconds mod questions.length for random index
-  // For timestamp like 2025-11-15T11:59:59.324Z, getMilliseconds() returns 324
-  // Randomness comes from user interaction timing
-  const randomIndex = new Date().getMilliseconds() % state.questions.length;
-  state.currentQuestion = state.questions[randomIndex];
-  state.answerRevealed = false;
+  // If we've gone through all questions, reshuffle
+  if (state.currentQuestionIndex >= state.shuffledQuestions.length) {
+    state.shuffledQuestions = shuffleArray(state.questions);
+    state.currentQuestionIndex = 0;
+  }
+
+  // Get next question from shuffled array
+  state.currentQuestion = state.shuffledQuestions[state.currentQuestionIndex];
+  state.currentQuestionIndex += 1;
+  state.answerRevealed = false; // Reset answer revealed state
   state.questionsAsked += 1;
 }
 
@@ -102,6 +120,10 @@ export const submitAnswer = createAsyncThunk<
     }
 
     const percentage = Math.min(Math.max(correctnessPercentage, -1), 100);
+
+    if (!state.currentQuestion.questionId) {
+      return rejectWithValue("Question ID is required");
+    }
 
     try {
       await recordAnswer({
@@ -154,11 +176,14 @@ const quizSlice = createSlice({
         state.databaseName = databaseName;
         state.sessionId = sessionId;
         state.questions = questions; // Store in original order
+        state.shuffledQuestions = shuffleArray(questions); // Create shuffled copy
+        state.currentQuestionIndex = 0;
         state.correctnessByQuestion = {};
         state.userAnswerByQuestion = {};
         state.questionsAnswered = 0;
         state.correctnessSum = 0;
         state.questionsAsked = 0;
+        state.answerRevealed = false;
         getNextQuestion(state);
       })
       .addCase(startQuiz.rejected, (state, action) => {

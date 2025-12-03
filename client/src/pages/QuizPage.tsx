@@ -24,13 +24,6 @@ function QuizPage() {
   const [userAnswerInput, setUserAnswerInput] = useState<string>("");
   const [answerNotes, setAnswerNotes] = useState<string>("");
 
-  const currentCorrectness = useMemo(() => {
-    if (!quizState.currentQuestion) return undefined;
-    return quizState.correctnessByQuestion[
-      quizState.currentQuestion.questionId
-    ];
-  }, [quizState.currentQuestion, quizState.correctnessByQuestion]);
-
   useEffect(() => {
     if (!databaseId) return;
 
@@ -39,20 +32,14 @@ function QuizPage() {
     }
   }, [databaseId, quizState.status, quizState.databaseId, dispatch]);
 
+  // Clear all input state whenever question changes
+  // Don't restore previous answers - each question should start fresh
   useEffect(() => {
-    if (currentCorrectness !== undefined) {
-      setCorrectnessInput(currentCorrectness);
-      setHasAdjustedSlider(true);
-    } else {
-      setCorrectnessInput(0);
-      setHasAdjustedSlider(false);
-    }
-  }, [currentCorrectness, quizState.currentQuestion?.questionId]);
-
-  // Clear answer input whenever question changes - don't persist previous answers
-  useEffect(() => {
+    // Reset all inputs when question changes
     setUserAnswerInput("");
     setAnswerNotes("");
+    setCorrectnessInput(0);
+    setHasAdjustedSlider(false);
   }, [quizState.currentQuestion?.questionId]);
 
   useEffect(() => {
