@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import QuizStats from "../components/QuizStats";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -121,7 +121,10 @@ function QuizPage() {
         <section className="question-card">
           <h2>Question</h2>
           <div className="question-text">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeSanitize]}
+            >
               {currentQuestion.questionText}
             </ReactMarkdown>
           </div>
@@ -151,7 +154,10 @@ function QuizPage() {
               <div className="answer-section">
                 <h3>Answer</h3>
                 <div className="answer-text">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize]}>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeSanitize]}
+                  >
                     {currentQuestion.answerText}
                   </ReactMarkdown>
                 </div>
