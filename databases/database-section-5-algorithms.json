@@ -1,0 +1,2318 @@
+{
+  "databaseName": "Section 5 - SageMaker Built-in Algorithms",
+  "questionsWithAnswers": [
+    {
+      "questionId": "14156809157e2dc3ed3c66c633898492",
+      "questionText": "What are the three main input modes for SageMaker training, and what is the key difference between them?",
+      "answerText": "The three main input modes are: 1) S3 File Mode (default) - copies training data from S3 to local directory in docker container (requires space, takes time to copy), 2) S3 Fast File Mode - streams from S3, training can begin without waiting to download, works best with sequential access, 3) Pipe Mode - streams data directly from S3 (mainly replaced by Fast File).",
+      "tags": [
+        "sagemaker",
+        "input-modes",
+        "training"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "4573a1d1cc6b50e1ea2bc0eff214c7c6",
+      "questionText": "What is Amazon S3 Express One Zone, and what are its key characteristics and limitations?",
+      "answerText": "Amazon S3 Express One Zone is a high-performance storage class limited to one Availability Zone. It provides very fast access and works with file, fast file, and pipe modes. However, it has no backups and is very temporary. It is good for training when you need fast access to data.",
+      "tags": [
+        "s3",
+        "storage",
+        "input-modes"
+      ],
+      "domains": [
+        "aws-storage"
+      ]
+    },
+    {
+      "questionId": "aec77a14ff368935d668f146072b9483",
+      "questionText": "When should FSx for Lustre be used for SageMaker training, and what are its characteristics?",
+      "answerText": "FSx for Lustre should be used when training with massive amounts of data. It scales to hundreds of GB of throughput and millions of IOPS with low latency. It is single AZ and requires VPC. It is probably the best option for training massive amounts of data.",
+      "tags": [
+        "fsx",
+        "lustre",
+        "storage",
+        "training"
+      ],
+      "domains": [
+        "aws-storage"
+      ]
+    },
+    {
+      "questionId": "f172e20782a2d834e68102fa3d2e4103",
+      "questionText": "What preprocessing requirements does Linear Learner have, and can it handle this automatically?",
+      "answerText": "Linear Learner requires training data to be normalized so all features are weighted the same. The input data should also be shuffled. Linear Learner can do normalization automatically for you.",
+      "tags": [
+        "linear-learner",
+        "preprocessing",
+        "normalization"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "de2d53718c70e10821bcf795bcbf2266",
+      "questionText": "What instance types does Linear Learner support for training, and what is notable about multi-GPU support?",
+      "answerText": "Linear Learner supports single or multi-machine CPU or GPU instances. Multi-GPU does not help - multi-machine helps, but multi-GPU on one machine does not help.",
+      "tags": [
+        "linear-learner",
+        "instance-types",
+        "gpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "16c72ee059354a4536e9c7b3a8017952",
+      "questionText": "Is XGBoost memory bound or compute bound, and what instance types are recommended?",
+      "answerText": "XGBoost is memory bound, not compute bound. M5 is a good choice. XGBoost 1.2 allows single instance GPU (P2, P3) but you MUST set tree_method hyperparameter to gpu_hist. XGBoost 1.5 supports distributed GPU training with use_dask_gpu_training set to true.",
+      "tags": [
+        "xgboost",
+        "instance-types",
+        "memory-bound"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "7d1f5d2e8f1bddb59652b959484ac41e",
+      "questionText": "What input formats does XGBoost support in SageMaker?",
+      "answerText": "XGBoost originally takes CSV or libsvm input (since it originated from open source). AWS recently extended it to accept recordIO-protobuf and Parquet formats.",
+      "tags": [
+        "xgboost",
+        "input-formats"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "37c5862d06b8f72b45ca37520ba3dafb",
+      "questionText": "What XGBoost hyperparameters help prevent overfitting, and what pattern do they follow?",
+      "answerText": "Several hyperparameters help prevent overfitting: subsample (prevents overfitting), eta (step size shrinkage, prevents overfitting), gamma (minimum loss reduction to create partition; larger = more conservative), alpha (L1 regularization; larger = more conservative), lambda (L2 regularization; larger = more conservative). The pattern is that Gamma, Alpha, and Lambda - increasing them makes the model more conservative.",
+      "tags": [
+        "xgboost",
+        "hyperparameters",
+        "overfitting"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1952568816c7b6d906aa653ab6f48827",
+      "questionText": "Is LightGBM memory bound or compute bound, and what instance types should be chosen?",
+      "answerText": "LightGBM is a memory-bound algorithm. You should choose general purpose instances over compute optimized - use M5, NOT C5. Be sure to have enough memory. It supports CPU only, but can be distributed across multiple instances.",
+      "tags": [
+        "lightgbm",
+        "memory-bound",
+        "instance-types"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a1daa0e76207543a3d165062d42d62b3",
+      "questionText": "What input format does Seq2Seq require, and what is unusual about the data type?",
+      "answerText": "Seq2Seq requires RecordIO-protobuf format (does not mention CSV). The tokens must be integers, which is unusual since most algorithms want floating point data. You must provide training data, validation data, and vocabulary files.",
+      "tags": [
+        "seq2seq",
+        "input-formats",
+        "nlp"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8a547e0f8cc820cefd4f4a1f3624f604",
+      "questionText": "What instance types does Seq2Seq support for training?",
+      "answerText": "Seq2Seq can only use GPU instances (P3 for example). It can only use single machine for training, but can use multi-GPU on one machine. It does not support multi-machine training.",
+      "tags": [
+        "seq2seq",
+        "instance-types",
+        "gpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "07efa3330714483450be48496c137679",
+      "questionText": "What metrics can Seq2Seq optimize on, and which are well-suited for machine translation problems?",
+      "answerText": "Seq2Seq can optimize on: Accuracy (vs provided validation dataset), BLEU score (well-suited for machine translation problems), and Perplexity (well-suited for machine translation problems, cross entropy).",
+      "tags": [
+        "seq2seq",
+        "hyperparameters",
+        "metrics"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1280710d5a1f0ee13afdf55eeb05d727",
+      "questionText": "What input format does DeepAR require, and what must each record contain?",
+      "answerText": "DeepAR requires JSON line format (jsonl), which can be gzipped or in parquet format. Each record MUST contain: start (the starting timestamp) and target (the time series values). Each record CAN contain: dynamic_feat (such as was a promotion applied) and cat (categorical features).",
+      "tags": [
+        "deepar",
+        "input-formats",
+        "time-series"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "54a8cfdee9d2b03da59be3ada0a52c9c",
+      "questionText": "What is a key feature of DeepAR that allows it to learn from relationships?",
+      "answerText": "DeepAR allows you to train the same model over several related time series at once. This allows the model to learn from the relationships between different time series, which is a key advantage.",
+      "tags": [
+        "deepar",
+        "time-series",
+        "features"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "706cdb253b0d5ecf5d007ca85488737d",
+      "questionText": "What is Random Cut Forest (RCF) used for, and where else does it appear in AWS?",
+      "answerText": "Random Cut Forest is used for anomaly detection. It shows up in Kinesis Analytics as well, where it can work on streaming data. It creates a forest of trees where each tree is a partition of the training data, looking at expected change in complexity as a result of adding a point.",
+      "tags": [
+        "rcf",
+        "anomaly-detection",
+        "kinesis"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d073ed3e57e055d8698094ddbee2874f",
+      "questionText": "What instance types does Random Cut Forest use, and does it take advantage of GPUs?",
+      "answerText": "Random Cut Forest does not take advantage of GPUs. It uses M4, C4, or C5 for training, and ml.c5.xlarge for inference.",
+      "tags": [
+        "rcf",
+        "instance-types",
+        "cpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "b3961031fc57a19e396b6f44ddbbb21e",
+      "questionText": "What are the two topic modeling algorithms available in SageMaker, and how do they differ?",
+      "answerText": "The two topic modeling algorithms are: 1) Neural Topic Model (NTM) - uses neural networks, supports GPU or CPU (GPU recommended for training), and 2) Latent Dirichlet Allocation (LDA) - not deep learning, CPU-based only, functionally similar to NTM but may be cheaper/more efficient. Both are unsupervised and generate topics based on word groupings.",
+      "tags": [
+        "topic-modeling",
+        "ntm",
+        "lda",
+        "unsupervised"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "eb8d3bd9d76e94001b7511b984eaefb1",
+      "questionText": "What input modes does LDA support for RecordIO-protobuf format?",
+      "answerText": "LDA supports Pipe Mode only with RecordIO-protobuf format. It also supports CSV format. Each document must have counts for every word in the vocabulary (tokenized).",
+      "tags": [
+        "lda",
+        "input-modes",
+        "pipe-mode"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "109a48d8cb9596f9f3959be9e80fccea",
+      "questionText": "How does SageMaker KNN handle the curse of dimensionality, and what is the trade-off?",
+      "answerText": "SageMaker KNN includes a dimensionality reduction stage to avoid sparse data (curse of dimensionality). It uses sign or fjlt methods. This comes at the cost of noise/accuracy - it reduces features to avoid the curse of dimensionality but with some loss of accuracy.",
+      "tags": [
+        "knn",
+        "dimensionality-reduction",
+        "curse-of-dimensionality"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8364e673bcbe50610f019f22e2b0f6d4",
+      "questionText": "What makes SageMaker K-Means special compared to standard K-Means?",
+      "answerText": "SageMaker K-Means provides web-scale K-Means clustering, which is what makes the algorithm special - doing clustering at scale. It uses optimized cluster centers and can start with extra cluster centers (K = k*n) to help improve accuracy, then reduces to k clusters over time.",
+      "tags": [
+        "k-means",
+        "clustering",
+        "web-scale"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "0a71e579c144453419272105e43b3ad5",
+      "questionText": "What initialization methods does SageMaker K-Means support, and what problem does k-means++ solve?",
+      "answerText": "SageMaker K-Means supports random initialization or k-means++ approach. Random initialization can result in clusters being too close together. K-means++ tries to make initial clusters far apart to remedy this problem.",
+      "tags": [
+        "k-means",
+        "initialization",
+        "k-means++"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f500925a70a7a4ca1761cd4efcad3a3e",
+      "questionText": "What is Principal Component Analysis (PCA) used for, and what does it help reduce?",
+      "answerText": "PCA is used for dimensionality reduction - projecting higher-dimensional data (lots of features) into lower dimensional space (like 2D plot) while minimizing loss of information. The reduced dimensions are called components, with the first component having the largest possible variability. It helps reduce the curse of dimensionality.",
+      "tags": [
+        "pca",
+        "dimensionality-reduction"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ba40a2d3e33bf4da09e84df12bec0e7b",
+      "questionText": "What are the two modes that PCA supports, and when should each be used?",
+      "answerText": "PCA supports two modes: 1) Regular mode - for sparse data and moderate number of observations and features, 2) Randomized mode - for large number of observations and features, uses approximation algorithm.",
+      "tags": [
+        "pca",
+        "modes",
+        "algorithm-mode"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ed81cde4da94f81f6d7de9e9ba746ddf",
+      "questionText": "What is Factorization Machines best used for, and what type of data does it handle?",
+      "answerText": "Factorization Machines is best used for dealing with sparse data, such as click prediction and item recommendations. Since individual users do not interact with most pages/products, the data is sparse. It is supervised (classification or regression) and limited to pair-wise interactions (user-item for example).",
+      "tags": [
+        "factorization-machines",
+        "recommendations",
+        "sparse-data"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "56b94bdc144e00701878e1561241c071",
+      "questionText": "What instance types are recommended for Factorization Machines, and why?",
+      "answerText": "CPU is recommended for Factorization Machines. GPU is only worse with dense data, and since Factorization Machines is designed for sparse data, CPU is the better choice. If you have dense data, you should not be looking at Factorization Machines.",
+      "tags": [
+        "factorization-machines",
+        "instance-types",
+        "cpu",
+        "sparse-data"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "649d6a50d716e152cc343e92edab7008",
+      "questionText": "What is IP Insights used for, and what type of learning is it?",
+      "answerText": "IP Insights is used for unsupervised learning of IP address usage patterns. It identifies suspicious behavior from IP addresses, such as identifying logins from anomalous IPs or accounts creating resources from anomalous IPs when they should only view.",
+      "tags": [
+        "ip-insights",
+        "anomaly-detection",
+        "unsupervised",
+        "security"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6047efc7ed5bae37292de182e2c424a9",
+      "questionText": "What input format does IP Insights require, and what is notable about this?",
+      "answerText": "IP Insights requires CSV ONLY format. It needs entity and IP address data. User names and account IDs can be fed in directly with no preprocessing required.",
+      "tags": [
+        "ip-insights",
+        "input-formats",
+        "csv"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8b076b22cf73ef877a4d853d0750c315",
+      "questionText": "What are the key differences between XGBoost and LightGBM in terms of input formats and instance types?",
+      "answerText": "XGBoost supports CSV, libsvm, recordIO-protobuf, and Parquet formats, while LightGBM requires text/CSV only. Both are memory-bound algorithms (choose M5, not C5). XGBoost 1.2+ supports GPU with tree_method=gpu_hist, while LightGBM is CPU only but can be distributed across multiple instances.",
+      "tags": [
+        "xgboost",
+        "lightgbm",
+        "comparison",
+        "gradient-boosting"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a2b30732f9b2e57033b32887658c0d66",
+      "questionText": "When should you choose XGBoost over LightGBM, and vice versa?",
+      "answerText": "Choose XGBoost if you need GPU acceleration (XGBoost 1.2+), need to work with recordIO-protobuf or Parquet formats, or need distributed GPU training (XGBoost 1.5+). Choose LightGBM if you have CSV data and want a CPU-based solution that can be distributed across multiple CPU instances.",
+      "tags": [
+        "xgboost",
+        "lightgbm",
+        "algorithm-selection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "344e87a7f81a5be1ef9dfc8ab300eb8b",
+      "questionText": "What hyperparameters do XGBoost and LightGBM share for preventing overfitting?",
+      "answerText": "Both XGBoost and LightGBM share hyperparameters for preventing overfitting: learning_rate (step size shrinkage), max_depth (tree depth), and regularization terms. XGBoost uses alpha (L1) and lambda (L2), while LightGBM uses feature_fraction and bagging_fraction. Both use subsample-related parameters.",
+      "tags": [
+        "xgboost",
+        "lightgbm",
+        "hyperparameters",
+        "overfitting"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "9bdb12941ea6afb3d8e0ca1e932a8c9a",
+      "questionText": "What are the key differences between Neural Topic Model (NTM) and Latent Dirichlet Allocation (LDA)?",
+      "answerText": "NTM is a neural network-based algorithm that supports GPU or CPU (GPU recommended for training), while LDA is CPU-only and not a deep learning algorithm. LDA may be cheaper/more efficient. LDA supports pipe mode only with recordIO-protobuf, while NTM supports both file and pipe modes. Both are unsupervised topic modeling algorithms that require tokenized input.",
+      "tags": [
+        "ntm",
+        "lda",
+        "topic-modeling",
+        "comparison"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "b8022542b41e4a1cea50c86123820ca1",
+      "questionText": "When should you choose Neural Topic Model (NTM) over Latent Dirichlet Allocation (LDA)?",
+      "answerText": "Choose NTM if you have GPU instances available and want potentially better performance, or if you need to use file mode (LDA only supports pipe mode with recordIO-protobuf). Choose LDA if you want a CPU-only solution that may be cheaper/more efficient, or if you are already using pipe mode with recordIO-protobuf.",
+      "tags": [
+        "ntm",
+        "lda",
+        "algorithm-selection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6b10927e2f184af5348857edd3644682",
+      "questionText": "What are the key differences between Random Cut Forest (RCF) and IP Insights for anomaly detection?",
+      "answerText": "RCF is a general-purpose anomaly detection algorithm that works with streaming data (Kinesis Analytics) and uses CPU instances (M4, C4, C5). IP Insights is specifically designed for IP address usage patterns and uses neural networks, so GPU is recommended (ml.p3.2xlarge or higher). RCF supports recordIO-protobuf or CSV, while IP Insights requires CSV only.",
+      "tags": [
+        "rcf",
+        "ip-insights",
+        "anomaly-detection",
+        "comparison"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "bd94ad8ffdde3eb2ee6dda00b8d014ce",
+      "questionText": "When should you use Random Cut Forest (RCF) versus IP Insights for anomaly detection?",
+      "answerText": "Use RCF for general-purpose anomaly detection on any type of data, especially if you need to work with streaming data in Kinesis Analytics, or if you want a CPU-only solution. Use IP Insights specifically for detecting suspicious IP address behavior patterns, such as anomalous logins or resource creation from unexpected IPs.",
+      "tags": [
+        "rcf",
+        "ip-insights",
+        "anomaly-detection",
+        "algorithm-selection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a255bd559c050bd38b2dd7482b6f3ef2",
+      "questionText": "What are the key differences between Object Detection, Image Classification, and Semantic Segmentation in terms of their use cases?",
+      "answerText": "Object Detection identifies and locates multiple objects within an image with bounding boxes. Image Classification categorizes an entire image into a single class. Semantic Segmentation assigns a class label to each pixel in the image, providing pixel-level understanding. All three are computer vision tasks that likely use CNN architectures and require GPU instances.",
+      "tags": [
+        "object-detection",
+        "image-classification",
+        "semantic-segmentation",
+        "computer-vision",
+        "comparison"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "aa3528bab742e54f771cbd91138a13f7",
+      "questionText": "What are the key differences between K-Means and K-Nearest Neighbors (KNN)?",
+      "answerText": "K-Means is an unsupervised clustering algorithm that divides data into K groups based on similarity (Euclidean distance). KNN is a supervised classification or regression algorithm that finds the K closest points to a sample and returns the most frequent label (classification) or average value (regression). K-Means uses web-scale clustering, while KNN includes dimensionality reduction to avoid curse of dimensionality.",
+      "tags": [
+        "k-means",
+        "knn",
+        "clustering",
+        "classification",
+        "comparison"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "0b74a01f48b275b74e6d1d8f44f5418f",
+      "questionText": "Which SageMaker built-in algorithms support CSV input format?",
+      "answerText": "Algorithms that support CSV include: Linear Learner, XGBoost, LightGBM, K-Means, PCA, KNN, LDA, Random Cut Forest, and IP Insights. Note that LightGBM and IP Insights require CSV only (no recordIO-protobuf).",
+      "tags": [
+        "input-formats",
+        "csv",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "43378cec5aadc2b708b69af0e61b9f1f",
+      "questionText": "Which SageMaker built-in algorithms support RecordIO-protobuf input format?",
+      "answerText": "Algorithms that support RecordIO-protobuf include: Linear Learner, Seq2Seq, BlazingText, Object2Vec, Neural Topic Model, LDA, K-Means, PCA, Random Cut Forest, and Factorization Machines. Note that Seq2Seq and Factorization Machines primarily or exclusively use recordIO-protobuf.",
+      "tags": [
+        "input-formats",
+        "recordio-protobuf",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a03ed7e829460b605b8dee4bbf7fd6af",
+      "questionText": "Which SageMaker built-in algorithms require CSV format only (do not support recordIO-protobuf)?",
+      "answerText": "LightGBM and IP Insights require CSV only. LightGBM requires text/CSV for both training and inference. IP Insights requires CSV only format with entity and IP address data.",
+      "tags": [
+        "input-formats",
+        "csv",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1280710d5a1f0ee13afdf55eeb05d727",
+      "questionText": "What input format does DeepAR require, and what is unique about it?",
+      "answerText": "DeepAR requires JSON line format (jsonl), which can be gzipped or in parquet format. This is unique among SageMaker algorithms. Each record must contain start (timestamp) and target (time series values), and can optionally contain dynamic_feat and cat (categorical features).",
+      "tags": [
+        "deepar",
+        "input-formats",
+        "jsonl",
+        "time-series"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ad4914e5c559e88a296621b2043aff39",
+      "questionText": "What is unusual about Seq2Seq input format compared to other SageMaker algorithms?",
+      "answerText": "Seq2Seq requires RecordIO-protobuf format with tokens that must be integers, which is unusual since most algorithms want floating point data. You must provide training data, validation data, and vocabulary files. The tokens are packed into integer tensors with vocabulary files.",
+      "tags": [
+        "seq2seq",
+        "input-formats",
+        "nlp"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1a3fdad151b6405ce30f9b2f264f2e44",
+      "questionText": "Which SageMaker built-in algorithms support Pipe Mode for data input?",
+      "answerText": "Algorithms that support Pipe Mode include: Linear Learner, XGBoost, K-Means, PCA, KNN, Random Cut Forest, and Neural Topic Model. Note that LDA supports pipe mode only with recordIO-protobuf format (not with CSV).",
+      "tags": [
+        "input-modes",
+        "pipe-mode",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "00bfdc36cd5d872af4505801c4a3a10a",
+      "questionText": "What is the key difference between File Mode and Pipe Mode in SageMaker training?",
+      "answerText": "File Mode (default) copies training data from S3 to local directory in the docker container, which requires space and takes time to copy. Pipe Mode streams data directly from S3, allowing training to begin without waiting to download all data. Pipe Mode is more efficient for large datasets.",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "pipe-mode",
+        "training"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "2e59808e37a82cb93abee1a17d7ae94e",
+      "questionText": "When should you use Pipe Mode over File Mode for SageMaker training?",
+      "answerText": "Use Pipe Mode when you have large datasets that would take significant time to copy to the container, when you want training to begin immediately without waiting for data download, or when working with algorithms that support it (Linear Learner, XGBoost, K-Means, PCA, KNN, RCF, NTM). File Mode is the default and works with most algorithms.",
+      "tags": [
+        "input-modes",
+        "pipe-mode",
+        "file-mode",
+        "training"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "5654dc1fe89957b2480404d655c29d2d",
+      "questionText": "What is S3 Fast File Mode, and how does it compare to File Mode and Pipe Mode?",
+      "answerText": "S3 Fast File Mode is akin to Pipe Mode in that training can begin without waiting to download data - it streams from S3. It can do random access, but works best with sequential access. This may be the preferred mode but is not widely supported. Pipe Mode mainly replaced Fast File Mode.",
+      "tags": [
+        "input-modes",
+        "fast-file-mode",
+        "s3"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "b768e6b33703c8b2a6e631b8fdeeccc9",
+      "questionText": "Which SageMaker built-in algorithms require tokenized input data?",
+      "answerText": "Algorithms that require tokenized input include: Seq2Seq (tokens must be integers), Neural Topic Model (words must be tokenized, document contains count for every word in vocabulary), LDA (each document has counts for every word in vocabulary, tokenized), and BlazingText (works with text data that needs tokenization).",
+      "tags": [
+        "tokenization",
+        "input-preprocessing",
+        "nlp"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "cb5bfd164d2631b776729dee316b37d1",
+      "questionText": "What is the difference between memory-bound and compute-bound algorithms, and how does this affect instance type selection?",
+      "answerText": "Memory-bound algorithms are limited by memory bandwidth and should use general purpose instances (M5) rather than compute optimized (C5). Compute-bound algorithms are limited by CPU/GPU processing power. For memory-bound algorithms like XGBoost and LightGBM, choose M5 instances. For compute-bound deep learning algorithms, choose GPU instances.",
+      "tags": [
+        "memory-bound",
+        "compute-bound",
+        "instance-types"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f6b8f08c1665b2f56e38eb0d60d921ee",
+      "questionText": "Which SageMaker built-in algorithms are memory-bound, and what instance types should be used?",
+      "answerText": "XGBoost and LightGBM are memory-bound algorithms. For XGBoost, use M5 instances (or P2/P3 for GPU with XGBoost 1.2+). For LightGBM, use M5 instances (NOT C5) and ensure sufficient memory. Both can be distributed across multiple instances.",
+      "tags": [
+        "memory-bound",
+        "instance-types",
+        "xgboost",
+        "lightgbm"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "58c8fe4b25e6b1952c08df686c9c7f72",
+      "questionText": "Which SageMaker built-in algorithms require GPU instances for training?",
+      "answerText": "Algorithms that require GPU instances include: Seq2Seq (GPU only, single machine multi-GPU), computer vision algorithms (Object Detection, Image Classification, Semantic Segmentation), and IP Insights (GPU recommended, ml.p3.2xlarge or higher). DeepAR likely requires GPU for RNN training.",
+      "tags": [
+        "gpu",
+        "instance-types",
+        "deep-learning"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f8705e787bfa47919df1ea6185f66f19",
+      "questionText": "Which SageMaker built-in algorithms are CPU-only (do not support or benefit from GPU)?",
+      "answerText": "CPU-only algorithms include: LightGBM (CPU only, but can be distributed), LDA (CPU only, single instance), and Random Cut Forest (CPU only, uses M4, C4, or C5 instances).",
+      "tags": [
+        "cpu",
+        "instance-types",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "475de65e8f84c3cda80164842c4e6d7f",
+      "questionText": "Which SageMaker built-in algorithms support both CPU and GPU instances?",
+      "answerText": "Algorithms that support both CPU and GPU include: Linear Learner, XGBoost (1.2+ for GPU), K-Means, PCA, KNN, Neural Topic Model (GPU recommended for training, CPU OK for inference), and Factorization Machines (CPU recommended, GPU only worse with dense data).",
+      "tags": [
+        "cpu",
+        "gpu",
+        "instance-types",
+        "algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "de2d53718c70e10821bcf795bcbf2266",
+      "questionText": "What instance types does Linear Learner support, and what is notable about multi-GPU support?",
+      "answerText": "Linear Learner supports single or multi-machine CPU or GPU instances. Multi-GPU does not help - multi-machine helps, but multi-GPU on one machine does not help. This is an important distinction for instance selection.",
+      "tags": [
+        "linear-learner",
+        "instance-types",
+        "gpu",
+        "multi-machine"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8a547e0f8cc820cefd4f4a1f3624f604",
+      "questionText": "What instance types does Seq2Seq support, and what are the limitations?",
+      "answerText": "Seq2Seq can only use GPU instances (P3 for example). It can only use single machine for training, but can use multi-GPU on one machine. It does not support multi-machine training.",
+      "tags": [
+        "seq2seq",
+        "instance-types",
+        "gpu",
+        "single-machine"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d680447f9f35f04e1ae77b9dfe91f075",
+      "questionText": "What instance types does K-Means support for training and inference?",
+      "answerText": "K-Means supports CPU (recommended) or GPU for training. Only one GPU per instance is used on GPU, so use ml.g4dn.xlarge if using GPU. Supported instances include p2, p3, g4dn, and g4 for both training and inference.",
+      "tags": [
+        "k-means",
+        "instance-types",
+        "gpu",
+        "cpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a741b60d54655b4fb66ad79dfc02f58c",
+      "questionText": "What instance types does Factorization Machines recommend, and why?",
+      "answerText": "Factorization Machines recommends CPU instances. GPU is only worse with dense data, and since Factorization Machines is designed for sparse data (click prediction, recommendations), CPU is the better choice. If you have dense data, you should not be using Factorization Machines.",
+      "tags": [
+        "factorization-machines",
+        "instance-types",
+        "cpu",
+        "sparse-data"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d073ed3e57e055d8698094ddbee2874f",
+      "questionText": "What instance types does Random Cut Forest use for training and inference?",
+      "answerText": "Random Cut Forest does not take advantage of GPUs. It uses M4, C4, or C5 instances for training, and ml.c5.xlarge for inference.",
+      "tags": [
+        "rcf",
+        "instance-types",
+        "cpu",
+        "anomaly-detection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "0c6429562d46e0524de80faa808c79b4",
+      "questionText": "What is the difference between multi-machine and multi-GPU training in SageMaker?",
+      "answerText": "Multi-machine training uses multiple EC2 instances working together, which helps for algorithms like Linear Learner and XGBoost. Multi-GPU training uses multiple GPUs on a single machine, which helps for algorithms like Seq2Seq. Some algorithms support one but not the other - Linear Learner supports multi-machine but not multi-GPU on one machine.",
+      "tags": [
+        "multi-machine",
+        "multi-gpu",
+        "distributed-training"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "1802d8dee8823f5a596e5a367c71f768",
+      "questionText": "What are the common hyperparameters found across neural network-based SageMaker algorithms?",
+      "answerText": "Common hyperparameters for neural network algorithms include: batch_size (or mini_batch_size), learning_rate, optimizer_type (adam, sgd, rmsprop), and num_layers (for encoder/decoder in Seq2Seq). These are standard for deep learning training.",
+      "tags": [
+        "hyperparameters",
+        "neural-networks",
+        "deep-learning"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c160b62ddf9b49be7f468866b8ebc066",
+      "questionText": "What hyperparameters in XGBoost help prevent overfitting, and what pattern do they follow?",
+      "answerText": "XGBoost hyperparameters that prevent overfitting include: subsample (prevents overfitting), eta (step size shrinkage, prevents overfitting), gamma (minimum loss reduction to create partition; larger = more conservative), alpha (L1 regularization; larger = more conservative), and lambda (L2 regularization; larger = more conservative). The pattern is that Gamma, Alpha, and Lambda - increasing them makes the model more conservative.",
+      "tags": [
+        "xgboost",
+        "hyperparameters",
+        "overfitting"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "4c5f930cd2263fa87038094f5f48987e",
+      "questionText": "What hyperparameters does Linear Learner use for binary classifier model selection?",
+      "answerText": "Linear Learner uses target_precision (with binary_classifier_model_selection_criteria set to recall_at_target_precision - holds precision at this value while maximizing recall) and target_recall (with binary_classifier_model_selection_criteria set to precision_at_target_recall - holds recall at this value while maximizing precision).",
+      "tags": [
+        "linear-learner",
+        "hyperparameters",
+        "model-selection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f76e5e5a2758dd2965f7b42398f3fdab",
+      "questionText": "What are the key hyperparameters for K-Means, and how do you choose K?",
+      "answerText": "Key K-Means hyperparameters include: K (number of clusters - choose using Elbow Method by plotting within-cluster sum of squares), mini_batch_size, extra_center_factor (starts with more clusters k*n and reduces to k), and init_method (random or k-means++).",
+      "tags": [
+        "k-means",
+        "hyperparameters",
+        "clustering"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d3fd621c7b1f7b5ba4107beca5934396",
+      "questionText": "What is the Elbow Method, and which algorithm uses it?",
+      "answerText": "The Elbow Method is a technique used to find the optimal number of clusters (K) for K-Means. It works by plotting the Within-Cluster Sum of Squares (WCSS) against different values of K, and identifying the elbow point where the rate of decrease in WCSS slows down significantly.",
+      "tags": [
+        "elbow-method",
+        "k-means",
+        "hyperparameters",
+        "clustering"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "2775964b006d5c258c98bbfa45a0d48f",
+      "questionText": "What metrics can Seq2Seq optimize on, and which are well-suited for machine translation?",
+      "answerText": "Seq2Seq can optimize on: Accuracy (vs provided validation dataset), BLEU score (well-suited for machine translation problems), and Perplexity (well-suited for machine translation problems, cross entropy). BLEU and Perplexity are specifically designed for translation tasks.",
+      "tags": [
+        "seq2seq",
+        "hyperparameters",
+        "metrics",
+        "machine-translation"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1c2fe9f677a1348cc785cc982f166167",
+      "questionText": "What hyperparameters do Neural Topic Model and LDA share?",
+      "answerText": "Both NTM and LDA use num_topics hyperparameter to specify how many topics to generate. NTM also uses mini_batch_size and learning_rate. LDA uses alpha0 (concentration parameter - smaller values generate sparse topic mixtures, larger values produce uniform mixtures).",
+      "tags": [
+        "ntm",
+        "lda",
+        "hyperparameters",
+        "topic-modeling"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f97920506173d4a53730bae1f5079e75",
+      "questionText": "What are the key hyperparameters for Random Cut Forest?",
+      "answerText": "Random Cut Forest uses num_trees (increases reduce noise) and num_samples_per_tree (should be chosen such that 1/num_samples_per_tree approximates the ratio of anomalous to normal data).",
+      "tags": [
+        "rcf",
+        "hyperparameters",
+        "anomaly-detection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "36b2d10343554e635da8c6d85368b044",
+      "questionText": "What are the key hyperparameters for IP Insights?",
+      "answerText": "IP Insights uses num_entity_vectors (hash size, set to twice the number of unique entity identifiers), vector_dim (size of embedding vectors, scales model size, too large results in overfitting), and standard neural network hyperparameters: epochs, learning_rate, and batch_size.",
+      "tags": [
+        "ip-insights",
+        "hyperparameters",
+        "neural-networks"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c92367144dbae51971aedfe75d80d717",
+      "questionText": "What are the key hyperparameters for Principal Component Analysis?",
+      "answerText": "PCA uses algorithm_mode (regular for sparse data and moderate observations/features, or randomized for large number of observations/features using approximation), and subtract_mean (for unbiased data).",
+      "tags": [
+        "pca",
+        "hyperparameters",
+        "dimensionality-reduction"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f7810570aa449f39c0174c2814986f9b",
+      "questionText": "When should you use Linear Learner algorithm?",
+      "answerText": "Use Linear Learner when your data can be represented as linear (fit a line to training data). It can handle regression (numeric prediction) and classification (binary or multi-class using linear threshold function). If data points are better represented as a curve, Linear Learner may not be appropriate.",
+      "tags": [
+        "linear-learner",
+        "algorithm-selection",
+        "use-cases"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1aab8cf539b1f7fedd0909b59e823b91",
+      "questionText": "When should you use XGBoost algorithm?",
+      "answerText": "Use XGBoost for classification or regression tasks, especially when you need a fast, high-performing algorithm that has won many Kaggle competitions. It is good for both classification (using decision trees) and regression (using regression trees). It is memory-bound, so choose M5 instances.",
+      "tags": [
+        "xgboost",
+        "algorithm-selection",
+        "use-cases"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f27451347b2f30e65b62b361434b6cc3",
+      "questionText": "When should you use Factorization Machines algorithm?",
+      "answerText": "Use Factorization Machines for dealing with sparse data, such as click prediction and item recommendations. Since individual users do not interact with most pages/products, the data is sparse. It is supervised (classification or regression) and limited to pair-wise interactions (user-item for example). If you have dense data, you should not use Factorization Machines.",
+      "tags": [
+        "factorization-machines",
+        "algorithm-selection",
+        "recommendations",
+        "sparse-data"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "fcd93ecad65451577c709098f1f88717",
+      "questionText": "When should you use DeepAR algorithm?",
+      "answerText": "Use DeepAR for forecasting one-dimensional time series data. It uses RNNs and allows you to train the same model over several related time series at once, learning from relationships between them. It can find frequencies and seasonality. Good for predicting future values in time series like stock prices.",
+      "tags": [
+        "deepar",
+        "algorithm-selection",
+        "time-series",
+        "forecasting"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c75e916e37c3acff5f0e2f830e19e4c5",
+      "questionText": "When should you use Seq2Seq algorithm?",
+      "answerText": "Use Seq2Seq for tasks where input is a sequence of tokens and output is a sequence of tokens, such as machine translation, text summarization, and speech-to-text. It is implemented with RNNs and CNNs with attention. Pre-trained models are available for specific translation tasks, which should be used instead of training from scratch when possible.",
+      "tags": [
+        "seq2seq",
+        "algorithm-selection",
+        "nlp",
+        "machine-translation"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "834ae946268949bf5028dedcaa74bb28",
+      "questionText": "When should you use K-Means clustering algorithm?",
+      "answerText": "Use K-Means for unsupervised clustering to divide data into K groups where members of a group are as similar as possible to each other (measured by Euclidean distance). SageMaker provides web-scale K-Means clustering, making it suitable for large datasets. You define what similar means and the number of clusters K.",
+      "tags": [
+        "k-means",
+        "algorithm-selection",
+        "clustering",
+        "unsupervised"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "abc005cbbcad65908dad7830c17fb346",
+      "questionText": "When should you use Principal Component Analysis (PCA)?",
+      "answerText": "Use PCA for dimensionality reduction when you need to project higher-dimensional data (lots of features) into lower dimensional space while minimizing loss of information. It helps reduce the curse of dimensionality. The reduced dimensions are called components, with the first component having the largest possible variability.",
+      "tags": [
+        "pca",
+        "algorithm-selection",
+        "dimensionality-reduction",
+        "unsupervised"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "15f12c0d86b3723c54d71a16889f65bf",
+      "questionText": "When should you use Random Cut Forest for anomaly detection?",
+      "answerText": "Use Random Cut Forest for general-purpose anomaly detection on any type of data. It is particularly useful when you need to work with streaming data, as it shows up in Kinesis Analytics and can work on streaming data. It creates a forest of trees where each tree is a partition of training data.",
+      "tags": [
+        "rcf",
+        "algorithm-selection",
+        "anomaly-detection",
+        "streaming"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "53eb7e11dc7fddf1b6611d316e1697ba",
+      "questionText": "When should you use topic modeling algorithms (NTM or LDA)?",
+      "answerText": "Use topic modeling algorithms to organize documents into topics, classify or summarize documents based on topics, and discover what documents are about. Both NTM and LDA are unsupervised and generate arbitrary topics (not traditional named topics) based on word groupings. They require tokenized input where each document contains counts for every word in the vocabulary.",
+      "tags": [
+        "topic-modeling",
+        "ntm",
+        "lda",
+        "algorithm-selection",
+        "unsupervised"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "e81122cf5234f7457643e6998c60c70a",
+      "questionText": "When should you use K-Nearest Neighbors (KNN) algorithm?",
+      "answerText": "Use KNN for simple classification or regression tasks. For classification, it finds the K closest points to a sample and returns the most frequent label. For regression, it finds the K closest points and returns the average value. It is the world's simplest machine learning algorithm. SageMaker includes dimensionality reduction to avoid curse of dimensionality.",
+      "tags": [
+        "knn",
+        "algorithm-selection",
+        "classification",
+        "regression"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "be27138f5c3908686cd3d3dbcac8893c",
+      "questionText": "When should you use IP Insights algorithm?",
+      "answerText": "Use IP Insights for unsupervised learning of IP address usage patterns to identify suspicious behavior. It can identify logins from anomalous IPs or accounts creating resources from anomalous IPs when they should only view. It uses neural networks to learn latent vector representations of entities and IP addresses.",
+      "tags": [
+        "ip-insights",
+        "algorithm-selection",
+        "anomaly-detection",
+        "security"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "cab0cbb1ec6d2d71ded6b00e8e0be8ab",
+      "questionText": "Which SageMaker built-in algorithms support both CSV and RecordIO-protobuf input formats?",
+      "answerText": "Algorithms that support both CSV and RecordIO-protobuf formats: Linear Learner, Random Cut Forest (RCF), Neural Topic Model (NTM), KNN, K-Means, Principal Component Analysis (PCA), LDA, and Factorization Machines (though Factorization Machines uses RecordIO-protobuf only in practice due to sparse data).",
+      "tags": [
+        "input-formats",
+        "csv",
+        "recordio-protobuf"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "b35d2f83ac1d284dc45e3585da74ccfa",
+      "questionText": "What is the most common input format combination supported by SageMaker built-in algorithms?",
+      "answerText": "The most common input format combination is CSV + RecordIO-protobuf, which is supported by 8 algorithms: Linear Learner, Random Cut Forest (RCF), Neural Topic Model (NTM), KNN, K-Means, PCA, LDA, and Factorization Machines.",
+      "tags": [
+        "input-formats",
+        "csv",
+        "recordio-protobuf"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "596a3be143e5512fff56e018205d1f35",
+      "questionText": "Which SageMaker built-in algorithms support CSV input format only (do not support RecordIO-protobuf)?",
+      "answerText": "Algorithms that support CSV only: LightGBM (requires text/CSV for training and inference) and IP Insights (CSV ONLY format with entity and IP address data).",
+      "tags": [
+        "input-formats",
+        "csv",
+        "csv-only"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c9faef756c707e9c3788fb708d2f88cc",
+      "questionText": "Which SageMaker built-in algorithms support RecordIO-protobuf input format only (do not support CSV)?",
+      "answerText": "Algorithms that support RecordIO-protobuf only: Seq2Seq (tokens must be integers, unusual requirement), Factorization Machines (RecordIO-protobuf with Float32, sparse data means CSV is not available), and Object Detection MXNet variant (RecordIO or Image format).",
+      "tags": [
+        "input-formats",
+        "recordio-protobuf",
+        "recordio-only"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "527ac6c1683bb3204df1a636e7e13caf",
+      "questionText": "Which SageMaker built-in algorithm uses JSONL (JSON line) input format?",
+      "answerText": "DeepAR is the only algorithm that uses JSONL (JSON line) format. It can be gzipped or in parquet format. Each record must contain start (timestamp) and target (time series values), and can optionally contain dynamic_feat and cat (categorical features).",
+      "tags": [
+        "input-formats",
+        "jsonl",
+        "deepar",
+        "time-series"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f87d06ea08a1868a8fc5681233998bbe",
+      "questionText": "Which SageMaker built-in algorithm uses augmented manifest text format?",
+      "answerText": "BlazingText uses augmented manifest text format. For supervised mode (text classification), it uses one sentence per line with the first \"word\" being __Label__ followed by the label. For Word2Vec, it uses a text file with one training sentence per line.",
+      "tags": [
+        "input-formats",
+        "augmented-manifest",
+        "blazingtext"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "46fd055cf219abeadd6d8b51bbc21bd5",
+      "questionText": "Which SageMaker built-in algorithms support image input formats (jpg, png)?",
+      "answerText": "Algorithms that support image formats: Object Detection (MXNet variant supports RecordIO or Image format jpg/png, with JSON file for annotations), Image Classification (image format with labels), and Semantic Segmentation (jpg or png with annotations, augmented manifest image format supported for Pipe Mode).",
+      "tags": [
+        "input-formats",
+        "image",
+        "computer-vision"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "5f9cfc717dc4a872d452e76e9c17f0c7",
+      "questionText": "Which SageMaker built-in algorithm supports libsvm input format?",
+      "answerText": "XGBoost supports libsvm input format (original open source format). AWS extended XGBoost to also accept CSV, RecordIO-protobuf, and Parquet formats.",
+      "tags": [
+        "input-formats",
+        "libsvm",
+        "xgboost"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "1031ee3db5732c9213dde41cdac5df39",
+      "questionText": "Which SageMaker built-in algorithm requires integer tokens in RecordIO-protobuf format (unusual requirement)?",
+      "answerText": "Seq2Seq requires RecordIO-protobuf format with tokens that must be integers, which is unusual since most algorithms want floating point data. You must provide training data, validation data, and vocabulary files. Start with tokenized text files and convert to protobuf.",
+      "tags": [
+        "input-formats",
+        "recordio-protobuf",
+        "seq2seq",
+        "integer-tokens"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f23eef1b2f7c049c2b98d467ccb63418",
+      "questionText": "Which SageMaker built-in algorithms require Float32 data in RecordIO-protobuf format?",
+      "answerText": "Algorithms that require Float32 data in RecordIO-protobuf: Linear Learner (RecordIO-wrapped protobuf with Float32 data only) and Factorization Machines (RecordIO-protobuf with Float32, designed for sparse data).",
+      "tags": [
+        "input-formats",
+        "recordio-protobuf",
+        "float32"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "94c7bc0c76937f3409a970a99f8b50e9",
+      "questionText": "Which SageMaker built-in algorithms support both File Mode and Pipe Mode for data input?",
+      "answerText": "Algorithms that support both File Mode and Pipe Mode: Linear Learner, Random Cut Forest (RCF), Neural Topic Model (NTM), KNN, K-Means, and Principal Component Analysis (PCA). These 6 algorithms can use either File Mode (default, copies data from S3) or Pipe Mode (streams data directly from S3).",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "pipe-mode"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "9e29250c616d21bfd1058167d075158f",
+      "questionText": "Given these 6 algorithms: Linear Learner, Random Cut Forest (RCF), Neural Topic Model (NTM), KNN, K-Means, and PCA - what input modes do they support?",
+      "answerText": "All 6 of these algorithms (Linear Learner, RCF, NTM, KNN, K-Means, and PCA) support both File Mode and Pipe Mode. They can use either File Mode (default, copies data from S3 to local directory) or Pipe Mode (streams data directly from S3).",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "pipe-mode"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "9758a4429ea63856c2a2c82c9eaf06d1",
+      "questionText": "Which SageMaker built-in algorithm supports Pipe Mode only (and only with RecordIO-protobuf format)?",
+      "answerText": "LDA (Latent Dirichlet Allocation) supports Pipe Mode only with RecordIO-protobuf format. Pipe Mode is only supported with recordIO-protobuf (not with CSV). LDA also requires tokenized input where each document has counts for every word in vocabulary.",
+      "tags": [
+        "input-modes",
+        "pipe-mode",
+        "lda",
+        "recordio-protobuf"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "78b749b9b8c73ca2021e6fb3e993e717",
+      "questionText": "Which SageMaker built-in algorithms support File Mode only (do not support Pipe Mode)?",
+      "answerText": "Algorithms that support File Mode only: Seq2Seq (RecordIO-protobuf with integer tokens), BlazingText (augmented manifest text format), and Object Detection MXNet variant (RecordIO or Image format).",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "file-mode-only"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "027688672f26a6463b1ef093bddff97a",
+      "questionText": "What is the key difference between File Mode and Pipe Mode for SageMaker training data input?",
+      "answerText": "File Mode (default) copies training data from S3 to local directory in the docker container, which requires space and takes time to copy. Pipe Mode streams data directly from S3, allowing training to begin without waiting to download all data. Pipe Mode is more efficient for large datasets.",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "pipe-mode",
+        "sagemaker"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "5654dc1fe89957b2480404d655c29d2d",
+      "questionText": "What is S3 Fast File Mode, and how does it compare to File Mode and Pipe Mode?",
+      "answerText": "S3 Fast File Mode is akin to Pipe Mode in that training can begin without waiting to download data - it streams from S3. It can do random access, but works best with sequential access. This may be the preferred mode but is not widely supported. Pipe Mode mainly replaced Fast File Mode.",
+      "tags": [
+        "input-modes",
+        "fast-file-mode",
+        "s3"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "14156809157e2dc3ed3c66c633898492",
+      "questionText": "What are the three main input modes for SageMaker training, and what is the key difference between them?",
+      "answerText": "The three main input modes are: 1) S3 File Mode (default) - copies training data from S3 to local directory in docker container (requires space, takes time to copy), 2) S3 Fast File Mode - streams from S3, training can begin without waiting to download, works best with sequential access, 3) Pipe Mode - streams data directly from S3 (mainly replaced by Fast File).",
+      "tags": [
+        "input-modes",
+        "file-mode",
+        "pipe-mode",
+        "fast-file-mode"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "4c13f23e7aae59fec18fe1b494826418",
+      "questionText": "What is the difference between input format and input mode in SageMaker?",
+      "answerText": "Input format refers to the data structure/file type (CSV, RecordIO-protobuf, JSONL, Image formats, etc.) - what the data looks like. Input mode refers to how data is delivered to the training container (File Mode - copies from S3, Pipe Mode - streams from S3, Fast File Mode - streams with random access). Format is about the data structure, mode is about the delivery method.",
+      "tags": [
+        "input-formats",
+        "input-modes",
+        "sagemaker"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "7d1f5d2e8f1bddb59652b959484ac41e",
+      "questionText": "What input formats does XGBoost support?",
+      "answerText": "XGBoost supports multiple input formats: CSV, libsvm (original open source format), RecordIO-protobuf, and Parquet. AWS extended XGBoost from its open source version to accept these additional formats. XGBoost 1.5 distributed GPU training only works with CSV or Parquet input.",
+      "tags": [
+        "input-formats",
+        "xgboost",
+        "csv",
+        "libsvm",
+        "recordio-protobuf",
+        "parquet"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "4e5e464a22d9d3d266a0148db1188834",
+      "questionText": "What input formats does Linear Learner support, and are there any special requirements?",
+      "answerText": "Linear Learner supports RecordIO-wrapped protobuf (Float32 data only!) and CSV (first column is assumed to be the label, followed by feature data). Both File Mode and Pipe Mode are supported for both formats.",
+      "tags": [
+        "input-formats",
+        "linear-learner",
+        "csv",
+        "recordio-protobuf",
+        "float32"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6aa93c0befacdb882d576423a8cfa0b8",
+      "questionText": "What input modes does K-Means support?",
+      "answerText": "K-Means supports both File Mode and Pipe Mode. It accepts RecordIO-protobuf or CSV format, and both formats can be used with either File Mode or Pipe Mode.",
+      "tags": [
+        "input-modes",
+        "k-means",
+        "file-mode",
+        "pipe-mode"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "eb8d3bd9d76e94001b7511b984eaefb1",
+      "questionText": "What input modes does LDA support, and are there any restrictions?",
+      "answerText": "LDA supports Pipe Mode only, and only with RecordIO-protobuf format. Pipe Mode is not supported with CSV format for LDA. LDA also requires tokenized input where each document has counts for every word in vocabulary.",
+      "tags": [
+        "input-modes",
+        "lda",
+        "pipe-mode",
+        "recordio-protobuf"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f824e9ae7af05e46905421ee162a6447",
+      "questionText": "What input formats and input modes does Neural Topic Model (NTM) support?",
+      "answerText": "Neural Topic Model supports RecordIO-protobuf or CSV input formats. It supports both File Mode and Pipe Mode. It requires tokenized input (words must be tokenized, document contains count for every word in vocabulary) and uses 4 data channels: train (required), validation, test, and auxiliary (all optional except train).",
+      "tags": [
+        "input-formats",
+        "input-modes",
+        "ntm",
+        "csv",
+        "recordio-protobuf",
+        "file-mode",
+        "pipe-mode"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "83ec4b47b35a1e93973ecc50592ff333",
+      "questionText": "Which SageMaker built-in algorithms are CPU only (do not support or benefit from GPU instances)?",
+      "answerText": "Algorithms that are CPU only: LightGBM (CPU only, but can be distributed across multiple CPU instances), LDA (Single Instance CPU for training), and Random Cut Forest (does not take advantage of GPUs, uses M4, C4, or C5 instances).",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "cpu-only"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6cd60ca1941cc4ce58a51ee98c5e584d",
+      "questionText": "Given these 3 algorithms: LightGBM, LDA, and Random Cut Forest - what instance types do they support?",
+      "answerText": "All 3 algorithms (LightGBM, LDA, and Random Cut Forest) are CPU only. LightGBM is CPU only but can be distributed. LDA uses Single Instance CPU for training. Random Cut Forest does not take advantage of GPUs and uses M4, C4, or C5 instances.",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "cpu-only"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "58c8fe4b25e6b1952c08df686c9c7f72",
+      "questionText": "Which SageMaker built-in algorithms require GPU instances (cannot use CPU)?",
+      "answerText": "Algorithms that require GPU instances: Seq2Seq (can only use GPU instances, P3 for example, single machine multi-GPU) and Semantic Segmentation (for training, ONLY GPU instances P2, P3, G4dn, G5 are supported on a single machine).",
+      "tags": [
+        "instance-types",
+        "gpu",
+        "gpu-only",
+        "gpu-required"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "5621e121dfac4bd2c32431c805fea2fd",
+      "questionText": "Given these 2 algorithms: Seq2Seq and Semantic Segmentation - what instance types do they require for training?",
+      "answerText": "Both Seq2Seq and Semantic Segmentation require GPU instances for training. Seq2Seq can only use GPU instances (P3 for example), single machine multi-GPU. Semantic Segmentation for training ONLY supports GPU instances (P2, P3, G4dn, G5) on a single machine.",
+      "tags": [
+        "instance-types",
+        "gpu",
+        "gpu-only",
+        "gpu-required"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "59f867c7f6a0293c3dde3c32722c58be",
+      "questionText": "Which SageMaker built-in algorithms support both CPU and GPU instances?",
+      "answerText": "Algorithms that support both CPU and GPU: Linear Learner, XGBoost, DeepAR, BlazingText, Object Detection, Image Classification, KNN, K-Means, Principal Component Analysis (PCA), IP Insights, Factorization Machines, Object2Vec, and Neural Topic Model (NTM).",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "gpu",
+        "cpu-gpu-both"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "93b8189d99645946ed9c574097826d19",
+      "questionText": "Given these 6 algorithms: Linear Learner, XGBoost, K-Means, PCA, KNN, and Neural Topic Model - what instance types do they support?",
+      "answerText": "All 6 algorithms (Linear Learner, XGBoost, K-Means, PCA, KNN, and Neural Topic Model) support both CPU and GPU instances. They can use either CPU or GPU depending on the use case and requirements.",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "gpu",
+        "cpu-gpu-both"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "304dc392798d1c3662b86a9efffca994",
+      "questionText": "Which SageMaker built-in algorithms recommend CPU instances (though they may support GPU)?",
+      "answerText": "Algorithms that recommend CPU instances: DeepAR (CPU is recommended, start with CPU ml.c4.2xlarge or ml.c4.4xlarge, move to GPU only if necessary for larger models or large mini-batch sizes >512), Factorization Machines (CPU recommended, GPU only worse with dense data and the data is sparse), Object2Vec (recommended start with CPU), and K-Means (CPU recommended, though GPU is supported).",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "cpu-recommended"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "16030ca8af0dc6efda7b1433c66b6f34",
+      "questionText": "Given these 4 algorithms: DeepAR, Factorization Machines, Object2Vec, and K-Means - what instance type is recommended?",
+      "answerText": "All 4 algorithms (DeepAR, Factorization Machines, Object2Vec, and K-Means) recommend CPU instances. DeepAR recommends starting with CPU (ml.c4.2xlarge, ml.c4.4xlarge). Factorization Machines recommends CPU (GPU only worse with dense data). Object2Vec recommends starting with CPU. K-Means recommends CPU (though GPU is supported).",
+      "tags": [
+        "instance-types",
+        "cpu",
+        "cpu-recommended"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "53c5e4e9a59c18058c24b3990354875b",
+      "questionText": "Which SageMaker built-in algorithms recommend GPU instances (though they may support CPU)?",
+      "answerText": "Algorithms that recommend GPU instances: Neural Topic Model (GPU recommended for training, CPU OK for inference and is cheaper), IP Insights (GPU recommended because it is a neural network, ml.p3.2xlarge or higher, can use multiple GPUs), Object Detection (uses GPU instances for training, multi-GPU and multi-machine OK), and Image Classification (you are going to want GPU for training, multi-GPU and multi-machine OK).",
+      "tags": [
+        "instance-types",
+        "gpu",
+        "gpu-recommended"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c856a91311fcde376878f2d0b82e4fb2",
+      "questionText": "Given these 2 algorithms: Neural Topic Model and IP Insights - what instance type is recommended?",
+      "answerText": "Both Neural Topic Model and IP Insights recommend GPU instances. Neural Topic Model recommends GPU for training (CPU OK for inference and is cheaper). IP Insights recommends GPU because it is a neural network (ml.p3.2xlarge or higher, can use multiple GPUs).",
+      "tags": [
+        "instance-types",
+        "gpu",
+        "gpu-recommended"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "de2d53718c70e10821bcf795bcbf2266",
+      "questionText": "What instance types does Linear Learner support, and what is notable about multi-GPU support?",
+      "answerText": "Linear Learner supports single or multi-machine CPU or GPU instances. Multi-GPU does not help - multi-machine helps, but multi-GPU on one machine does not help. This is an important distinction for instance selection.",
+      "tags": [
+        "instance-types",
+        "linear-learner",
+        "cpu",
+        "gpu",
+        "multi-machine",
+        "multi-gpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "108855cd0f24f16cfca73dcdb81a67e4",
+      "questionText": "What instance types does XGBoost support, and what are the requirements for GPU?",
+      "answerText": "XGBoost supports CPU instances (M5 is good choice, memory-bound algorithm) and GPU instances. XGBoost 1.2+ allows single instance GPU (P2, P3) but you MUST set tree_method hyperparameter to gpu_hist. XGBoost 1.5 supports distributed GPU training with use_dask_gpu_training set to true.",
+      "tags": [
+        "instance-types",
+        "xgboost",
+        "cpu",
+        "gpu",
+        "memory-bound"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8a547e0f8cc820cefd4f4a1f3624f604",
+      "questionText": "What instance types does Seq2Seq support, and what are the limitations?",
+      "answerText": "Seq2Seq can only use GPU instances (P3 for example). It can only use single machine for training, but can use multi-GPU on one machine. It does not support multi-machine training.",
+      "tags": [
+        "instance-types",
+        "seq2seq",
+        "gpu",
+        "gpu-only",
+        "single-machine",
+        "multi-gpu"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "571a2502c46e2eecab885a17ba21a16a",
+      "questionText": "What instance types does DeepAR support, and what is recommended?",
+      "answerText": "DeepAR supports CPU or GPU for training (single machine or multi-machine, highly scalable). CPU is recommended - start with CPU (ml.c4.2xlarge, ml.c4.4xlarge). Move up to GPU if necessary (GPU only helps with larger models or large mini-batch sizes >512). For inference, ONLY CPU instances are supported.",
+      "tags": [
+        "instance-types",
+        "deepar",
+        "cpu",
+        "gpu",
+        "cpu-recommended",
+        "time-series"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d680447f9f35f04e1ae77b9dfe91f075",
+      "questionText": "What instance types does K-Means support for training and inference?",
+      "answerText": "K-Means supports CPU (recommended) or GPU for training. Only one GPU per instance is used on GPU, so use ml.g4dn.xlarge if using GPU. Supported instances include p2, p3, g4dn, and g4 for both training and inference.",
+      "tags": [
+        "instance-types",
+        "k-means",
+        "cpu",
+        "gpu",
+        "cpu-recommended",
+        "clustering"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d073ed3e57e055d8698094ddbee2874f",
+      "questionText": "What instance types does Random Cut Forest use for training and inference?",
+      "answerText": "Random Cut Forest does not take advantage of GPUs. It uses M4, C4, or C5 instances for training, and ml.c5.xlarge for inference. It is CPU only.",
+      "tags": [
+        "instance-types",
+        "rcf",
+        "cpu",
+        "cpu-only",
+        "anomaly-detection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a741b60d54655b4fb66ad79dfc02f58c",
+      "questionText": "What instance types does Factorization Machines recommend, and why?",
+      "answerText": "Factorization Machines recommends CPU instances. GPU is only worse with dense data, and since Factorization Machines is designed for sparse data (click prediction, recommendations), CPU is the better choice. If you have dense data, you should not be using Factorization Machines.",
+      "tags": [
+        "instance-types",
+        "factorization-machines",
+        "cpu",
+        "cpu-recommended",
+        "sparse-data"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "159a33f33647e652d561e24384102fdd",
+      "questionText": "What instance types does IP Insights recommend, and why?",
+      "answerText": "IP Insights recommends GPU instances (ml.p3.2xlarge or higher) because it is a neural network. It can use multiple GPUs. CPU is supported, and the size of CPU instance depends on vector_dim and num_entity_vectors hyperparameters.",
+      "tags": [
+        "instance-types",
+        "ip-insights",
+        "gpu",
+        "gpu-recommended",
+        "neural-network"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "fb39d4eab7c6838a629edcd60c5641b9",
+      "questionText": "What instance types does Neural Topic Model support, and what is recommended?",
+      "answerText": "Neural Topic Model supports GPU or CPU. GPU is recommended for training. CPU is OK for inference and is cheaper.",
+      "tags": [
+        "instance-types",
+        "ntm",
+        "cpu",
+        "gpu",
+        "gpu-recommended",
+        "topic-modeling"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "85663f0ccf283b625a61e557a0ffa9c0",
+      "questionText": "What instance types does LDA support?",
+      "answerText": "LDA uses Single Instance CPU for training. It is CPU only and not a deep learning algorithm, which may make it cheaper/more efficient than Neural Topic Model.",
+      "tags": [
+        "instance-types",
+        "lda",
+        "cpu",
+        "cpu-only",
+        "topic-modeling"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "4956bfd733c8d48e41518f57dba6cc91",
+      "questionText": "What instance types does LightGBM support?",
+      "answerText": "LightGBM is CPU only, however it can be distributed. It supports single or multi-instance CPU training. It is a memory-bound algorithm, so choose general purpose instances (M5) NOT compute optimized (C5). Be sure to have enough memory.",
+      "tags": [
+        "instance-types",
+        "lightgbm",
+        "cpu",
+        "cpu-only",
+        "memory-bound",
+        "distributed"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "18d216465b330f7c51a519e4f5ec63f0",
+      "questionText": "What instance types does Object Detection support for training and inference?",
+      "answerText": "Object Detection uses GPU instances for training (ml.p2.xlarge, ml.p2.16xlarge, g4dn, G5). Multi-GPU and multi-machine are OK. For inference, it uses CPU or GPU (M5, P2, P3, g4dn - all OK).",
+      "tags": [
+        "instance-types",
+        "object-detection",
+        "gpu",
+        "cpu",
+        "gpu-recommended",
+        "computer-vision"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "a457e2a3a9c9fcada110fc79d62f3125",
+      "questionText": "What instance types does Image Classification support for training and inference?",
+      "answerText": "Image Classification for training: you are going to want GPU (ml.p2, p3, g4dn, g5). Multi-GPU OK and multi-machine OK. For inference, CPU and GPU are OK (m5, p2, p3, g4dn, g5).",
+      "tags": [
+        "instance-types",
+        "image-classification",
+        "gpu",
+        "cpu",
+        "gpu-recommended",
+        "computer-vision"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "8bcdcf8de497296b805d3b36a53a20dd",
+      "questionText": "What instance types does Semantic Segmentation support for training and inference?",
+      "answerText": "Semantic Segmentation for training: ONLY GPU instances are supported (P2, P3, G4dn, G5) on a single machine-only. For inference, CPU (C5, M5) OR GPU (P3, g4dn) are supported.",
+      "tags": [
+        "instance-types",
+        "semantic-segmentation",
+        "gpu",
+        "gpu-only",
+        "cpu",
+        "computer-vision"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ea6d8691fa3fa32ecb7815cc93b81eb4",
+      "questionText": "What instance types does Principal Component Analysis (PCA) support?",
+      "answerText": "PCA supports GPU or CPU instances. It depends on the specifics of the input data which is better.",
+      "tags": [
+        "instance-types",
+        "pca",
+        "cpu",
+        "gpu",
+        "dimensionality-reduction"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "9906f7cf8f4257d91dd5d5a97bf9ccfb",
+      "questionText": "What instance types does KNN support for training and inference?",
+      "answerText": "KNN supports CPU or GPU for training (ml.m5.2xlarge, ml.p2.xlarge). For inference, CPU is used for lower latency, and GPU is used for higher throughput on large batches.",
+      "tags": [
+        "instance-types",
+        "knn",
+        "cpu",
+        "gpu",
+        "classification",
+        "regression"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "211fa8b8334f1232606d409860da5f24",
+      "questionText": "What instance types does Object2Vec support, and what is recommended?",
+      "answerText": "Object2Vec can only train on a single machine (CPU or GPU, multi-GPU OK). Recommended to start with CPU (ml.m5.2xlarge). GPU options include P2, P3, G4dn, G5. For inference, use ml.p3.2xlarge with INFERENCE_PREFERRED_MODE env variable to optimize for encoder embeddings.",
+      "tags": [
+        "instance-types",
+        "object2vec",
+        "cpu",
+        "gpu",
+        "cpu-recommended",
+        "single-machine"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "2d530b7f07825605d2a975e6746ec8b2",
+      "questionText": "What instance types does BlazingText support?",
+      "answerText": "BlazingText supports both CPU and GPU. For cbow and skipgram modes, recommended is a single ml.p3.2xlarge, but any single CPU or single GPU instance will work. For batch_skipgram, can use single or multiple CPU instances. For text classification, C5 recommended if less than 2GB training data, or single GPU instance (ml.p2.xlarge or ml.p3.2xlarge) for larger datasets.",
+      "tags": [
+        "instance-types",
+        "blazingtext",
+        "cpu",
+        "gpu",
+        "nlp"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "51439930e96c5fbb12907271c41bbb84",
+      "questionText": "What is the difference between multi-GPU and multi-machine training in SageMaker?",
+      "answerText": "Multi-machine training uses multiple EC2 instances working together, which helps for algorithms like Linear Learner and XGBoost. Multi-GPU training uses multiple GPUs on a single machine, which helps for algorithms like Seq2Seq. Some algorithms support one but not the other - Linear Learner supports multi-machine but not multi-GPU on one machine.",
+      "tags": [
+        "instance-types",
+        "multi-machine",
+        "multi-gpu",
+        "distributed-training"
+      ],
+      "domains": [
+        "sagemaker"
+      ]
+    },
+    {
+      "questionId": "97926024e36b4fe815bf46b564298566",
+      "questionText": "Which SageMaker built-in algorithms support multi-machine training?",
+      "answerText": "Algorithms that support multi-machine training: Linear Learner (multi-machine helps, but multi-GPU does not), XGBoost (distributed GPU training in 1.5+), DeepAR (highly scalable, can deploy across cluster), LightGBM (can be distributed across multiple CPU instances), Object Detection (multi-machine OK), and Image Classification (multi-machine OK).",
+      "tags": [
+        "instance-types",
+        "multi-machine",
+        "distributed-training"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "65c8f5732b0b2cc74ea1caef134e6b12",
+      "questionText": "Which SageMaker built-in algorithms support multi-GPU training on a single machine?",
+      "answerText": "Algorithms that support multi-GPU on a single machine: Seq2Seq (single machine multi-GPU, cannot support multi-machine), Object2Vec (multi-GPU OK on single machine), Object Detection (multi-GPU OK), Image Classification (multi-GPU OK), and IP Insights (can use multiple GPUs).",
+      "tags": [
+        "instance-types",
+        "multi-gpu",
+        "single-machine"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f6b8f08c1665b2f56e38eb0d60d921ee",
+      "questionText": "Which SageMaker built-in algorithms are memory-bound (not compute-bound)?",
+      "answerText": "Algorithms that are memory-bound: XGBoost (memory-bound, not compute-bound, choose M5 not C5) and LightGBM (memory-bound algorithm, choose general purpose M5 NOT compute optimized C5, be sure to have enough memory).",
+      "tags": [
+        "instance-types",
+        "memory-bound",
+        "xgboost",
+        "lightgbm"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "70886c56ba2da2f0b77359b6747ff4eb",
+      "questionText": "List all SageMaker built-in algorithms and what makes each one unique.",
+      "answerText": "Linear Learner - A simple linear regression algorithm that fits a line to training data for regression or classification. It is different from other algorithms in that it can automatically normalize data and uses multiple models optimized in parallel, then selects the most optimal one.\nXGBoost - An extreme gradient boosting algorithm that uses boosted decision trees, where new trees correct errors of previous trees. It is different from LightGBM in that it supports GPU acceleration (XGBoost 1.2+) and multiple input formats including libsvm and Parquet, and has won many Kaggle competitions.\nLightGBM - A gradient boosting decision tree algorithm similar to XGBoost but CPU-only and requires CSV format only. It is different from XGBoost in that it uses Gradient-based One-side Sampling and Exclusive Feature Bundling, and can be distributed across multiple CPU instances.\nSeq2Seq - A sequence-to-sequence algorithm for machine translation and text summarization that takes a sequence of tokens and outputs another sequence. It is different from other algorithms in that it requires integer tokens (not floating point) and can only use GPU instances on a single machine with multi-GPU support.\nDeepAR - A forecasting algorithm for one-dimensional time series data using RNNs. It is different from other algorithms in that it can train the same model over several related time series at once, learning from relationships between them, and uses JSONL format (unique among SageMaker algorithms).\nBlazingText - A text classification and Word2Vec algorithm for creating word embeddings. It is different from other NLP algorithms in that it only works on individual words (not sentences or documents) and uses augmented manifest text format with tokenized sentences.\nObject2Vec - An embedding algorithm that works like word2vec but on arbitrary objects (documents, customers, products). It is different from word2vec in that it handles pairs of tokens or sequences of tokens, uses two input channels with separate encoders, and can only train on a single machine.\nObject Detection - A computer vision algorithm that identifies and locates multiple objects in an image with bounding boxes and confidence scores. It is different from Image Classification in that it tells you where objects are located, not just what objects are present.\nImage Classification - A computer vision algorithm that assigns one or more labels to an entire image. It is different from Object Detection in that it does not tell you where objects are located, only what objects are present in the image.\nSemantic Segmentation - A computer vision algorithm that performs pixel-level object classification, assigning a class label to each pixel. It is different from Object Detection and Image Classification in that it provides the highest resolution understanding, showing exactly which pixels belong to which objects.\nRandom Cut Forest (RCF) - An unsupervised anomaly detection algorithm that creates a forest of trees to identify unexpected patterns. It is different from IP Insights in that it is general-purpose (works on any data type), can work with streaming data in Kinesis Analytics, and uses CPU instances only.\nNeural Topic Model (NTM) - A neural network-based topic modeling algorithm that organizes documents into topics using latent representations. It is different from LDA in that it supports GPU (recommended for training) and uses neural variational inference, while LDA is CPU-only and not deep learning.\nLDA (Latent Dirichlet Allocation) - A CPU-based topic modeling algorithm (not deep learning) that organizes documents into topics based on word groupings. It is different from Neural Topic Model in that it is CPU-only, may be cheaper/more efficient, and only supports Pipe Mode with RecordIO-protobuf format.\nKNN (K-nearest-neighbor) - The world's simplest machine learning algorithm that finds the K closest points to a sample and returns the most frequent label (classification) or average value (regression). It is different from other algorithms in that SageMaker includes a dimensionality reduction stage to avoid the curse of dimensionality.\nK-Means - An unsupervised clustering algorithm that divides data into K groups where members are as similar as possible. It is different from standard K-Means in that SageMaker provides web-scale clustering, can start with extra cluster centers (K = k*n) and reduce to k, and uses k-means++ initialization.\nPrincipal Component Analysis (PCA) - A dimensionality reduction algorithm that projects higher-dimensional data into lower dimensions while minimizing information loss. It is different from other algorithms in that it creates components where the first has largest variability, and supports both regular and randomized modes depending on data characteristics.\nFactorization Machines - A supervised algorithm for sparse data used in click prediction and item recommendations. It is different from other algorithms in that it is limited to pair-wise interactions (user-item), requires RecordIO-protobuf with Float32 (CSV not available for sparse data), and recommends CPU instances.\nIP Insights - An unsupervised neural network algorithm that learns IP address usage patterns to identify suspicious behavior. It is different from Random Cut Forest in that it is specifically designed for IP addresses, uses neural networks (GPU recommended), and requires CSV format only.",
+      "tags": [
+        "algorithms",
+        "overview",
+        "unique-features"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "74170c3f5a7d2725e07102fde6c3aacc",
+      "questionText": "Which SageMaker built-in algorithm: A simple linear regression algorithm that fits a line to training data for regression or classification. It is different from other algorithms in that it can automatically normalize data and uses multiple models optimized in parallel, then selects the most optimal one.",
+      "answerText": "Linear Learner",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "linear-learner"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ee6770dfa229d78ad67a5f74dfd9b608",
+      "questionText": "Describe the Linear Learner algorithm and what makes it unique.",
+      "answerText": "A simple linear regression algorithm that fits a line to training data for regression or classification. It is different from other algorithms in that it can automatically normalize data and uses multiple models optimized in parallel, then selects the most optimal one.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "linear-learner"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "635963285243cfd7e95f2beabf98e20d",
+      "questionText": "Which SageMaker built-in algorithm: An extreme gradient boosting algorithm that uses boosted decision trees, where new trees correct errors of previous trees. It is different from LightGBM in that it supports GPU acceleration (XGBoost 1.2+) and multiple input formats including libsvm and Parquet, and has won many Kaggle competitions.",
+      "answerText": "XGBoost",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "xgboost"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6d1512a5039c5d1fc3c3b18f6e1ce0fc",
+      "questionText": "Describe the XGBoost algorithm and what makes it unique.",
+      "answerText": "An extreme gradient boosting algorithm that uses boosted decision trees, where new trees correct errors of previous trees. It is different from LightGBM in that it supports GPU acceleration (XGBoost 1.2+) and multiple input formats including libsvm and Parquet, and has won many Kaggle competitions.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "xgboost"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d20344c95bfebcf8dff5955a187582f0",
+      "questionText": "Which SageMaker built-in algorithm: A gradient boosting decision tree algorithm similar to XGBoost but CPU-only and requires CSV format only. It is different from XGBoost in that it uses Gradient-based One-side Sampling and Exclusive Feature Bundling, and can be distributed across multiple CPU instances.",
+      "answerText": "LightGBM",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "lightgbm"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "4e8e665d353dff5eab4f452bdd3fc4a7",
+      "questionText": "Describe the LightGBM algorithm and what makes it unique.",
+      "answerText": "A gradient boosting decision tree algorithm similar to XGBoost but CPU-only and requires CSV format only. It is different from XGBoost in that it uses Gradient-based One-side Sampling and Exclusive Feature Bundling, and can be distributed across multiple CPU instances.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "lightgbm"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6bd3444413abd10c143cc8442e5082f1",
+      "questionText": "Which SageMaker built-in algorithm: A sequence-to-sequence algorithm for machine translation and text summarization that takes a sequence of tokens and outputs another sequence. It is different from other algorithms in that it requires integer tokens (not floating point) and can only use GPU instances on a single machine with multi-GPU support.",
+      "answerText": "Seq2Seq",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "seq2seq"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "81139a378224bbee0ea21cdc1570bc56",
+      "questionText": "Describe the Seq2Seq algorithm and what makes it unique.",
+      "answerText": "A sequence-to-sequence algorithm for machine translation and text summarization that takes a sequence of tokens and outputs another sequence. It is different from other algorithms in that it requires integer tokens (not floating point) and can only use GPU instances on a single machine with multi-GPU support.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "seq2seq"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "dace405185e859828d86abdb3163b37b",
+      "questionText": "Which SageMaker built-in algorithm: A forecasting algorithm for one-dimensional time series data using RNNs. It is different from other algorithms in that it can train the same model over several related time series at once, learning from relationships between them, and uses JSONL format (unique among SageMaker algorithms).",
+      "answerText": "DeepAR",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "deepar"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "7e0a18fc40819508cdf14ed6adec56b5",
+      "questionText": "Describe the DeepAR algorithm and what makes it unique.",
+      "answerText": "A forecasting algorithm for one-dimensional time series data using RNNs. It is different from other algorithms in that it can train the same model over several related time series at once, learning from relationships between them, and uses JSONL format (unique among SageMaker algorithms).",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "deepar"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "78f827eb44ef434d340fdcdbf98b3f5f",
+      "questionText": "Which SageMaker built-in algorithm: A text classification and Word2Vec algorithm for creating word embeddings. It is different from other NLP algorithms in that it only works on individual words (not sentences or documents) and uses augmented manifest text format with tokenized sentences.",
+      "answerText": "BlazingText",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "blazingtext"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "abc5933f68f18838d7f755c8f77ec7cd",
+      "questionText": "Describe the BlazingText algorithm and what makes it unique.",
+      "answerText": "A text classification and Word2Vec algorithm for creating word embeddings. It is different from other NLP algorithms in that it only works on individual words (not sentences or documents) and uses augmented manifest text format with tokenized sentences.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "blazingtext"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "96d1c420884618041c2baf916ca23df9",
+      "questionText": "Which SageMaker built-in algorithm: An embedding algorithm that works like word2vec but on arbitrary objects (documents, customers, products). It is different from word2vec in that it handles pairs of tokens or sequences of tokens, uses two input channels with separate encoders, and can only train on a single machine.",
+      "answerText": "Object2Vec",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "object2vec"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "923a6dd3ea50ffdda79e7ca910d18c53",
+      "questionText": "Describe the Object2Vec algorithm and what makes it unique.",
+      "answerText": "An embedding algorithm that works like word2vec but on arbitrary objects (documents, customers, products). It is different from word2vec in that it handles pairs of tokens or sequences of tokens, uses two input channels with separate encoders, and can only train on a single machine.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "object2vec"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "db44445f322c94af13e224181b0ecfb4",
+      "questionText": "Which SageMaker built-in algorithm: A computer vision algorithm that identifies and locates multiple objects in an image with bounding boxes and confidence scores. It is different from Image Classification in that it tells you where objects are located, not just what objects are present.",
+      "answerText": "Object Detection",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "object-detection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "34ad60d552b2b4cf6156b6a3e1fc1c4a",
+      "questionText": "Describe the Object Detection algorithm and what makes it unique.",
+      "answerText": "A computer vision algorithm that identifies and locates multiple objects in an image with bounding boxes and confidence scores. It is different from Image Classification in that it tells you where objects are located, not just what objects are present.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "object-detection"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "15a1634434c5871165699fc885267a9c",
+      "questionText": "Which SageMaker built-in algorithm: A computer vision algorithm that assigns one or more labels to an entire image. It is different from Object Detection in that it does not tell you where objects are located, only what objects are present in the image.",
+      "answerText": "Image Classification",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "image-classification"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "10a4c24af9aad23091c7cc64e2ea69e5",
+      "questionText": "Describe the Image Classification algorithm and what makes it unique.",
+      "answerText": "A computer vision algorithm that assigns one or more labels to an entire image. It is different from Object Detection in that it does not tell you where objects are located, only what objects are present in the image.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "image-classification"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "913264dff36b03d95e7cbe1924a4bb3e",
+      "questionText": "Which SageMaker built-in algorithm: A computer vision algorithm that performs pixel-level object classification, assigning a class label to each pixel. It is different from Object Detection and Image Classification in that it provides the highest resolution understanding, showing exactly which pixels belong to which objects.",
+      "answerText": "Semantic Segmentation",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "semantic-segmentation"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "fa6e05d64446bcfe82690942f7f4f6a6",
+      "questionText": "Describe the Semantic Segmentation algorithm and what makes it unique.",
+      "answerText": "A computer vision algorithm that performs pixel-level object classification, assigning a class label to each pixel. It is different from Object Detection and Image Classification in that it provides the highest resolution understanding, showing exactly which pixels belong to which objects.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "semantic-segmentation"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "bc05eb065a3d0e6117295d5be27c5a59",
+      "questionText": "Which SageMaker built-in algorithm: An unsupervised anomaly detection algorithm that creates a forest of trees to identify unexpected patterns. It is different from IP Insights in that it is general-purpose (works on any data type), can work with streaming data in Kinesis Analytics, and uses CPU instances only.",
+      "answerText": "Random Cut Forest (RCF)",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "random-cut-forest-(rcf)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "04301c880898f76221c266a6b811811e",
+      "questionText": "Describe the Random Cut Forest (RCF) algorithm and what makes it unique.",
+      "answerText": "An unsupervised anomaly detection algorithm that creates a forest of trees to identify unexpected patterns. It is different from IP Insights in that it is general-purpose (works on any data type), can work with streaming data in Kinesis Analytics, and uses CPU instances only.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "random-cut-forest-(rcf)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "6732ef650133daf036bf7527c37fde63",
+      "questionText": "Which SageMaker built-in algorithm: A neural network-based topic modeling algorithm that organizes documents into topics using latent representations. It is different from LDA in that it supports GPU (recommended for training) and uses neural variational inference, while LDA is CPU-only and not deep learning.",
+      "answerText": "Neural Topic Model (NTM)",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "neural-topic-model-(ntm)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "0788611994902054839c2223e2cbff29",
+      "questionText": "Describe the Neural Topic Model (NTM) algorithm and what makes it unique.",
+      "answerText": "A neural network-based topic modeling algorithm that organizes documents into topics using latent representations. It is different from LDA in that it supports GPU (recommended for training) and uses neural variational inference, while LDA is CPU-only and not deep learning.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "neural-topic-model-(ntm)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "dfa24aa7f543ab30f6ecd35e21f156ca",
+      "questionText": "Which SageMaker built-in algorithm: A CPU-based topic modeling algorithm (not deep learning) that organizes documents into topics based on word groupings. It is different from Neural Topic Model in that it is CPU-only, may be cheaper/more efficient, and only supports Pipe Mode with RecordIO-protobuf format.",
+      "answerText": "LDA (Latent Dirichlet Allocation)",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "lda-(latent-dirichlet-allocation)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "de11c27752d5252bf1c7688c0b1bc856",
+      "questionText": "Describe the LDA (Latent Dirichlet Allocation) algorithm and what makes it unique.",
+      "answerText": "A CPU-based topic modeling algorithm (not deep learning) that organizes documents into topics based on word groupings. It is different from Neural Topic Model in that it is CPU-only, may be cheaper/more efficient, and only supports Pipe Mode with RecordIO-protobuf format.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "lda-(latent-dirichlet-allocation)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "12849dfe8f37922fb25b567495a99155",
+      "questionText": "Which SageMaker built-in algorithm: The world's simplest machine learning algorithm that finds the K closest points to a sample and returns the most frequent label (classification) or average value (regression). It is different from other algorithms in that SageMaker includes a dimensionality reduction stage to avoid the curse of dimensionality.",
+      "answerText": "KNN (K-nearest-neighbor)",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "knn-(k-nearest-neighbor)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d56e9c93c1b9a5dfbef3459cb6c62276",
+      "questionText": "Describe the KNN (K-nearest-neighbor) algorithm and what makes it unique.",
+      "answerText": "The world's simplest machine learning algorithm that finds the K closest points to a sample and returns the most frequent label (classification) or average value (regression). It is different from other algorithms in that SageMaker includes a dimensionality reduction stage to avoid the curse of dimensionality.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "knn-(k-nearest-neighbor)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "194ae73872066abcbc65301918c2562a",
+      "questionText": "Which SageMaker built-in algorithm: An unsupervised clustering algorithm that divides data into K groups where members are as similar as possible. It is different from standard K-Means in that SageMaker provides web-scale clustering, can start with extra cluster centers (K = k*n) and reduce to k, and uses k-means++ initialization.",
+      "answerText": "K-Means",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "k-means"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "4e561f4f03abcdd4499497e8a1f169c1",
+      "questionText": "Describe the K-Means algorithm and what makes it unique.",
+      "answerText": "An unsupervised clustering algorithm that divides data into K groups where members are as similar as possible. It is different from standard K-Means in that SageMaker provides web-scale clustering, can start with extra cluster centers (K = k*n) and reduce to k, and uses k-means++ initialization.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "k-means"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "736a219319339abc5236fff8514fd6e9",
+      "questionText": "Which SageMaker built-in algorithm: A dimensionality reduction algorithm that projects higher-dimensional data into lower dimensions while minimizing information loss. It is different from other algorithms in that it creates components where the first has largest variability, and supports both regular and randomized modes depending on data characteristics.",
+      "answerText": "Principal Component Analysis (PCA)",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "principal-component-analysis-(pca)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "e53bcf665abf570a8012b7adf1ced966",
+      "questionText": "Describe the Principal Component Analysis (PCA) algorithm and what makes it unique.",
+      "answerText": "A dimensionality reduction algorithm that projects higher-dimensional data into lower dimensions while minimizing information loss. It is different from other algorithms in that it creates components where the first has largest variability, and supports both regular and randomized modes depending on data characteristics.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "principal-component-analysis-(pca)"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "c1a527d88e92c886aa4e7b4c4348656d",
+      "questionText": "Which SageMaker built-in algorithm: A supervised algorithm for sparse data used in click prediction and item recommendations. It is different from other algorithms in that it is limited to pair-wise interactions (user-item), requires RecordIO-protobuf with Float32 (CSV not available for sparse data), and recommends CPU instances.",
+      "answerText": "Factorization Machines",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "factorization-machines"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "fef60e7f002a24c0078680b20eddf0f9",
+      "questionText": "Describe the Factorization Machines algorithm and what makes it unique.",
+      "answerText": "A supervised algorithm for sparse data used in click prediction and item recommendations. It is different from other algorithms in that it is limited to pair-wise interactions (user-item), requires RecordIO-protobuf with Float32 (CSV not available for sparse data), and recommends CPU instances.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "factorization-machines"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "dee133483f80adce3dcb979055d361f8",
+      "questionText": "Which SageMaker built-in algorithm: An unsupervised neural network algorithm that learns IP address usage patterns to identify suspicious behavior. It is different from Random Cut Forest in that it is specifically designed for IP addresses, uses neural networks (GPU recommended), and requires CSV format only.",
+      "answerText": "IP Insights",
+      "tags": [
+        "algorithms",
+        "algorithm-identification",
+        "ip-insights"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "476ee3380d1cacfe0a07b77fda5c572b",
+      "questionText": "Describe the IP Insights algorithm and what makes it unique.",
+      "answerText": "An unsupervised neural network algorithm that learns IP address usage patterns to identify suspicious behavior. It is different from Random Cut Forest in that it is specifically designed for IP addresses, uses neural networks (GPU recommended), and requires CSV format only.",
+      "tags": [
+        "algorithms",
+        "algorithm-description",
+        "ip-insights"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    }
+  ]
+}
