@@ -16,6 +16,12 @@ interface WriteupPayload {
   lastModified: string;
 }
 
+interface CategorizedWriteups {
+  writeups: WriteupListItem[];
+  vocabulary: WriteupListItem[];
+  todo: WriteupListItem[];
+}
+
 @Controller("write-up-notes")
 export class WriteupsController {
   private getDir(): string {
@@ -23,13 +29,15 @@ export class WriteupsController {
   }
 
   @Get()
-  async listWriteups(): Promise<WriteupListItem[]> {
+  async listWriteups(): Promise<CategorizedWriteups> {
     const dir = this.getDir();
     if (!existsSync(dir)) {
-      return [];
+      return { writeups: [], vocabulary: [], todo: [] };
     }
     const files = await fs.readdir(dir);
-    const mdFiles = files.filter((f) => extname(f).toLowerCase() === ".md");
+    const mdFiles = files.filter(
+      (f) => extname(f).toLowerCase() === ".md" && !f.startsWith("x")
+    );
     const items = await Promise.all(
       mdFiles.map(async (filename) => {
         const id = basename(filename, ".md");
@@ -41,9 +49,26 @@ export class WriteupsController {
         } as WriteupListItem;
       })
     );
-    return items.sort(
+    
+    const sortedItems = items.sort(
       (a, b) => new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime()
     );
+
+    const vocabulary: WriteupListItem[] = [];
+    const todo: WriteupListItem[] = [];
+    const writeups: WriteupListItem[] = [];
+
+    for (const item of sortedItems) {
+      if (item.filename.endsWith("-vocab.md")) {
+        vocabulary.push(item);
+      } else if (item.filename.endsWith("-questions-todo.md")) {
+        todo.push(item);
+      } else {
+        writeups.push(item);
+      }
+    }
+
+    return { writeups, vocabulary, todo };
   }
 
   @Get(":id")

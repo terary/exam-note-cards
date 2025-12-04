@@ -763,6 +763,3105 @@
       "domains": [
         "s3"
       ]
+    },
+    {
+      "questionId": "fa1aafdd-650e-4cf3-8de3-af227139810e",
+      "questionText": "What are the uses of S3?",
+      "answerText": "Backup, Recovery, Storage, Static website, Archive, Hybrid Storage (OnPrem and S3), App Hosting, Media Hosting, Big Data and Analytics",
+      "tags": [
+        "s3",
+        "uses",
+        "use-cases"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "c6e733b7-b519-48c6-85b5-0ffcd1e3a5bc",
+      "questionText": "These uses describe which AWS service: Backup, Recovery, Storage, Static website, Archive, Hybrid Storage (OnPrem and S3), App Hosting, Media Hosting, Big Data and Analytics",
+      "answerText": "S3 (Simple Storage Service)",
+      "tags": [
+        "s3",
+        "uses",
+        "use-cases"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "767709bc-b992-4a21-b1a4-566c60175b77",
+      "questionText": "What is an S3 prefix?",
+      "answerText": "The path portion of an S3 object key, for example \"/the/path/to/\" in s3://bucket-name/the/path/to/item.ext. The prefix is the directory-like path before the object name.",
+      "tags": [
+        "s3",
+        "prefix",
+        "object-key"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "04869795-3f5c-4ec4-b691-066976c80b18",
+      "questionText": "In S3, what do we call the URL segment \"/the/path/to/\" that appears before the object name in the object key?",
+      "answerText": "The object prefix",
+      "tags": [
+        "s3",
+        "prefix",
+        "object-key"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "430e7cd2-fd72-49c8-b6dd-0ed17f8912d4",
+      "questionText": "What is the requirement for S3 bucket names?",
+      "answerText": "S3 bucket names MUST BE globally unique across all AWS accounts and regions.",
+      "tags": [
+        "s3",
+        "bucket",
+        "naming"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "4db97305-d551-434e-869a-8c2c7f1ef29f",
+      "questionText": "Which AWS service requires globally unique names for its main containers?",
+      "answerText": "S3 buckets must be globally unique",
+      "tags": [
+        "s3",
+        "bucket",
+        "naming"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "f33b5fc5-8083-44fa-bd98-a6a4ba63452e",
+      "questionText": "What is the maximum file size for S3 objects?",
+      "answerText": "Maximum file size is 5TB. Files greater than 5GB must use multi-part uploads.",
+      "tags": [
+        "s3",
+        "object-size",
+        "multi-part-upload"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "3858bed6-90eb-4670-b9bc-ab969a61f1b0",
+      "questionText": "What is the maximum size for a single S3 object, and what is required for files larger than 5GB?",
+      "answerText": "5TB maximum. Files greater than 5GB must use multi-part uploads.",
+      "tags": [
+        "s3",
+        "object-size",
+        "multi-part-upload"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "0f232654-86a1-49a9-ba7a-e402352a4c43",
+      "questionText": "At what level is S3 versioning enabled? **EXAM**",
+      "answerText": "S3 versioning is enabled at the bucket level. **EXAM**",
+      "tags": [
+        "s3",
+        "versioning",
+        "bucket",
+        "exam"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "ffb16b89-5492-4e21-9ddd-306d301e303d",
+      "questionText": "What does a null versionId indicate in S3?",
+      "answerText": "When versionId is null, the bucket has versioning enabled but the item was likely created before versioning was enabled.",
+      "tags": [
+        "s3",
+        "versioning",
+        "versionid"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "14f8bed0-f278-4751-ac20-d60bc341b787",
+      "questionText": "In S3, if an object has a null versionId, what does this indicate?",
+      "answerText": "The bucket has versioning enabled but the item was created before versioning was enabled.",
+      "tags": [
+        "s3",
+        "versioning",
+        "versionid"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "eb275732-f1a4-48f3-8e6c-e298bc369ad5",
+      "questionText": "What are the key characteristics of S3 replication?",
+      "answerText": "S3 replication is async, requires versioning, can be cross-account, and ONLY WORKS FOR NEW ITEMS. Buckets must have proper IAM permissions.",
+      "tags": [
+        "s3",
+        "replication",
+        "crr",
+        "srr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "b16162e2-c2eb-4115-96f9-3eabaa088df0",
+      "questionText": "S3 replication that is async, requires versioning, can be cross-account, and only works for new items - what are these characteristics describing?",
+      "answerText": "S3 replication (Cross Region Replication CRR or Same Region Replication SRR)",
+      "tags": [
+        "s3",
+        "replication",
+        "crr",
+        "srr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "a0c354b5-b10b-4837-8866-38b392066142",
+      "questionText": "Can S3 replication be chained (A->B->C)?",
+      "answerText": "No, S3 replication cannot be chained. A->B->C is not allowed. However, A->B and A->C (fan-out) is allowed.",
+      "tags": [
+        "s3",
+        "replication",
+        "chaining"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "d7f1e60c-2207-41f1-bfbf-835125def314",
+      "questionText": "Which replication pattern is NOT allowed in S3: A->B->C (chaining) or A->B and A->C (fan-out)?",
+      "answerText": "A->B->C (chaining) is not allowed. A->B and A->C (fan-out) is allowed.",
+      "tags": [
+        "s3",
+        "replication",
+        "chaining"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "70b3b174-daa3-44d1-b77f-407b0ad173ba",
+      "questionText": "What is the difference between S3 durability and availability?",
+      "answerText": "Durability is the probability of data loss - all S3 storage classes have 11-9's durability (same for all). Availability is how rapidly available an item is - this depends on storage class (Standard 99.99%, IA 99.9%, OneZone IA 99.5%).",
+      "tags": [
+        "s3",
+        "durability",
+        "availability",
+        "storage-classes"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2a53aa6a-a635-4b72-b519-3f06c24d72bf",
+      "questionText": "All S3 storage classes have 11-9's durability, but availability varies by class. What is the difference between durability and availability?",
+      "answerText": "Durability is probability of data loss (same for all classes: 11-9's). Availability is how rapidly available an item is (varies by class: Standard 99.99%, IA 99.9%, OneZone IA 99.5%).",
+      "tags": [
+        "s3",
+        "durability",
+        "availability",
+        "storage-classes"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "c06b37fb-04d9-48c8-9868-bb8d3ab65650",
+      "questionText": "What are the properties of S3 Standard (GP) storage class?",
+      "answerText": "99.99% availability (4-9's, 53 minutes downtime per year), used for frequent access, low latency, tolerant of 2 concurrent facility failures at AWS, use cases: big data analysis, reliable gaming, low latency, content distribution",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "gp"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "9fdbb22a-4f0e-4051-9a9d-c369a4168536",
+      "questionText": "Which S3 storage class has these properties: 99.99% availability (4-9's, 53 minutes downtime per year), used for frequent access, low latency, tolerant of 2 concurrent facility failures at AWS, use cases: big data analysis, reliable gaming, low latency, content distribution",
+      "answerText": "S3 Standard (GP) - General Purpose",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "gp"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2241303d-b5ea-49ca-b4d4-06caf58ba236",
+      "questionText": "What are the properties of S3 Infrequent Access (IA) storage class?",
+      "answerText": "99.9% availability, for less frequent access (supports rapid access), low cost, cost on retrieve, best for backup/restore",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "infrequent-access",
+        "ia"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "15fecd60-722c-4301-b87b-068594b46d21",
+      "questionText": "Which S3 storage class has these properties: 99.9% availability, for less frequent access (supports rapid access), low cost, cost on retrieve, best for backup/restore",
+      "answerText": "S3 Infrequent Access (S3-IA)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "infrequent-access",
+        "ia"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "12420483-bb37-4d47-a50b-f18b9339a41c",
+      "questionText": "What are the properties of S3 OneZone Infrequent Access (1ZIA) storage class?",
+      "answerText": "99.5% availability, high durability in a single AZ (if AZ fails all data is lost), best for secondary backup or content that can be easily recreated",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "onezone",
+        "1zia"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "1abab7dc-217a-42e9-b667-7fc18ced666d",
+      "questionText": "Which S3 storage class has these properties: 99.5% availability, high durability in a single AZ (if AZ fails all data is lost), best for secondary backup or content that can be easily recreated",
+      "answerText": "S3 OneZone Infrequent Access (S3-1ZIA)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "onezone",
+        "1zia"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "d0199415-b384-43de-b630-164bf5eda09c",
+      "questionText": "What are the properties of Glacier Instant Retrieval (GIR) storage class?",
+      "answerText": "Instant retrieval (milliseconds), minimal storage time 90 days, low cost best for Archive and Backup, pricing: storage + retrieval",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gir"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "045f421f-312c-4855-a366-ba410aca6039",
+      "questionText": "Which S3 storage class has these properties: Instant retrieval (milliseconds), minimal storage time 90 days, low cost best for Archive and Backup, pricing: storage + retrieval",
+      "answerText": "Glacier Instant Retrieval (GIR)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gir"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "bca60396-3469-4db3-8249-3ab31f674347",
+      "questionText": "What are the retrieval options and properties of Glacier Flexible Retrieval (GFR)?",
+      "answerText": "Expedited retrieval (1-5 minutes), Standard retrieval (3-5 hours), Bulk retrieval (5-12 hours), min storage 90 days",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gfr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "bb1d2544-7091-4b8c-929b-14d1e626b75b",
+      "questionText": "Which S3 storage class has these retrieval options: Expedited retrieval (1-5 minutes), Standard retrieval (3-5 hours), Bulk retrieval (5-12 hours), min storage 90 days",
+      "answerText": "Glacier Flexible Retrieval (GFR)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gfr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "e99a69e7-409a-4bbb-aeae-5e773491cacf",
+      "questionText": "What are the properties of Glacier Deep Archive storage class?",
+      "answerText": "Standard retrieval (12 hours), Bulk retrieval (48 hours), min storage 180 days, lowest cost for long-term archival",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "deep-archive"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "bbe3cea2-ff55-482f-bee4-a5a18c13282b",
+      "questionText": "Which S3 storage class has these properties: Standard retrieval (12 hours), Bulk retrieval (48 hours), min storage 180 days, lowest cost for long-term archival",
+      "answerText": "Glacier Deep Archive (G-Arch)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "deep-archive"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "33d9be22-95ba-4410-ad8f-ff918f4e7dc0",
+      "questionText": "How does S3 Intelligent Tiering work?",
+      "answerText": "Automatic movement between tiers with small moving fee, no retrieval fee, frequent access default, moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, deep archive after 180-700+ days",
+      "tags": [
+        "s3",
+        "intelligent-tiering",
+        "lifecycle"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "64833879-3947-42fd-b73a-2d0981fd07c2",
+      "questionText": "Which S3 feature has these characteristics: Automatic movement between tiers with small moving fee, no retrieval fee, frequent access default, moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, deep archive after 180-700+ days",
+      "answerText": "S3 Intelligent Tiering",
+      "tags": [
+        "s3",
+        "intelligent-tiering",
+        "lifecycle"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "ff3a375c-089f-4eb4-8c9c-ed5122bcd3ee",
+      "questionText": "What are the two types of S3 Life Cycle Rule actions?",
+      "answerText": "Transition Actions (move from tier to tier, e.g., after 60 days, after 6 months to Glacier) and Expiration Actions (delete objects, e.g., delete logs after 365 days, delete old versions, clean up incomplete multi-part uploads after 2 weeks). Rules can be created for prefix or tags.",
+      "tags": [
+        "s3",
+        "lifecycle",
+        "transition",
+        "expiration"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "d1f9308a-db5a-4fdb-a345-fec7b52100f7",
+      "questionText": "S3 Life Cycle Rules that move objects between tiers are called what, and rules that delete objects are called what?",
+      "answerText": "Transition Actions (move between tiers) and Expiration Actions (delete objects)",
+      "tags": [
+        "s3",
+        "lifecycle",
+        "transition",
+        "expiration"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "e335e68f-d0b8-4be0-a0bb-4b15d81d4d0f",
+      "questionText": "What services can receive S3 Event Notifications?",
+      "answerText": "S3 events can be sent to SNS, SQS, Lambda, or EventBridge. EventBridge can send to 18 other services. You must create resource policies to allow S3 to write to these services.",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "sns",
+        "sqs",
+        "lambda",
+        "eventbridge"
+      ],
+      "domains": [
+        "s3",
+        "event-driven"
+      ]
+    },
+    {
+      "questionId": "b3fab23c-8481-420b-bbb5-ddb702c4f759",
+      "questionText": "Which AWS services can receive S3 event notifications directly?",
+      "answerText": "SNS, SQS, Lambda, and EventBridge. EventBridge can then send to 18 other services.",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "sns",
+        "sqs",
+        "lambda",
+        "eventbridge"
+      ],
+      "domains": [
+        "s3",
+        "event-driven"
+      ]
+    },
+    {
+      "questionId": "4c505066-4311-40d4-a77c-a93267da8902",
+      "questionText": "What are the special features of EventBridge for S3 event notifications?",
+      "answerText": "EventBridge can send to 18 other services, allows advanced filtering (match metadata like object size, file name), and supports replay. **VERY IMPORTANT**: You must define resource access on target service (SNS, SQS, etc).",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "eventbridge",
+        "filtering",
+        "replay"
+      ],
+      "domains": [
+        "s3",
+        "event-driven"
+      ]
+    },
+    {
+      "questionId": "1ee69315-4bbf-4af9-b1c7-3f42f3362b03",
+      "questionText": "Which S3 event notification target supports advanced filtering, replay, and can send to 18 other services?",
+      "answerText": "EventBridge",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "eventbridge",
+        "filtering",
+        "replay"
+      ],
+      "domains": [
+        "s3",
+        "event-driven"
+      ]
+    },
+    {
+      "questionId": "37302517-37e8-436c-94fa-f835b3c302ec",
+      "questionText": "How is S3 performance measured?",
+      "answerText": "S3 performance is measured by prefix, not bucket. Up to 3500 requests/second for PUT/COPY/POST/DELETE (write) and 5500 requests/second for GET/HEAD (read) per prefix. You can double throughput by using multiple prefixes. There is no limit to the number of prefixes per bucket.",
+      "tags": [
+        "s3",
+        "performance",
+        "prefix",
+        "throughput"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "0b764e48-27f0-46c0-927f-baaece83451b",
+      "questionText": "S3 performance limits are measured at what level: bucket or prefix?",
+      "answerText": "Prefix level. Each prefix can handle up to 3500 write req/s and 5500 read req/s. Multiple prefixes can double throughput.",
+      "tags": [
+        "s3",
+        "performance",
+        "prefix",
+        "throughput"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "9bdc6516-d01e-422b-b7c2-eeee79977be2",
+      "questionText": "What is the latency for S3 first byte?",
+      "answerText": "S3 has autoscale capability with latency of 100-200ms for \"first byte\".",
+      "tags": [
+        "s3",
+        "performance",
+        "latency",
+        "first-byte"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "8757b130-ceca-43ca-8218-aa183f3d98a5",
+      "questionText": "What is the typical latency range for S3 first byte access?",
+      "answerText": "100-200ms for first byte",
+      "tags": [
+        "s3",
+        "performance",
+        "latency",
+        "first-byte"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "922f0643-02e7-4dd4-b8c7-d85affe97e4a",
+      "questionText": "What is S3 Transfer Acceleration?",
+      "answerText": "S3 Transfer Acceleration pushes data to edge locations, then edge pushes to target. It supports multi-part uploads and optimizes transfer speed.",
+      "tags": [
+        "s3",
+        "transfer-acceleration",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "4a9a3ed0-cb3d-429c-b172-40ade4896446",
+      "questionText": "Which S3 optimization feature pushes data to edge locations first, then to the target?",
+      "answerText": "S3 Transfer Acceleration",
+      "tags": [
+        "s3",
+        "transfer-acceleration",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "0d852882-bb2c-4265-ac1c-b046966bb6e8",
+      "questionText": "What is Byte Range Fetch optimization in S3?",
+      "answerText": "Byte Range Fetch optimizes reads by parallelizing read operations, provides higher fault tolerance, and can be used for first byte only. If you know the size of the header, you can peek to get first header.",
+      "tags": [
+        "s3",
+        "byte-range-fetch",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "fac18e24-5b12-477b-bbeb-c067bdefee75",
+      "questionText": "Which S3 read optimization allows parallelizing reads and peeking at headers?",
+      "answerText": "Byte Range Fetch",
+      "tags": [
+        "s3",
+        "byte-range-fetch",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "50da06ca-0b23-422c-9c4d-dfbdf8aa0499",
+      "questionText": "What are the properties of SSE-S3 encryption?",
+      "answerText": "Standard AWS Management, encrypted but no key specified, managed wholly on AWS, requires header x-amz-server-side-encryption: \"AES256\", enabled by default",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-s3",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "4301802f-cd14-4a7b-9547-4d17c9e3f5c0",
+      "questionText": "Which S3 encryption method has these properties: Standard AWS Management, encrypted but no key specified, managed wholly on AWS, requires header x-amz-server-side-encryption: \"AES256\", enabled by default",
+      "answerText": "SSE-S3 (Server-Side Encryption with S3 managed keys)",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-s3",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "97e0dcb4-d4e0-44e3-87eb-b41219b378f0",
+      "questionText": "What are the properties of SSE-KMS encryption?",
+      "answerText": "AWS Key Management, uses AWS Key Manager, client code specifies which key to use, usage logged in CloudTrail (good for audit/compliance), requires header x-amz-server-side-encryption: \"aws:kms\", may require further API calls which can introduce latency",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "kms",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "49bebb11-63b3-44eb-b875-04d36f95c3e3",
+      "questionText": "Which S3 encryption method has these properties: AWS Key Management, uses AWS Key Manager, client code specifies which key to use, usage logged in CloudTrail (good for audit/compliance), requires header x-amz-server-side-encryption: \"aws:kms\", may require further API calls which can introduce latency",
+      "answerText": "SSE-KMS (Server-Side Encryption with AWS KMS managed keys)",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "kms",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "ca3f27fa-6ed8-4ed9-b4b0-1716b95868ac",
+      "questionText": "What are the properties of SSE-C encryption?",
+      "answerText": "Customer Provided Key, client manages key, key sent in header with every request, AWS does not store the key, HTTPS only, client must provide same key for get/fetch",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-c",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "7d8654ac-6774-44e8-94b7-f36305d6083a",
+      "questionText": "Which S3 encryption method has these properties: Customer Provided Key, client manages key, key sent in header with every request, AWS does not store the key, HTTPS only, client must provide same key for get/fetch",
+      "answerText": "SSE-C (Server-Side Encryption with Customer-provided keys)",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-c",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "c8a5dd32-3096-4263-8fa5-f9ce1d145161",
+      "questionText": "What is Client Side Encryption for S3?",
+      "answerText": "Client Side Encryption means the client is responsible for encryption/decryption and sends/receives objects already encrypted. AWS does not perform encryption.",
+      "tags": [
+        "s3",
+        "encryption",
+        "client-side",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "fdab2c79-fd6e-42d5-8e2a-67f85e02bcb8",
+      "questionText": "Which S3 encryption method requires the client to encrypt/decrypt data before sending to S3?",
+      "answerText": "Client Side Encryption",
+      "tags": [
+        "s3",
+        "encryption",
+        "client-side",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "9f2a3918-7bde-47de-9a7f-4fd31002db44",
+      "questionText": "How is S3 data encrypted in-flight/in-transit?",
+      "answerText": "S3 uses SSL/TLS and HTTPS for in-flight encryption. AWS recommends a bucket policy that requires aws:SecureTransport.",
+      "tags": [
+        "s3",
+        "encryption",
+        "in-flight",
+        "ssl",
+        "tls",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "0bd4cd85-6b9a-489f-9f7d-edec9fdb028d",
+      "questionText": "What encryption methods protect S3 data in-flight/in-transit?",
+      "answerText": "SSL/TLS and HTTPS. AWS recommends bucket policy requiring aws:SecureTransport.",
+      "tags": [
+        "s3",
+        "encryption",
+        "in-flight",
+        "ssl",
+        "tls",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "b0ae43c7-966c-430c-ade5-b34d4b47adba",
+      "questionText": "What is evaluated first: Bucket Policy or Encryption Policy? **EXAM**",
+      "answerText": "Bucket Policy is evaluated before encryption policy. **EXAM**",
+      "tags": [
+        "s3",
+        "bucket-policy",
+        "encryption-policy",
+        "exam",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "91926c2e-4f2c-4b2f-9c23-436314a83290",
+      "questionText": "How do S3 Access Points provide security? **EXAM**",
+      "answerText": "S3 Access Points can serve as a level of different security - S3 bucket can be less restrictive while S3 Access Point can be more restrictive, allowing different security settings for different users/groups. Each Access Point has its own DNS name, its own policy, and manages security at scale. **EXAM**",
+      "tags": [
+        "s3",
+        "access-points",
+        "security",
+        "exam"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "62e96231-5156-49a2-b942-2a753512f6ce",
+      "questionText": "What is S3 Object Lambda?",
+      "answerText": "S3 Object Lambda sits between Bucket and Access Point and acts as a transformation layer. You can have several Access Points calling different Lambda functions to transform data differently. Origin data remains unchanged but provides different \"views\" of the data.",
+      "tags": [
+        "s3",
+        "object-lambda",
+        "transformation"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "eb000858-4ab2-40a6-8842-d4c2e513ce6d",
+      "questionText": "Which S3 feature sits between Bucket and Access Point to transform data and provide different views?",
+      "answerText": "S3 Object Lambda",
+      "tags": [
+        "s3",
+        "object-lambda",
+        "transformation"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "0201d34e-12c4-4830-b901-f8924fc0aa3b",
+      "questionText": "What is the default behavior for EBS root drive deletion on termination? **EXAM**",
+      "answerText": "Default behavior: root drive (drv0) will auto-delete, others (drv1) do not. This is DEFAULT and CAN BE OVERWRITTEN. **EXAM** How to preserve root with EBS?",
+      "tags": [
+        "ebs",
+        "root-drive",
+        "delete-on-termination",
+        "exam"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "0458ba9f-55e3-47d5-b340-b5ad5397e485",
+      "questionText": "How is EBS billed?",
+      "answerText": "EBS is billed for allocated size and/or IOPS, not for used capacity. You pay for what you allocate, not what you use.",
+      "tags": [
+        "ebs",
+        "billing",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "ac3cf9f0-d8e5-4f6d-b025-075243b4e835",
+      "questionText": "EBS volumes are billed based on what: allocated capacity or used capacity?",
+      "answerText": "Allocated capacity (size and/or IOPS), not used capacity",
+      "tags": [
+        "ebs",
+        "billing",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "a7dc0fcd-b82d-40d4-9fe3-2d6df29a85b2",
+      "questionText": "What is the availability zone constraint for EBS volumes?",
+      "answerText": "EBS volumes are bound to one AZ. You can make snapshots and transport to other AZs, but the volume itself is in one AZ.",
+      "tags": [
+        "ebs",
+        "az",
+        "availability-zone"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "314ca884-bf94-4f27-9849-7daf53ff0d2a",
+      "questionText": "EBS volumes are bound to how many availability zones?",
+      "answerText": "One AZ. Snapshots can be moved to other AZs.",
+      "tags": [
+        "ebs",
+        "az",
+        "availability-zone"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "b4a4108a-3ff2-4aa8-b414-b317a7791e38",
+      "questionText": "What can be changed with Elastic Volume?",
+      "answerText": "Elastic Volume can change attributes on the fly: IOPS and volume type. It cannot decrease size.",
+      "tags": [
+        "ebs",
+        "elastic-volume",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "08776ba1-bcf8-47af-a364-c5660191516c",
+      "questionText": "Which EBS feature allows changing IOPS and volume type on the fly, but cannot decrease size?",
+      "answerText": "Elastic Volume",
+      "tags": [
+        "ebs",
+        "elastic-volume",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "25b2cb2e-af95-477e-935e-32d1ad9b6200",
+      "questionText": "How does EFS pricing compare to EBS GP2?",
+      "answerText": "EFS costs approximately 3x the cost of GP2. EFS is pay per use/access (not allocated), while EBS is billed for allocated capacity.",
+      "tags": [
+        "efs",
+        "ebs",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "efs",
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "1720c32c-de64-49be-9a36-807da8be730d",
+      "questionText": "EFS costs how much compared to EBS GP2, and how is it billed?",
+      "answerText": "EFS costs approximately 3x GP2. EFS is pay per use/access (not allocated), EBS is billed for allocated capacity.",
+      "tags": [
+        "efs",
+        "ebs",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "efs",
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "0476ebb6-fe34-43ae-b051-2d14f70acd26",
+      "questionText": "What protocol does EFS use?",
+      "answerText": "EFS uses NFSv4.1 Protocol. It is not Windows compatible (requires Linux AMI).",
+      "tags": [
+        "efs",
+        "nfs",
+        "protocol"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "84330f37-100b-4f96-870c-96089a8b9756",
+      "questionText": "Which network file system protocol does EFS use, and is it Windows compatible?",
+      "answerText": "NFSv4.1 Protocol. Not Windows compatible (requires Linux AMI).",
+      "tags": [
+        "efs",
+        "nfs",
+        "protocol"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "9577ccc7-2e7f-4602-b4c0-75db330b5268",
+      "questionText": "What are the EFS performance modes?",
+      "answerText": "Performance mode set at config time, cannot be changed after creation. Burst mode: 1TB ~= 50MiB/s + burst of 100MB/s. Elastic mode: autoscale increase/decrease for unpredictable workloads. Up to 3 GB/s write.",
+      "tags": [
+        "efs",
+        "performance",
+        "burst",
+        "elastic"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "753856c4-6a22-49cf-9038-962026265e4c",
+      "questionText": "Which file system has these performance characteristics: Performance mode set at config time, cannot be changed after creation. Burst mode: 1TB ~= 50MiB/s + burst of 100MB/s. Elastic mode: autoscale increase/decrease for unpredictable workloads. Up to 3 GB/s write.",
+      "answerText": "EFS (Elastic File System)",
+      "tags": [
+        "efs",
+        "performance",
+        "burst",
+        "elastic"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "65e09b2b-5268-4a06-8a44-12f5b9bed331",
+      "questionText": "What are the EFS Storage Classes?",
+      "answerText": "Standard (frequent use, multi-AZ), Infrequent Access (cost to retrieve, lower price to start), Archive (rarely accessed, few times a year, 50% cheaper). Implement lifecycle policy to move files between tiers. Standard supports multi-AZ, supports 1Z for dev work.",
+      "tags": [
+        "efs",
+        "storage-classes",
+        "lifecycle"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "3854e512-4cac-43d6-bac1-df811d3aeafa",
+      "questionText": "Which file system has these storage classes: Standard (frequent use, multi-AZ), Infrequent Access (cost to retrieve, lower price to start), Archive (rarely accessed, few times a year, 50% cheaper). Implement lifecycle policy to move files between tiers. Standard supports multi-AZ, supports 1Z for dev work.",
+      "answerText": "EFS (Elastic File System)",
+      "tags": [
+        "efs",
+        "storage-classes",
+        "lifecycle"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "c0466395-1fe4-46f1-8540-5ebd69579f2a",
+      "questionText": "What is FSx for Windows? **EXAM**",
+      "answerText": "FSx for Windows is a fully managed Windows Share. **EXAM** Supports NTFS and SMB, can move with EC2 (different EC2 can connect), ACLs, user quotas, supports Microsoft's Distributed File System (DFS). Scales up to 10's GB/s, millions of IOPS, 1000's of petabytes. Storage options: SSD/HDD. Supports multiple AZ. Uses S3 for backups. Can connect via DirectConnect or VPN.",
+      "tags": [
+        "fsx",
+        "windows",
+        "exam"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "76657dd2-1c9a-4a90-ac2c-6110cd640c50",
+      "questionText": "What are the deployment options for FSx for Lustre?",
+      "answerText": "Scratch: temporary data, not replicated, no backup, high performance, 6x faster, 200 MB/s per TB, used for short term storage/temp file system. Persistent: long term storage, replicated across AZ, replace failed file system within minutes.",
+      "tags": [
+        "fsx",
+        "lustre",
+        "scratch",
+        "persistent"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "38df33ef-e29b-4f71-8214-233dace7f075",
+      "questionText": "Which FSx for Lustre deployment option is temporary, not replicated, no backup, but 6x faster?",
+      "answerText": "Scratch deployment option",
+      "tags": [
+        "fsx",
+        "lustre",
+        "scratch",
+        "persistent"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "41857bb1-f16b-4c88-b09d-c4ff0f811889",
+      "questionText": "When should you use FSx for NetApp OnTap? **EXAM**",
+      "answerText": "FSx for NetApp OnTap is \"Managed ONTAP on AWS\". Use when you need: move running workloads, broad compatibility (Mac, Linux, VMWare, Windows, AWS EC2/EKS/ECS), auto scale shrink/grow, snapshot low cost compression, point in time clones for workload transfers. **EXAM** may ask \"Suppose xyz, which is the best fit FSx file system\".",
+      "tags": [
+        "fsx",
+        "netapp",
+        "ontap",
+        "exam"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "f7dc6c00-46f0-42ba-bf33-cbe6438a9c2d",
+      "questionText": "What are the properties of FSx for OpenZFS?",
+      "answerText": "Scales up to 1Million IOPS, 0.5ms latency, point in time clone. Same OS as NetApp/OnTap.",
+      "tags": [
+        "fsx",
+        "openzfs",
+        "iops",
+        "latency"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "b48c1e22-8481-4142-a42f-e2cdc3ebc3ad",
+      "questionText": "Which FSx file system scales to 1Million IOPS with 0.5ms latency?",
+      "answerText": "FSx for OpenZFS",
+      "tags": [
+        "fsx",
+        "openzfs",
+        "iops",
+        "latency"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "a3d17fed-4b8d-43d6-bed5-45b9437a8e2a",
+      "questionText": "What are the four FSx file system types you need to know for the exam? **EXAM**",
+      "answerText": "Windows (fully managed Windows Share, supports NTFS and SMB), Lustre (Linux + Cluster, parallel file system optimized for Machine Learning, High Performance Compute), NetApp OnTap (managed ONTAP on AWS, broad compatibility), and OpenZFS (scales up to 1Million IOPS, 0.5ms latency, point in time clone). **EXAM**",
+      "tags": [
+        "fsx",
+        "windows",
+        "lustre",
+        "netapp",
+        "openzfs",
+        "exam"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "a7a88371-bedf-4be0-851a-fa8daf08366c",
+      "questionText": "What is Kinesis Data Stream? **EXAM**",
+      "answerText": "Kinesis Data Stream is for real-time data streaming. **EXAM** Producers send data to Kinesis Streams, which Consumers read from. Key characteristics: 365 days retention on stream, can be replayed, data cannot be deleted (MUST expire), up to 1MB message size (smaller payload is standard), order is guaranteed for data using partitionId, encryption: in-flight HTTPS/SSL, at rest KMS.",
+      "tags": [
+        "kinesis",
+        "data-stream",
+        "exam"
+      ],
+      "domains": [
+        "kinesis",
+        "aws-streaming"
+      ]
+    },
+    {
+      "questionId": "e150be16-e9d6-4c63-8686-ae44d7fad7d7",
+      "questionText": "Can data be deleted from Kinesis Data Stream? **EXAM**",
+      "answerText": "Data can not be deleted from Kinesis Data Stream - it MUST expire. **EXAM**",
+      "tags": [
+        "kinesis",
+        "data-stream",
+        "deletion",
+        "exam"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "83450937-930d-48d1-bc60-1708524c348f",
+      "questionText": "What are the characteristics of Kinesis Data Stream Provisioned Mode?",
+      "answerText": "Any number of shards, each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s, scale manually, cost per shard provisioned",
+      "tags": [
+        "kinesis",
+        "provisioned",
+        "capacity-modes"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "f0179be9-b1e6-44f2-b337-502714f4bc82",
+      "questionText": "Which Kinesis capacity mode has these characteristics: Any number of shards, each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s, scale manually, cost per shard provisioned",
+      "answerText": "Kinesis Data Stream Provisioned Mode",
+      "tags": [
+        "kinesis",
+        "provisioned",
+        "capacity-modes"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "04704367-510c-4206-a2ff-6b0eb6b2b0fc",
+      "questionText": "What are the characteristics of Kinesis Data Stream On Demand Mode?",
+      "answerText": "Provisioned automatically (autoscaled), default capacity 4 (4MB/s, 4000 records/second), scales automatically based on observed throughput over past 30 days, pay per stream per hour and data in and out",
+      "tags": [
+        "kinesis",
+        "on-demand",
+        "capacity-modes"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "27fdacd2-049d-4926-b92c-9e8143f89cf1",
+      "questionText": "Which Kinesis capacity mode has these characteristics: Provisioned automatically (autoscaled), default capacity 4 (4MB/s, 4000 records/second), scales automatically based on observed throughput over past 30 days, pay per stream per hour and data in and out",
+      "answerText": "Kinesis Data Stream On Demand Mode",
+      "tags": [
+        "kinesis",
+        "on-demand",
+        "capacity-modes"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "7ff1ce2e-7488-4230-997c-29e8caf37fec",
+      "questionText": "What are the key differences between Kinesis Data Stream and Kinesis Firehose? **EXAM**",
+      "answerText": "Kinesis Data Stream: Stream data collection, Producers and Consumers (have to write code), Provision or On Demand, Stored up to 365 days, Replay capable, Real Time. Kinesis Firehose: Loads streamed data to many destinations, Fully Managed (Auto Scaling), No Storage, No replay, Near Real time. **EXAM** You will need to know the differences and when to use each.",
+      "tags": [
+        "kinesis",
+        "firehose",
+        "comparison",
+        "exam"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "c6735dd3-b7b3-487a-8bde-01de9aefc93d",
+      "questionText": "What are the billing/costs for Kinesis? **EXAM**",
+      "answerText": "Kinesis costs vary by mode. Provisioned Mode: cost per shard provisioned. On Demand Mode: pay per stream per hour and data in and out. Serverless: Kinesis Process Unit (KPU) = 1vCPU + 4GB, IAM Permissions, schema discovery. **EXAM** Have to know billing/costs of Kinesis.",
+      "tags": [
+        "kinesis",
+        "billing",
+        "costs",
+        "pricing",
+        "exam"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "7a54f072-8472-489d-ad03-f76512728f1d",
+      "questionText": "When should you use MSK vs Kinesis? **EXAM**",
+      "answerText": "MSK: up to 10MB message (Kinesis only 1MB), can retain data indefinitely (Kinesis only 365 days), Kafka compatibility, deploys in your VPC multi-AZ (up to 3), data stored on EBS, supports custom configuration. Kinesis: AWS-native integration, simpler setup, 1MB message, 365 days retention. **EXAM** expect to know when to use: Kinesis vs Kafka MSK.",
+      "tags": [
+        "msk",
+        "kinesis",
+        "comparison",
+        "exam"
+      ],
+      "domains": [
+        "msk",
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "8755ed24-4f8f-4e06-8884-44a10f7c62a0",
+      "questionText": "What are the MSK security authentication methods and which is best? **EXAM**",
+      "answerText": "Three methods: Mutual TLS (AuthN) + Kafka ACL (AuthZ) using certificates, SASL/SCRAM (AuthN) + Kafka ACL (AuthZ) using passwords, and IAM Access Control (AuthN + AuthZ) which is BEST. Everything uses in-flight TLS, at rest EBS encryption, network security groups. **EXAM** Kafka Security, Kafka ACL are managed from within the instance making it a poor choice - IAM is better.",
+      "tags": [
+        "msk",
+        "security",
+        "authentication",
+        "iam",
+        "tls",
+        "sasl",
+        "exam"
+      ],
+      "domains": [
+        "msk",
+        "security"
+      ]
+    },
+    {
+      "questionId": "ab44ba9b-0282-43fd-9e14-bbc2c39ef370",
+      "questionText": "What monitoring options are available for MSK? **EXAM**",
+      "answerText": "CloudWatch Metrics: basic monitoring (cluster and broker), enhanced monitoring (++ enhanced broker message), topic level metrics. Prometheus (Open Source Monitoring): open port on cluster, broker, and topic, set up JMX export metrics on node exporter (CPU and disk metrics). Broker log delivery to CloudWatch, S3, or Kinesis. **EXAM**",
+      "tags": [
+        "msk",
+        "monitoring",
+        "cloudwatch",
+        "prometheus",
+        "exam"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "134d9de6-3f92-405b-8209-b12e672e69e8",
+      "questionText": "How is MSK Connect priced?",
+      "answerText": "MSK Connect is priced at $0.11 per worker/hour. It deploys Kafka Connect to MSK via plug-in, moves data from Kafka to wherever (S3, other AWS services), AutoScale, no infrastructure.",
+      "tags": [
+        "msk",
+        "msk-connect",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "1190cf1c-0404-4198-a91d-16cc8ffbd999",
+      "questionText": "What is the pricing for MSK Connect?",
+      "answerText": "$0.11 per worker/hour",
+      "tags": [
+        "msk",
+        "msk-connect",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "e74acccd-3f4e-404c-a97d-ac82a1659845",
+      "questionText": "What are the pricing components for MSK Serverless?",
+      "answerText": "$0.75 per cluster hour ($558/month cluster), $0.0015 partition hour ($1.08 per month per partition), $0.10 GB storage per month, $0.10 ingress GB, $0.05 egress GB",
+      "tags": [
+        "msk",
+        "serverless",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "cfca87e0-a66a-457a-8585-71d8130f1213",
+      "questionText": "Which service has these pricing components: $0.75 per cluster hour ($558/month cluster), $0.0015 partition hour ($1.08 per month per partition), $0.10 GB storage per month, $0.10 ingress GB, $0.05 egress GB",
+      "answerText": "MSK Serverless",
+      "tags": [
+        "msk",
+        "serverless",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "ea12753a-a884-40cf-98e5-451dbc44d5e7",
+      "questionText": "What are the key differences between Kinesis and MSK in terms of message size, data organization, and encryption?",
+      "answerText": "Kinesis: 1MB message size, data stream/shard, TLS in-flight. MSK: 10MB message size (1MB default), topic/partition, plain text or TLS. Both use KMS for at-rest encryption.",
+      "tags": [
+        "kinesis",
+        "msk",
+        "message-size",
+        "comparison"
+      ],
+      "domains": [
+        "kinesis",
+        "msk"
+      ]
+    },
+    {
+      "questionId": "baf625fe-4758-4b4f-bd02-379e68ec3e2a",
+      "questionText": "Which service supports 10MB messages (1MB default) with topic/partition organization: Kinesis or MSK?",
+      "answerText": "MSK (Kinesis supports 1MB with stream/shard organization)",
+      "tags": [
+        "kinesis",
+        "msk",
+        "message-size",
+        "comparison"
+      ],
+      "domains": [
+        "kinesis",
+        "msk"
+      ]
+    },
+    {
+      "questionId": "c085be1a-e8e5-44ea-a05f-d4c8129128f8",
+      "questionText": "What are common Kinesis producer troubleshooting issues?",
+      "answerText": "Skipping records due to unhandled exceptions, record same shard handled by more than one process (failover on processor, adjust failover, handle shutdown method/Zombie).",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "producer"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "16f7025b-9bfc-457a-8909-42d69526589f",
+      "questionText": "What Kinesis component issues can cause skipping records or duplicate processing?",
+      "answerText": "Producer issues: unhandled exceptions, records on same shard handled by multiple processes",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "producer"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "858efcde-0a02-4819-9c2c-972a16798329",
+      "questionText": "What are common Kinesis consumer troubleshooting issues?",
+      "answerText": "Read too slow: increase number of shards, MaxRecordPerCall may be too low, code is too slow. getRecords() returns empty: normal and expected, try again. Shard Iterator expired unexpectedly: more capacity on underlying DynamoDB. Record processor falling behind: increase returning, insufficient resources, monitor with get records.",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "consumer"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "a2b73ea8-8012-4fb1-9e53-bd6fc4272a3e",
+      "questionText": "What causes Kinesis consumer read too slow issues?",
+      "answerText": "Insufficient shards, MaxRecordPerCall too low, or code is too slow",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "consumer"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "ca0a4cb9-cb83-4d7f-8ae5-006dff3e3be9",
+      "questionText": "What is a hot shard in Kinesis?",
+      "answerText": "A hot shard is a shard that receives more data than others, causing throttling. Solutions include: randomizing partition key, exponential back-off, rate limiting, checking for micro spikes.",
+      "tags": [
+        "kinesis",
+        "hot-shard",
+        "troubleshooting"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "31f6a9e8-0acf-4e8c-96f7-2bf261722826",
+      "questionText": "What Kinesis issue occurs when one shard receives more data than others?",
+      "answerText": "Hot shard, which can cause throttling",
+      "tags": [
+        "kinesis",
+        "hot-shard",
+        "troubleshooting"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "9e34c521-9740-4444-94c0-3e40f1f7e63d",
+      "questionText": "What are KPL and KCL?",
+      "answerText": "KPL (Kinesis Producer Library) and KCL (Kinesis Client Library) are SDK libraries optimized for standard Kinesis operations. Both are optimized for standard operations. Messages can be managed through API, but client libraries are best practice.",
+      "tags": [
+        "kinesis",
+        "kpl",
+        "kcl",
+        "sdk"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "89f86369-caeb-43c4-950f-677c77c800e5",
+      "questionText": "Which Kinesis SDK libraries are optimized for standard operations: KPL and what?",
+      "answerText": "KPL (Kinesis Producer Library) and KCL (Kinesis Client Library)",
+      "tags": [
+        "kinesis",
+        "kpl",
+        "kcl",
+        "sdk"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "bf006ce4-ac54-420d-a17f-6e5836bac55e",
+      "questionText": "What is MSAF?",
+      "answerText": "MSAF is AWS Managed Service for Apache Flink. Flink replaces something leaner (Kinesis + SQL). Flink is Managed/Serverless.",
+      "tags": [
+        "kinesis",
+        "flink",
+        "msaf",
+        "analytics"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "e866c28c-ad38-44d3-938c-3471e25f1dc1",
+      "questionText": "What does MSAF stand for and what does it replace?",
+      "answerText": "MSAF is AWS Managed Service for Apache Flink. It replaces Kinesis + SQL with a managed Flink service.",
+      "tags": [
+        "kinesis",
+        "flink",
+        "msaf",
+        "analytics"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "f2806ad3-76c8-473b-89b6-72975793ad4c",
+      "questionText": "What service should be used for reliable ETL/ELT pipeline management? **EXAM**",
+      "answerText": "Must be reliable - use Glue for pipeline management. **EXAM** maybe",
+      "tags": [
+        "glue",
+        "pipeline-management",
+        "etl",
+        "elt",
+        "exam"
+      ],
+      "domains": [
+        "data-pipeline",
+        "aws-services"
+      ]
+    },
+    {
+      "questionId": "122e7ae8-1adf-4dc0-bbb5-1cd4b5c713f0",
+      "questionText": "What is a Data Lakehouse and what are its advantages?",
+      "answerText": "Data Lakehouse is best of both worlds (Data Warehouse and Data Lake). It can support ACID transactions. It combines the structure and query optimization of a warehouse with the flexibility and cost-effectiveness of a data lake.",
+      "tags": [
+        "data-lakehouse",
+        "data-warehouse",
+        "data-lake",
+        "acid"
+      ],
+      "domains": [
+        "data-architecture"
+      ]
+    },
+    {
+      "questionId": "ab88cf24-4d5c-41df-9862-79ffb1efd7bf",
+      "questionText": "Which data architecture combines Data Warehouse and Data Lake benefits and can support ACID transactions?",
+      "answerText": "Data Lakehouse",
+      "tags": [
+        "data-lakehouse",
+        "data-warehouse",
+        "data-lake",
+        "acid"
+      ],
+      "domains": [
+        "data-architecture"
+      ]
+    },
+    {
+      "questionId": "92adea00-d55a-499e-8083-1fbd8317a7b5",
+      "questionText": "Which is more expensive: Data Warehouse or Data Lake?",
+      "answerText": "Data Warehouse is more expensive, Data Lake is less expensive, in general terms. Certainly you can goof it up.",
+      "tags": [
+        "data-warehouse",
+        "data-lake",
+        "cost",
+        "pricing"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "4cba9722-4973-49b7-b659-ed709a79b95e",
+      "questionText": "In general terms, which costs more: Data Warehouse or Data Lake?",
+      "answerText": "Data Warehouse is more expensive, Data Lake is less expensive",
+      "tags": [
+        "data-warehouse",
+        "data-lake",
+        "cost",
+        "pricing"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "78d66a16-7509-4407-8c06-83fcb46b523a",
+      "questionText": "What is Volume as a property of data?",
+      "answerText": "Volume is the size or amount of data. How do we store it? How do we access it? GB? TB? PB? What are the preprocessing concerns?",
+      "tags": [
+        "data-properties",
+        "volume"
+      ],
+      "domains": [
+        "data-ingestion"
+      ]
+    },
+    {
+      "questionId": "f965ac4e-6b60-4c3e-9067-fa29fc4817c7",
+      "questionText": "Which property of data refers to size or amount: Volume, Velocity, or Variety?",
+      "answerText": "Volume",
+      "tags": [
+        "data-properties",
+        "volume"
+      ],
+      "domains": [
+        "data-ingestion"
+      ]
+    },
+    {
+      "questionId": "e5fa683b-7e44-4d9b-99a2-72ec16d327a8",
+      "questionText": "What are examples of high Velocity data?",
+      "answerText": "IoT data, sensor data, high frequency trades - data that comes in very fast, requiring batch, real-time, or near real-time processing.",
+      "tags": [
+        "data-properties",
+        "velocity"
+      ],
+      "domains": [
+        "data-ingestion"
+      ]
+    },
+    {
+      "questionId": "066eff75-eb40-4e54-96a3-db41e0eec1eb",
+      "questionText": "IoT data, sensor data, and high frequency trades are examples of data with high what property?",
+      "answerText": "High Velocity",
+      "tags": [
+        "data-properties",
+        "velocity"
+      ],
+      "domains": [
+        "data-ingestion"
+      ]
+    },
+    {
+      "questionId": "c47fee7e-5cf5-4e19-bd6f-5b92b81cfeda",
+      "questionText": "What are examples of Data Warehouse systems?",
+      "answerText": "Redshift, Google Big Data Query, Azure SQL Data warehouse",
+      "tags": [
+        "data-warehouse",
+        "examples"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "b2d76c3c-b848-4820-8e5b-bd9f987306aa",
+      "questionText": "These systems are examples of what: Redshift, Google Big Data Query, Azure SQL Data warehouse",
+      "answerText": "Data Warehouse systems",
+      "tags": [
+        "data-warehouse",
+        "examples"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "f24ca47c-c84f-4af3-b98f-e0c94b3806e4",
+      "questionText": "What are examples of Data Lake systems?",
+      "answerText": "S3, Azure data lake store, Hadoop",
+      "tags": [
+        "data-lake",
+        "examples"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "a489e0b9-d753-4af5-a618-9989e5f69161",
+      "questionText": "These systems are examples of what: S3, Azure data lake store, Hadoop",
+      "answerText": "Data Lake systems",
+      "tags": [
+        "data-lake",
+        "examples"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "6c26ff55-55ac-42e8-bb23-621195d5ba56",
+      "questionText": "What structured schemas do Data Warehouses use?",
+      "answerText": "Data Warehouses use \"Star\" or \"Snowflake\" structured schemas. They are designed for complete queries and optimized to read headers.",
+      "tags": [
+        "data-warehouse",
+        "schema",
+        "star",
+        "snowflake"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "625423d8-c264-4255-925e-ed3ca5445783",
+      "questionText": "Which data architecture uses Star or Snowflake structured schemas?",
+      "answerText": "Data Warehouse",
+      "tags": [
+        "data-warehouse",
+        "schema",
+        "star",
+        "snowflake"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "88c2613b-bfcd-4f6c-92ce-50bf183e0919",
+      "questionText": "Which is more agile: Data Warehouse or Data Lake?",
+      "answerText": "Data Lake is more agile (less strict, no predefined schema). Data Warehouse is less agile (strict, predefined schema).",
+      "tags": [
+        "data-warehouse",
+        "data-lake",
+        "agility"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "d0d8c86f-883e-4157-9dd1-aced17b8db3e",
+      "questionText": "Data Lake is more agile than Data Warehouse because of what?",
+      "answerText": "Data Lake has no predefined schema and is less strict, while Data Warehouse has strict predefined schemas",
+      "tags": [
+        "data-warehouse",
+        "data-lake",
+        "agility"
+      ],
+      "domains": [
+        "data-storage"
+      ]
+    },
+    {
+      "questionId": "2349e8b5-e69e-40b8-89e7-f3828e71d5f1",
+      "questionText": "What is the governance model for Data Mesh?",
+      "answerText": "Data Mesh uses federated governance with centralized standards. Data is managed/governed by \"domain\" (domain-based data management) with centralized standards.",
+      "tags": [
+        "data-mesh",
+        "governance"
+      ],
+      "domains": [
+        "data-architecture"
+      ]
+    },
+    {
+      "questionId": "cc2bd86b-1d86-4a2d-9044-855019655bfc",
+      "questionText": "Which data architecture uses federated governance with centralized standards?",
+      "answerText": "Data Mesh",
+      "tags": [
+        "data-mesh",
+        "governance"
+      ],
+      "domains": [
+        "data-architecture"
+      ]
+    },
+    {
+      "questionId": "398fa796-546d-4dd1-9ffb-2f022353628d",
+      "questionText": "What happens in the Transform stage of ETL?",
+      "answerText": "Transform: convert from source to target, clean, enrich, aggregate, calculate, handle encoding/decoding, missing data.",
+      "tags": [
+        "etl",
+        "transform"
+      ],
+      "domains": [
+        "data-pipeline"
+      ]
+    },
+    {
+      "questionId": "f6dceb59-3855-4d54-a02f-2a71b37132b3",
+      "questionText": "Which ETL stage handles cleaning, enriching, aggregating, and encoding/decoding?",
+      "answerText": "Transform stage",
+      "tags": [
+        "etl",
+        "transform"
+      ],
+      "domains": [
+        "data-pipeline"
+      ]
+    },
+    {
+      "questionId": "7d8cbfba-34e6-430c-ac54-eece88d5b0c6",
+      "questionText": "What are the characteristics of CSV format?",
+      "answerText": "CSV is tabular delimited, human readable format.",
+      "tags": [
+        "data-formats",
+        "csv"
+      ],
+      "domains": [
+        "data-formats"
+      ]
+    },
+    {
+      "questionId": "51536a3a-d1e7-4a01-b54d-bb80865c29f1",
+      "questionText": "Which data format is tabular delimited and human readable?",
+      "answerText": "CSV",
+      "tags": [
+        "data-formats",
+        "csv"
+      ],
+      "domains": [
+        "data-formats"
+      ]
+    },
+    {
+      "questionId": "6f5bf1c1-e366-4477-917b-8aa526603be9",
+      "questionText": "What are the characteristics of JSON format?",
+      "answerText": "JSON is semi/structured, human readable, flexible structure. Used with MongoDB.",
+      "tags": [
+        "data-formats",
+        "json"
+      ],
+      "domains": [
+        "data-formats"
+      ]
+    },
+    {
+      "questionId": "5babec68-7633-46f7-b077-6b74127c4766",
+      "questionText": "Which data format is semi/structured, human readable, with flexible structure, and used with MongoDB?",
+      "answerText": "JSON",
+      "tags": [
+        "data-formats",
+        "json"
+      ],
+      "domains": [
+        "data-formats"
+      ]
+    },
+    {
+      "questionId": "c2c16b21-4620-418e-a243-d44eb989af3f",
+      "questionText": "How many tags can S3 objects have?",
+      "answerText": "S3 objects can have up to 10 tags supported universally. Metadata (key=value pairs) can be set by system or user.",
+      "tags": [
+        "s3",
+        "tags",
+        "metadata"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "d4da1c1c-fa31-4733-91de-90883b60d8ac",
+      "questionText": "What is the maximum number of tags that can be applied to an S3 object?",
+      "answerText": "Up to 10 tags",
+      "tags": [
+        "s3",
+        "tags",
+        "metadata"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "09b34374-4cef-4b8f-8b5e-aec5d586b5bb",
+      "questionText": "How are S3 buckets defined?",
+      "answerText": "Buckets are defined regionally but it appears like a global service. Bucket names must be globally unique.",
+      "tags": [
+        "s3",
+        "bucket",
+        "regional",
+        "global"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "345e3aa1-4760-4b28-abde-9090779725de",
+      "questionText": "S3 buckets are defined regionally but appear as what type of service?",
+      "answerText": "Global service (though buckets are actually regional)",
+      "tags": [
+        "s3",
+        "bucket",
+        "regional",
+        "global"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "fc234ffe-f777-4abe-8048-70f148518061",
+      "questionText": "What are the types of S3 access control?",
+      "answerText": "User-based (IAM policies) and Resource-based (resource policies for cross-account and other access). Object ACL and Bucket ACL can be disabled.",
+      "tags": [
+        "s3",
+        "security",
+        "iam",
+        "resource-policy"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "8ae20fed-694d-42e6-9116-b85cc824b625",
+      "questionText": "S3 supports which two types of access control policies?",
+      "answerText": "User-based (IAM) and Resource-based policies",
+      "tags": [
+        "s3",
+        "security",
+        "iam",
+        "resource-policy"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "97ac7edd-837a-437d-8da3-e5a6f49ca803",
+      "questionText": "What is the access control logic for S3?",
+      "answerText": "IAM principal can access IFF: (IAM permission allow) OR (Resource permission allow) AND there are no deny. Principle can be user or service (not owner).",
+      "tags": [
+        "s3",
+        "security",
+        "access-control",
+        "iam"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "be6cc53d-1030-4883-a669-9f3eaed6287f",
+      "questionText": "S3 access is granted when IAM permission allows OR Resource permission allows, and what else?",
+      "answerText": "AND there are no deny statements",
+      "tags": [
+        "s3",
+        "security",
+        "access-control",
+        "iam"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "88936858-d0be-447d-8df2-62c98cac84c7",
+      "questionText": "What is Block Public Access in S3?",
+      "answerText": "Block Public Access prevents data leaks. When \"on\" it will never be public. This serves as a master override for public access.",
+      "tags": [
+        "s3",
+        "security",
+        "block-public-access"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "a01b18a2-036c-47aa-8ab1-d4b571f41e44",
+      "questionText": "Which S3 feature serves as a master override to prevent data leaks by blocking all public access?",
+      "answerText": "Block Public Access",
+      "tags": [
+        "s3",
+        "security",
+        "block-public-access"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "72b58b07-4966-4d25-9c2f-69cbc434a34f",
+      "questionText": "What elements are included in S3 Resource Policies?",
+      "answerText": "Resource Policies include elements: resource, effect, action. They can be used to enforce encryption, cross-account access, etc.",
+      "tags": [
+        "s3",
+        "security",
+        "resource-policy"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "5e550d82-f66b-41af-a779-76eb97858609",
+      "questionText": "S3 Resource Policies include which three main elements?",
+      "answerText": "resource, effect, and action",
+      "tags": [
+        "s3",
+        "security",
+        "resource-policy"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "6b566e44-f6f6-43c5-802a-8155e83349be",
+      "questionText": "What are the best practices for S3 versioning?",
+      "answerText": "S3 versioning is considered best practice because it prevents unintentional overwrite and enables easy rollback.",
+      "tags": [
+        "s3",
+        "versioning",
+        "best-practices"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "93fd32b6-0893-49cb-ad50-48650640158d",
+      "questionText": "S3 versioning is considered best practice for what two reasons?",
+      "answerText": "Prevents unintentional overwrite and enables easy rollback",
+      "tags": [
+        "s3",
+        "versioning",
+        "best-practices"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "5d943d61-f880-47d0-9d7d-3ae4f7451e24",
+      "questionText": "What are the use cases for Cross Region Replication (CRR)?",
+      "answerText": "CRR use cases: compliance, lower latency, cross-account replication.",
+      "tags": [
+        "s3",
+        "replication",
+        "crr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2cc79b05-c3cd-4afd-9fb1-19e0ee0c213f",
+      "questionText": "Which S3 replication type is used for compliance, lower latency, and cross-account replication?",
+      "answerText": "Cross Region Replication (CRR)",
+      "tags": [
+        "s3",
+        "replication",
+        "crr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "09c120af-3eba-4c54-b9b8-263686286553",
+      "questionText": "What are the use cases for Same Region Replication (SRR)?",
+      "answerText": "SRR use cases: log aggregation, good for prod/dev replication.",
+      "tags": [
+        "s3",
+        "replication",
+        "srr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2da4a4b6-73d1-424b-825c-80cf99b67024",
+      "questionText": "Which S3 replication type is used for log aggregation and prod/dev replication?",
+      "answerText": "Same Region Replication (SRR)",
+      "tags": [
+        "s3",
+        "replication",
+        "srr"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "8e9b60b5-43d6-42b4-9784-2064b43e5649",
+      "questionText": "How are delete markers handled in S3 replication?",
+      "answerText": "Delete marker replication: delete with/version do not replicate (avoids malicious activity).",
+      "tags": [
+        "s3",
+        "replication",
+        "delete-markers"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "70d1ec81-7bcf-477c-9990-2748617d9bf3",
+      "questionText": "In S3 replication, delete markers with version do not replicate to prevent what?",
+      "answerText": "Malicious activity",
+      "tags": [
+        "s3",
+        "replication",
+        "delete-markers"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "9044656c-57b5-4bac-965f-07926ae58290",
+      "questionText": "What is the uptime expectation for S3 Standard (GP)?",
+      "answerText": "S3 Standard (GP) has 99.99% availability, which is 4-9's or 53 minutes of downtime per year.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "availability",
+        "uptime"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "f097ee4e-3403-48f6-9fec-4d0641a2d0f2",
+      "questionText": "S3 Standard (GP) has what availability percentage, and how much downtime per year?",
+      "answerText": "99.99% availability (4-9's), 53 minutes downtime per year",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "availability",
+        "uptime"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "b66394bd-42c5-4b6d-904c-a51124ea286d",
+      "questionText": "How many concurrent facility failures can S3 Standard (GP) tolerate?",
+      "answerText": "S3 Standard (GP) is tolerant of 2 concurrent facility failures at AWS.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "durability"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "fdf9c7b5-b75a-4c7c-b8bd-181fc908478a",
+      "questionText": "S3 Standard (GP) can tolerate how many concurrent AWS facility failures?",
+      "answerText": "2 concurrent facility failures",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "standard",
+        "durability"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "57849087-a61b-42d1-a105-00e21a5cc2cf",
+      "questionText": "How does S3 Infrequent Access (IA) handle retrieval costs?",
+      "answerText": "S3-IA has cost on retrieve. It is low cost for storage but charges when you retrieve data.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "ia",
+        "cost",
+        "retrieval"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2f519ea6-a497-45d3-8010-d25b9d69d847",
+      "questionText": "Which S3 storage class charges cost on retrieve?",
+      "answerText": "S3 Infrequent Access (IA)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "ia",
+        "cost",
+        "retrieval"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "8d3be10b-69b2-4063-a8c7-5669bf93b81c",
+      "questionText": "What happens if an AZ fails with S3 OneZone Infrequent Access?",
+      "answerText": "If something happens to the AZ, all data is lost in S3 OneZone Infrequent Access. It has high durability in a single AZ only.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "onezone",
+        "az",
+        "durability"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "13a5c95d-6438-4b74-9bd4-e2763e65e616",
+      "questionText": "Which S3 storage class loses all data if the AZ fails?",
+      "answerText": "S3 OneZone Infrequent Access (1ZIA)",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "onezone",
+        "az",
+        "durability"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "a93ad1bf-2b75-4baa-b941-3780302422cd",
+      "questionText": "How is Glacier storage priced?",
+      "answerText": "Glacier pricing: storage + retrieval. It is low cost best for Archive and Backup.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "cad12a52-3b16-431c-a843-afe5f3043dbb",
+      "questionText": "Glacier storage pricing includes which two components?",
+      "answerText": "Storage cost + retrieval cost",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "pricing",
+        "cost"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "83b12e30-f2c0-483c-9dab-37662dd69cf5",
+      "questionText": "What is the minimal storage time for Glacier Instant Retrieval?",
+      "answerText": "Glacier Instant Retrieval has minimal storage time of 90 days.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gir",
+        "minimal-storage"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "170fee9d-365c-4e42-9a4f-b31859afa390",
+      "questionText": "Glacier Instant Retrieval requires minimum storage of how many days?",
+      "answerText": "90 days",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "gir",
+        "minimal-storage"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "231a14d7-b3de-454b-9ec3-d8295d675c51",
+      "questionText": "What is the minimal storage time for Glacier Deep Archive?",
+      "answerText": "Glacier Deep Archive has minimal storage time of 180 days.",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "deep-archive",
+        "minimal-storage"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "c4261f42-de59-477f-a2ce-433c35d60204",
+      "questionText": "Glacier Deep Archive requires minimum storage of how many days?",
+      "answerText": "180 days",
+      "tags": [
+        "s3",
+        "storage-classes",
+        "glacier",
+        "deep-archive",
+        "minimal-storage"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "1fede526-5ff7-4d71-a196-9553f982e84b",
+      "questionText": "What fees are associated with S3 Intelligent Tiering?",
+      "answerText": "S3 Intelligent Tiering has a small moving fee but no retrieval fee. It automatically moves objects between tiers.",
+      "tags": [
+        "s3",
+        "intelligent-tiering",
+        "cost",
+        "fees"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "8960b266-4ee2-47d7-af77-87dbb00ee107",
+      "questionText": "S3 Intelligent Tiering charges what type of fee but has no retrieval fee?",
+      "answerText": "Small moving fee (but no retrieval fee)",
+      "tags": [
+        "s3",
+        "intelligent-tiering",
+        "cost",
+        "fees"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "6ab55cfa-7464-4063-876d-360873fb6c33",
+      "questionText": "How do you gauge good Life Cycle Rules for S3?",
+      "answerText": "S3 Analytics is how to gauge good rules for lifetime. It helps determine optimal transition and expiration actions.",
+      "tags": [
+        "s3",
+        "lifecycle",
+        "analytics"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "0d1085c5-65ee-42fb-9c1f-b53a9b9429d8",
+      "questionText": "Which S3 feature helps gauge good Life Cycle Rules?",
+      "answerText": "S3 Analytics",
+      "tags": [
+        "s3",
+        "lifecycle",
+        "analytics"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "7871b6b7-04f9-4ac3-847b-4866da3dd3f7",
+      "questionText": "What are the S3 event types?",
+      "answerText": "S3 event types include: S3:ObjectCreated, S3:ObjectRemoved, S3:ObjectRestored, S3:ObjectReplicated (and probably many more).",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "event-types"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "a66e4f6f-f66d-4f34-98b8-1a8a616de52a",
+      "questionText": "Which S3 event type is triggered when an object is restored from Glacier?",
+      "answerText": "S3:ObjectRestored",
+      "tags": [
+        "s3",
+        "event-notifications",
+        "event-types"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "2f068c52-cd31-437a-98c1-62205d6fcdbd",
+      "questionText": "How can you increase S3 throughput?",
+      "answerText": "You can double S3 throughput by using multiple prefixes. S3 performance is measured by prefix, not bucket, and there is no limit to the number of prefixes per bucket.",
+      "tags": [
+        "s3",
+        "performance",
+        "prefix",
+        "throughput",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "95f5e74c-a88a-4de0-8d68-4b72983a8816",
+      "questionText": "What S3 optimization technique can double throughput?",
+      "answerText": "Using multiple prefixes",
+      "tags": [
+        "s3",
+        "performance",
+        "prefix",
+        "throughput",
+        "optimization"
+      ],
+      "domains": [
+        "s3"
+      ]
+    },
+    {
+      "questionId": "1f467c3d-1f59-4748-9229-df6de47f0e0c",
+      "questionText": "Is SSE-S3 enabled by default?",
+      "answerText": "SSE-S3 is default encryption and can be forced with bucket policy. It requires header x-amz-server-side-encryption: \"AES256\".",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-s3",
+        "default"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "4550794a-d615-49de-9aba-3e688bffeebc",
+      "questionText": "Which S3 encryption method is enabled by default?",
+      "answerText": "SSE-S3",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-s3",
+        "default"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "beda7c46-e428-42f5-99b0-0948ef6a0671",
+      "questionText": "What is special about SSE-KMS encryption logging?",
+      "answerText": "SSE-KMS usage can be logged in CloudTrail, which is good for audit/compliance.",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "cloudtrail",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "d2619603-63b6-491a-bc6d-85ae34b723a5",
+      "questionText": "Which S3 encryption method provides CloudTrail logging for audit/compliance?",
+      "answerText": "SSE-KMS",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "cloudtrail",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "7e7eaf38-2a0c-4ff1-99a3-db0f79c39afc",
+      "questionText": "What is a potential downside of SSE-KMS encryption?",
+      "answerText": "SSE-KMS encryption may require further API calls, which can introduce latency and additional API calls.",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "latency"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "beae1a12-01bd-480e-8a81-4fcf03113328",
+      "questionText": "Which S3 encryption method may introduce latency due to additional API calls?",
+      "answerText": "SSE-KMS",
+      "tags": [
+        "s3",
+        "encryption",
+        "sse-kms",
+        "latency"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "b4e7bab2-eb70-46d9-9a0d-b8d8da99c31a",
+      "questionText": "What are the characteristics of S3 Access Points?",
+      "answerText": "Each Access Point has its own DNS name (unique internet name), its own policy, and manages security at scale.",
+      "tags": [
+        "s3",
+        "access-points",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "536dbab0-a711-43be-b9f2-5031c360a370",
+      "questionText": "S3 Access Points each have their own what three things?",
+      "answerText": "DNS name, policy, and security management at scale",
+      "tags": [
+        "s3",
+        "access-points",
+        "security"
+      ],
+      "domains": [
+        "s3",
+        "security"
+      ]
+    },
+    {
+      "questionId": "4c87033d-4a4b-439c-9ba9-808d70f8307d",
+      "questionText": "How many instances can an EBS volume attach to?",
+      "answerText": "EBS Volume is mostly one instance at a time (1:1). However, there are advanced techniques to allow multiple instances, but these are out of scope for this course.",
+      "tags": [
+        "ebs",
+        "instances",
+        "attachment"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "78b62a50-529c-45f7-a4db-25000d68e633",
+      "questionText": "EBS volumes typically attach to how many instances at a time?",
+      "answerText": "One instance (1:1), though advanced techniques allow multiple",
+      "tags": [
+        "ebs",
+        "instances",
+        "attachment"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "545d5a81-b79c-4d14-a0f4-358d188de3be",
+      "questionText": "How can you move EBS data to another AZ?",
+      "answerText": "EBS volumes are bound to one AZ, but you can make snapshots and transport to other AZs.",
+      "tags": [
+        "ebs",
+        "snapshot",
+        "az"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "52e0e2ae-dcbc-40b9-b25f-3ad49a421261",
+      "questionText": "EBS volumes are bound to one AZ, but how can you move data to another AZ?",
+      "answerText": "Make snapshots and transport to other AZs",
+      "tags": [
+        "ebs",
+        "snapshot",
+        "az"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "141f865c-6fa3-417c-ad4e-af31e90187ac",
+      "questionText": "Can EBS volume size be decreased?",
+      "answerText": "EBS volume size can be increased but not decreased. This is relevant for billing since you pay for allocated capacity.",
+      "tags": [
+        "ebs",
+        "size",
+        "resize"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "6aca5060-bd80-4e13-a373-a3e821517a08",
+      "questionText": "Can EBS volume size be decreased after creation?",
+      "answerText": "No, EBS volume size can be increased but not decreased",
+      "tags": [
+        "ebs",
+        "size",
+        "resize"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "3172f9df-344e-4152-8bc3-6c0f26b16230",
+      "questionText": "What attributes can Elastic Volume change on the fly?",
+      "answerText": "Elastic Volume can change IOPS and volume type on the fly. It cannot decrease size.",
+      "tags": [
+        "ebs",
+        "elastic-volume",
+        "iops",
+        "volume-type"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "eed7ab5b-130a-4cf2-81db-9ba7c540d78e",
+      "questionText": "Elastic Volume can change which attributes on the fly?",
+      "answerText": "IOPS and volume type (but not size)",
+      "tags": [
+        "ebs",
+        "elastic-volume",
+        "iops",
+        "volume-type"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "cee9b987-6728-430e-82e9-ff08a0fbb1c3",
+      "questionText": "What are the use cases for EFS?",
+      "answerText": "WordPress, web server, data share",
+      "tags": [
+        "efs",
+        "use-cases"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "5c1dc36e-b707-441b-9ee4-cbad392131a8",
+      "questionText": "These use cases describe which AWS file system: WordPress, web server, data share",
+      "answerText": "EFS (Elastic File System)",
+      "tags": [
+        "efs",
+        "use-cases"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "bb048ec6-6f8b-4503-925a-63f1be2a1449",
+      "questionText": "What are the scalability characteristics of EFS?",
+      "answerText": "EFS automatically scales, supports 1000's of clients, 10 GB+/s throughput, and can grow to petabyte scale. Be careful of cost as it charges by GP (General Purpose).",
+      "tags": [
+        "efs",
+        "scalability",
+        "throughput"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "11bd63bf-0c4a-42f8-a108-e70505431ed7",
+      "questionText": "EFS can support how many clients and what throughput?",
+      "answerText": "1000's of clients and 10 GB+/s throughput",
+      "tags": [
+        "efs",
+        "scalability",
+        "throughput"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "93560a4b-c8e4-4144-a53e-f74bdc56711d",
+      "questionText": "How is EFS access controlled?",
+      "answerText": "EFS uses Security Groups (SG) to control access. It also uses KMS for encryption at rest.",
+      "tags": [
+        "efs",
+        "security",
+        "security-groups"
+      ],
+      "domains": [
+        "efs",
+        "security"
+      ]
+    },
+    {
+      "questionId": "d62ca219-9fe4-4c34-b5a6-f4707af2c879",
+      "questionText": "Which AWS file system uses Security Groups to control access?",
+      "answerText": "EFS (Elastic File System)",
+      "tags": [
+        "efs",
+        "security",
+        "security-groups"
+      ],
+      "domains": [
+        "efs",
+        "security"
+      ]
+    },
+    {
+      "questionId": "ddd2e65f-3b53-4103-babb-2d1607b939cb",
+      "questionText": "What type of file system is EFS?",
+      "answerText": "EFS is a POSIX file system, meaning it uses standard APIs like ls, rm, etc. It is not Windows compatible (requires Linux AMI).",
+      "tags": [
+        "efs",
+        "posix",
+        "file-system"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "0795f78d-86c3-4fc7-8cf6-9c1fdc0ce159",
+      "questionText": "EFS uses which file system standard with commands like ls and rm?",
+      "answerText": "POSIX file system",
+      "tags": [
+        "efs",
+        "posix",
+        "file-system"
+      ],
+      "domains": [
+        "efs"
+      ]
+    },
+    {
+      "questionId": "4902b38e-993e-4317-85f4-851e0062dd10",
+      "questionText": "What is the difference between EBS gp2 and gp3?",
+      "answerText": "gp2: IO increases as size increases (IO allocation increase so does disk size allocation). gp3: IO can increase independently of disk size. Both are general purpose EBS volume types.",
+      "tags": [
+        "ebs",
+        "gp2",
+        "gp3",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "cf9ef1e0-108a-478e-9ebf-f9fc470a7661",
+      "questionText": "Which EBS volume type allows IO to increase independently of disk size: gp2 or gp3?",
+      "answerText": "gp3 (gp2 IO increases with size)",
+      "tags": [
+        "ebs",
+        "gp2",
+        "gp3",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "c5d48f71-5bfd-46a3-b896-76836d77456a",
+      "questionText": "What should you consider when running EBS backups?",
+      "answerText": "EBS backup uses IO - don't run backups during Peak Usage.",
+      "tags": [
+        "ebs",
+        "backup",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "7ddc8f1c-214b-49d0-8725-86aa914eee3b",
+      "questionText": "EBS backups use IO, so when should you avoid running them?",
+      "answerText": "During Peak Usage",
+      "tags": [
+        "ebs",
+        "backup",
+        "iops"
+      ],
+      "domains": [
+        "ebs"
+      ]
+    },
+    {
+      "questionId": "dc0e6f26-97a8-445b-877f-9c6fcfecd017",
+      "questionText": "What is special about FSx for Lustre S3 integration?",
+      "answerText": "FSx for Lustre has seamless S3 integration and can treat S3 as part of its own file system.",
+      "tags": [
+        "fsx",
+        "lustre",
+        "s3",
+        "integration"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "96058de4-57ca-49c1-b9b1-f3df182db7a2",
+      "questionText": "Which FSx file system has seamless S3 integration?",
+      "answerText": "FSx for Lustre",
+      "tags": [
+        "fsx",
+        "lustre",
+        "s3",
+        "integration"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "f5ae1afe-e620-45b1-9b46-8e7803acdf86",
+      "questionText": "What is FSx for Lustre optimized for?",
+      "answerText": "Machine Learning, video processing, financial models, electrical design automation, High Performance Compute (HPC)",
+      "tags": [
+        "fsx",
+        "lustre",
+        "use-cases",
+        "hpc"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "cd4a6805-d312-48d6-ac96-ad5e9a485f16",
+      "questionText": "Which FSx file system is optimized for: Machine Learning, video processing, financial models, electrical design automation, High Performance Compute (HPC)",
+      "answerText": "FSx for Lustre",
+      "tags": [
+        "fsx",
+        "lustre",
+        "use-cases",
+        "hpc"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "0b0d520e-4788-473f-b392-95e9a02013cc",
+      "questionText": "What are the performance characteristics of FSx for Lustre?",
+      "answerText": "FSx for Lustre scales 100's GB/s, millions IOPS, sub-ms latency.",
+      "tags": [
+        "fsx",
+        "lustre",
+        "performance",
+        "iops",
+        "latency"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "fde9e065-0ba6-4124-ae78-d1b8212499b9",
+      "questionText": "Which FSx file system scales to 100's GB/s with sub-ms latency?",
+      "answerText": "FSx for Lustre",
+      "tags": [
+        "fsx",
+        "lustre",
+        "performance",
+        "iops",
+        "latency"
+      ],
+      "domains": [
+        "fsx"
+      ]
+    },
+    {
+      "questionId": "efc72da1-1ce2-41e3-8b22-cb3034de8027",
+      "questionText": "What destinations can Kinesis Firehose send data to?",
+      "answerText": "AWS Services: Redshift, S3, OpenSearch, others. External Services: Splunk, Mongo, datadog, New Relic, Custom HTTPS",
+      "tags": [
+        "firehose",
+        "destinations"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "f79fcaf3-0c14-481e-8b19-c83be4d570b8",
+      "questionText": "Which service can send data to these destinations: AWS Services: Redshift, S3, OpenSearch, others. External Services: Splunk, Mongo, datadog, New Relic, Custom HTTPS",
+      "answerText": "Kinesis Firehose",
+      "tags": [
+        "firehose",
+        "destinations"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "8b51e9d2-1385-457e-9155-14fda3f6e8d2",
+      "questionText": "What input formats does Kinesis Firehose support?",
+      "answerText": "CSV, JSON, Parquet, AVRO, text, binary",
+      "tags": [
+        "firehose",
+        "input-formats"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "8e5952d1-1b46-45b9-bcf6-736d1f783176",
+      "questionText": "Which service supports these input formats: CSV, JSON, Parquet, AVRO, text, binary",
+      "answerText": "Kinesis Firehose",
+      "tags": [
+        "firehose",
+        "input-formats"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "370e5211-ccf4-48bf-be3b-3900f8a4c618",
+      "questionText": "What output formats does Kinesis Firehose support?",
+      "answerText": "Parquet/ORC, compression (gzip, snappy). Custom transformers use Lambda.",
+      "tags": [
+        "firehose",
+        "output-formats"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "9bab418e-7905-4dac-abfe-e40a08677395",
+      "questionText": "Which service supports these output formats: Parquet/ORC, compression (gzip, snappy). Custom transformers use Lambda.",
+      "answerText": "Kinesis Firehose",
+      "tags": [
+        "firehose",
+        "output-formats"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "2c948651-a000-41dc-ba01-11fbe56b4f72",
+      "questionText": "What happens to failed data in Kinesis Firehose?",
+      "answerText": "Kinesis Firehose can write failed data to S3 bucket.",
+      "tags": [
+        "firehose",
+        "failed-data",
+        "s3"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "d2bb7092-8d5b-43ba-abbb-0588dfff4f3f",
+      "questionText": "Where can Kinesis Firehose write failed data?",
+      "answerText": "S3 bucket",
+      "tags": [
+        "firehose",
+        "failed-data",
+        "s3"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "2fc2b9e9-d87c-4728-ad5b-d27b9c0c045f",
+      "questionText": "What are solutions for Kinesis throttling errors?",
+      "answerText": "Solutions include: check hot shard, look for micro spike, try randomizing partition key, exponential back-off, rate limit.",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "throttling"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "c1be4417-3247-4cc9-8c78-f95f3376ed84",
+      "questionText": "What are common solutions for Kinesis throttling errors?",
+      "answerText": "Check hot shard, look for micro spikes, randomize partition key, exponential back-off, rate limit",
+      "tags": [
+        "kinesis",
+        "troubleshooting",
+        "throttling"
+      ],
+      "domains": [
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "fa255cf7-8090-4be1-9f24-7e64e7bf5e30",
+      "questionText": "What configuration choices are available for MSK?",
+      "answerText": "Choose VPC/subnet, choose number of AZs (3 recommended), choose number of brokers per AZ, choose disk size (1GB - 16TB).",
+      "tags": [
+        "msk",
+        "configuration"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "2faf517d-7b6f-414e-a24e-25e5fb6993c2",
+      "questionText": "MSK configuration includes choosing VPC/subnet, AZs, brokers per AZ, and what else?",
+      "answerText": "Disk size (1GB - 16TB)",
+      "tags": [
+        "msk",
+        "configuration"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "06460209-68ea-4df8-aab4-d530ffe3be85",
+      "questionText": "How long can MSK retain data?",
+      "answerText": "MSK can retain data indefinitely, unlike Kinesis which only retains for 365 days.",
+      "tags": [
+        "msk",
+        "kinesis",
+        "retention"
+      ],
+      "domains": [
+        "msk",
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "79d2ebb3-806a-4823-a967-ecf6cd3e1d2d",
+      "questionText": "Which service can retain data indefinitely: MSK or Kinesis?",
+      "answerText": "MSK (Kinesis only retains for 365 days)",
+      "tags": [
+        "msk",
+        "kinesis",
+        "retention"
+      ],
+      "domains": [
+        "msk",
+        "kinesis"
+      ]
+    },
+    {
+      "questionId": "d0a179ef-d3f5-4afb-a8dc-d3c13563b357",
+      "questionText": "How is data organized in MSK?",
+      "answerText": "Producers send data into Kafka topics, which get replicated across few/all brokers. Consumers poll broker/topic for messages. Data is organized by topic/partition.",
+      "tags": [
+        "msk",
+        "topic",
+        "partition",
+        "organization"
+      ],
+      "domains": [
+        "msk"
+      ]
+    },
+    {
+      "questionId": "3c8a7618-72c0-4212-9115-77535e7ce547",
+      "questionText": "MSK organizes data by what structure?",
+      "answerText": "Topic/partition (Kinesis uses stream/shard)",
+      "tags": [
+        "msk",
+        "topic",
+        "partition",
+        "organization"
+      ],
+      "domains": [
+        "msk"
+      ]
     }
   ]
 }

@@ -71,9 +71,15 @@ export interface WriteupPayload {
   lastModified: string;
 }
 
-export async function fetchWriteups(): Promise<WriteupListItem[]> {
+export interface CategorizedWriteups {
+  writeups: WriteupListItem[];
+  vocabulary: WriteupListItem[];
+  todo: WriteupListItem[];
+}
+
+export async function fetchWriteups(): Promise<CategorizedWriteups> {
   const response = await fetch(`/write-up-notes`);
-  return handleResponse<WriteupListItem[]>(response);
+  return handleResponse<CategorizedWriteups>(response);
 }
 
 export async function fetchWriteupById(id: string): Promise<WriteupPayload> {

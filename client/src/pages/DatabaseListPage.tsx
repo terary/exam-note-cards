@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadDatabases } from "../store/databasesSlice";
-import { fetchWriteups, fetchExternalIp, type WriteupListItem } from "../api/examApi";
+import { fetchWriteups, fetchExternalIp, type CategorizedWriteups } from "../api/examApi";
 import { startQuiz } from "../store/quizSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import "../App.css";
@@ -10,7 +10,11 @@ function DatabaseListPage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [pendingDatabaseId, setPendingDatabaseId] = useState<string>();
-  const [writeups, setWriteups] = useState<WriteupListItem[]>([]);
+  const [categorizedWriteups, setCategorizedWriteups] = useState<CategorizedWriteups>({
+    writeups: [],
+    vocabulary: [],
+    todo: [],
+  });
   const [writeupsStatus, setWriteupsStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [writeupsError, setWriteupsError] = useState<string>();
   const [externalIp, setExternalIp] = useState<string>("");
@@ -31,13 +35,24 @@ function DatabaseListPage() {
     const load = async () => {
       try {
         setWriteupsStatus("loading");
-        const items = await fetchWriteups();
-        setWriteups(items);
+        const categorized = await fetchWriteups();
+        // Ensure we have the expected structure
+        if (categorized && typeof categorized === "object") {
+          setCategorizedWriteups({
+            writeups: Array.isArray(categorized.writeups) ? categorized.writeups : [],
+            vocabulary: Array.isArray(categorized.vocabulary) ? categorized.vocabulary : [],
+            todo: Array.isArray(categorized.todo) ? categorized.todo : [],
+          });
+        } else {
+          // Fallback for unexpected format
+          setCategorizedWriteups({ writeups: [], vocabulary: [], todo: [] });
+        }
         setWriteupsStatus("ready");
       } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to load write-ups";
         setWriteupsError(message);
         setWriteupsStatus("error");
+        console.error("Error loading write-ups:", error);
       }
     };
     if (writeupsStatus === "idle") {
@@ -148,22 +163,62 @@ function DatabaseListPage() {
 
       {writeupsStatus === "ready" && (
         <>
-          <h2 style={{ marginTop: "2rem" }}>Write-ups & Notes</h2>
-          {writeups.length === 0 ? (
-            <p>No write-ups found.</p>
-          ) : (
-            <div className="database-grid">
-              {writeups.map((w) => (
-                <div className="database-card" key={w.id}>
-                  <h2>{w.id}</h2>
-                  <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
-                  <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
-                    Open Write-up
-                  </button>
-                </div>
-              ))}
-            </div>
+          {categorizedWriteups.writeups.length > 0 && (
+            <>
+              <h2 style={{ marginTop: "2rem" }}>Write-ups & Notes</h2>
+              <div className="database-grid">
+                {categorizedWriteups.writeups.map((w) => (
+                  <div className="database-card" key={w.id}>
+                    <h2>{w.id}</h2>
+                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
+                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
+                      Open Write-up
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
+
+          {categorizedWriteups.vocabulary.length > 0 && (
+            <>
+              <h2 style={{ marginTop: "2rem" }}>Vocabulary</h2>
+              <div className="database-grid">
+                {categorizedWriteups.vocabulary.map((w) => (
+                  <div className="database-card" key={w.id}>
+                    <h2>{w.id}</h2>
+                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
+                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
+                      Open Write-up
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {categorizedWriteups.todo.length > 0 && (
+            <>
+              <h2 style={{ marginTop: "2rem" }}>To Do and Followup</h2>
+              <div className="database-grid">
+                {categorizedWriteups.todo.map((w) => (
+                  <div className="database-card" key={w.id}>
+                    <h2>{w.id}</h2>
+                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
+                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
+                      Open Write-up
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {categorizedWriteups.writeups.length === 0 &&
+            categorizedWriteups.vocabulary.length === 0 &&
+            categorizedWriteups.todo.length === 0 && (
+              <p style={{ marginTop: "2rem" }}>No write-ups found.</p>
+            )}
         </>
       )}
       {quizState.status === "error" && (
