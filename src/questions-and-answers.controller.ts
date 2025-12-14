@@ -27,7 +27,7 @@ export class QuestionsAndAnswersController {
   ) {}
 
   @Get("questions/databases")
-  getAllDatabases(): DatabaseInfo[] {
+  async getAllDatabases(): Promise<DatabaseInfo[]> {
     this.logger.log(
       "GET /questions-and-answers/questions/databases - Retrieving all databases"
     );
@@ -35,7 +35,7 @@ export class QuestionsAndAnswersController {
   }
 
   @Get("questions/databases/:databaseId")
-  getDatabaseById(@Param("databaseId") databaseId: string): Database {
+  async getDatabaseById(@Param("databaseId") databaseId: string): Promise<Database> {
     this.logger.log(
       `GET /questions-and-answers/questions/databases/${databaseId} - Retrieving database`
     );
@@ -43,7 +43,7 @@ export class QuestionsAndAnswersController {
   }
 
   @Get("questions/:questionId")
-  getQuestionById(@Param("questionId") questionId: string): Question {
+  async getQuestionById(@Param("questionId") questionId: string): Promise<Question> {
     this.logger.log(
       `GET /questions-and-answers/questions/${questionId} - Retrieving question`
     );
@@ -51,7 +51,7 @@ export class QuestionsAndAnswersController {
   }
 
   @Get("questions")
-  getAllQuestions(): Question[] {
+  async getAllQuestions(): Promise<Question[]> {
     this.logger.log(
       "GET /questions-and-answers/questions - Retrieving all questions"
     );
@@ -65,7 +65,7 @@ export class QuestionsAndAnswersController {
     this.logger.log(
       `POST /questions-and-answers/answer-sessions - Creating session for database '${body.databaseId}'`
     );
-    const database = this.questionsService.getDatabaseById(body.databaseId);
+    const database = await this.questionsService.getDatabaseById(body.databaseId);
     const sessionId = await this.answerSessionsService.createSession(
       body.databaseId,
       database.databaseName

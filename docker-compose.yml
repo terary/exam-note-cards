@@ -1,0 +1,15 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: exam-note-cards-mongodb
+    restart: unless-stopped
+    ports:
+      - "37017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: exam_note_cards
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
+

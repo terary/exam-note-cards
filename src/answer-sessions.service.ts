@@ -1,79 +1,53 @@
-import { Injectable, Logger, NotFoundException } from "@nestjs/common";
-import { promises as fs } from "fs";
-import { existsSync, mkdirSync } from "fs";
-import { join } from "path";
+import { Injectable, Logger, NotFoundException, Optional } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
 import { v4 as uuid } from "uuid";
-
-interface AnswerRecord {
-  questionId: string;
-  questionText: string;
-  actualAnswerText: string;
-  userAnswerText: string;
-  userCorrectnessPercentage: number;
-  answerNotes?: string;
-  recordedAt: string;
-}
-
-interface AnswerSession {
-  sessionId: string;
-  databaseId: string;
-  databaseName: string;
-  startedAt: string;
-  answers: AnswerRecord[];
-}
+import {
+  AnswerSession,
+  AnswerSessionDocument,
+} from "./schemas/answer-session.schema";
+import { QuestionStatsService } from "./question-stats.service";
 
 @Injectable()
 export class AnswerSessionsService {
   private readonly logger = new Logger(AnswerSessionsService.name);
-  private readonly sessionsDirectory = join(process.cwd(), "sessions");
 
-  constructor() {
-    this.ensureDirectory();
-  }
-
-  private ensureDirectory(): void {
-    if (!existsSync(this.sessionsDirectory)) {
-      mkdirSync(this.sessionsDirectory, { recursive: true });
-      this.logger.log(
-        `Created sessions directory at ${this.sessionsDirectory}`
-      );
-    }
-  }
-
-  private getSessionFilePath(sessionId: string): string {
-    return join(this.sessionsDirectory, `${sessionId}.json`);
-  }
+  constructor(
+    @InjectModel(AnswerSession.name)
+    private answerSessionModel: Model<AnswerSessionDocument>,
+    @Optional() private readonly questionStatsService?: QuestionStatsService
+  ) {}
 
   async createSession(
     databaseId: string,
     databaseName: string
   ): Promise<string> {
     const sessionId = uuid();
-    const session: AnswerSession = {
+    const session = new this.answerSessionModel({
       sessionId,
       databaseId,
       databaseName,
       startedAt: new Date().toISOString(),
       answers: [],
-    };
+    });
 
-    const filePath = this.getSessionFilePath(sessionId);
-    await fs.writeFile(filePath, JSON.stringify(session, null, 2), "utf8");
+    await session.save();
+    this.logger.log(
+      `Created answer session '${sessionId}' for database '${databaseId}'`
+    );
     return sessionId;
   }
 
   async getSession(sessionId: string): Promise<AnswerSession> {
-    const filePath = this.getSessionFilePath(sessionId);
-    try {
-      const raw = await fs.readFile(filePath, "utf8");
-      return JSON.parse(raw) as AnswerSession;
-    } catch (error) {
+    const session = await this.answerSessionModel
+      .findOne({ sessionId })
+      .exec();
+
+    if (!session) {
       throw new NotFoundException(`Answer session '${sessionId}' not found`);
     }
-  }
 
-  private async loadSession(sessionId: string): Promise<AnswerSession> {
-    return this.getSession(sessionId);
+    return session.toObject();
   }
 
   async listAllSessions(): Promise<
@@ -84,29 +58,21 @@ export class AnswerSessionsService {
       lastModified: Date;
     }>
   > {
-    const files = await fs.readdir(this.sessionsDirectory);
-    const jsonFiles = files.filter((file) => file.endsWith(".json"));
+    const sessions = await this.answerSessionModel.find().exec();
 
-    const sessions = await Promise.all(
-      jsonFiles.map(async (filename) => {
-        const fileId = filename.replace(".json", "");
-        const filePath = join(this.sessionsDirectory, filename);
-        const stats = await fs.stat(filePath);
-        const session = await this.getSession(fileId);
-
+    return sessions
+      .map((session) => {
+        const sessionObj = session.toObject();
         return {
-          fileId,
-          filename,
+          fileId: session.sessionId,
+          filename: `${session.sessionId}.json`,
           databaseName: session.databaseName,
-          lastModified: stats.mtime,
+          lastModified: (sessionObj as any).updatedAt 
+            ? new Date((sessionObj as any).updatedAt)
+            : new Date(session.startedAt),
         };
       })
-    );
-
-    // Sort by last modified, newest first
-    return sessions.sort(
-      (a, b) => b.lastModified.getTime() - a.lastModified.getTime()
-    );
+      .sort((a, b) => b.lastModified.getTime() - a.lastModified.getTime());
   }
 
   async recordAnswer(params: {
@@ -130,14 +96,21 @@ export class AnswerSessionsService {
       answerNotes,
     } = params;
 
-    const session = await this.loadSession(sessionId);
+    const session = await this.answerSessionModel
+      .findOne({ sessionId })
+      .exec();
+
+    if (!session) {
+      throw new NotFoundException(`Answer session '${sessionId}' not found`);
+    }
+
     if (session.databaseId !== databaseId) {
       throw new NotFoundException(
         `Session '${sessionId}' is not associated with database '${databaseId}'`
       );
     }
 
-    const record: AnswerRecord = {
+    const record = {
       questionId,
       questionText,
       actualAnswerText,
@@ -148,8 +121,19 @@ export class AnswerSessionsService {
     };
 
     session.answers.push(record);
+    await session.save();
 
-    const filePath = this.getSessionFilePath(sessionId);
-    await fs.writeFile(filePath, JSON.stringify(session, null, 2), "utf8");
+    // Update question statistics if QuestionStatsService is available
+    if (this.questionStatsService) {
+      try {
+        await this.questionStatsService.recordAnswerAndUpdateStats(questionId);
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Unknown error";
+        this.logger.warn(
+          `Failed to update question statistics for '${questionId}': ${message}`
+        );
+      }
+    }
   }
 }

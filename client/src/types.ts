@@ -10,6 +10,16 @@ export interface Question {
   answerText: string;
   tags?: string[];
   domains: string[];
+  timesAsked?: number;
+  averageScore?: number | null;
+  lastScore?: number | null;
+  bad?: boolean;
+}
+
+export interface QuestionStats {
+  timesAsked: number;
+  averageScore: number | null;
+  lastScore: number | null;
 }
 
 export interface DatabasePayload {

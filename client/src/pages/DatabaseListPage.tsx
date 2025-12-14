@@ -101,8 +101,17 @@ function DatabaseListPage() {
   return (
     <div className="page-container">
       <header className="page-header">
-        <h1>Exam Note Cards</h1>
-        <p>Select a quiz to start practicing.</p>
+        <div>
+          <h1>Exam Note Cards</h1>
+          <p>Select a quiz to start practicing.</p>
+          <button
+            className="link-button"
+            onClick={() => navigate("/question-manager")}
+            style={{ marginTop: "0.5rem" }}
+          >
+            Manage Questions →
+          </button>
+        </div>
         {ipStatus === "ready" && externalIp && (
           <p style={{ fontSize: "0.9rem", color: "#64748b", marginTop: "0.5rem" }}>
             External IP: <strong>{externalIp}</strong>

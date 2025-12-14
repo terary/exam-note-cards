@@ -1,4 +1,9 @@
-import type { DatabaseInfo, DatabasePayload } from "../types";
+import type {
+  DatabaseInfo,
+  DatabasePayload,
+  Question,
+  QuestionStats,
+} from "../types";
 
 const BASE_PATH = "/questions-and-answers";
 
@@ -90,4 +95,120 @@ export async function fetchWriteupById(id: string): Promise<WriteupPayload> {
 export async function fetchExternalIp(): Promise<{ ip: string }> {
   const response = await fetch(`${BASE_PATH}/external-ip`);
   return handleResponse<{ ip: string }>(response);
+}
+
+// Question Manager APIs
+const QUESTION_MANAGER_BASE = "/question-manager";
+
+export async function fetchQuestionManagerDatabases(): Promise<DatabaseInfo[]> {
+  const response = await fetch(`${QUESTION_MANAGER_BASE}/databases`);
+  return handleResponse<DatabaseInfo[]>(response);
+}
+
+export async function fetchQuestionsInDatabase(
+  databaseId: string
+): Promise<Question[]> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/databases/${databaseId}/questions`
+  );
+  return handleResponse<Question[]>(response);
+}
+
+export async function fetchQuestion(questionId: string): Promise<Question> {
+  const response = await fetch(`${QUESTION_MANAGER_BASE}/questions/${questionId}`);
+  return handleResponse<Question>(response);
+}
+
+export interface CreateQuestionDto {
+  questionText: string;
+  answerText: string;
+  tags?: string[];
+  domains: string[];
+}
+
+export async function createQuestion(
+  databaseId: string,
+  question: CreateQuestionDto
+): Promise<Question> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/databases/${databaseId}/questions`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(question),
+    }
+  );
+  return handleResponse<Question>(response);
+}
+
+export interface UpdateQuestionDto {
+  questionText?: string;
+  answerText?: string;
+  tags?: string[];
+  domains?: string[];
+  bad?: boolean;
+}
+
+export async function updateQuestion(
+  questionId: string,
+  updates: UpdateQuestionDto
+): Promise<Question> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/questions/${questionId}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    }
+  );
+  return handleResponse<Question>(response);
+}
+
+export async function deleteQuestion(questionId: string): Promise<void> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/questions/${questionId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  await handleResponse(response);
+}
+
+export interface QuestionStatsResponse {
+  questionId: string;
+  score: number;
+  stats: QuestionStats;
+}
+
+export async function fetchQuestionStats(
+  questionId: string
+): Promise<QuestionStatsResponse> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/questions/${questionId}/stats`
+  );
+  return handleResponse<QuestionStatsResponse>(response);
+}
+
+export async function fetchPrioritizedQuestions(
+  limit?: number
+): Promise<Question[]> {
+  const url = limit
+    ? `${QUESTION_MANAGER_BASE}/prioritized?limit=${limit}`
+    : `${QUESTION_MANAGER_BASE}/prioritized`;
+  const response = await fetch(url);
+  return handleResponse<Question[]>(response);
+}
+
+export async function searchQuestions(
+  query: string,
+  databaseId?: string
+): Promise<Question[]> {
+  const params = new URLSearchParams({ q: query });
+  if (databaseId) {
+    params.append("databaseId", databaseId);
+  }
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/search?${params.toString()}`
+  );
+  return handleResponse<Question[]>(response);
 }

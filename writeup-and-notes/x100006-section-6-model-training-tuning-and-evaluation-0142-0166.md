@@ -1071,7 +1071,7 @@ To use:
 - What if billions of parameters aren't good enough? We want trillions.
 - Amazon came up with `Minimize the Communication Scale` (MiCS)
 - This is basically another name for what SageMaker `sharded parallelism provides`
-- You just need to know all the this distributed trainging stuff, is what enables models with 1TG
+- You just need to know all the this distributed training stuff, is what enables models with 1TG
 - Bigger instances helps too
   - Minimize communication overhead
   - EC2 `P4de` GPU instances -`400 Gbps networking`
