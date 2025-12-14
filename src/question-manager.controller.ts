@@ -26,7 +26,9 @@ interface UpdateQuestionDto {
   answerText?: string;
   tags?: string[];
   domains?: string[];
-  bad?: boolean;
+  timesAsked?: number;
+  averageScore?: number | null;
+  lastScore?: number | null;
 }
 
 @Controller("question-manager")
@@ -82,7 +84,15 @@ export class QuestionManagerController {
     this.logger.log(
       `PUT /question-manager/questions/${questionId} - Updating question`
     );
-    return this.questionManagerService.updateQuestion(questionId, body);
+    try {
+      return await this.questionManagerService.updateQuestion(questionId, body);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      this.logger.error(
+        `Failed to update question '${questionId}': ${message}`
+      );
+      throw error;
+    }
   }
 
   @Delete("questions/:questionId")

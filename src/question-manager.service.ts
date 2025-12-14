@@ -71,7 +71,9 @@ export class QuestionManagerService {
       answerText?: string;
       tags?: string[];
       domains?: string[];
-      bad?: boolean;
+      timesAsked?: number;
+      averageScore?: number | null;
+      lastScore?: number | null;
     }
   ): Promise<Question> {
     const database = await this.databaseModel
@@ -93,21 +95,38 @@ export class QuestionManagerService {
     }
 
     const existingQuestion = database.questionsWithAnswers[questionIndex];
+    
+    // Ensure all required fields are preserved
     const updatedQuestion: Question = {
-      ...(existingQuestion as any),
-      ...(updates.questionText !== undefined && {
-        questionText: updates.questionText,
-      }),
-      ...(updates.answerText !== undefined && {
-        answerText: updates.answerText,
-      }),
-      ...(updates.tags !== undefined && { tags: updates.tags }),
-      ...(updates.domains !== undefined && { domains: updates.domains }),
-      ...(updates.bad !== undefined && { bad: updates.bad }),
+      questionId: existingQuestion.questionId,
+      questionText: updates.questionText ?? existingQuestion.questionText,
+      answerText: updates.answerText ?? existingQuestion.answerText,
+      domains: updates.domains ?? existingQuestion.domains,
+      tags: updates.tags !== undefined ? updates.tags : existingQuestion.tags,
+      timesAsked: updates.timesAsked !== undefined ? updates.timesAsked : (existingQuestion.timesAsked ?? 0),
+      averageScore: updates.averageScore !== undefined ? updates.averageScore : existingQuestion.averageScore,
+      lastScore: updates.lastScore !== undefined ? updates.lastScore : existingQuestion.lastScore,
+      bad: existingQuestion.bad ?? false,
     };
 
-    database.questionsWithAnswers[questionIndex] = updatedQuestion as any;
-    await database.save();
+    // Validate required fields
+    if (!updatedQuestion.questionId || !updatedQuestion.questionText || !updatedQuestion.answerText) {
+      throw new Error("Missing required fields: questionId, questionText, or answerText");
+    }
+    if (!updatedQuestion.domains || updatedQuestion.domains.length === 0) {
+      throw new Error("At least one domain is required");
+    }
+
+    try {
+      database.questionsWithAnswers[questionIndex] = updatedQuestion as any;
+      await database.save({ validateBeforeSave: true });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      this.logger.error(
+        `Failed to save updated question '${questionId}': ${message}. Question data: ${JSON.stringify({ questionId: updatedQuestion.questionId, questionText: updatedQuestion.questionText.substring(0, 50), domains: updatedQuestion.domains, timesAsked: updatedQuestion.timesAsked, averageScore: updatedQuestion.averageScore, lastScore: updatedQuestion.lastScore })}`
+      );
+      throw error;
+    }
 
     const updateParts: string[] = [];
     if (updates.questionText !== undefined)
@@ -119,7 +138,9 @@ export class QuestionManagerService {
       updateParts.push(`tags=[${updates.tags.join(", ")}]`);
     if (updates.domains !== undefined)
       updateParts.push(`domains=[${updates.domains.join(", ")}]`);
-    if (updates.bad !== undefined) updateParts.push(`bad=${updates.bad}`);
+    if (updates.timesAsked !== undefined) updateParts.push(`timesAsked=${updates.timesAsked}`);
+    if (updates.averageScore !== undefined) updateParts.push(`averageScore=${updates.averageScore ?? "null"}`);
+    if (updates.lastScore !== undefined) updateParts.push(`lastScore=${updates.lastScore ?? "null"}`);
 
     this.logger.log(
       `Updated question '${questionId}' in database '${database.databaseId}': ${updateParts.join(", ")}`

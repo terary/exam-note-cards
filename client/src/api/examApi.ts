@@ -146,7 +146,9 @@ export interface UpdateQuestionDto {
   answerText?: string;
   tags?: string[];
   domains?: string[];
-  bad?: boolean;
+  timesAsked?: number;
+  averageScore?: number | null;
+  lastScore?: number | null;
 }
 
 export async function updateQuestion(

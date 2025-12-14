@@ -3,15 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchQuestionManagerDatabases,
   fetchQuestionsInDatabase,
-  fetchQuestionStats,
   createQuestion,
   updateQuestion,
   deleteQuestion,
-  fetchPrioritizedQuestions,
   searchQuestions,
   type CreateQuestionDto,
   type UpdateQuestionDto,
-  type QuestionStatsResponse,
 } from "../api/examApi";
 import type { DatabaseInfo, Question } from "../types";
 import "../App.css";
@@ -25,36 +22,33 @@ function QuestionManagerPage() {
     urlDatabaseId || null
   );
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [prioritizedQuestions, setPrioritizedQuestions] = useState<Question[]>(
-    []
-  );
   const [status, setStatus] = useState<
     "idle" | "loading" | "ready" | "error"
   >("idle");
   const [error, setError] = useState<string>();
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [editingQuestion, setEditingQuestion] = useState<Question | null>(
-    null
-  );
-  const [viewingStats, setViewingStats] = useState<string | null>(null);
-  const [statsData, setStatsData] = useState<QuestionStatsResponse | null>(
-    null
-  );
-  const [showPrioritized, setShowPrioritized] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Question[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [sortColumn, setSortColumn] = useState<"timesAsked" | "avgScore" | "lastScore" | null>(null);
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
 
-  // Form state
-  const [formData, setFormData] = useState<CreateQuestionDto>({
+  // Edit form state
+  const [editData, setEditData] = useState<UpdateQuestionDto>({});
+  const [editTagsInput, setEditTagsInput] = useState("");
+  const [editDomainsInput, setEditDomainsInput] = useState("");
+
+  // Create form state
+  const [createData, setCreateData] = useState<CreateQuestionDto>({
     questionText: "",
     answerText: "",
     tags: [],
     domains: [],
   });
-  const [editData, setEditData] = useState<UpdateQuestionDto>({});
-  const [tagsInput, setTagsInput] = useState("");
-  const [domainsInput, setDomainsInput] = useState("");
+  const [createTagsInput, setCreateTagsInput] = useState("");
+  const [createDomainsInput, setCreateDomainsInput] = useState("");
 
   useEffect(() => {
     const loadDatabases = async () => {
@@ -62,6 +56,9 @@ function QuestionManagerPage() {
         setStatus("loading");
         const dbList = await fetchQuestionManagerDatabases();
         setDatabases(dbList);
+        if (urlDatabaseId) {
+          setSelectedDatabaseId(urlDatabaseId);
+        }
         setStatus("ready");
       } catch (err) {
         const message =
@@ -71,10 +68,10 @@ function QuestionManagerPage() {
       }
     };
     loadDatabases();
-  }, []);
+  }, [urlDatabaseId]);
 
   useEffect(() => {
-    if (selectedDatabaseId) {
+    if (selectedDatabaseId && !isSearching) {
       const loadQuestions = async () => {
         try {
           setStatus("loading");
@@ -90,75 +87,84 @@ function QuestionManagerPage() {
       };
       loadQuestions();
     }
-  }, [selectedDatabaseId]);
-
-  useEffect(() => {
-    if (showPrioritized) {
-      const loadPrioritized = async () => {
-        try {
-          setStatus("loading");
-          const qs = await fetchPrioritizedQuestions();
-          setPrioritizedQuestions(qs);
-          setStatus("ready");
-        } catch (err) {
-          const message =
-            err instanceof Error
-              ? err.message
-              : "Failed to load prioritized questions";
-          setError(message);
-          setStatus("error");
-        }
-      };
-      loadPrioritized();
-    }
-  }, [showPrioritized]);
+  }, [selectedDatabaseId, isSearching]);
 
   const handleDatabaseSelect = (dbId: string) => {
     setSelectedDatabaseId(dbId);
-    setShowPrioritized(false);
+    setSearchQuery("");
+    setSearchResults([]);
+    setIsSearching(false);
     navigate(`/question-manager/${dbId}`);
   };
 
-  const handleCreateQuestion = async () => {
-    if (!selectedDatabaseId) return;
-
-    const tags = tagsInput
-      .split(",")
-      .map((t) => t.trim())
-      .filter((t) => t.length > 0);
-    const domains = domainsInput
-      .split(",")
-      .map((d) => d.trim())
-      .filter((d) => d.length > 0);
-
-    if (!formData.questionText || !formData.answerText || domains.length === 0) {
-      alert("Please fill in question text, answer text, and at least one domain");
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
       return;
     }
 
     try {
-      await createQuestion(selectedDatabaseId, {
-        ...formData,
-        tags: tags.length > 0 ? tags : undefined,
-        domains,
-      });
-      setShowCreateForm(false);
-      setFormData({ questionText: "", answerText: "", tags: [], domains: [] });
-      setTagsInput("");
-      setDomainsInput("");
-      // Reload questions
-      const qs = await fetchQuestionsInDatabase(selectedDatabaseId);
-      setQuestions(qs);
+      setIsSearching(true);
+      const results = await searchQuestions(
+        searchQuery.trim(),
+        selectedDatabaseId || undefined
+      );
+      setSearchResults(results);
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Failed to create question";
+      const message = err instanceof Error ? err.message : "Search failed";
       alert(message);
+    } finally {
+      setIsSearching(false);
     }
   };
 
-  const handleUpdateQuestion = async (questionId: string) => {
+  const handleSearchKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleEditClick = (question: Question) => {
+    setEditingQuestion(question);
+    setEditData({
+      questionText: question.questionText,
+      answerText: question.answerText,
+      tags: question.tags,
+      domains: question.domains,
+      timesAsked: question.timesAsked,
+      averageScore: question.averageScore,
+      lastScore: question.lastScore,
+    });
+    setEditTagsInput(question.tags?.join(", ") || "");
+    setEditDomainsInput(question.domains.join(", "));
+    setShowEditModal(true);
+  };
+
+  const handleUpdateQuestion = async () => {
+    if (!editingQuestion) return;
+
+    const tags = editTagsInput
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+    const domains = editDomainsInput
+      .split(",")
+      .map((d) => d.trim())
+      .filter((d) => d.length > 0);
+
+    if (domains.length === 0) {
+      alert("Please provide at least one domain");
+      return;
+    }
+
     try {
-      await updateQuestion(questionId, editData);
+      await updateQuestion(editingQuestion.questionId, {
+        ...editData,
+        tags: tags.length > 0 ? tags : undefined,
+        domains,
+      });
+      setShowEditModal(false);
       setEditingQuestion(null);
       setEditData({});
       // Reload questions
@@ -190,72 +196,102 @@ function QuestionManagerPage() {
     }
   };
 
-  const handleViewStats = async (questionId: string) => {
-    try {
-      const stats = await fetchQuestionStats(questionId);
-      setStatsData(stats);
-      setViewingStats(questionId);
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Failed to load statistics";
-      alert(message);
+  const handleCreateQuestion = async () => {
+    if (!selectedDatabaseId) {
+      alert("Please select a database first");
+      return;
     }
-  };
 
-  const computeScore = (question: Question): number => {
-    if (question.bad === true) return -1;
-    const timesAsked = question.timesAsked ?? 0;
-    if (timesAsked === 0) return 0;
-    const score = question.lastScore ?? question.averageScore ?? 0;
-    return Math.round(score);
-  };
+    const tags = createTagsInput
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+    const domains = createDomainsInput
+      .split(",")
+      .map((d) => d.trim())
+      .filter((d) => d.length > 0);
 
-  const getScoreLabel = (score: number): string => {
-    if (score === -1) return "Bad Question";
-    if (score === 0) return "Never Answered";
-    if (score >= 91) return "Mastered";
-    return "Needs Practice";
-  };
-
-  const getScoreColor = (score: number): string => {
-    if (score === -1) return "#ef4444";
-    if (score === 0) return "#64748b";
-    if (score >= 91) return "#10b981";
-    if (score <= 60) return "#f59e0b";
-    return "#3b82f6";
-  };
-
-  const handleSearch = async () => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      setIsSearching(false);
+    if (!createData.questionText || !createData.answerText || domains.length === 0) {
+      alert("Please fill in question text, answer text, and at least one domain");
       return;
     }
 
     try {
-      setIsSearching(true);
-      const results = await searchQuestions(searchQuery.trim(), selectedDatabaseId || undefined);
-      setSearchResults(results);
-      setShowPrioritized(false);
+      await createQuestion(selectedDatabaseId, {
+        ...createData,
+        tags: tags.length > 0 ? tags : undefined,
+        domains,
+      });
+      setShowCreateModal(false);
+      setCreateData({ questionText: "", answerText: "", tags: [], domains: [] });
+      setCreateTagsInput("");
+      setCreateDomainsInput("");
+      // Reload questions
+      const qs = await fetchQuestionsInDatabase(selectedDatabaseId);
+      setQuestions(qs);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Search failed";
+      const message =
+        err instanceof Error ? err.message : "Failed to create question";
       alert(message);
-    } finally {
-      setIsSearching(false);
     }
   };
 
-  const handleSearchKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
+  const truncateText = (text: string, maxLength: number = 100): string => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + "...";
+  };
+
+  const handleSort = (column: "timesAsked" | "avgScore" | "lastScore") => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortColumn(column);
+      setSortDirection("asc");
     }
   };
 
-  const displayQuestions = isSearching || searchResults.length > 0
-    ? searchResults
-    : showPrioritized
-    ? prioritizedQuestions
-    : questions;
+  const getSortIcon = (column: "timesAsked" | "avgScore" | "lastScore") => {
+    if (sortColumn !== column) return "↕";
+    return sortDirection === "asc" ? "↑" : "↓";
+  };
+
+  const sortedQuestions = (() => {
+    const questionsToSort = isSearching || searchResults.length > 0
+      ? [...searchResults]
+      : [...questions];
+
+    if (!sortColumn) return questionsToSort;
+
+    return questionsToSort.sort((a, b) => {
+      let aValue: number | null;
+      let bValue: number | null;
+
+      switch (sortColumn) {
+        case "timesAsked":
+          aValue = a.timesAsked ?? 0;
+          bValue = b.timesAsked ?? 0;
+          break;
+        case "avgScore":
+          aValue = a.averageScore ?? null;
+          bValue = b.averageScore ?? null;
+          break;
+        case "lastScore":
+          aValue = a.lastScore ?? null;
+          bValue = b.lastScore ?? null;
+          break;
+      }
+
+      // Handle null values - put them at the end
+      if (aValue === null && bValue === null) return 0;
+      if (aValue === null) return 1;
+      if (bValue === null) return -1;
+
+      const comparison = aValue - bValue;
+      return sortDirection === "asc" ? comparison : -comparison;
+    });
+  })();
+
+  const displayQuestions = sortedQuestions;
 
   return (
     <div className="page-container">
@@ -270,24 +306,43 @@ function QuestionManagerPage() {
             &larr; Back to databases
           </button>
         </div>
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <button
-            onClick={() => {
-              setShowPrioritized(!showPrioritized);
-              setSelectedDatabaseId(null);
-              setSearchQuery("");
-              setSearchResults([]);
-            }}
-            style={{
-              backgroundColor: showPrioritized ? "#10b981" : "#64748b",
-            }}
-          >
-            {showPrioritized ? "Show All" : "Show Prioritized"}
-          </button>
-        </div>
       </header>
 
-      <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+      {status === "loading" && <p>Loading...</p>}
+      {status === "error" && (
+        <div className="error-message">
+          <p>Error: {error}</p>
+          <button onClick={() => setStatus("idle")}>Retry</button>
+        </div>
+      )}
+
+      <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center", flex: 1, minWidth: "200px" }}>
+          <label htmlFor="database-select" style={{ fontWeight: 600 }}>
+            Database:
+          </label>
+          <select
+            id="database-select"
+            value={selectedDatabaseId || ""}
+            onChange={(e) => handleDatabaseSelect(e.target.value)}
+            style={{
+              padding: "0.5rem 1rem",
+              borderRadius: "8px",
+              border: "1px solid #cbd5e1",
+              fontSize: "1rem",
+              flex: 1,
+              minWidth: "200px",
+            }}
+          >
+            <option value="">Select a database...</option>
+            {databases.map((db) => (
+              <option key={db.databaseId} value={db.databaseId}>
+                {db.databaseName} ({db.questionCount} questions)
+              </option>
+            ))}
+          </select>
+        </div>
+
         <input
           type="text"
           className="text-input"
@@ -296,6 +351,7 @@ function QuestionManagerPage() {
             padding: "0.75rem 1rem",
             flex: 1,
             fontSize: "1rem",
+            minWidth: "200px",
           }}
           placeholder='Search questions (use quotes for phrases, e.g., "machine learning")'
           value={searchQuery}
@@ -323,6 +379,11 @@ function QuestionManagerPage() {
             Clear
           </button>
         )}
+        {selectedDatabaseId && (
+          <button onClick={() => setShowCreateModal(true)}>
+            Create Question
+          </button>
+        )}
       </div>
 
       {searchResults.length > 0 && (
@@ -331,322 +392,467 @@ function QuestionManagerPage() {
         </div>
       )}
 
-      {status === "loading" && <p>Loading...</p>}
-      {status === "error" && (
-        <div className="error-message">
-          <p>Error: {error}</p>
-          <button onClick={() => setStatus("idle")}>Retry</button>
-        </div>
+      {status === "ready" && !selectedDatabaseId && !isSearching && (
+        <p>Please select a database to view questions.</p>
       )}
 
-      {!showPrioritized && (
-        <div style={{ marginBottom: "2rem" }}>
-          <h2>Select Database</h2>
-          <div className="database-grid">
-            {databases.map((db) => (
-              <div
-                className="database-card"
-                key={db.databaseId}
-                style={{
-                  borderColor:
-                    selectedDatabaseId === db.databaseId
-                      ? "#2563eb"
-                      : "#d9e2ec",
-                  borderWidth:
-                    selectedDatabaseId === db.databaseId ? "2px" : "1px",
-                }}
-              >
-                <h2>{db.databaseName}</h2>
-                <p>{db.questionCount} Questions</p>
-                <button onClick={() => handleDatabaseSelect(db.databaseId)}>
-                  {selectedDatabaseId === db.databaseId
-                    ? "Selected"
-                    : "Select"}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {showPrioritized && (
-        <div style={{ marginBottom: "2rem" }}>
-          <h2>
-            Prioritized Questions ({prioritizedQuestions.length} questions
-            needing practice)
-          </h2>
-        </div>
-      )}
-
-      {selectedDatabaseId && !showPrioritized && (
-        <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem" }}>
-          <button
-            onClick={() => {
-              setShowCreateForm(!showCreateForm);
-              setEditingQuestion(null);
-            }}
-          >
-            {showCreateForm ? "Cancel" : "Create New Question"}
-          </button>
-        </div>
-      )}
-
-      {showCreateForm && selectedDatabaseId && (
-        <div className="question-card" style={{ marginBottom: "2rem" }}>
-          <h2>Create New Question</h2>
-          <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
-              Question Text *
-            </label>
-            <textarea
-              className="text-input"
-              value={formData.questionText}
-              onChange={(e) =>
-                setFormData({ ...formData, questionText: e.target.value })
-              }
-              placeholder="Enter the question..."
-            />
-          </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
-              Answer Text *
-            </label>
-            <textarea
-              className="text-input"
-              value={formData.answerText}
-              onChange={(e) =>
-                setFormData({ ...formData, answerText: e.target.value })
-              }
-              placeholder="Enter the answer..."
-            />
-          </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
-              Tags (comma-separated)
-            </label>
-            <input
-              type="text"
-              className="text-input"
-              style={{ minHeight: "auto", padding: "0.5rem" }}
-              value={tagsInput}
-              onChange={(e) => setTagsInput(e.target.value)}
-              placeholder="tag1, tag2, tag3"
-            />
-          </div>
-          <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
-              Domains (comma-separated) *
-            </label>
-            <input
-              type="text"
-              className="text-input"
-              style={{ minHeight: "auto", padding: "0.5rem" }}
-              value={domainsInput}
-              onChange={(e) => setDomainsInput(e.target.value)}
-              placeholder="domain1, domain2"
-            />
-          </div>
-          <button onClick={handleCreateQuestion}>Create Question</button>
-        </div>
-      )}
-
-      {status === "ready" && displayQuestions.length === 0 && (
+      {status === "ready" && selectedDatabaseId && displayQuestions.length === 0 && (
         <p>No questions found.</p>
       )}
 
-      {status === "ready" &&
-        displayQuestions.map((question) => {
-          const score = computeScore(question);
-          const isEditing = editingQuestion?.questionId === question.questionId;
-          const isViewingStats = viewingStats === question.questionId;
+      {status === "ready" && displayQuestions.length > 0 && (
+        <div style={{ overflowX: "auto" }}>
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              backgroundColor: "#ffffff",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <thead>
+              <tr style={{ backgroundColor: "#f8fafc", borderBottom: "2px solid #e2e8f0" }}>
+                <th style={{ padding: "1rem", textAlign: "left", fontWeight: 600, color: "#0f172a" }}>
+                  Question
+                </th>
+                <th
+                  style={{
+                    padding: "1rem",
+                    textAlign: "center",
+                    fontWeight: 600,
+                    color: "#0f172a",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                  onClick={() => handleSort("timesAsked")}
+                >
+                  Times Asked {getSortIcon("timesAsked")}
+                </th>
+                <th
+                  style={{
+                    padding: "1rem",
+                    textAlign: "center",
+                    fontWeight: 600,
+                    color: "#0f172a",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                  onClick={() => handleSort("avgScore")}
+                >
+                  Avg Score {getSortIcon("avgScore")}
+                </th>
+                <th
+                  style={{
+                    padding: "1rem",
+                    textAlign: "center",
+                    fontWeight: 600,
+                    color: "#0f172a",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                  onClick={() => handleSort("lastScore")}
+                >
+                  Last Score {getSortIcon("lastScore")}
+                </th>
+                <th style={{ padding: "1rem", textAlign: "center", fontWeight: 600, color: "#0f172a" }}>
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayQuestions.map((question, index) => {
+                const timesAsked = question.timesAsked ?? 0;
+                const avgScore = question.averageScore;
+                const lastScore = question.lastScore;
+                const isBad = question.bad === true;
 
-          return (
-            <div key={question.questionId} className="question-card">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                }}
-              >
-                <div style={{ flex: 1 }}>
-                  <div
+                return (
+                  <tr
+                    key={question.questionId}
                     style={{
-                      display: "flex",
-                      gap: "1rem",
-                      alignItems: "center",
-                      marginBottom: "0.5rem",
+                      borderBottom: "1px solid #e2e8f0",
+                      backgroundColor: index % 2 === 0 ? "#ffffff" : "#f8fafc",
                     }}
                   >
-                    <span
-                      style={{
-                        padding: "0.25rem 0.75rem",
-                        borderRadius: "999px",
-                        backgroundColor: getScoreColor(score) + "20",
-                        color: getScoreColor(score),
-                        fontSize: "0.875rem",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {getScoreLabel(score)} ({score === -1 ? "N/A" : score}%)
-                    </span>
-                    {(question.timesAsked ?? 0) > 0 && (
-                      <span style={{ color: "#64748b", fontSize: "0.875rem" }}>
-                        Asked {question.timesAsked} time
-                        {(question.timesAsked ?? 0) !== 1 ? "s" : ""}
-                      </span>
-                    )}
-                  </div>
-                  {isEditing ? (
-                    <div>
-                      <textarea
-                        className="text-input"
-                        defaultValue={question.questionText}
-                        onChange={(e) =>
-                          setEditData({
-                            ...editData,
-                            questionText: e.target.value,
-                          })
-                        }
-                      />
-                      <div style={{ marginTop: "1rem" }}>
-                        <label>Answer:</label>
-                        <textarea
-                          className="text-input"
-                          defaultValue={question.answerText}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              answerText: e.target.value,
-                            })
-                          }
-                        />
+                    <td style={{ padding: "1rem", maxWidth: "400px" }}>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                        {isBad && (
+                          <span
+                            style={{
+                              padding: "0.25rem 0.5rem",
+                              borderRadius: "4px",
+                              backgroundColor: "#ef4444",
+                              color: "#ffffff",
+                              fontSize: "0.75rem",
+                              fontWeight: 600,
+                              flexShrink: 0,
+                            }}
+                          >
+                            BAD
+                          </span>
+                        )}
+                        <span style={{ color: "#1f2933" }}>
+                          {truncateText(question.questionText, 150)}
+                        </span>
                       </div>
-                      <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
+                    </td>
+                    <td style={{ padding: "1rem", textAlign: "center", color: "#64748b" }}>
+                      {timesAsked}
+                    </td>
+                    <td style={{ padding: "1rem", textAlign: "center", color: "#64748b" }}>
+                      {avgScore !== null && avgScore !== undefined
+                        ? `${avgScore.toFixed(1)}%`
+                        : "—"}
+                    </td>
+                    <td style={{ padding: "1rem", textAlign: "center", color: "#64748b" }}>
+                      {lastScore !== null && lastScore !== undefined
+                        ? `${lastScore.toFixed(1)}%`
+                        : "—"}
+                    </td>
+                    <td style={{ padding: "1rem", textAlign: "center" }}>
+                      <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center" }}>
                         <button
-                          onClick={() => handleUpdateQuestion(question.questionId)}
-                        >
-                          Save
-                        </button>
-                        <button
-                          onClick={() => {
-                            setEditingQuestion(null);
-                            setEditData({});
+                          onClick={() => handleEditClick(question)}
+                          style={{
+                            backgroundColor: "#3b82f6",
+                            padding: "0.5rem 1rem",
+                            fontSize: "0.875rem",
                           }}
-                          style={{ backgroundColor: "#64748b" }}
                         >
-                          Cancel
+                          Edit
                         </button>
-                        <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                          <input
-                            type="checkbox"
-                            checked={editData.bad ?? question.bad ?? false}
-                            onChange={(e) =>
-                              setEditData({ ...editData, bad: e.target.checked })
-                            }
-                          />
-                          Mark as bad question
-                        </label>
+                        <button
+                          onClick={() => handleDeleteQuestion(question.questionId)}
+                          style={{
+                            backgroundColor: "#ef4444",
+                            padding: "0.5rem 1rem",
+                            fontSize: "0.875rem",
+                          }}
+                        >
+                          Delete
+                        </button>
                       </div>
-                    </div>
-                  ) : (
-                    <>
-                      <p className="question-text">{question.questionText}</p>
-                      <div className="answer-section">
-                        <h3>Answer</h3>
-                        <p className="answer-text">{question.answerText}</p>
-                      </div>
-                      {(question.tags?.length ?? 0) > 0 && (
-                        <div style={{ marginTop: "1rem" }}>
-                          <strong>Tags:</strong> {question.tags?.join(", ")}
-                        </div>
-                      )}
-                      <div style={{ marginTop: "0.5rem" }}>
-                        <strong>Domains:</strong> {question.domains.join(", ")}
-                      </div>
-                    </>
-                  )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Edit Modal */}
+      {showEditModal && editingQuestion && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            padding: "2rem",
+          }}
+          onClick={() => {
+            setShowEditModal(false);
+            setEditingQuestion(null);
+            setEditData({});
+          }}
+        >
+          <div
+            className="question-card"
+            style={{
+              maxWidth: "800px",
+              width: "100%",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+              <h2>Edit Question</h2>
+              <button
+                onClick={() => {
+                  setShowEditModal(false);
+                  setEditingQuestion(null);
+                  setEditData({});
+                }}
+                style={{ backgroundColor: "#64748b", padding: "0.5rem 1rem" }}
+              >
+                ✕ Close
+              </button>
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Question Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={editData.questionText ?? ""}
+                onChange={(e) =>
+                  setEditData({ ...editData, questionText: e.target.value })
+                }
+                placeholder="Enter the question..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Answer Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={editData.answerText ?? ""}
+                onChange={(e) =>
+                  setEditData({ ...editData, answerText: e.target.value })
+                }
+                placeholder="Enter the answer..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Tags (comma-separated)
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={editTagsInput}
+                onChange={(e) => setEditTagsInput(e.target.value)}
+                placeholder="tag1, tag2, tag3"
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Domains (comma-separated) *
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={editDomainsInput}
+                onChange={(e) => setEditDomainsInput(e.target.value)}
+                placeholder="domain1, domain2"
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem", padding: "1rem", backgroundColor: "#f8fafc", borderRadius: "8px" }}>
+              <h3 style={{ marginBottom: "1rem", fontSize: "1.1rem", fontWeight: 600 }}>Statistics</h3>
+              
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1rem" }}>
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Times Asked
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.timesAsked ?? 0}
+                    onChange={(e) =>
+                      setEditData({ ...editData, timesAsked: parseInt(e.target.value) || 0 })
+                    }
+                    min="0"
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Average Score (%)
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.averageScore ?? ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEditData({
+                        ...editData,
+                        averageScore: val === "" ? null : parseFloat(val),
+                      });
+                    }}
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    placeholder="—"
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Last Score (%)
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.lastScore ?? ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEditData({
+                        ...editData,
+                        lastScore: val === "" ? null : parseFloat(val),
+                      });
+                    }}
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    placeholder="—"
+                  />
                 </div>
               </div>
-
-              {isViewingStats && statsData && (
-                <div
-                  style={{
-                    marginTop: "1rem",
-                    padding: "1rem",
-                    backgroundColor: "#f8fafc",
-                    borderRadius: "8px",
-                    border: "1px solid #e2e8f0",
-                  }}
-                >
-                  <h3>Statistics</h3>
-                  <p>
-                    <strong>Score:</strong> {statsData.score}% (
-                    {getScoreLabel(statsData.score)})
-                  </p>
-                  <p>
-                    <strong>Times Asked:</strong> {statsData.stats.timesAsked}
-                  </p>
-                  <p>
-                    <strong>Average Score:</strong>{" "}
-                    {statsData.stats.averageScore?.toFixed(2) ?? "N/A"}%
-                  </p>
-                  <p>
-                    <strong>Last Score:</strong>{" "}
-                    {statsData.stats.lastScore?.toFixed(2) ?? "N/A"}%
-                  </p>
-                  <button
-                    onClick={() => {
-                      setViewingStats(null);
-                      setStatsData(null);
-                    }}
-                    style={{ marginTop: "0.5rem" }}
-                  >
-                    Close Stats
-                  </button>
-                </div>
-              )}
-
-              {!isEditing && (
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1rem",
-                    marginTop: "1rem",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <button
-                    onClick={() => {
-                      setEditingQuestion(question);
-                      setEditData({});
-                      setShowCreateForm(false);
-                    }}
-                    style={{ backgroundColor: "#3b82f6" }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleViewStats(question.questionId)}
-                    style={{ backgroundColor: "#8b5cf6" }}
-                  >
-                    View Stats
-                  </button>
-                  <button
-                    onClick={() => handleDeleteQuestion(question.questionId)}
-                    style={{ backgroundColor: "#ef4444" }}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
             </div>
-          );
-        })}
+
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <button onClick={handleUpdateQuestion}>Save Changes</button>
+              <button
+                onClick={() => {
+                  setShowEditModal(false);
+                  setEditingQuestion(null);
+                  setEditData({});
+                }}
+                style={{ backgroundColor: "#64748b" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Create Modal */}
+      {showCreateModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            padding: "2rem",
+          }}
+          onClick={() => {
+            setShowCreateModal(false);
+            setCreateData({ questionText: "", answerText: "", tags: [], domains: [] });
+            setCreateTagsInput("");
+            setCreateDomainsInput("");
+          }}
+        >
+          <div
+            className="question-card"
+            style={{
+              maxWidth: "800px",
+              width: "100%",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+              <h2>Create New Question</h2>
+              <button
+                onClick={() => {
+                  setShowCreateModal(false);
+                  setCreateData({ questionText: "", answerText: "", tags: [], domains: [] });
+                  setCreateTagsInput("");
+                  setCreateDomainsInput("");
+                }}
+                style={{ backgroundColor: "#64748b", padding: "0.5rem 1rem" }}
+              >
+                ✕ Close
+              </button>
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Question Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={createData.questionText}
+                onChange={(e) =>
+                  setCreateData({ ...createData, questionText: e.target.value })
+                }
+                placeholder="Enter the question..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Answer Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={createData.answerText}
+                onChange={(e) =>
+                  setCreateData({ ...createData, answerText: e.target.value })
+                }
+                placeholder="Enter the answer..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Tags (comma-separated)
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={createTagsInput}
+                onChange={(e) => setCreateTagsInput(e.target.value)}
+                placeholder="tag1, tag2, tag3"
+              />
+            </div>
+
+            <div style={{ marginBottom: "1.5rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Domains (comma-separated) *
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={createDomainsInput}
+                onChange={(e) => setCreateDomainsInput(e.target.value)}
+                placeholder="domain1, domain2"
+              />
+            </div>
+
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <button onClick={handleCreateQuestion}>Create Question</button>
+              <button
+                onClick={() => {
+                  setShowCreateModal(false);
+                  setCreateData({ questionText: "", answerText: "", tags: [], domains: [] });
+                  setCreateTagsInput("");
+                  setCreateDomainsInput("");
+                }}
+                style={{ backgroundColor: "#64748b" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default QuestionManagerPage;
-
-
