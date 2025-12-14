@@ -1,0 +1,2645 @@
+{
+  "databaseName": "Section 2 - Data Ingestion and Storage Vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": "ffff6628-98f8-43ae-b898-b0f2553b3905",
+      "questionText": "What is \"Data Velocity\"?",
+      "answerText": "Data Velocity is one of the three V's of data properties. It refers to how fast data is generated and processed: Batch Process, Real-time, or Near Real-time. Examples include IoT data, sensor data, and high frequency trades.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "70ea52bb-9401-442d-a855-f6655d7e4beb",
+      "questionText": "Fill in the blank: __________ is one of the three V's of data properties. It refers to how fast data is generated and processed: Batch Process, Real-time, or Near Real-time. Examples include IoT data, sensor data, and high frequency trades.",
+      "answerText": "Data Velocity",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0952fa55-896c-46a1-8514-381e4463e41b",
+      "questionText": "What is \"Data Volume\"?",
+      "answerText": "Data Volume is one of the three V's of data properties. It refers to the size or amount of data: GB, TB, PB. It concerns how we store it, how we access it, and what preprocessing concerns exist.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9c5fa124-a18e-4104-b068-ab1b3530b677",
+      "questionText": "Fill in the blank: __________ is one of the three V's of data properties. It refers to the size or amount of data: GB, TB, PB. It concerns how we store it, how we access it, and what preprocessing concerns exist.",
+      "answerText": "Data Volume",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9670801b-767a-4e83-8638-27d75b2a2a4b",
+      "questionText": "What is \"Data Variety\"?",
+      "answerText": "Data Variety is one of the three V's of data properties. It refers to the types of data: Structured/Unstructured. Sources include API, Stream, Human input, and electronic devices (mobile devices).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "6915e8dd-0034-466c-8c00-46951f8a1b9e",
+      "questionText": "Fill in the blank: __________ is one of the three V's of data properties. It refers to the types of data: Structured/Unstructured. Sources include API, Stream, Human input, and electronic devices (mobile devices).",
+      "answerText": "Data Variety",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "77bd30f9-e54e-4c17-8db6-e366102b8240",
+      "questionText": "What is \"ETL (Extract, Transform, Load)\"?",
+      "answerText": "ETL is a data integration process that involves three steps: Extract (fetch data from sources like API, disk, etc.), Transform (convert from source to target format, clean, enrich, aggregate, calculations, encoding/decoding, handle missing data), and Load (move to target destination). Velocity affects load strategy (batch, realtime, streaming). Used with Data Warehouses which use Schema-on-Write.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9584bef6-f731-4230-b6a6-2a7417e9825d",
+      "questionText": "Fill in the blank: __________ is a data integration process that involves three steps: Extract (fetch data from sources like API, disk, etc.), Transform (convert from source to target format, clean, enrich, aggregate, calculations, encoding/decoding, handle missing data), and Load (move to target destination). Velocity affects load strategy (batch, realtime, streaming). Used with Data Warehouses which use Schema-on-Write.",
+      "answerText": "ETL (Extract, Transform, Load)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e860ef72-98b0-48cb-8851-b8793e019ae2",
+      "questionText": "What is \"ELT (Extract, Load, Transform)\"?",
+      "answerText": "ELT is a data integration process where data is first extracted and loaded into the target system, then transformed. This is used with Data Lakes which use Schema-on-Read, where structure is applied AFTER the data is stored.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4a2c077f-c29b-4169-9406-27f179cd7d25",
+      "questionText": "Fill in the blank: __________ is a data integration process where data is first extracted and loaded into the target system, then transformed. This is used with Data Lakes which use Schema-on-Read, where structure is applied AFTER the data is stored.",
+      "answerText": "ELT (Extract, Load, Transform)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "76a06e86-eb27-44f2-b4f7-4ce61c1c1f5b",
+      "questionText": "What is \"Data Warehouse\"?",
+      "answerText": "A data warehouse is a legacy system designed for complete queries using \"Star\" or \"Snowflake\" structured schemas. It uses Schema-on-Write (ETL), is optimized to read headers, and is designed for structured data. Examples include Redshift, Google Big Data Query, and Azure SQL Data warehouse. Generally more expensive and less agile than Data Lakes.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "53f31e84-ac45-4699-a478-c1939985c7a9",
+      "questionText": "Fill in the blank: __________ is a legacy system designed for complete queries using \"Star\" or \"Snowflake\" structured schemas. It uses Schema-on-Write (ETL), is optimized to read headers, and is designed for structured data. Examples include Redshift, Google Big Data Query, and Azure SQL Data warehouse. Generally more expensive and less agile than Data Lakes.",
+      "answerText": "Data Warehouse",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a9d151c6-3d32-4e09-97b4-e4d1b195e54b",
+      "questionText": "What is \"Data Lake\"?",
+      "answerText": "A data lake holds vast amounts of raw data with no preprocessing. It supports batch, real-time, and streaming data. Uses Schema-on-Read (ELT) where structure is applied after the fact using services like Athena and Glue. Can store structured, unstructured, and semi-structured data. Examples include S3, Azure data lake store, and Hadoop. Generally less expensive and more agile than Data Warehouses.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8a68e5d7-bb08-4b9e-bf25-0ad302247dce",
+      "questionText": "Fill in the blank: __________ holds vast amounts of raw data with no preprocessing. It supports batch, real-time, and streaming data. Uses Schema-on-Read (ELT) where structure is applied after the fact using services like Athena and Glue. Can store structured, unstructured, and semi-structured data. Examples include S3, Azure data lake store, and Hadoop. Generally less expensive and more agile than Data Warehouses.",
+      "answerText": "Data Lake",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "264074c5-f93a-465b-b78b-774cd3aab3ed",
+      "questionText": "What is \"Data Lakehouse\"?",
+      "answerText": "A data lakehouse combines the best features of both Data Warehouses and Data Lakes. It can support ACID transactions and provides the structure of a warehouse with the flexibility of a lake.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "db9125bb-005d-429e-9327-691d938832ca",
+      "questionText": "Fill in the blank: __________ combines the best features of both Data Warehouses and Data Lakes. It can support ACID transactions and provides the structure of a warehouse with the flexibility of a lake.",
+      "answerText": "Data Lakehouse",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b2446f42-3c55-4864-8c56-9c85b81ffdf7",
+      "questionText": "What is \"Data Mesh\"?",
+      "answerText": "Data Mesh is a concept (not a topology) where individual tenants own their own data within a domain. The tenant manages data collection, transformation, and augmentation. Data is managed/governed by domain with centralized standards, using federated governance with centralized standards. Self-service tooling and infrastructure (like Glue) are used. This is a paradigm for managing data, securing it, and allowing federated access.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "eb69ed66-fca5-4aee-bdae-a6e83704b9bf",
+      "questionText": "Fill in the blank: __________ is a concept (not a topology) where individual tenants own their own data within a domain. The tenant manages data collection, transformation, and augmentation. Data is managed/governed by domain with centralized standards, using federated governance with centralized standards. Self-service tooling and infrastructure (like Glue) are used. This is a paradigm for managing data, securing it, and allowing federated access.",
+      "answerText": "Data Mesh",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7ac92acc-2270-4ac5-ac45-be912b1efe62",
+      "questionText": "What is \"Schema-on-Write\"?",
+      "answerText": "Schema-on-Write is the approach used by Data Warehouses where data is transformed to meet schema requirements before being written (ETL process).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "390d45af-f869-46e9-ba89-ae27c9011b00",
+      "questionText": "Fill in the blank: __________ is the approach used by Data Warehouses where data is transformed to meet schema requirements before being written (ETL process).",
+      "answerText": "Schema-on-Write",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "42f54f7f-c90a-42db-ba6c-928b0071ad48",
+      "questionText": "What is \"Schema-on-Read\"?",
+      "answerText": "Schema-on-Read is the approach used by Data Lakes where data is stored as-is (raw), and structure is applied when the data is read (ELT process).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "86436425-cdf1-4804-a932-151d7cb6f0d7",
+      "questionText": "Fill in the blank: __________ is the approach used by Data Lakes where data is stored as-is (raw), and structure is applied when the data is read (ELT process).",
+      "answerText": "Schema-on-Read",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "98a6b943-2433-40fc-a4d9-a0418165c628",
+      "questionText": "What is \"ACID\"?",
+      "answerText": "ACID stands for Atomicity, Consistency, Isolation, Durability. It refers to database transaction properties. Data Lakehouse can support ACID transactions, combining warehouse structure with lake flexibility.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b3c58b0f-8014-46b7-8ed8-126ee40623e2",
+      "questionText": "Fill in the blank: __________ stands for Atomicity, Consistency, Isolation, Durability. It refers to database transaction properties. Data Lakehouse can support ACID transactions, combining warehouse structure with lake flexibility.",
+      "answerText": "ACID",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b53eed05-1600-4806-a99b-ea43f838872d",
+      "questionText": "What is \"JDBC (Java Database Connectivity)\"?",
+      "answerText": "JDBC is a Java-based API for database connectivity. It is platform independent but language dependent (Java).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "72663313-8f57-4ff4-bd0e-3f2a172a478b",
+      "questionText": "Fill in the blank: __________ is a Java-based API for database connectivity. It is platform independent but language dependent (Java).",
+      "answerText": "JDBC (Java Database Connectivity)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "784880e9-72be-43bd-97aa-253301b486f9",
+      "questionText": "What is \"ODBC (Open Database Connectivity)\"?",
+      "answerText": "ODBC is an API for database connectivity. It is platform dependent (drivers written in/for many languages) but language independent.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "521bc796-974f-45a6-8f45-269a4e4ce9c4",
+      "questionText": "Fill in the blank: __________ is an API for database connectivity. It is platform dependent (drivers written in/for many languages) but language independent.",
+      "answerText": "ODBC (Open Database Connectivity)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1aed4b61-e588-4307-a95a-ea5a2ccf1d75",
+      "questionText": "What is \"AVRO\"?",
+      "answerText": "AVRO is a binary data format that stores data with schema. Both data and schema are flexible. When to use: big data, real-time data, schema evolution, efficient serialization. Used with systems like Kafka, Spark, Flink, and Hadoop.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "eb39c8f0-c981-488e-a5aa-2c120975febc",
+      "questionText": "Fill in the blank: __________ is a binary data format that stores data with schema. Both data and schema are flexible. When to use: big data, real-time data, schema evolution, efficient serialization. Used with systems like Kafka, Spark, Flink, and Hadoop.",
+      "answerText": "AVRO",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1b5a365d-bbba-45d8-8d08-b0ac3d1c3cf9",
+      "questionText": "What is \"Parquet\"?",
+      "answerText": "Parquet is a column storage format optimized for analysis with efficient compression/decompression. When to use: analyzing large datasets, reading columns instead of records, storing on distributed systems where IO is optimized. Used with systems like Hadoop, Spark, Hive, Impala, and Redshift Spectrum.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "85011d5a-a5a2-4704-bfb1-fd0cfafcc22d",
+      "questionText": "Fill in the blank: __________ is a column storage format optimized for analysis with efficient compression/decompression. When to use: analyzing large datasets, reading columns instead of records, storing on distributed systems where IO is optimized. Used with systems like Hadoop, Spark, Hive, Impala, and Redshift Spectrum.",
+      "answerText": "Parquet",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1a1edc2e-c199-45ea-9e04-ecbb2a3d8640",
+      "questionText": "What is \"ORC (Optimized Row Columnar)\"?",
+      "answerText": "ORC is a columnar storage format similar to Parquet, optimized for reading and writing data. Used with systems like Hive and Hadoop for efficient analytics workloads.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c9a4e146-4ad8-4791-9e95-f2e6a20cfca8",
+      "questionText": "Fill in the blank: __________ is a columnar storage format similar to Parquet, optimized for reading and writing data. Used with systems like Hive and Hadoop for efficient analytics workloads.",
+      "answerText": "ORC (Optimized Row Columnar)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "fa1bdf57-9fc6-4d45-938b-d5eaa65e685b",
+      "questionText": "What is \"S3 (Simple Storage Service)\"?",
+      "answerText": "Amazon S3 is an object storage service used for backup, recovery, storage, static websites, archives, hybrid storage, app hosting, media hosting, and big data analytics. Uses buckets (main containers) and items/objects (files). Buckets must be globally unique and are defined regionally.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8af76407-b3bc-4406-b2b3-93afa87361d2",
+      "questionText": "Fill in the blank: __________ is an object storage service used for backup, recovery, storage, static websites, archives, hybrid storage, app hosting, media hosting, and big data analytics. Uses buckets (main containers) and items/objects (files). Buckets must be globally unique and are defined regionally.",
+      "answerText": "S3 (Simple Storage Service)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "74215cf2-ac9c-44b7-b95a-c9e45d72f4d4",
+      "questionText": "What is \"S3 Bucket\"?",
+      "answerText": "S3 Bucket is the main container in S3. Buckets must be globally unique across all AWS accounts and regions. Buckets are defined regionally but appear as a global service. There are two types: \"general purpose\" and \"directory\" (directory type is out of scope for exam).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "acda793b-d2bb-461e-b2f4-3ec93f5bd4ab",
+      "questionText": "Fill in the blank: __________ is the main container in S3. Buckets must be globally unique across all AWS accounts and regions. Buckets are defined regionally but appear as a global service. There are two types: \"general purpose\" and \"directory\" (directory type is out of scope for exam).",
+      "answerText": "S3 Bucket",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "51aaf9e3-d09a-4abe-8350-bcbf16eb593f",
+      "questionText": "What is \"S3 Object Key\"?",
+      "answerText": "S3 Object Key is the full path to an object, for example s3://bucket-name/the/path/to/item.ext. The Object Key is prefix + object name.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3f7017ab-5d0a-4422-aae4-eab1379a107c",
+      "questionText": "Fill in the blank: __________ is the full path to an object, for example s3://bucket-name/the/path/to/item.ext. The Object Key is prefix + object name.",
+      "answerText": "S3 Object Key",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "37ef550f-ab94-47b6-b8c7-06910da025ee",
+      "questionText": "What is \"S3 Object Value\"?",
+      "answerText": "S3 Object Value is the contents of the file stored in S3. It is the actual data stored in the object.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f6fa36fe-27ae-4922-b47f-32268b99d882",
+      "questionText": "Fill in the blank: __________ is the contents of the file stored in S3. It is the actual data stored in the object.",
+      "answerText": "S3 Object Value",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e5e795c8-c2d3-471a-8ad6-5ee46c85ff8c",
+      "questionText": "What is \"S3 Prefix\"?",
+      "answerText": "S3 Prefix is the path portion of an S3 object key. For example, in s3://bucket-name/the/path/to/item.ext, the prefix is \"/the/path/to/\". S3 performance is measured by prefix, not bucket. There are no actual directories in S3, but the UI creates the appearance of folders.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "67e7cc5d-ad76-49fd-a422-379799981262",
+      "questionText": "Fill in the blank: __________ is the path portion of an S3 object key. For example, in s3://bucket-name/the/path/to/item.ext, the prefix is \"/the/path/to/\". S3 performance is measured by prefix, not bucket. There are no actual directories in S3, but the UI creates the appearance of folders.",
+      "answerText": "S3 Prefix",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "02811464-8146-42c7-83fa-f371b88860c8",
+      "questionText": "What is \"S3 Metadata\"?",
+      "answerText": "S3 Metadata consists of key=value pairs that can be set by system or user. Metadata provides additional information about the object.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "49ae1b96-fb07-444d-bb56-8db39c231a86",
+      "questionText": "Fill in the blank: __________ consists of key=value pairs that can be set by system or user. Metadata provides additional information about the object.",
+      "answerText": "S3 Metadata",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c7c5c763-3093-4c1f-8d9d-a7ffb92abbb4",
+      "questionText": "What is \"S3 Tags\"?",
+      "answerText": "S3 Tags are key-value pairs that can be applied to objects. Up to 10 tags are supported universally. Tags can be used for lifecycle rules and access control.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8903f993-c390-417b-bcfa-693993139743",
+      "questionText": "Fill in the blank: __________ are key-value pairs that can be applied to objects. Up to 10 tags are supported universally. Tags can be used for lifecycle rules and access control.",
+      "answerText": "S3 Tags",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "eae4b4db-c33d-478a-a6ea-28cbd87a4230",
+      "questionText": "What is \"S3 versionId\"?",
+      "answerText": "S3 versionId is an identifier for object versions when versioning is enabled. When versionId is null, it indicates the bucket has versioning enabled but the item was likely created before versioning was enabled.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "855c4fc6-9024-4b86-9372-c6999c839358",
+      "questionText": "Fill in the blank: __________ is an identifier for object versions when versioning is enabled. When versionId is null, it indicates the bucket has versioning enabled but the item was likely created before versioning was enabled.",
+      "answerText": "S3 versionId",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0010aa1c-080e-4744-a2f0-9a304c9f7885",
+      "questionText": "What is \"CRR (Cross Region Replication)\"?",
+      "answerText": "CRR is S3 Cross Region Replication, used for compliance, lower latency, cross-account replication. Replication is async, requires versioning, can be cross-account, and only works for new items.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "30c17d77-8a8f-4392-adf2-e5778d6f666f",
+      "questionText": "Fill in the blank: __________ is S3 Cross Region Replication, used for compliance, lower latency, cross-account replication. Replication is async, requires versioning, can be cross-account, and only works for new items.",
+      "answerText": "CRR (Cross Region Replication)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "38063e72-5cf3-4cf1-b8b2-316c15521483",
+      "questionText": "What is \"SRR (Same Region Replication)\"?",
+      "answerText": "SRR is S3 Same Region Replication, used for log aggregation and prod/dev replication. Replication is async, requires versioning, can be cross-account, and only works for new items.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ce726166-cac0-4297-aec6-dc4a49a19847",
+      "questionText": "Fill in the blank: __________ is S3 Same Region Replication, used for log aggregation and prod/dev replication. Replication is async, requires versioning, can be cross-account, and only works for new items.",
+      "answerText": "SRR (Same Region Replication)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5d781da4-1bdc-4deb-afc4-97d4f25929c6",
+      "questionText": "What is \"S3-GP (S3 Standard - General Purpose)\"?",
+      "answerText": "S3-GP is S3 Standard General Purpose storage class. It has 99.99% availability (4-9's, 53 minutes downtime per year), used for frequent access, low latency, tolerant of 2 concurrent facility failures at AWS. Use cases: big data analysis, reliable gaming, low latency, content distribution.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "65459bac-58a7-4c55-b261-b1c57adc1f34",
+      "questionText": "Fill in the blank: __________ is S3 Standard General Purpose storage class. It has 99.99% availability (4-9's, 53 minutes downtime per year), used for frequent access, low latency, tolerant of 2 concurrent facility failures at AWS. Use cases: big data analysis, reliable gaming, low latency, content distribution.",
+      "answerText": "S3-GP (S3 Standard - General Purpose)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8228f538-f887-4f06-ad84-ba2e5630b1ba",
+      "questionText": "What is \"S3-IA (S3 Infrequent Access)\"?",
+      "answerText": "S3-IA is S3 Standard Infrequent Access storage class. It has 99.9% availability, for less frequent access (supports rapid access), low cost, cost on retrieve, best for backup/restore.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "648362da-0816-44b3-8f05-eeaebc3e426a",
+      "questionText": "Fill in the blank: __________ is S3 Standard Infrequent Access storage class. It has 99.9% availability, for less frequent access (supports rapid access), low cost, cost on retrieve, best for backup/restore.",
+      "answerText": "S3-IA (S3 Infrequent Access)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f36b6b4a-0f9a-4bd5-b147-1ed721352b16",
+      "questionText": "What is \"S3-1ZIA (S3 OneZone Infrequent Access)\"?",
+      "answerText": "S3-1ZIA is S3 OneZone Infrequent Access storage class. It has 99.5% availability, high durability in a single AZ (if AZ fails all data is lost), best for secondary backup or content that can be easily recreated.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "70309721-15cf-4ecd-92a5-d5ebd855c287",
+      "questionText": "Fill in the blank: __________ is S3 OneZone Infrequent Access storage class. It has 99.5% availability, high durability in a single AZ (if AZ fails all data is lost), best for secondary backup or content that can be easily recreated.",
+      "answerText": "S3-1ZIA (S3 OneZone Infrequent Access)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d0c70b07-8692-4d79-9d45-fbc3f6036748",
+      "questionText": "What is \"S3-GIR (S3 Glacier Instant Retrieval)\"?",
+      "answerText": "S3-GIR is S3 Glacier Instant Retrieval storage class. It provides instant retrieval (milliseconds), minimal storage time 90 days, low cost best for Archive and Backup, pricing: storage + retrieval.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "03376888-0a4a-4722-9268-6e91e18e0a7f",
+      "questionText": "Fill in the blank: __________ is S3 Glacier Instant Retrieval storage class. It provides instant retrieval (milliseconds), minimal storage time 90 days, low cost best for Archive and Backup, pricing: storage + retrieval.",
+      "answerText": "S3-GIR (S3 Glacier Instant Retrieval)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "97961739-c17e-4b85-98da-9bc176ff91e6",
+      "questionText": "What is \"S3-GFR (S3 Glacier Flexible Retrieval)\"?",
+      "answerText": "S3-GFR is S3 Glacier Flexible Retrieval storage class. It offers Expedited Retrieval (1-5 minutes), Standard retrieval (3-5 hours), Bulk retrieval (5-12 hours), min storage 90 days.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a96261a4-2c6b-4d41-8ab1-d124012f4e25",
+      "questionText": "Fill in the blank: __________ is S3 Glacier Flexible Retrieval storage class. It offers Expedited Retrieval (1-5 minutes), Standard retrieval (3-5 hours), Bulk retrieval (5-12 hours), min storage 90 days.",
+      "answerText": "S3-GFR (S3 Glacier Flexible Retrieval)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0206ca16-7c4b-4f54-bff8-feeaeff90fb0",
+      "questionText": "What is \"S3-G-Arch (S3 Glacier Deep Archive)\"?",
+      "answerText": "S3-G-Arch is S3 Glacier Deep Archive storage class. It offers standard retrieval (12 hours), bulk retrieval (48 hours), min storage 180 days, lowest cost for long-term archival.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e13f1eff-75ab-4252-bff3-6431fe2cd872",
+      "questionText": "Fill in the blank: __________ is S3 Glacier Deep Archive storage class. It offers standard retrieval (12 hours), bulk retrieval (48 hours), min storage 180 days, lowest cost for long-term archival.",
+      "answerText": "S3-G-Arch (S3 Glacier Deep Archive)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "137a0da0-10cc-4cd7-b70a-1ac9b286849c",
+      "questionText": "What is \"S3 Intelligent Tiering\"?",
+      "answerText": "S3 Intelligent Tiering allows automatic movement between tiers with a small moving fee and no retrieval fee. Default is frequent access. Moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, and deep archive after 180-700+ days.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ef0efc52-eace-4d6f-8379-600c43e3316f",
+      "questionText": "Fill in the blank: __________ allows automatic movement between tiers with a small moving fee and no retrieval fee. Default is frequent access. Moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, and deep archive after 180-700+ days.",
+      "answerText": "S3 Intelligent Tiering",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "979d8b57-a56e-43e7-b902-5e285df06e50",
+      "questionText": "What is \"S3 Transition Action\"?",
+      "answerText": "S3 Transition Action is a type of Life Cycle Rule action that moves objects from tier to tier (e.g., after 60 days, after 6 months to Glacier).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "256109eb-c196-43a3-8252-cc07fdd08301",
+      "questionText": "Fill in the blank: __________ is a type of Life Cycle Rule action that moves objects from tier to tier (e.g., after 60 days, after 6 months to Glacier).",
+      "answerText": "S3 Transition Action",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9498b8ee-db53-4c56-ba3b-849ddf622817",
+      "questionText": "What is \"S3 Expiration Action\"?",
+      "answerText": "S3 Expiration Action is a type of Life Cycle Rule action that deletes objects (e.g., delete logs after 365 days, delete old versions, clean up incomplete multi-part uploads after 2 weeks). Life Cycle Rules can be created for prefix or tags.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f50e8ee6-d7e9-4ed1-aabf-6ecd5d383c9d",
+      "questionText": "Fill in the blank: __________ is a type of Life Cycle Rule action that deletes objects (e.g., delete logs after 365 days, delete old versions, clean up incomplete multi-part uploads after 2 weeks). Life Cycle Rules can be created for prefix or tags.",
+      "answerText": "S3 Expiration Action",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9ecacdcc-3cd7-46bf-8b45-4085bb40bfa3",
+      "questionText": "What is \"SSE-S3 (Server-Side Encryption with S3 managed keys)\"?",
+      "answerText": "SSE-S3 is Standard AWS Management encryption. Data is encrypted but no key is specified, managed wholly by AWS. Requires header x-amz-server-side-encryption: \"AES256\". SSE-S3 is default encryption and can be forced with bucket policy.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "6f4d5d87-34e9-494b-9659-2e02678cf912",
+      "questionText": "Fill in the blank: __________ is Standard AWS Management encryption. Data is encrypted but no key is specified, managed wholly by AWS. Requires header x-amz-server-side-encryption: \"AES256\". SSE-S3 is default encryption and can be forced with bucket policy.",
+      "answerText": "SSE-S3 (Server-Side Encryption with S3 managed keys)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5ffb6eed-fe09-40aa-9065-5493019556fe",
+      "questionText": "What is \"SSE-KMS (Server-Side Encryption with AWS KMS managed keys)\"?",
+      "answerText": "SSE-KMS uses AWS Key Management Service. Client code specifies which key to use. Usage can be logged in CloudTrail (good for audit/compliance). Requires header: x-amz-server-side-encryption: \"aws:kms\". May require further API calls which can introduce latency.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "37d34813-d567-4864-a891-97d559357ff3",
+      "questionText": "Fill in the blank: __________ uses AWS Key Management Service. Client code specifies which key to use. Usage can be logged in CloudTrail (good for audit/compliance). Requires header: x-amz-server-side-encryption: \"aws:kms\". May require further API calls which can introduce latency.",
+      "answerText": "SSE-KMS (Server-Side Encryption with AWS KMS managed keys)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a2c6530e-df4d-4d0c-9088-cce121e6f8b8",
+      "questionText": "What is \"SSE-C (Server-Side Encryption with Customer-provided keys)\"?",
+      "answerText": "SSE-C uses Customer Provided Key. Client manages key, key is sent in header with every request, AWS does not store this key, HTTPS only. Client must provide same key for get/fetch operations.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f650a698-c873-41f6-a6cf-72dd63153c47",
+      "questionText": "Fill in the blank: __________ uses Customer Provided Key. Client manages key, key is sent in header with every request, AWS does not store this key, HTTPS only. Client must provide same key for get/fetch operations.",
+      "answerText": "SSE-C (Server-Side Encryption with Customer-provided keys)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5e686e50-1fbf-4553-8325-fc3ef99fa795",
+      "questionText": "What is \"S3 Access Point (AP)\"?",
+      "answerText": "S3 Access Points serve as aliases for bucket prefixes. Each Access Point has its own DNS name (unique internet name), its own policy, and manages security at scale. AP Policy looks the same as S3 policy. Access Points can serve as a level of different security - S3 bucket can be less restrictive while S3 Access Point can be more restrictive, allowing different security settings for different users/groups.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0121290c-02f5-40e3-b1c4-34d420248daf",
+      "questionText": "Fill in the blank: __________ S3 Access Points serve as aliases for bucket prefixes. Each Access Point has its own DNS name (unique internet name), its own policy, and manages security at scale. AP Policy looks the same as S3 policy. Access Points can serve as a level of different security - S3 bucket can be less restrictive while S3 Access Point can be more restrictive, allowing different security settings for different users/groups.",
+      "answerText": "S3 Access Point (AP)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f6528ea7-e019-416b-b64f-24e8b7f0160d",
+      "questionText": "What is \"S3 Object Lambda\"?",
+      "answerText": "S3 Object Lambda sits between Bucket and Access Point and acts as a transformation layer. You can have several Access Points calling different Lambda functions to transform data differently. Origin data remains unchanged but provides different \"views\" of the data.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "45aae58d-bc15-49ef-84ef-cb9f88fa66f6",
+      "questionText": "Fill in the blank: __________ sits between Bucket and Access Point and acts as a transformation layer. You can have several Access Points calling different Lambda functions to transform data differently. Origin data remains unchanged but provides different \"views\" of the data.",
+      "answerText": "S3 Object Lambda",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0e39a402-1e72-4104-b5b7-e0d24259d700",
+      "questionText": "What is \"ACL (Access Control List)\"?",
+      "answerText": "ACL is Access Control List. In S3, Object ACL and Bucket ACL can be disabled. ACLs provide fine-grained access control at the object or bucket level.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a42ea334-aa1d-416d-aa1c-2272aa3eabf1",
+      "questionText": "Fill in the blank: __________ is Access Control List. In S3, Object ACL and Bucket ACL can be disabled. ACLs provide fine-grained access control at the object or bucket level.",
+      "answerText": "ACL (Access Control List)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1a6d707c-7b36-43aa-946b-f2b2084e4107",
+      "questionText": "What is \"IAM (Identity and Access Management)\"?",
+      "answerText": "IAM is AWS Identity and Access Management. In S3, IAM principal can access IFF: (IAM permission allow) OR (Resource permission allow) AND there are no deny. Principle can be user or service (not owner).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0863ff6c-bf5f-4206-b79f-6af14d57f319",
+      "questionText": "Fill in the blank: __________ is AWS Identity and Access Management. In S3, IAM principal can access IFF: (IAM permission allow) OR (Resource permission allow) AND there are no deny. Principle can be user or service (not owner).",
+      "answerText": "IAM (Identity and Access Management)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "204f81ec-eff5-4103-b180-1df3b1844f6e",
+      "questionText": "What is \"Block Public Access\"?",
+      "answerText": "Block Public Access is an S3 feature that prevents data leaks. When \"on\" it will never be public. This serves as a master override for public access settings.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ee5ac1c0-b935-43bd-bc3a-6d131121df7d",
+      "questionText": "Fill in the blank: __________ is an S3 feature that prevents data leaks. When \"on\" it will never be public. This serves as a master override for public access settings.",
+      "answerText": "Block Public Access",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "edf18890-9def-4c8a-808c-af25f8626d0b",
+      "questionText": "What is \"EBS (Elastic Block Store)\"?",
+      "answerText": "EBS is Elastic Block Store, a network-attached storage volume for EC2 instances. Data persists after instances are terminated. Can be configured to delete on termination. Root drive (drv0) auto-deletes by default, but this can be overwritten. Bound to one AZ, can make snapshot and transport to other AZ.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "40ce0812-d4d9-45da-ae53-bc6819bcfbb6",
+      "questionText": "Fill in the blank: __________ is Elastic Block Store, a network-attached storage volume for EC2 instances. Data persists after instances are terminated. Can be configured to delete on termination. Root drive (drv0) auto-deletes by default, but this can be overwritten. Bound to one AZ, can make snapshot and transport to other AZ.",
+      "answerText": "EBS (Elastic Block Store)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b9201226-0a47-4c50-8b3c-25c9d916dbfb",
+      "questionText": "What is \"Elastic Volume\"?",
+      "answerText": "Elastic Volume can change attributes on the fly: IOPS and volume type. It cannot decrease size. This is a feature of EBS volumes.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9356cc73-a2df-49ca-8ab8-2a643307c71c",
+      "questionText": "Fill in the blank: __________ can change attributes on the fly: IOPS and volume type. It cannot decrease size. This is a feature of EBS volumes.",
+      "answerText": "Elastic Volume",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5ceb6627-d20f-4806-a774-2572d46f2561",
+      "questionText": "What is \"EFS (Elastic File System)\"?",
+      "answerText": "EFS is Elastic File System, a managed network file system that can be mounted to multiple EC2 instances simultaneously across multiple AZs. It scales automatically, supports NFSv4.1 Protocol, is not Windows compatible (requires Linux AMI), uses Security Groups to control access, KMS for encryption at rest, POSIX file system. Costs approximately 3x GP2, pay per use/access (not allocated).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9f3bf5a5-a649-441e-856e-b27aff70b9ae",
+      "questionText": "Fill in the blank: __________ is Elastic File System, a managed network file system that can be mounted to multiple EC2 instances simultaneously across multiple AZs. It scales automatically, supports NFSv4.1 Protocol, is not Windows compatible (requires Linux AMI), uses Security Groups to control access, KMS for encryption at rest, POSIX file system. Costs approximately 3x GP2, pay per use/access (not allocated).",
+      "answerText": "EFS (Elastic File System)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c0f87bb6-b709-47e9-8c22-e06574b9a47e",
+      "questionText": "What is \"EFS-Standard\"?",
+      "answerText": "EFS-Standard is the EFS storage class for frequent use. It supports multi-AZ and is the default tier for EFS.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "53b64b1b-32e0-4f8f-89d1-e4985e5946b1",
+      "questionText": "Fill in the blank: __________ is the EFS storage class for frequent use. It supports multi-AZ and is the default tier for EFS.",
+      "answerText": "EFS-Standard",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "65e3497e-81f0-4d2d-99c9-bd2eb1caa91a",
+      "questionText": "What is \"EFS-Infrequent Access\"?",
+      "answerText": "EFS-Infrequent Access is an EFS storage class with cost to retrieve, lower price to start. Implement lifecycle policy to move files between tiers.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "877d826e-bca4-4b7d-b15b-1935c8edd670",
+      "questionText": "Fill in the blank: __________ is an EFS storage class with cost to retrieve, lower price to start. Implement lifecycle policy to move files between tiers.",
+      "answerText": "EFS-Infrequent Access",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "901e0917-1b7c-4a73-bba9-2d9957a72088",
+      "questionText": "What is \"EFS-Archive\"?",
+      "answerText": "EFS-Archive is an EFS storage class for rarely accessed files (few times a year), 50% cheaper than standard. Implement lifecycle policy to move files between tiers.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4a6e1c88-e18d-44e3-9152-fa83b70318ea",
+      "questionText": "Fill in the blank: __________ is an EFS storage class for rarely accessed files (few times a year), 50% cheaper than standard. Implement lifecycle policy to move files between tiers.",
+      "answerText": "EFS-Archive",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ee0b5683-6f61-455c-a06f-a352330d4f60",
+      "questionText": "What is \"NFS (Network File System)\"?",
+      "answerText": "NFS is Network File System protocol. EFS uses NFSv4.1 Protocol. It allows multiple clients to access shared files over a network.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2caae594-9876-4b42-a402-690a2ef7b060",
+      "questionText": "Fill in the blank: __________ is Network File System protocol. EFS uses NFSv4.1 Protocol. It allows multiple clients to access shared files over a network.",
+      "answerText": "NFS (Network File System)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e5c9c813-f70f-4a89-99e3-bd3ffefefcc6",
+      "questionText": "What is \"POSIX (Portable Operating System Interface)\"?",
+      "answerText": "POSIX is a family of standards for operating system compatibility. EFS is a POSIX file system, meaning it uses standard APIs like ls, rm, etc. It provides Unix-like file system semantics.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "93d56cb6-eb6f-487d-93f8-bf37d3506224",
+      "questionText": "Fill in the blank: __________ is a family of standards for operating system compatibility. EFS is a POSIX file system, meaning it uses standard APIs like ls, rm, etc. It provides Unix-like file system semantics.",
+      "answerText": "POSIX (Portable Operating System Interface)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e1e35354-9d6b-4940-87b4-8aa152ce7c75",
+      "questionText": "What is \"FSx\"?",
+      "answerText": "FSx is AWS's fully managed third-party file system service. It supports four types: Windows (fully managed Windows Share), Lustre (Linux + Cluster), NetApp OnTap (managed ONTAP on AWS), and OpenZFS (scales up to 1Million IOPS, 0.5ms latency).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f7ffcb2c-04f1-4e82-be64-34995a771d53",
+      "questionText": "Fill in the blank: __________ is AWS's fully managed third-party file system service. It supports four types: Windows (fully managed Windows Share), Lustre (Linux + Cluster), NetApp OnTap (managed ONTAP on AWS), and OpenZFS (scales up to 1Million IOPS, 0.5ms latency).",
+      "answerText": "FSx",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bd14b705-b0f8-4ebb-a542-6eb7df9f5803",
+      "questionText": "What is \"FSx for Windows\"?",
+      "answerText": "FSx for Windows is a fully managed Windows Share. Supports NTFS and SMB, can move with EC2 (different EC2 can connect), ACLs, user quotas, supports Microsoft's Distributed File System (DFS). Scales up to 10's GB/s, millions of IOPS, 1000's of petabytes. Storage options: SSD/HDD. Supports multiple AZ. Uses S3 for backups. Can connect via DirectConnect or VPN.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b86444d7-17b2-479d-9e25-0959fab0b2fb",
+      "questionText": "Fill in the blank: __________ is a fully managed Windows Share. Supports NTFS and SMB, can move with EC2 (different EC2 can connect), ACLs, user quotas, supports Microsoft's Distributed File System (DFS). Scales up to 10's GB/s, millions of IOPS, 1000's of petabytes. Storage options: SSD/HDD. Supports multiple AZ. Uses S3 for backups. Can connect via DirectConnect or VPN.",
+      "answerText": "FSx for Windows",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "76227359-893e-4242-bd4a-30ebae4062f0",
+      "questionText": "What is \"NTFS (New Technology File System)\"?",
+      "answerText": "NTFS is Microsoft's proprietary file system. FSx for Windows supports NTFS and SMB protocols.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "df96efb7-1fdd-4854-bf81-7bcbb3dab345",
+      "questionText": "Fill in the blank: __________ is Microsoft's proprietary file system. FSx for Windows supports NTFS and SMB protocols.",
+      "answerText": "NTFS (New Technology File System)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3e6081a8-7e74-4dc7-8ab3-f7ef15cf1667",
+      "questionText": "What is \"SMB (Server Message Block)\"?",
+      "answerText": "SMB is Server Message Block protocol, used for file sharing in Windows networks. FSx for Windows supports SMB protocol.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "dc82b7a2-8a2d-4ed0-aa23-19e676279b36",
+      "questionText": "Fill in the blank: __________ is Server Message Block protocol, used for file sharing in Windows networks. FSx for Windows supports SMB protocol.",
+      "answerText": "SMB (Server Message Block)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7a763fa4-bd23-498a-9288-256eb862dcbb",
+      "questionText": "What is \"DFS (Distributed File System)\"?",
+      "answerText": "DFS is Microsoft's Distributed File System. FSx for Windows supports DFS for managing file shares across multiple servers.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a7e664ee-533c-45e3-9d3a-8bbc4862cdfa",
+      "questionText": "Fill in the blank: __________ is Microsoft's Distributed File System. FSx for Windows supports DFS for managing file shares across multiple servers.",
+      "answerText": "DFS (Distributed File System)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "895ac4f3-a621-42d6-a5e7-b93f5413562a",
+      "questionText": "What is \"FSx for Lustre\"?",
+      "answerText": "FSx for Lustre is a parallel file system (Linux + Cluster = Lustre). Optimized for Machine Learning, video processing, financial models, electrical design automation, and High Performance Compute (HPC). Scales 100's GB/s, millions IOPS, sub-ms latency. Has seamless S3 integration. Deploy options: Scratch (temporary, not replicated, no backup, high performance, 6x faster) or Persistent (long term storage, replicated across AZ).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ce827324-d5f2-4182-a0be-8b128833b6f7",
+      "questionText": "Fill in the blank: __________ is a parallel file system (Linux + Cluster = Lustre). Optimized for Machine Learning, video processing, financial models, electrical design automation, and High Performance Compute (HPC). Scales 100's GB/s, millions IOPS, sub-ms latency. Has seamless S3 integration. Deploy options: Scratch (temporary, not replicated, no backup, high performance, 6x faster) or Persistent (long term storage, replicated across AZ).",
+      "answerText": "FSx for Lustre",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "589dcc18-9e68-4789-be5f-ed3f8a1b1a74",
+      "questionText": "What is \"Lustre\"?",
+      "answerText": "Lustre is a parallel distributed file system (Linux + Cluster = Lustre). FSx for Lustre is AWS's managed version optimized for HPC and Machine Learning workloads.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "adb8281f-1da7-4fd7-85d2-849af5b2bbf4",
+      "questionText": "Fill in the blank: __________ is a parallel distributed file system (Linux + Cluster = Lustre). FSx for Lustre is AWS's managed version optimized for HPC and Machine Learning workloads.",
+      "answerText": "Lustre",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a6d1fcf4-e5f9-41fa-80e0-c92dfc80f7b4",
+      "questionText": "What is \"HPC (High Performance Compute)\"?",
+      "answerText": "HPC is High Performance Compute. FSx for Lustre is optimized for HPC workloads, providing high throughput and low latency for compute-intensive applications.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d8981d5a-ecf7-4c76-a574-9b1e1cf03f9f",
+      "questionText": "Fill in the blank: __________ is High Performance Compute. FSx for Lustre is optimized for HPC workloads, providing high throughput and low latency for compute-intensive applications.",
+      "answerText": "HPC (High Performance Compute)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b74b9296-b81b-44a7-b22b-4bfbc8361d7a",
+      "questionText": "What is \"FSx for NetApp OnTap\"?",
+      "answerText": "FSx for NetApp OnTap is \"Managed ONTAP on AWS\". Features: move running workloads, broad compatibility (Mac, Linux, VMWare, Windows, AWS EC2/EKS/ECS), auto scale shrink/grow, snapshot low cost compression, point in time clones for workload transfers.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3d45f03f-e3a1-4fd1-afcb-8c96107dd521",
+      "questionText": "Fill in the blank: __________ is \"Managed ONTAP on AWS\". Features: move running workloads, broad compatibility (Mac, Linux, VMWare, Windows, AWS EC2/EKS/ECS), auto scale shrink/grow, snapshot low cost compression, point in time clones for workload transfers.",
+      "answerText": "FSx for NetApp OnTap",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5f0dec82-517b-46d6-a880-bd9dd1df6f45",
+      "questionText": "What is \"ONTAP\"?",
+      "answerText": "ONTAP is NetApp's unified storage operating system. FSx for NetApp OnTap provides managed ONTAP on AWS with broad compatibility across platforms.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "68552d78-1272-4d3a-b846-188f823d1afa",
+      "questionText": "Fill in the blank: __________ is NetApp's unified storage operating system. FSx for NetApp OnTap provides managed ONTAP on AWS with broad compatibility across platforms.",
+      "answerText": "ONTAP",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1b463b0a-270b-4dae-b6df-66f5204dc145",
+      "questionText": "What is \"FSx for OpenZFS\"?",
+      "answerText": "FSx for OpenZFS scales up to 1Million IOPS, 0.5ms latency, point in time clone. Same OS as NetApp/OnTap.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "50901ddd-b245-4b12-a0cc-e0059fa1b5da",
+      "questionText": "Fill in the blank: __________ scales up to 1Million IOPS, 0.5ms latency, point in time clone. Same OS as NetApp/OnTap.",
+      "answerText": "FSx for OpenZFS",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d17f0a00-4b02-4b40-9463-14769ef8f234",
+      "questionText": "What is \"OpenZFS\"?",
+      "answerText": "OpenZFS is an open-source file system. FSx for OpenZFS provides managed OpenZFS on AWS with high performance characteristics.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4bcaf31e-5dd4-4685-a8a5-a2a5aaaffbf1",
+      "questionText": "Fill in the blank: __________ is an open-source file system. FSx for OpenZFS provides managed OpenZFS on AWS with high performance characteristics.",
+      "answerText": "OpenZFS",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "43e1f898-5e0a-4679-848d-0e6c4927252b",
+      "questionText": "What is \"IOPS (Input/Output Operations Per Second)\"?",
+      "answerText": "IOPS is Input/Output Operations Per Second, a performance metric for storage systems. EBS volumes are allocated in Size and/or IOPS. Elastic Volume can change IOPS on the fly.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bba553ab-c0b0-4324-8a54-d362dea07f3e",
+      "questionText": "Fill in the blank: __________ is Input/Output Operations Per Second, a performance metric for storage systems. EBS volumes are allocated in Size and/or IOPS. Elastic Volume can change IOPS on the fly.",
+      "answerText": "IOPS (Input/Output Operations Per Second)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a1e54cb7-e77a-47bf-a7e8-9f882ae452b8",
+      "questionText": "What is \"AZ (Availability Zone)\"?",
+      "answerText": "AZ is Availability Zone, a distinct location within an AWS region. EBS volumes are bound to one AZ but can be moved via snapshots. EFS supports multiple AZs. FSx supports multiple AZs for some file system types.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e37e1f8c-d601-4bfe-bb3b-657d9f8ecf17",
+      "questionText": "Fill in the blank: __________ is Availability Zone, a distinct location within an AWS region. EBS volumes are bound to one AZ but can be moved via snapshots. EFS supports multiple AZs. FSx supports multiple AZs for some file system types.",
+      "answerText": "AZ (Availability Zone)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "56437a62-8de3-4e50-8e53-52ee366d38d9",
+      "questionText": "What is \"Kinesis Data Stream\"?",
+      "answerText": "Kinesis Data Stream is an AWS managed service for real-time streaming data. Producers send data to Kinesis Streams, which Consumers read from. Key characteristics: 365 days retention on stream, can be replayed, data cannot be deleted (MUST expire), up to 1MB message size, order is guaranteed for data using partitionId, encryption: in-flight HTTPS/SSL, at rest KMS.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "629d17c7-98f3-4524-a106-032b8e0d56ac",
+      "questionText": "Fill in the blank: __________ is an AWS managed service for real-time streaming data. Producers send data to Kinesis Streams, which Consumers read from. Key characteristics: 365 days retention on stream, can be replayed, data cannot be deleted (MUST expire), up to 1MB message size, order is guaranteed for data using partitionId, encryption: in-flight HTTPS/SSL, at rest KMS.",
+      "answerText": "Kinesis Data Stream",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7f880e5c-d91d-4470-8596-a88a2d899001",
+      "questionText": "What is \"Kinesis Producer\"?",
+      "answerText": "Kinesis Producer sends data to Kinesis Streams. Producers can be applications, IoT devices, click streams, metrics, or logs. KPL (Kinesis Producer Library) is optimized for standard operations.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "cf6e9cfd-6b57-4e8b-85af-5da32c6a8ef8",
+      "questionText": "Fill in the blank: __________ sends data to Kinesis Streams. Producers can be applications, IoT devices, click streams, metrics, or logs. KPL (Kinesis Producer Library) is optimized for standard operations.",
+      "answerText": "Kinesis Producer",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3ee61692-80ad-4746-b2dd-b2faee4a2eb0",
+      "questionText": "What is \"Kinesis Consumer\"?",
+      "answerText": "Kinesis Consumer reads data from Kinesis Streams. Consumers can be applications, Lambda, Firehose, etc. KCL (Kinesis Client Library) is optimized for standard operations.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "48f8d790-647c-481d-a8df-af879caa18a9",
+      "questionText": "Fill in the blank: __________ reads data from Kinesis Streams. Consumers can be applications, Lambda, Firehose, etc. KCL (Kinesis Client Library) is optimized for standard operations.",
+      "answerText": "Kinesis Consumer",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2aaa4d0b-643d-4478-852a-bab9b731e014",
+      "questionText": "What is \"KPL (Kinesis Producer Library)\"?",
+      "answerText": "KPL is Kinesis Producer Library, an SDK library optimized for standard Kinesis producer operations. Best practice for sending data to Kinesis.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e50d34e5-e0b3-435c-84a5-8a17d11d37f7",
+      "questionText": "Fill in the blank: __________ is Kinesis Producer Library, an SDK library optimized for standard Kinesis producer operations. Best practice for sending data to Kinesis.",
+      "answerText": "KPL (Kinesis Producer Library)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f8a086a3-2132-48ac-b756-98cb00c24903",
+      "questionText": "What is \"KCL (Kinesis Client Library)\"?",
+      "answerText": "KCL is Kinesis Client Library, an SDK library optimized for standard Kinesis consumer operations. Best practice for reading data from Kinesis.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9e59332a-827a-42dc-a09b-6ed981a44c84",
+      "questionText": "Fill in the blank: __________ is Kinesis Client Library, an SDK library optimized for standard Kinesis consumer operations. Best practice for reading data from Kinesis.",
+      "answerText": "KCL (Kinesis Client Library)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c7f291ff-ebf4-4886-822e-935aab1ccfc9",
+      "questionText": "What is \"Kinesis Shard\"?",
+      "answerText": "Kinesis Shard is a unit of capacity in Kinesis Data Stream. Each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s. Provisioned Mode uses shards for capacity. Hot shard occurs when one shard receives more data than others.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "68910b7e-7088-4c67-84db-0e84baf4a5d1",
+      "questionText": "Fill in the blank: __________ is a unit of capacity in Kinesis Data Stream. Each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s. Provisioned Mode uses shards for capacity. Hot shard occurs when one shard receives more data than others.",
+      "answerText": "Kinesis Shard",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "65926e90-43bf-4a60-a491-62bc0d24f086",
+      "questionText": "What is \"Kinesis Firehose\"?",
+      "answerText": "Kinesis Firehose collects data from producers and batches it, then flushes batch/queue periodically. It's fully managed, serverless, autoscales, pay what you use, near real-time (because of buffering). Loads streamed data to many destinations, no storage, no replay. Can transform using Lambda at receiver, can write failed data to S3 bucket.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2c754f96-0462-4a3b-863a-3987ac7cd5f0",
+      "questionText": "Fill in the blank: __________ collects data from producers and batches it, then flushes batch/queue periodically. It's fully managed, serverless, autoscales, pay what you use, near real-time (because of buffering). Loads streamed data to many destinations, no storage, no replay. Can transform using Lambda at receiver, can write failed data to S3 bucket.",
+      "answerText": "Kinesis Firehose",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2a6bf203-2cf5-482f-b79a-16d05c2c821b",
+      "questionText": "What is \"MSK (Managed Streaming for Kafka)\"?",
+      "answerText": "MSK is AWS Managed Streaming for Kafka. It's fully managed, deploys in your VPC multi-AZ (up to 3), auto recovery from common failures, data stored on EBS, supports custom configuration, can support up to 10MB message (Kinesis only 1MB), can retain data indefinitely (Kinesis only 365 days).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8c312388-7500-430c-a07a-fe8f98a55cfa",
+      "questionText": "Fill in the blank: __________ is AWS Managed Streaming for Kafka. It's fully managed, deploys in your VPC multi-AZ (up to 3), auto recovery from common failures, data stored on EBS, supports custom configuration, can support up to 10MB message (Kinesis only 1MB), can retain data indefinitely (Kinesis only 365 days).",
+      "answerText": "MSK (Managed Streaming for Kafka)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7b76e83e-d1f2-41b1-a34f-7e7f24d06f37",
+      "questionText": "What is \"MSK Connect\"?",
+      "answerText": "MSK Connect deploys Kafka Connect to MSK via plug-in. It moves data from Kafka to wherever (S3, other AWS services). AutoScale, no infrastructure, priced at $0.11 per worker/hour.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a82b81e5-8791-40aa-96df-7323e42eaa6b",
+      "questionText": "Fill in the blank: __________ deploys Kafka Connect to MSK via plug-in. It moves data from Kafka to wherever (S3, other AWS services). AutoScale, no infrastructure, priced at $0.11 per worker/hour.",
+      "answerText": "MSK Connect",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a02bac20-c11d-455e-be68-be65405e9db5",
+      "questionText": "What is \"MSK Serverless\"?",
+      "answerText": "MSK Serverless is hands-free configuration where you define topics and number of partitions per topic. Security is IAM access control. Pricing: $0.75 per cluster hour, $0.0015 partition hour, $0.10 GB storage per month, $0.10 ingress GB, $0.05 egress GB.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "24ccdd5e-7afc-4adf-b295-133de70b26d2",
+      "questionText": "Fill in the blank: __________ is hands-free configuration where you define topics and number of partitions per topic. Security is IAM access control. Pricing: $0.75 per cluster hour, $0.0015 partition hour, $0.10 GB storage per month, $0.10 ingress GB, $0.05 egress GB.",
+      "answerText": "MSK Serverless",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d860785b-6a48-4424-b4ae-3123a2bf79a8",
+      "questionText": "What is \"Kafka\"?",
+      "answerText": "Kafka is an open-source distributed event streaming platform. MSK is AWS's fully managed Kafka service. Kafka uses topics and partitions for data organization.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "986c5c29-ae14-4cf8-9fd6-9087ba421de2",
+      "questionText": "Fill in the blank: __________ is an open-source distributed event streaming platform. MSK is AWS's fully managed Kafka service. Kafka uses topics and partitions for data organization.",
+      "answerText": "Kafka",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7a6270b3-f9ed-4dfb-8b4f-0975f875da0a",
+      "questionText": "What is \"Kafka Topic\"?",
+      "answerText": "Kafka Topic is a category or feed name to which records are published. Producers send data into Kafka topics, which get replicated across few/all brokers. MSK organizes data by topic/partition (Kinesis uses stream/shard).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "098af4d7-527b-4b1f-8a7e-315184aa5cb6",
+      "questionText": "Fill in the blank: __________ is a category or feed name to which records are published. Producers send data into Kafka topics, which get replicated across few/all brokers. MSK organizes data by topic/partition (Kinesis uses stream/shard).",
+      "answerText": "Kafka Topic",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3467af8a-4a19-43ea-9c77-6cc8087bb307",
+      "questionText": "What is \"Kafka Partition\"?",
+      "answerText": "Kafka Partition is a division of a topic. MSK Serverless allows you to define number of partitions per topic. Data is organized by topic/partition in MSK.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0159d412-f045-409d-ae35-cb4ad53a4583",
+      "questionText": "Fill in the blank: __________ is a division of a topic. MSK Serverless allows you to define number of partitions per topic. Data is organized by topic/partition in MSK.",
+      "answerText": "Kafka Partition",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "599b58f9-cc78-46eb-b162-32702ebd15bf",
+      "questionText": "What is \"ZooKeeper\"?",
+      "answerText": "ZooKeeper is a centralized service for maintaining configuration information and providing distributed synchronization. MSK creates and manages Kafka Broker and ZooKeeper nodes.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "24ba59d4-d7d6-40cb-b612-bcdf8e0b9af0",
+      "questionText": "Fill in the blank: __________ is a centralized service for maintaining configuration information and providing distributed synchronization. MSK creates and manages Kafka Broker and ZooKeeper nodes.",
+      "answerText": "ZooKeeper",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "abe084ef-5370-4654-b080-f0490c359486",
+      "questionText": "What is \"MSAF (Managed Service for Apache Flink)\"?",
+      "answerText": "MSAF is AWS Managed Service for Apache Flink. Flink replaces something leaner (Kinesis + SQL). Flink is Managed/Serverless and used for stream processing and analytics.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "339b6dac-98f2-492a-af4d-d5b7945e957f",
+      "questionText": "Fill in the blank: __________ is AWS Managed Service for Apache Flink. Flink replaces something leaner (Kinesis + SQL). Flink is Managed/Serverless and used for stream processing and analytics.",
+      "answerText": "MSAF (Managed Service for Apache Flink)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5b933d9f-40e9-46bf-b05d-c820ae7c9da9",
+      "questionText": "What is \"Flink\"?",
+      "answerText": "Flink is Apache Flink, an open-source stream processing framework. MSAF is AWS's managed version. Flink is used for real-time stream processing and analytics.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "062cda9c-a606-4362-9d03-6575379ede10",
+      "questionText": "Fill in the blank: __________ is Apache Flink, an open-source stream processing framework. MSAF is AWS's managed version. Flink is used for real-time stream processing and analytics.",
+      "answerText": "Flink",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e5c7d2da-a706-49ea-ab0b-7ac8eb2870c8",
+      "questionText": "What is \"SASL/SCRAM\"?",
+      "answerText": "SASL/SCRAM is an authentication method. SASL (Simple Authentication and Security Layer) with SCRAM (Salted Challenge Response Authentication Mechanism) uses passwords. MSK supports SASL/SCRAM (AuthN) + Kafka ACL (AuthZ) using passwords as one of three security authentication methods.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "88d39cbb-cbe7-4f00-b0b8-f3e4f1026372",
+      "questionText": "Fill in the blank: __________ is an authentication method. SASL (Simple Authentication and Security Layer) with SCRAM (Salted Challenge Response Authentication Mechanism) uses passwords. MSK supports SASL/SCRAM (AuthN) + Kafka ACL (AuthZ) using passwords as one of three security authentication methods.",
+      "answerText": "SASL/SCRAM",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1220951d-460c-470f-b32c-6a25f1ac6676",
+      "questionText": "What is \"TLS (Transport Layer Security)\"?",
+      "answerText": "TLS is Transport Layer Security, a cryptographic protocol for secure communication. MSK uses in-flight TLS, at rest EBS encryption. S3 uses SSL/TLS and HTTPS for in-flight encryption.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c1569565-89bc-492a-802a-c9f5a57c56ee",
+      "questionText": "Fill in the blank: __________ is Transport Layer Security, a cryptographic protocol for secure communication. MSK uses in-flight TLS, at rest EBS encryption. S3 uses SSL/TLS and HTTPS for in-flight encryption.",
+      "answerText": "TLS (Transport Layer Security)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8c1f636f-e9e0-48ff-b98c-efbf66bda167",
+      "questionText": "What is \"SSL (Secure Sockets Layer)\"?",
+      "answerText": "SSL is Secure Sockets Layer, a predecessor to TLS. S3 uses SSL/TLS and HTTPS for in-flight encryption. AWS recommends bucket policy requiring aws:SecureTransport.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "cb6ece83-9364-4523-a34f-b5aa1510cd2a",
+      "questionText": "Fill in the blank: __________ is Secure Sockets Layer, a predecessor to TLS. S3 uses SSL/TLS and HTTPS for in-flight encryption. AWS recommends bucket policy requiring aws:SecureTransport.",
+      "answerText": "SSL (Secure Sockets Layer)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "819288a6-58c7-4c3a-a08b-b1531212712b",
+      "questionText": "What is \"HTTPS (HyperText Transfer Protocol Secure)\"?",
+      "answerText": "HTTPS is HyperText Transfer Protocol Secure. SSE-C requires HTTPS only. S3 uses HTTPS for secure data transfer.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8da71aee-13e1-4e21-aae2-4b4d696c120c",
+      "questionText": "Fill in the blank: __________ is HyperText Transfer Protocol Secure. SSE-C requires HTTPS only. S3 uses HTTPS for secure data transfer.",
+      "answerText": "HTTPS (HyperText Transfer Protocol Secure)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f08e6899-7746-44c3-9d7b-87868b6e5a20",
+      "questionText": "What is \"CloudTrail\"?",
+      "answerText": "CloudTrail is AWS service that provides logging of API calls. SSE-KMS usage can be logged in CloudTrail, which is good for audit/compliance.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f168b5a8-4e28-4a99-bcd2-4d7e3a4f10f9",
+      "questionText": "Fill in the blank: __________ is AWS service that provides logging of API calls. SSE-KMS usage can be logged in CloudTrail, which is good for audit/compliance.",
+      "answerText": "CloudTrail",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1c827c4a-d5ea-4c68-aa41-8c5027f9779b",
+      "questionText": "What is \"Prometheus\"?",
+      "answerText": "Prometheus is an open-source monitoring and alerting toolkit. MSK supports Prometheus monitoring: open port on cluster, broker, and topic, set up JMX export metrics on node exporter (CPU and disk metrics).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "527776fb-aa2b-4789-aa33-b1019cf5f7dc",
+      "questionText": "Fill in the blank: __________ is an open-source monitoring and alerting toolkit. MSK supports Prometheus monitoring: open port on cluster, broker, and topic, set up JMX export metrics on node exporter (CPU and disk metrics).",
+      "answerText": "Prometheus",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f719bd1a-1b16-4d99-9ab5-19cc408419d4",
+      "questionText": "What is \"JMX (Java Management Extensions)\"?",
+      "answerText": "JMX is Java Management Extensions, a Java technology for managing and monitoring applications. MSK Prometheus monitoring uses JMX export metrics on node exporter.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5a2e73e4-f583-479f-b87a-12319c060750",
+      "questionText": "Fill in the blank: __________ is Java Management Extensions, a Java technology for managing and monitoring applications. MSK Prometheus monitoring uses JMX export metrics on node exporter.",
+      "answerText": "JMX (Java Management Extensions)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e8f5680c-1baa-42c1-b54e-8edad206fd13",
+      "questionText": "What is \"MWAA (Managed Workflows for Apache Airflow)\"?",
+      "answerText": "MWAA is AWS Managed Workflows for Apache Airflow. It is one of the ETL/ELT Pipeline Orchestration Services in AWS, along with Event Bridge, Step Functions, and Glue Workflow.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f4321f38-f66b-4ba2-8e39-0c471947c759",
+      "questionText": "Fill in the blank: __________ is AWS Managed Workflows for Apache Airflow. It is one of the ETL/ELT Pipeline Orchestration Services in AWS, along with Event Bridge, Step Functions, and Glue Workflow.",
+      "answerText": "MWAA (Managed Workflows for Apache Airflow)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "acab7073-0615-4863-954c-a8037110875c",
+      "questionText": "What is \"EventBridge\"?",
+      "answerText": "EventBridge is an AWS serverless event bus service. For S3 event notifications, EventBridge can send to 18 other services, allows advanced filtering (match metadata like object size, file name), and supports replay. It is one of the ETL/ELT Pipeline Orchestration Services.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ddb4af06-c829-40f8-8ac6-2c024f4cda4f",
+      "questionText": "Fill in the blank: __________ is an AWS serverless event bus service. For S3 event notifications, EventBridge can send to 18 other services, allows advanced filtering (match metadata like object size, file name), and supports replay. It is one of the ETL/ELT Pipeline Orchestration Services.",
+      "answerText": "EventBridge",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9a254d95-b8dd-443e-8242-90ee17d9aaaf",
+      "questionText": "What is \"SNS (Simple Notification Service)\"?",
+      "answerText": "SNS is AWS Simple Notification Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b6eb9729-51bc-4c66-a9c3-4be55cb08de3",
+      "questionText": "Fill in the blank: __________ is AWS Simple Notification Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "answerText": "SNS (Simple Notification Service)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "783155c1-4f24-44b4-af10-dff1c888a576",
+      "questionText": "What is \"SQS (Simple Queue Service)\"?",
+      "answerText": "SQS is AWS Simple Queue Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "12ecb7ea-e0f2-49fc-bc1f-df87328ed0e9",
+      "questionText": "Fill in the blank: __________ is AWS Simple Queue Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "answerText": "SQS (Simple Queue Service)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2070d884-8802-4802-9a4a-78e27976a5ef",
+      "questionText": "What is \"Lambda\"?",
+      "answerText": "Lambda is AWS serverless compute service. S3 events can be sent to Lambda. Kinesis Firehose can transform using Lambda at receiver. S3 Object Lambda sits between Bucket and Access Point for data transformation.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1e81b639-e337-4833-9cce-5124f6b0716d",
+      "questionText": "Fill in the blank: __________ is AWS serverless compute service. S3 events can be sent to Lambda. Kinesis Firehose can transform using Lambda at receiver. S3 Object Lambda sits between Bucket and Access Point for data transformation.",
+      "answerText": "Lambda",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "66fe5a61-ea07-489b-bf58-2b7e078557f1",
+      "questionText": "What is \"Athena\"?",
+      "answerText": "Athena is AWS interactive query service. Data Lakes use Schema-on-Read where structure is applied after the fact using services like Athena and Glue.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "14163a5f-a2ba-4e9c-adde-60dcc48eaa39",
+      "questionText": "Fill in the blank: __________ is AWS interactive query service. Data Lakes use Schema-on-Read where structure is applied after the fact using services like Athena and Glue.",
+      "answerText": "Athena",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "65aa4caa-e9d1-4483-965e-2938d5301bd4",
+      "questionText": "What is \"Glue\"?",
+      "answerText": "Glue is AWS fully managed ETL service. Data Lakes use Schema-on-Read where structure is applied after the fact using services like Athena and Glue. Glue is considered reliable for pipeline management. Data Mesh uses self-service tooling and infrastructure like Glue.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5fc384b3-547e-420c-896c-7ffbbe1157d0",
+      "questionText": "Fill in the blank: __________ is AWS fully managed ETL service. Data Lakes use Schema-on-Read where structure is applied after the fact using services like Athena and Glue. Glue is considered reliable for pipeline management. Data Mesh uses self-service tooling and infrastructure like Glue.",
+      "answerText": "Glue",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "01e9f765-0688-4cd6-86fd-854cdcbe0eae",
+      "questionText": "What is \"Redshift\"?",
+      "answerText": "Redshift is AWS data warehouse service. It is an example of a Data Warehouse system, designed for complete queries using structured schemas.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4a215b95-580f-48d8-ab9b-73a632d3e7bc",
+      "questionText": "Fill in the blank: __________ is AWS data warehouse service. It is an example of a Data Warehouse system, designed for complete queries using structured schemas.",
+      "answerText": "Redshift",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b1dac130-7300-474e-a69e-907ae29bc940",
+      "questionText": "What is \"Hadoop\"?",
+      "answerText": "Hadoop is an open-source framework for distributed storage and processing. It is an example of a Data Lake system. AVRO and Parquet formats are used with Hadoop.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2a8f5eac-892a-466f-87b0-a2428ab9e42f",
+      "questionText": "Fill in the blank: __________ is an open-source framework for distributed storage and processing. It is an example of a Data Lake system. AVRO and Parquet formats are used with Hadoop.",
+      "answerText": "Hadoop",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f4760383-186d-4c57-8d5b-6e5f7fd5f81b",
+      "questionText": "What is \"Spark\"?",
+      "answerText": "Spark is an open-source distributed computing system. AVRO and Parquet formats are used with Spark for big data processing.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ec4ebd79-d9d1-42f7-9313-d00446cb3758",
+      "questionText": "Fill in the blank: __________ is an open-source distributed computing system. AVRO and Parquet formats are used with Spark for big data processing.",
+      "answerText": "Spark",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "82c40b7f-6d62-42fa-9bdc-02a46623fa51",
+      "questionText": "What is \"Hive\"?",
+      "answerText": "Hive is a data warehouse software built on Hadoop. Parquet format is used with Hive for analytics workloads.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0efa3cac-ed39-42fd-9ec2-0129b2cef35f",
+      "questionText": "Fill in the blank: __________ is a data warehouse software built on Hadoop. Parquet format is used with Hive for analytics workloads.",
+      "answerText": "Hive",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7a91da3f-9edd-4616-930b-ca2b80e270b0",
+      "questionText": "What is \"Impala\"?",
+      "answerText": "Impala is a SQL query engine for Hadoop. Parquet format is used with Impala for analytics workloads.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7dbf23a7-7e85-4ab0-9cb6-92dabe43a88b",
+      "questionText": "Fill in the blank: __________ is a SQL query engine for Hadoop. Parquet format is used with Impala for analytics workloads.",
+      "answerText": "Impala",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c5a623bd-385a-4c25-877b-4691f159721e",
+      "questionText": "What is \"VPC (Virtual Private Cloud)\"?",
+      "answerText": "VPC is AWS Virtual Private Cloud. MSK deploys in your VPC multi-AZ. S3 Access Points can improve/enforce accessibility through VPC/Security configuration.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "fc0c0dac-c955-4e8e-ace9-72aa894fb82e",
+      "questionText": "Fill in the blank: __________ is AWS Virtual Private Cloud. MSK deploys in your VPC multi-AZ. S3 Access Points can improve/enforce accessibility through VPC/Security configuration.",
+      "answerText": "VPC (Virtual Private Cloud)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "95092f7b-0e81-4567-a74c-ddae38d2af67",
+      "questionText": "What is \"DirectConnect\"?",
+      "answerText": "DirectConnect is AWS service for dedicated network connection. FSx for Windows and FSx for Lustre can connect via DirectConnect or VPN.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4a7dc637-b0b8-4519-b627-b3f2fadb61a9",
+      "questionText": "Fill in the blank: __________ is AWS service for dedicated network connection. FSx for Windows and FSx for Lustre can connect via DirectConnect or VPN.",
+      "answerText": "DirectConnect",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "24834202-02ff-4ec1-9439-052145735723",
+      "questionText": "What is \"VPN (Virtual Private Network)\"?",
+      "answerText": "VPN is Virtual Private Network. FSx for Windows and FSx for Lustre can connect via DirectConnect or VPN.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "688b2c0e-4e23-46be-a190-c3153027de3d",
+      "questionText": "Fill in the blank: __________ is Virtual Private Network. FSx for Windows and FSx for Lustre can connect via DirectConnect or VPN.",
+      "answerText": "VPN (Virtual Private Network)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0107dd27-a787-4f5d-ba78-2ed63082db6f",
+      "questionText": "What is \"KMS (Key Management Service)\"?",
+      "answerText": "KMS is AWS Key Management Service. SSE-KMS uses AWS Key Manager. EFS uses KMS for encryption at rest. Kinesis and MSK use KMS for at-rest encryption.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "47ec0582-d3e8-4a46-83f9-10bab29a42d0",
+      "questionText": "Fill in the blank: __________ is AWS Key Management Service. SSE-KMS uses AWS Key Manager. EFS uses KMS for encryption at rest. Kinesis and MSK use KMS for at-rest encryption.",
+      "answerText": "KMS (Key Management Service)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "49041d51-9e10-48d5-94b0-6f0a4e3006fe",
+      "questionText": "What is \"Security Group (SG)\"?",
+      "answerText": "Security Group is a virtual firewall for EC2 instances and other AWS resources. EFS uses Security Groups to control access. MSK uses network security groups.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ce0b7421-816e-461d-ad59-3bb2b8ed0c30",
+      "questionText": "Fill in the blank: __________ is a virtual firewall for EC2 instances and other AWS resources. EFS uses Security Groups to control access. MSK uses network security groups.",
+      "answerText": "Security Group (SG)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ca2c8be9-ec70-4f9c-9d72-9c5b9c48c54e",
+      "questionText": "What is \"EC2 (Elastic Compute Cloud)\"?",
+      "answerText": "EC2 is AWS Elastic Compute Cloud. EBS volumes attach to EC2 instances. EFS can be mounted to multiple EC2 instances. FSx for Windows can move with EC2.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c710ddc0-12ed-4ed9-958f-fb11dd6654a3",
+      "questionText": "Fill in the blank: __________ is AWS Elastic Compute Cloud. EBS volumes attach to EC2 instances. EFS can be mounted to multiple EC2 instances. FSx for Windows can move with EC2.",
+      "answerText": "EC2 (Elastic Compute Cloud)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3854348f-f1b0-46f3-ade0-2b22ba0d037f",
+      "questionText": "What is \"AMI (Amazon Machine Image)\"?",
+      "answerText": "AMI is Amazon Machine Image, a template for EC2 instances. EFS is not Windows compatible (requires Linux AMI).",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8a459b8f-8a2d-42bb-a520-e29f93c8fe38",
+      "questionText": "Fill in the blank: __________ is Amazon Machine Image, a template for EC2 instances. EFS is not Windows compatible (requires Linux AMI).",
+      "answerText": "AMI (Amazon Machine Image)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ace9873d-aee1-46f2-8df9-fb75c0695531",
+      "questionText": "What is \"gp2 (General Purpose SSD Volume Type 2)\"?",
+      "answerText": "gp2 is EBS General Purpose SSD Volume Type 2. IO increases as size increases (IO allocation increase so does disk size allocation). EFS costs approximately 3x the cost of GP2.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "af8d71ac-2487-4d36-bea4-eaa86bd3b753",
+      "questionText": "Fill in the blank: __________ is EBS General Purpose SSD Volume Type 2. IO increases as size increases (IO allocation increase so does disk size allocation). EFS costs approximately 3x the cost of GP2.",
+      "answerText": "gp2 (General Purpose SSD Volume Type 2)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "48a987a4-37e5-4ed5-a0de-38d36761f44a",
+      "questionText": "What is \"gp3 (General Purpose SSD Volume Type 3)\"?",
+      "answerText": "gp3 is EBS General Purpose SSD Volume Type 3. IO can increase independently of disk size, unlike gp2 where IO increases with size.",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1a9887f0-5f67-4992-9b18-5ec0d9a74806",
+      "questionText": "Fill in the blank: __________ is EBS General Purpose SSD Volume Type 3. IO can increase independently of disk size, unlike gp2 where IO increases with size.",
+      "answerText": "gp3 (General Purpose SSD Volume Type 3)",
+      "tags": [
+        "vocabulary",
+        "section-2"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    }
+  ]
+}

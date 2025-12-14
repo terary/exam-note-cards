@@ -113,18 +113,42 @@ async function migrateSessions(
         answers: any[];
       };
 
+      // Normalize answers to handle missing fields in old session files
+      // Skip answers that are missing critical required fields
+      const normalizedAnswers = parsed.answers
+        .filter((answer: any) => {
+          // Only include answers that have at least questionId and userCorrectnessPercentage
+          return answer.questionId && answer.userCorrectnessPercentage !== undefined;
+        })
+        .map((answer: any) => ({
+          questionId: answer.questionId || "",
+          questionText: answer.questionText || "",
+          actualAnswerText: answer.actualAnswerText || "",
+          userAnswerText: answer.userAnswerText || "", // Default to empty string if missing
+          userCorrectnessPercentage: answer.userCorrectnessPercentage ?? 0,
+          answerNotes: answer.answerNotes,
+          recordedAt: answer.recordedAt || new Date().toISOString(),
+        }));
+
       const session = new answerSessionModel({
         sessionId: parsed.sessionId,
         databaseId: parsed.databaseId,
         databaseName: parsed.databaseName,
         startedAt: parsed.startedAt,
-        answers: parsed.answers,
+        answers: normalizedAnswers,
       });
 
       await session.save();
-      logger.log(
-        `Migrated session '${sessionId}' with ${parsed.answers.length} answers`
-      );
+      const skippedCount = parsed.answers.length - normalizedAnswers.length;
+      if (skippedCount > 0) {
+        logger.warn(
+          `Migrated session '${sessionId}' with ${normalizedAnswers.length} answers (skipped ${skippedCount} invalid answers)`
+        );
+      } else {
+        logger.log(
+          `Migrated session '${sessionId}' with ${normalizedAnswers.length} answers`
+        );
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown error";
       logger.error(`Failed to migrate session file '${filePath}': ${message}`);

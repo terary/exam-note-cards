@@ -1,0 +1,677 @@
+{
+  "databaseName": "Section 5 - SageMaker Built-in Algorithms Vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": "57b0ede85a79d50768561f6324309c14",
+      "questionText": "What does \"convolutional neural network (CNN)\" mean?",
+      "answerText": "A convolutional neural network (CNN) is a type of deep learning model primarily used for image recognition and processing by automatically learning and extracting features from data. CNNs use specialized layers like convolutional layers (with filters to detect patterns), activation layers (like ReLU), and pooling layers to reduce data dimensions. These features are then processed through fully connected layers to perform classification or other tasks.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8abffdcd4ddc7341d78793f6590c13f5",
+      "questionText": "Fill in the blank: A _____ is a type of deep learning model primarily used for image recognition and processing by automatically learning and extracting features from data. CNNs use specialized layers like convolutional layers (with filters to detect patterns), activation layers (like ReLU), and pooling layers to reduce data dimensions. These features are then processed through fully connected layers to perform classification or other tasks.",
+      "answerText": "convolutional neural network (CNN)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "76c91aec4fe28c32b53a5591e71e6e53",
+      "questionText": "What does \"latent representation\" mean?",
+      "answerText": "A latent representation is a compressed, simplified version of complex data that captures its most essential features in a lower-dimensional \"latent space. (Think, field definitions vs the key elements that make up the logic equations)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b655b382455ca93927fcfad04048ccd3",
+      "questionText": "Fill in the blank: A _____ is a compressed, simplified version of complex data that captures its most essential features in a lower-dimensional \"latent space. (Think, field definitions vs the key elements that make up the logic equations)",
+      "answerText": "latent representation",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f6f2daf6f468f770535386be77d893e2",
+      "questionText": "What does \"learning_rate\" mean?",
+      "answerText": "The learning rate is a crucial hyperparameter in machine learning that determines the step size an optimization algorithm (like gradient descent) takes when adjusting model parameters to minimize the loss function. It is widely considered the single most important hyperparameter to tune for a neural network.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bbd0b86b1b74dee64077093f2217b0f9",
+      "questionText": "Fill in the blank: The learning rate is a crucial hyperparameter in machine learning that determines the step size an optimization algorithm (like gradient descent) takes when adjusting model parameters to minimize the loss function. It is widely considered the single most important hyperparameter to tune for a neural network.",
+      "answerText": "learning_rate",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "87d05656d5c53d8b137464afbbdb250e",
+      "questionText": "What does \"Dirichlet\" mean?",
+      "answerText": "German Sir Name",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c70491a527fd487222002ae6e4e7e3b4",
+      "questionText": "Fill in the blank: German Sir Name",
+      "answerText": "Dirichlet",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2354f303c91d06c6073b436ea82164d1",
+      "questionText": "What does \"Latent Dirichlet Allocation (LDA)\" mean?",
+      "answerText": "Latent Dirichlet Allocation (LDA) is a machine learning technique for unsupervised topic modeling that identifies hidden thematic structures in a collection of documents. It operates on the assumption that documents are a mixture of topics, and each topic is a mixture of words, and uses these assumptions to discover the underlying topics and their distribution within documents. LDA is a probabilistic model that can be used for tasks like text summarization and content analysis, by revealing the topics and how much each topic contributes to a document.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2fc9b63875f79a23a5b2a269805afe1c",
+      "questionText": "Fill in the blank: _____ is a machine learning technique for unsupervised topic modeling that identifies hidden thematic structures in a collection of documents. It operates on the assumption that documents are a mixture of topics, and each topic is a mixture of words, and uses these assumptions to discover the underlying topics and their distribution within documents. LDA is a probabilistic model that can be used for tasks like text summarization and content analysis, by revealing the topics and how much each topic contributes to a document.",
+      "answerText": "Latent Dirichlet Allocation (LDA)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "904c40ee8394cc6c29302b039ac1a06e",
+      "questionText": "What does \"Harmonic Analysis\" mean?",
+      "answerText": "Harmonic analysis is a branch of mathematics and engineering that studies how to decompose a complex, periodic signal into a sum of simpler sine and cosine waves. This process is used to analyze periodic phenomena like sound waves and electrical currents by breaking them down into fundamental frequencies and their harmonics. The most common application is using Fourier series, which represent a function as an infinite sum of sines and cosines.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "72bfcbd90003a84d71776f95e36e13de",
+      "questionText": "Fill in the blank: _____ is a branch of mathematics and engineering that studies how to decompose a complex, periodic signal into a sum of simpler sine and cosine waves. This process is used to analyze periodic phenomena like sound waves and electrical currents by breaking them down into fundamental frequencies and their harmonics. The most common application is using Fourier series, which represent a function as an infinite sum of sines and cosines.",
+      "answerText": "Harmonic Analysis",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5cc349faa1aaeb69e71d52923a23e5f4",
+      "questionText": "What does \"Curse of Dimensionality\" mean?",
+      "answerText": "The \"curse of dimensionality\" in machine learning refers to various challenges that arise when working with high-dimensional data, where the number of features is large. As dimensions increase, the volume of the data space grows exponentially, causing data points to become sparse and distances between them to become less meaningful, which can lead to increased risk of overfitting and decreased model performance.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "65bb3a43062584f17460d7809b2f7fea",
+      "questionText": "Fill in the blank: The \"_____\" in machine learning refers to various challenges that arise when working with high-dimensional data, where the number of features is large. As dimensions increase, the volume of the data space grows exponentially, causing data points to become sparse and distances between them to become less meaningful, which can lead to increased risk of overfitting and decreased model performance.",
+      "answerText": "Curse of Dimensionality",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "20e6a6c55523df90f315beb0aac65d70",
+      "questionText": "What does \"Euclidean distance\" mean?",
+      "answerText": "Euclidean distance isthe shortest straight-line distance between two points in space, calculated using the Pythagorean theorem. It can be extended to any number of dimensions, and the formula for two dimensions((x*{1},y*{1}))and((x*{2},y*{2}))is(d=\\sqrt{(x*{2}-x*{1})^{2}+(y*{2}-y*{1})^{2}}). This metric is widely used in fields like physics, machine learning, and computer science to measure the direct distance between points",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1be7a771f25263983ba4ba7b95839a6b",
+      "questionText": "Fill in the blank: _____ isthe shortest straight-line distance between two points in space, calculated using the Pythagorean theorem. It can be extended to any number of dimensions, and the formula for two dimensions((x*{1},y*{1}))and((x*{2},y*{2}))is(d=\\sqrt{(x*{2}-x*{1})^{2}+(y*{2}-y*{1})^{2}}). This metric is widely used in fields like physics, machine learning, and computer science to measure the direct distance between points",
+      "answerText": "Euclidean distance",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "564a316f7955dca98aa2035906b6f181",
+      "questionText": "What does \"K-means Clustering\" mean?",
+      "answerText": "K-Means is an unsupervised machine learning algorithm that groups unlabeled data into a pre-defined number of clusters, 'k'. It works by iteratively assigning data points to the nearest cluster centroid and then recalculating the centroids based on the new cluster assignments until the clusters stabilize. This is a common method for tasks like market segmentation, document clustering, and image compression.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7a13ed99b8290697d2232affdd2124f5",
+      "questionText": "Fill in the blank: K-Means is an unsupervised machine learning algorithm that groups unlabeled data into a pre-defined number of clusters, 'k'. It works by iteratively assigning data points to the nearest cluster centroid and then recalculating the centroids based on the new cluster assignments until the clusters stabilize. This is a common method for tasks like market segmentation, document clustering, and image compression.",
+      "answerText": "K-means Clustering",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "98a52b28fd84388d6b5925843166f5b7",
+      "questionText": "What does \"lloyds method\" mean?",
+      "answerText": "Lloyd's algorithm, also known as the standard k-means algorithm, is an iterative method for partitioning a dataset into (k) clusters. It involves two main steps that are repeated until convergence: Assignment Step: Each data point is assigned to the cluster whose centroid is closest to it. Update Step: The centroids of the clusters are re-calculated as the mean of all data points assigned to that cluster. K-means++ is an intelligent initialization method for Lloyd's algorithm. The primary limitation of standard k-means (Lloyd's algorithm) is its sensitivity to the initial placement of cluster centroids. Random initialization can often lead to suboptimal clustering results or slow convergence. K-means++ addresses this by providing a more strategic way to select the initial centroids.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f48f0bc547ba0f8696071aea37c76d8a",
+      "questionText": "Fill in the blank: Lloyd's algorithm, also known as the standard k-means algorithm, is an iterative method for partitioning a dataset into (k) clusters. It involves two main steps that are repeated until convergence: Assignment Step: Each data point is assigned to the cluster whose centroid is closest to it. Update Step: The centroids of the clusters are re-calculated as the mean of all data points assigned to that cluster. K-means++ is an intelligent initialization method for Lloyd's algorithm. The primary limitation of standard k-means (Lloyd's algorithm) is its sensitivity to the initial placement of cluster centroids. Random initialization can often lead to suboptimal clustering results or slow convergence. K-means++ addresses this by providing a more strategic way to select the initial centroids.",
+      "answerText": "lloyds method",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1a579d2a1226d320221bc76020df5e36",
+      "questionText": "What does \"Elbow Method\" mean?",
+      "answerText": "The elbow method is a technique used in machine learning to find the optimal number of clusters (k) for a clustering algorithm like K-Means. It works by plotting the Within-Cluster Sum of Squares (WCSS) against different values of (k), and then identifying the \"elbow\" point where the rate of decrease in WCSS slows down significantly. This \"elbow\" represents the point where adding more clusters provides diminishing returns in terms of better fits",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "3bd8052f02f0c91e59bf2e7c49e3f3f5",
+      "questionText": "Fill in the blank: The _____ is a technique used in machine learning to find the optimal number of clusters (k) for a clustering algorithm like K-Means. It works by plotting the Within-Cluster Sum of Squares (WCSS) against different values of (k), and then identifying the \"elbow\" point where the rate of decrease in WCSS slows down significantly. This \"elbow\" represents the point where adding more clusters provides diminishing returns in terms of better fits",
+      "answerText": "Elbow Method",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "47014e3a286d9e464ab8d28f1663ce43",
+      "questionText": "What does \"Projecting the higher dimensionality into lower dimensional space\" mean?",
+      "answerText": "Projecting high-dimensional data to a lower-dimensional space is a technique called dimensionality reduction, which uses linear or nonlinear transformations to reduce the number of features while preserving as much original information as possible. This process helps with data visualization, reduces storage and computational costs, and can reveal underlying patterns by combining original features. Popular methods include Principal Component Analysis (PCA) for linear reduction and techniques like UMAP for nonlinear reduction that preserves both local and global structure.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d491e14ab3ca7893ea213085e123d298",
+      "questionText": "Fill in the blank: Projecting high-dimensional data to a lower-dimensional space is a technique called dimensionality reduction, which uses linear or nonlinear transformations to reduce the number of features while preserving as much original information as possible. This process helps with data visualization, reduces storage and computational costs, and can reveal underlying patterns by combining original features. Popular methods include Principal Component Analysis (PCA) for linear reduction and techniques like UMAP for nonlinear reduction that preserves both local and global structure.",
+      "answerText": "Projecting the higher dimensionality into lower dimensional space",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b802e2faff6b5411ab4bddccdbdabd25",
+      "questionText": "What does \"Covariance Matrix\" mean?",
+      "answerText": "A covariance matrix is a square matrix that shows the covariance between each pair of variables in a dataset. The diagonal elements are the variances of individual variables, while the off-diagonal elements represent the covariance between different pairs of variables. This matrix is symmetric, meaning its value is the same when flipped across the diagonal. (symmetric graph)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "055e06809692e003027e630b06b7080f",
+      "questionText": "Fill in the blank: A _____ is a square matrix that shows the covariance between each pair of variables in a dataset. The diagonal elements are the variances of individual variables, while the off-diagonal elements represent the covariance between different pairs of variables. This matrix is symmetric, meaning its value is the same when flipped across the diagonal. (symmetric graph)",
+      "answerText": "Covariance Matrix",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2d41d7e68de34e6d10502ce71326060f",
+      "questionText": "What does \"singular value decomposition (SVD)\" mean?",
+      "answerText": "Singular Value Decomposition (SVD) is a factorization of a matrix into three matrices: an orthogonal matrix (U), a diagonal matrix (S) containing the singular values, and another orthogonal matrix (V^{T}). It can be applied to any rectangular matrix and is a fundamental tool for analyzing data, finding matrix inverses, and many applications like image compression, facial recognition, and recommendation systems.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5270a08f8c28e97d76e8690f57afd08d",
+      "questionText": "Fill in the blank: _____ is a factorization of a matrix into three matrices: an orthogonal matrix (U), a diagonal matrix (S) containing the singular values, and another orthogonal matrix (V^{T}). It can be applied to any rectangular matrix and is a fundamental tool for analyzing data, finding matrix inverses, and many applications like image compression, facial recognition, and recommendation systems.",
+      "answerText": "singular value decomposition (SVD)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ac655614c6abb97e38d3029591446c5a",
+      "questionText": "What does \"Area Under the Curve (AUC)\" mean?",
+      "answerText": "Area Under the Curve (AUC) in machine learning is a performance metric for binary classification models that measures how well the model distinguishes between positive and negative classes across all possible thresholds. A higher AUC value indicates a better model, with (1.0) representing a perfect model and (0.5) representing a model that is no better than random chance.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "027dcf594bafe35f46e0aa09c73d9164",
+      "questionText": "Fill in the blank: _____ in machine learning is a performance metric for binary classification models that measures how well the model distinguishes between positive and negative classes across all possible thresholds. A higher AUC value indicates a better model, with (1.0) representing a perfect model and (0.5) representing a model that is no better than random chance.",
+      "answerText": "Area Under the Curve (AUC)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "d14dd15c07465a8481d2553cd7b84acb",
+      "questionText": "What does \"latent vector representation\" mean?",
+      "answerText": "A latent vector representation is a compressed, lower-dimensional representation of high-dimensional data, where similar data points are mapped closer together in a \"latent space\". Machine learning models create these vectors to capture the essential features of the data, making it more efficient for analysis, comparison, and generation, and reducing the risk of overfitting. These latent vectors are fundamental to tasks like image recognition, natural language processing, and generative AI, where they enable models to understand and manipulate complex patterns at an abstract level.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9770bbb0be9d224c08ba011981901645",
+      "questionText": "Fill in the blank: A _____ is a compressed, lower-dimensional representation of high-dimensional data, where similar data points are mapped closer together in a \"latent space\". Machine learning models create these vectors to capture the essential features of the data, making it more efficient for analysis, comparison, and generation, and reducing the risk of overfitting. These latent vectors are fundamental to tasks like image recognition, natural language processing, and generative AI, where they enable models to understand and manipulate complex patterns at an abstract level.",
+      "answerText": "latent vector representation",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bdaefaff806ad6c055543fdaf927611f",
+      "questionText": "What does \"Over fitting\" mean?",
+      "answerText": "Overfitting is when a machine learning model learns the training data too well, including its noise, causing it to perform poorly on new, unseen data because it cannot generalize",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4f7f278711c3c56658501795d4a59b65",
+      "questionText": "Fill in the blank: Overfitting is when a machine learning model learns the training data too well, including its noise, causing it to perform poorly on new, unseen data because it cannot generalize",
+      "answerText": "Over fitting",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2dfd62aad6cdade2b0cb81d85c6e483c",
+      "questionText": "What does \"stochastic gradient descent\" mean?",
+      "answerText": "Stochastic Gradient Descent (SGD) is an optimization algorithm widely used in machine learning to train models efficiently, especially with large datasets. It is a variant of the traditional Gradient Descent algorithm",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "033a37c991c4d02136c50e116b5a6a96",
+      "questionText": "Fill in the blank: _____ (SGD) is an optimization algorithm widely used in machine learning to train models efficiently, especially with large datasets. It is a variant of the traditional Gradient Descent algorithm",
+      "answerText": "stochastic gradient descent",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "591847feff01b00a20431d8c52cbd4fb",
+      "questionText": "What does \"eXtreme Gradient Boosting\" mean?",
+      "answerText": "See below code quote",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "759eacc7be8ec8376c1bced197d5063c",
+      "questionText": "Fill in the blank: See below code quote",
+      "answerText": "eXtreme Gradient Boosting",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "03fd71efcf349d172fa41d239ae0ede5",
+      "questionText": "What does \"Decision Trees\" mean?",
+      "answerText": "A Decision Tree in machine learning is a supervised learning algorithm used for both classification and regression tasks. It operates by constructing a model that resembles a flowchart, where each internal node represents a test on an attribute, each branch represents the outcome of that test, and each leaf node represents a class label (for classification) or a predicted value (for regression).",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8824a337f89887862cbd32e0cdffefc2",
+      "questionText": "Fill in the blank: A Decision Tree in machine learning is a supervised learning algorithm used for both classification and regression tasks. It operates by constructing a model that resembles a flowchart, where each internal node represents a test on an attribute, each branch represents the outcome of that test, and each leaf node represents a class label (for classification) or a predicted value (for regression).",
+      "answerText": "Decision Trees",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a5817699d979862640748a39786da0b7",
+      "questionText": "What does \"Regression Trees\" mean?",
+      "answerText": "Regression trees are a type of supervised machine learning algorithm used to predict a continuous numerical output by recursively partitioning the data based on predictor variables. They are a variant of decision trees, where each terminal node (leaf) contains a predicted value, often the mean of the training data points in that leaf, and the tree structure explains which features were used and how they led to the prediction.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "93219219289e22f0206c07d51a39e6aa",
+      "questionText": "Fill in the blank: _____ are a type of supervised machine learning algorithm used to predict a continuous numerical output by recursively partitioning the data based on predictor variables. They are a variant of decision trees, where each terminal node (leaf) contains a predicted value, often the mean of the training data points in that leaf, and the tree structure explains which features were used and how they led to the prediction.",
+      "answerText": "Regression Trees",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "eff6ef8d264220fedba3586c6becfe04",
+      "questionText": "What does \"Kaggle Competitions\" mean?",
+      "answerText": "These competitions allow data scientists, machine learning engineers, and researchers from all over the world to compete against each other to solve complex problems and create the best predictive models.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "08015c7346e22a964845cd1bd38f046b",
+      "questionText": "Fill in the blank: These competitions allow data scientists, machine learning engineers, and researchers from all over the world to compete against each other to solve complex problems and create the best predictive models.",
+      "answerText": "Kaggle Competitions",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "daf5ed72391f6c2c987c11be7c3ff12d",
+      "questionText": "What does \"recordIO-protobuf\" mean?",
+      "answerText": "RecordIO-Protobuf is a data format that combines the RecordIO container format with Google's Protocol Buffers (Protobuf) for data serialization RecordIO RecordIO: This acts as a simple container format that wraps individual data records. It typically uses a length-prefixed structure, allowing for efficient streaming and processing of records without needing to load the entire dataset into memory. protobuf Protocol Buffers (Protobuf): This is a language-neutral, platform-neutral, extensible mechanism for serializing structured data. Protobuf defines a schema using a .proto file, which then generates code for various programming languages to easily serialize and deserialize data according to that schema. ```",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "360f5bc070e649ca4f9c252a53c87e98",
+      "questionText": "Fill in the blank: _____ is a data format that combines the RecordIO container format with Google's Protocol Buffers (Protobuf) for data serialization RecordIO RecordIO: This acts as a simple container format that wraps individual data records. It typically uses a length-prefixed structure, allowing for efficient streaming and processing of records without needing to load the entire dataset into memory. protobuf Protocol Buffers (Protobuf): This is a language-neutral, platform-neutral, extensible mechanism for serializing structured data. Protobuf defines a schema using a .proto file, which then generates code for various programming languages to easily serialize and deserialize data according to that schema. ```",
+      "answerText": "recordIO-protobuf",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "079f4478a5f126092188c9ee22e4d5cc",
+      "questionText": "What does \"seasonality\" mean?",
+      "answerText": "Seasonality in machine learning refers to the repeating, cyclical patterns within time series data that occur at regular, fixed intervals, such as daily, weekly, or yearly fluctuations. Machine learning uses techniques to identify, model, and forecast these seasonal patterns alongside trends and residuals to improve accuracy in tasks like forecasting. This is achieved by using models that can capture these periodic behaviors, often through feature engineering or by using models designed for time series analysis",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e1ac3853e52c578d6db5954af854a411",
+      "questionText": "Fill in the blank: _____ in machine learning refers to the repeating, cyclical patterns within time series data that occur at regular, fixed intervals, such as daily, weekly, or yearly fluctuations. Machine learning uses techniques to identify, model, and forecast these seasonal patterns alongside trends and residuals to improve accuracy in tasks like forecasting. This is achieved by using models that can capture these periodic behaviors, often through feature engineering or by using models designed for time series analysis",
+      "answerText": "seasonality",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "befd4150e18a5bd47bd5e3f4fb59e25c",
+      "questionText": "What does \"Bag of words\" mean?",
+      "answerText": "Bag of disconnected words order the words appear are not relevant (hence those that support this are doing what?)",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "a9858fca3d90cbf764068a2ceb792861",
+      "questionText": "Fill in the blank: Bag of disconnected words order the words appear are not relevant (hence those that support this are doing what?)",
+      "answerText": "Bag of words",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "6748d2daf261b42815f79e5c54fe75e6",
+      "questionText": "What does \"skip-gram\" mean?",
+      "answerText": "Skip-gram is a machine learning technique for learning word embeddings, which are dense vector representations of words that capture semantic relationships. It works by training a neural network to predict the surrounding context words given a single center word within a defined window. This process allows the model to learn the meaning of words based on their neighbors, making it effective for tasks in natural language processing (NLP).",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "fb5bbae60fd043cf2a41530c597b2e93",
+      "questionText": "Fill in the blank: _____ is a machine learning technique for learning word embeddings, which are dense vector representations of words that capture semantic relationships. It works by training a neural network to predict the surrounding context words given a single center word within a defined window. This process allows the model to learn the meaning of words based on their neighbors, making it effective for tasks in natural language processing (NLP).",
+      "answerText": "skip-gram",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b7cb58cfa4d90901409ea6574da6ebf8",
+      "questionText": "What does \"feed-forward-network\" mean?",
+      "answerText": "A Feedforward Neural Network (FFNN) is a fundamental type of artificial neural network in machine learning. Its defining characteristic is the unidirectional flow of information, meaning data travels only forward from the input layer, through any hidden layers, and finally to the output layer, without any loops or feedback connections.",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "34559710f5b36134b6bfbc38d83ecdec",
+      "questionText": "Fill in the blank: A Feedforward Neural Network (FFNN) is a fundamental type of artificial neural network in machine learning. Its defining characteristic is the unidirectional flow of information, meaning data travels only forward from the input layer, through any hidden layers, and finally to the output layer, without any loops or feedback connections.",
+      "answerText": "feed-forward-network",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "4e0622eff9c8f8fb2d21ab0cc29a1448",
+      "questionText": "What does \"weight decay\" mean?",
+      "answerText": "Weight decay is a regularization technique used in machine learning to prevent overfitting by penalizing large weights, which keeps the model simpler and improves its ability to generalize. It works by adding a penalty term to the loss function that is proportional to the magnitude of the weights, effectively shrinking them toward zero during training. This encourages the model to find a solution where many parameters have small, non-zero values instead of a few having very large values",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7f958e2bc9b08a863e5abe1e25a0c98c",
+      "questionText": "Fill in the blank: _____ is a regularization technique used in machine learning to prevent overfitting by penalizing large weights, which keeps the model simpler and improves its ability to generalize. It works by adding a penalty term to the loss function that is proportional to the magnitude of the weights, effectively shrinking them toward zero during training. This encourages the model to find a solution where many parameters have small, non-zero values instead of a few having very large values",
+      "answerText": "weight decay",
+      "tags": [
+        "vocabulary",
+        "section-5"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    }
+  ]
+}
