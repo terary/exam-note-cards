@@ -4,3 +4,19 @@
 - `vanishing gradient`
 - `ReLU` (5:02)
 - `The "Dying ReLU" problem`
+- `Feature Location Invariant`
+- `subsampling` (0145/3:30)
+- `Local Receptive Field`
+- `Convolutions`
+- `entire visual field (convolutions)`
+- `memory cell`
+- `Truncated backpropagation through time` (8:27)
+- `local minima` (0147/2:50)
+- `Vanishing gradients` (0150/0:12)
+- `Exploding Gradients`
+- `Root mean Square Error` (152 / 3:28)
+- `correlation coefficient` (153 / 0:30)
+- `Warm start` (155 / 1:02)
+- `Checkpointing` (163 / 1:10)
+- `PyTorch DistributedDataParallel` (164/4:00)
+- `MiCS` (166 / 1:51)
