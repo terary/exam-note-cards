@@ -120,15 +120,24 @@ async function migrateSessions(
           // Only include answers that have at least questionId and userCorrectnessPercentage
           return answer.questionId && answer.userCorrectnessPercentage !== undefined;
         })
-        .map((answer: any) => ({
-          questionId: answer.questionId || "",
-          questionText: answer.questionText || "",
-          actualAnswerText: answer.actualAnswerText || "",
-          userAnswerText: answer.userAnswerText || "", // Default to empty string if missing
-          userCorrectnessPercentage: answer.userCorrectnessPercentage ?? 0,
-          answerNotes: answer.answerNotes,
-          recordedAt: answer.recordedAt || new Date().toISOString(),
-        }));
+        .map((answer: any) => {
+          // Ensure all required fields are present and not null/undefined
+          const normalized: any = {
+            questionId: answer.questionId ?? "",
+            questionText: answer.questionText ?? "",
+            actualAnswerText: answer.actualAnswerText ?? "",
+            userAnswerText: answer.userAnswerText ?? "", // Default to empty string if missing/null/undefined
+            userCorrectnessPercentage: answer.userCorrectnessPercentage ?? 0,
+            recordedAt: answer.recordedAt ?? new Date().toISOString(),
+          };
+          
+          // Only add answerNotes if it exists (it's optional)
+          if (answer.answerNotes !== undefined && answer.answerNotes !== null) {
+            normalized.answerNotes = answer.answerNotes;
+          }
+          
+          return normalized;
+        });
 
       const session = new answerSessionModel({
         sessionId: parsed.sessionId,
@@ -138,7 +147,8 @@ async function migrateSessions(
         answers: normalizedAnswers,
       });
 
-      await session.save();
+      // Disable validation during migration to handle legacy data
+      await session.save({ validateBeforeSave: false });
       const skippedCount = parsed.answers.length - normalizedAnswers.length;
       if (skippedCount > 0) {
         logger.warn(

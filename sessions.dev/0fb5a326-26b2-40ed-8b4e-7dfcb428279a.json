@@ -1,0 +1,17 @@
+{
+  "sessionId": "0fb5a326-26b2-40ed-8b4e-7dfcb428279a",
+  "databaseId": "database-section-5-vocabulary",
+  "databaseName": "Section 5 - SageMaker Built-in Algorithms Vocabulary",
+  "startedAt": "2025-12-03T03:03:13.901Z",
+  "answers": [
+    {
+      "questionId": null,
+      "questionText": "The following defines what term: Seasonality in machine learning refers to the repeating, cyclical patterns within time series data that occur at regular, fixed intervals, such as daily, weekly, or yearly fluctuations. Machine learning uses techniques to identify, model, and forecast these seasonal patterns alongside trends and residuals to improve accuracy in tasks like forecasting. This is achieved by using models that can capture these periodic behaviors, often through feature engineering or by using models designed for time series analysis",
+      "actualAnswerText": "seasonality",
+      "userAnswerText": "Seaonality",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "The answer is in the question",
+      "recordedAt": "2025-12-03T03:04:49.836Z"
+    }
+  ]
+}

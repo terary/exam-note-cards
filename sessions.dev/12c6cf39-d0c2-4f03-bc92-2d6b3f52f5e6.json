@@ -1,0 +1,16 @@
+{
+  "sessionId": "12c6cf39-d0c2-4f03-bc92-2d6b3f52f5e6",
+  "databaseId": "database-section-2-data-ingestion-storage",
+  "databaseName": "Section 2: Data Ingestion and Storage",
+  "startedAt": "2025-11-23T15:03:44.841Z",
+  "answers": [
+    {
+      "questionId": null,
+      "questionText": "What is MSK Connect and how is it priced?",
+      "actualAnswerText": "MSK Connect deploys Kafka Connect to MSK via plug-in. It moves data from Kafka to wherever (S3, other AWS services). AutoScale, no infrastructure, $0.11 per worker/hour.",
+      "userAnswerText": "Does this clear after submit",
+      "userCorrectnessPercentage": -1,
+      "recordedAt": "2025-11-23T15:03:54.868Z"
+    }
+  ]
+}

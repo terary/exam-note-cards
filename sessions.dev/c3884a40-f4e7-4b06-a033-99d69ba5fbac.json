@@ -1,0 +1,48 @@
+{
+  "sessionId": "c3884a40-f4e7-4b06-a033-99d69ba5fbac",
+  "databaseId": "database-section-2-data-ingestion-storage",
+  "databaseName": "Section 2: Data Ingestion and Storage",
+  "startedAt": "2025-11-24T09:59:40.617Z",
+  "answers": [
+    {
+      "questionId": "f0f052d7-0896-45e5-b094-05c6b7896f89",
+      "questionText": "What is evaluated first: Bucket Policy or Encryption Policy?",
+      "actualAnswerText": "Bucket Policy is evaluated before encryption policy. This is an EXAM topic.",
+      "userAnswerText": "Bucket policy",
+      "userCorrectnessPercentage": 84,
+      "recordedAt": "2025-11-24T10:00:07.100Z"
+    },
+    {
+      "questionId": "afe00ea5-03fb-46d6-9ef6-bb96534dc299",
+      "questionText": "What is Parquet format and when should it be used?",
+      "actualAnswerText": "Parquet is a column storage format optimized for analysis with efficient compression/decompression. Use for: analyzing large datasets, reading columns instead of records, storing on distributed systems where IO is optimized. Systems: Hadoop, Spark, Hive, Impala, Redshift Spectrum.",
+      "userAnswerText": "When supported,  columnar data\n\n\nMissing\n\nreading columns instead of records,\n\ndistributed systems where IO is optimized. Systems: Hadoop, Spark, Hive, Impala, Redshift Spectrum.",
+      "userCorrectnessPercentage": 58,
+      "recordedAt": "2025-11-24T10:01:49.752Z"
+    },
+    {
+      "questionId": "561b043b-4f85-4d76-9b75-6e5d91b7ad6e",
+      "questionText": "What is S3 Intelligent Tiering and how does it work?",
+      "actualAnswerText": "S3 Intelligent Tiering allows automatic movement between tiers with a small moving fee and no retrieval fee. Default is frequent access. Moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, and deep archive after 180-700+ days.",
+      "userAnswerText": "Use of life cycle events to store according retrieval time, colder longer, uses caching concept, most recently access most likely accessed again\n\n\nMissing\nsmall moving fee and no retrieval fee. \n\nMoves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, and deep archive after 180-700+ days.\n",
+      "userCorrectnessPercentage": 47,
+      "recordedAt": "2025-11-24T10:05:31.536Z"
+    },
+    {
+      "questionId": "afe00ea5-03fb-46d6-9ef6-bb96534dc299",
+      "questionText": "What is Parquet format and when should it be used?",
+      "actualAnswerText": "Parquet is a column storage format optimized for analysis with efficient compression/decompression. Use for: analyzing large datasets, reading columns instead of records, storing on distributed systems where IO is optimized. Systems: Hadoop, Spark, Hive, Impala, Redshift Spectrum.",
+      "userAnswerText": "When supported,  columnar data\n\n\nMissing\n\nreading columns instead of records,\n\ndistributed systems where IO is optimized. Systems: Hadoop, Spark, Hive, Impala, Redshift Spectrum.",
+      "userCorrectnessPercentage": 58,
+      "recordedAt": "2025-11-24T10:05:39.311Z"
+    },
+    {
+      "questionId": "1167150a-852a-45dc-9475-f4c2816357f6",
+      "questionText": "What are S3 Transfer Acceleration and Byte Range Fetch optimizations?",
+      "actualAnswerText": "S3 Transfer Acceleration pushes to edge, edge pushes to target (supports multi-part). Byte Range Fetch optimizes reads by parallelizing read, higher fault tolerance, can be used for first byte only. If you know the size of the header, you can peek to get first header.",
+      "userAnswerText": "Parallel retrieval \n\nSort of like scsi stripping\n\n\nMissing\n\nBetter understanding.\n\nFirst byte is unclean,  why only first byte\n\n",
+      "userCorrectnessPercentage": 8,
+      "recordedAt": "2025-11-24T10:07:44.544Z"
+    }
+  ]
+}

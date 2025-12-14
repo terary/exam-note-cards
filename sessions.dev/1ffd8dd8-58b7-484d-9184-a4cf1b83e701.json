@@ -1,0 +1,71 @@
+{
+  "sessionId": "1ffd8dd8-58b7-484d-9184-a4cf1b83e701",
+  "databaseId": "database-section-2-vocabulary",
+  "databaseName": "Section 2 - Data Ingestion and Storage Vocabulary",
+  "startedAt": "2025-12-04T09:43:26.123Z",
+  "answers": [
+    {
+      "questionId": "f9c5dc36-b5c9-4b15-9ec0-c086fdce219d",
+      "questionText": "\"HPC (High Performance Compute)\" is defined as HPC is High Performance Compute. FSx for Lustre is optimized for HPC workloads, providing high throughput and low latency for compute-intensive applications.",
+      "actualAnswerText": "HPC (High Performance Compute)",
+      "userAnswerText": "s",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T09:43:56.491Z"
+    },
+    {
+      "questionId": "125937f2-6898-4858-9463-08fee6e97a47",
+      "questionText": "What is the definition of \"S3 Intelligent Tiering\"?",
+      "actualAnswerText": "\"S3 Intelligent Tiering\" is defined as S3 Intelligent Tiering allows automatic movement between tiers with a small moving fee and no retrieval fee. Default is frequent access. Moves to infrequent after 30 days, archive instant access after 90 days, archive slower access after 90-700 days, and deep archive after 180-700+ days.",
+      "userAnswerText": "sd",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "df",
+      "recordedAt": "2025-12-04T09:45:18.973Z"
+    },
+    {
+      "questionId": "6c1fb241-4617-4b85-a828-990d4e1f275d",
+      "questionText": "What is the definition of \"Lustre\"?",
+      "actualAnswerText": "\"Lustre\" is defined as Lustre is a parallel distributed file system (Linux + Cluster = Lustre). FSx for Lustre is AWS's managed version optimized for HPC and Machine Learning workloads.",
+      "userAnswerText": "linux cluster, scalable storage ",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T09:45:48.661Z"
+    },
+    {
+      "questionId": "17653963-24f9-46c8-848c-a60b99dcf6a9",
+      "questionText": "What is the definition of \"gp3 (General Purpose SSD Volume Type 3)\"?",
+      "actualAnswerText": "\"gp3 (General Purpose SSD Volume Type 3)\" is defined as gp3 is EBS General Purpose SSD Volume Type 3. IO can increase independently of disk size, unlike gp2 where IO increases with size.",
+      "userAnswerText": "adf",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "adf",
+      "recordedAt": "2025-12-04T09:46:09.019Z"
+    },
+    {
+      "questionId": "106ea116-aaac-4b7d-9455-71ff3444284e",
+      "questionText": "What is the definition of \"SNS (Simple Notification Service)\"?",
+      "actualAnswerText": "\"SNS (Simple Notification Service)\" is defined as SNS is AWS Simple Notification Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "userAnswerText": "asd",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "ad",
+      "recordedAt": "2025-12-04T09:46:28.544Z"
+    },
+    {
+      "questionId": "470b116f-e1ea-4619-8477-72834c588566",
+      "questionText": "What is the definition of \"Security Group (SG)\"?",
+      "actualAnswerText": "\"Security Group (SG)\" is defined as Security Group is a virtual firewall for EC2 instances and other AWS resources. EFS uses Security Groups to control access. MSK uses network security groups.",
+      "userAnswerText": "d",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "ds",
+      "recordedAt": "2025-12-04T09:46:40.987Z"
+    },
+    {
+      "questionId": "9a52f6d1-9f74-4348-9ceb-23ac1283cbcb",
+      "questionText": "\"Prometheus\" is defined as Prometheus is an open-source monitoring and alerting toolkit. MSK supports Prometheus monitoring: open port on cluster, broker, and topic, set up JMX export metrics on node exporter (CPU and disk metrics).",
+      "actualAnswerText": "Prometheus",
+      "userAnswerText": "asdf",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "adf",
+      "recordedAt": "2025-12-04T09:47:00.497Z"
+    }
+  ]
+}

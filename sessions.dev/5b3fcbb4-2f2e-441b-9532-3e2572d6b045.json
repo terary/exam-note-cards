@@ -1,0 +1,56 @@
+{
+  "sessionId": "5b3fcbb4-2f2e-441b-9532-3e2572d6b045",
+  "databaseId": "database-section-2-data-ingestion-storage",
+  "databaseName": "Section 2: Data Ingestion and Storage",
+  "startedAt": "2025-11-24T03:32:51.798Z",
+  "answers": [
+    {
+      "questionId": "338ffb6d-1116-496a-b344-bf763a5770c1",
+      "questionText": "What is the difference between S3 Object Key, Prefix, and Object Value?",
+      "actualAnswerText": "Object Key is the full path (e.g., s3://bucket-name/the/path/to/item.ext). Prefix is the path portion (\"/the/path/to/\"). Object Value is the contents of the file. There are no actual directories in S3, but the UI creates the appearance of folders.",
+      "userAnswerText": "Key = prefix + file name,\nObject value = file content\n\n\n\nMissed backet name",
+      "userCorrectnessPercentage": 59,
+      "recordedAt": "2025-11-24T03:34:47.892Z"
+    },
+    {
+      "questionId": "bdbee58c-1ac8-4585-bb48-7fe175145197",
+      "questionText": "What are the main ETL/ELT Pipeline Orchestration Services in AWS?",
+      "actualAnswerText": "Event Bridge, Step Functions, Glue Workflow, and AWS Managed Workflow / Apache Airflow (MWAA). Glue is considered reliable for pipeline management.",
+      "userAnswerText": "Flink\nMsk",
+      "userCorrectnessPercentage": 16,
+      "recordedAt": "2025-11-24T03:35:48.109Z"
+    },
+    {
+      "questionId": "2320d84b-f25b-4731-ba53-4393512ceaa6",
+      "questionText": "What is FSx for Lustre and when should it be used?",
+      "actualAnswerText": "FSx for Lustre is a parallel file system (large, very large) optimized for Machine Learning, video processing, financial models, electrical design automation, and High Performance Compute (HPC). Scales 100's GB/s, millions IOPS, sub-ms latency. Deploy options: Scratch (temporary, not replicated, no backup, high performance, 6x faster, 200 MB/s per TB) or Persistent (long term storage, replicated across AZ, replace failed file system within minutes).",
+      "userAnswerText": "FSx external file system.\n\nUsed luster is needed",
+      "userCorrectnessPercentage": 9,
+      "recordedAt": "2025-11-24T03:37:17.515Z"
+    },
+    {
+      "questionId": "76126f15-4149-4901-a33a-acd942dfcda5",
+      "questionText": "What are the Glacier storage classes and their retrieval times?",
+      "actualAnswerText": "Glacier Instant Retrieval: milliseconds, minimal storage time 90 days. Glacier Flexible Retrieval: Expedited (1-5 minutes), Standard (3-5 hours), Bulk (5-12 hours), min storage 90 days. Glacier Deep Archive: Standard retrieval (12 hours), Bulk (48 hours), min storage 180 days.",
+      "userAnswerText": "Immediate, ms\nCold \nfrozen,  up to 12 hours",
+      "userCorrectnessPercentage": 9,
+      "recordedAt": "2025-11-24T03:38:30.964Z"
+    },
+    {
+      "questionId": "8512e2b6-0695-4a68-9637-c8fd9ad77db3",
+      "questionText": "What are common Kinesis consumer troubleshooting issues?",
+      "actualAnswerText": "Read too slow: increase number of shards, MaxRecordPerCall may be too low, code is too slow. getRecords() returns empty: normal and expected, try again. Shard Iterator expired unexpectedly: more capacity on underlying DynamoDB. Record processor falling behind: increase returning, insufficient resources, monitor with get records.",
+      "userAnswerText": "Security on system\nSecurity dependant systems \n",
+      "userCorrectnessPercentage": 9,
+      "recordedAt": "2025-11-24T03:39:44.555Z"
+    },
+    {
+      "questionId": "9805f52f-722c-4679-bf42-16129a06ae81",
+      "questionText": "What is Kinesis Data Analytics (Managed Service for Apache Flink)?",
+      "actualAnswerText": "Flink replaces something leaner (Kinesis + SQL). Flink is Managed/Serverless. It's AWS Managed Service for Apache Flink (MSAF).",
+      "userAnswerText": "MSK\n",
+      "userCorrectnessPercentage": 8,
+      "recordedAt": "2025-11-24T03:40:24.027Z"
+    }
+  ]
+}

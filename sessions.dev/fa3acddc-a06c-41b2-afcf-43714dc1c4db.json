@@ -1,0 +1,24 @@
+{
+  "sessionId": "fa3acddc-a06c-41b2-afcf-43714dc1c4db",
+  "databaseId": "database-ai-managed-services",
+  "databaseName": "AWS AI Managed Services",
+  "startedAt": "2025-11-23T15:01:31.833Z",
+  "answers": [
+    {
+      "questionId": "7de9b0dc-2d64-4c72-b010-a0d3ba83ea75",
+      "questionText": "Which AWS AI managed service family, such as Amazon Q-Business and Amazon Q-Apps, provides generative AI capabilities over enterprise data?",
+      "actualAnswerText": "Amazon Q services (including Q-Business, Q-Apps, and Q-Developer) offer managed generative AI experiences that apply AWS’s large language models to your enterprise data and applications.",
+      "userAnswerText": "Does the clear after submit",
+      "userCorrectnessPercentage": 5,
+      "recordedAt": "2025-11-23T15:01:47.341Z"
+    },
+    {
+      "questionId": "5c8a8bc1-bc6a-4e52-8e4c-5b1b4da5fd3b",
+      "questionText": "Which AWS AI managed service converts text inputs into lifelike speech audio?",
+      "actualAnswerText": "Amazon Polly converts text into lifelike speech audio using AWS-managed voices across many languages and styles.",
+      "userAnswerText": "Does this clear after submit",
+      "userCorrectnessPercentage": -1,
+      "recordedAt": "2025-11-23T15:02:06.542Z"
+    }
+  ]
+}

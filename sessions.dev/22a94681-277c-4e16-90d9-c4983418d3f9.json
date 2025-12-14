@@ -1,0 +1,24 @@
+{
+  "sessionId": "22a94681-277c-4e16-90d9-c4983418d3f9",
+  "databaseId": "database-section-2-data-ingestion-storage",
+  "databaseName": "Section 2: Data Ingestion and Storage",
+  "startedAt": "2025-11-23T15:15:43.334Z",
+  "answers": [
+    {
+      "questionId": "fd405866-fbb8-4903-892d-1fad2645247c",
+      "questionText": "At what level is S3 versioning enabled and what are its best practices?",
+      "actualAnswerText": "S3 versioning is enabled at the bucket level. Best practices include: prevents unintentional overwrite and easy rollback. Two objects with the same key will overwrite but also increment version. versionId is null for items created before versioning was enabled.",
+      "userAnswerText": "Does this keep?",
+      "userCorrectnessPercentage": -1,
+      "recordedAt": "2025-11-23T15:15:54.144Z"
+    },
+    {
+      "questionId": "acf55280-c0c9-4415-840e-1c38a5be129d",
+      "questionText": "What is the difference between ETL and ELT?",
+      "actualAnswerText": "ETL (Extract, Transform, Load) is used with Data Warehouse - Schema-on-Write, transform data to meet schema requirements before loading. ELT (Extract, Load, Transform) is used with Data Lake - Schema-on-Read, extract and load data first, then transform on read.",
+      "userAnswerText": "How is this?",
+      "userCorrectnessPercentage": -1,
+      "recordedAt": "2025-11-23T15:16:02.241Z"
+    }
+  ]
+}

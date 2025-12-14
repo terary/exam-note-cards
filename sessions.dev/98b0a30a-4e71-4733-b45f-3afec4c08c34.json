@@ -1,0 +1,17 @@
+{
+  "sessionId": "98b0a30a-4e71-4733-b45f-3afec4c08c34",
+  "databaseId": "database-section-5-algorithms",
+  "databaseName": "Section 5 - SageMaker Built-in Algorithms",
+  "startedAt": "2025-12-03T03:33:45.483Z",
+  "answers": [
+    {
+      "questionId": "6047efc7ed5bae37292de182e2c424a9",
+      "questionText": "What input format does IP Insights require, and what is notable about this?",
+      "actualAnswerText": "IP Insights requires CSV ONLY format. It needs entity and IP address data. User names and account IDs can be fed in directly with no preprocessing required.",
+      "userAnswerText": "fish",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "testing",
+      "recordedAt": "2025-12-03T03:34:10.630Z"
+    }
+  ]
+}
