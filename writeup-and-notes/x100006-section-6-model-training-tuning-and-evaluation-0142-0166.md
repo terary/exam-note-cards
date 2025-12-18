@@ -17,7 +17,9 @@ Several Kinds of Activation functions. Several to chose from and have significan
 
 - Define the output of a node / neuron give its input signal. "Given a set of inputs what is my output."
 
-- Simplest Activation Function is a **Linear Function**.
+- Simplest Activation Function is a
+
+- **Linear Function**.
 
   > Think `f(x) = x+1` or similar linear functions - and boring
 
@@ -383,11 +385,18 @@ What is the differences
 
 > \_various edge cases around training NN, some questions will deal with gradients **EXAM**
 
+#### QUESTION 1
+
+Describe the `vanishing gradient` problem and the opposite problem
+
+#### ANSWER 1
+
 - when the slope of the learning curve approaches zero, things can get stuck
 - We end up working with very small numbers that slow down training, or even introduce numeric errors
 - Becomes a problem with deeper networks and RNNs as these `Vanishing gradients` propagate to deeper layers
 - Opposite problem: `Exploding Gradients`
 
+[Graph of curve several high/lows]
 Y = loss function
 X = weights
 
@@ -396,9 +405,53 @@ X = weights
 > `Vanishing Gradient` Slope approaches zero, could be a local minima or could be correct answer
 > `Exploding Gradients` Slope approaches infinity (compete vertical/parallel to y)
 
+#### QUESTION 2
+
+What problem does the following describe:
+
+- when the slope of the learning curve approaches zero, things can get stuck
+- We end up working with very small numbers that slow down training, or even introduce numeric errors
+- Becomes a problem with deeper networks and RNNs as these `Vanishing gradients` propagate to deeper layers
+- Opposite problem: `Exploding Gradients`
+
+[Graph of curve several high/lows]
+Y = loss function
+X = weights
+
+> As slope approaches zero, "the bottom of the curve", `first derivative`
+
+#### ANSWER 2
+
+> `Vanishing Gradient` Slope approaches zero, could be a local minima or could be correct answer
+> `Exploding Gradients` Slope approaches infinity (compete vertical/parallel to y)
+
+#### QUESTION 3
+
+What is the `Exploding Gradients` problem
+
+#### ANSWER 3
+
+> `Exploding Gradients` Slope approaches infinity (compete vertical/parallel to y)
+> The opposite of `Vanishing Gradient`.
+
+#### QUESTION 4
+
+What is the `Vanishing Gradient` problem
+
+#### ANSWER 3
+
+> `Vanishing Gradient` Slope approaches zero, could be a local minima or could be correct answer
+> The opposite of `Exploding Gradient`.
+
 #### Fixing the Vanishing Gradient problem
 
-- Multi-level hierarchy
+#### QUESTION 4
+
+List some techniques to deal with `Vanish Gradient` problem
+
+#### ANSWER 4
+
+- Multi-level hierarchy [network]
   - Break-up levels into their own sub-networks.
   - > train levels (subnetwork) independently
   - > limit how far the vanishing gradient can propagate
@@ -412,7 +465,23 @@ X = weights
 
 **TMC** Want to know or be able to categorize each of the above, he sometimes says 'network', 'activation function', 'algorithm' **EXAM**
 
+#### QUESTION 5
+
+The most common/useful method of dealing with `Vanishing Gradient` problem, and why?
+
+#### ANSWER 5
+
+- ReLU is a good choice (45 degree angle when positive) **EXAM** ReLU is a solution to VGP
+
 #### Gradient Checking
+
+#### QUESTION 6
+
+What is meant by "Gradient Checking" how is it used?
+
+#### ANSWER 6
+
+Gradient Checking refers to checking the slope of the curve near some value
 
 > First derivatives of the learning curve are as expected
 
@@ -764,7 +833,9 @@ Learn as it goes. He described it as a web-graph (intellectual graph), that adju
     - Runs up to **100 trials** to find optimal hyperparameters in the range
   - **Bayesian optimization used if dataset is < 100MB**
   - **Multi-fidelity optimization > 100MB** - Early stopping if trial is performing poorly
-    \- `Ensembling`
+
+- `Ensembling`
+
   - Trains several base models using **AutoGluon** library
     - Wider range of models, including more tree based and neural network algorithm
   - **Runs 10 trials with different **model and parameter settings

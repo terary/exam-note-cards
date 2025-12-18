@@ -45,7 +45,7 @@ export class AnswerSessionsService {
 
     if (!session) {
       throw new NotFoundException(`Answer session '${sessionId}' not found`);
-    }
+  }
 
     return session.toObject();
   }

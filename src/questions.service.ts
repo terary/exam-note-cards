@@ -64,7 +64,7 @@ export class QuestionsService {
 
     databases.forEach((database) => {
       if (database.questionsWithAnswers) {
-        allQuestions.push(...database.questionsWithAnswers);
+      allQuestions.push(...database.questionsWithAnswers);
       }
     });
 
@@ -83,20 +83,20 @@ export class QuestionsService {
       throw new NotFoundException(`Question with ID '${questionId}' not found`);
     }
 
-    const question = database.questionsWithAnswers.find(
-      (q) => q.questionId === questionId
-    );
+      const question = database.questionsWithAnswers.find(
+        (q) => q.questionId === questionId
+      );
 
     if (!question) {
       this.logger.warn(`Question with ID '${questionId}' not found`);
       throw new NotFoundException(`Question with ID '${questionId}' not found`);
     }
 
-    this.logger.log(
-      `Found question '${questionId}' in database '${database.databaseName}'`
-    );
-    return question;
-  }
+        this.logger.log(
+          `Found question '${questionId}' in database '${database.databaseName}'`
+        );
+        return question;
+      }
 
   async getRandomQuestionFromDatabase(databaseId: string): Promise<Question> {
     const database = await this.getDatabaseById(databaseId);

@@ -1,0 +1,1345 @@
+{
+  "databaseName": "Section 6 - Deep Learning Intro",
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "Describe the Linear Activation Function.",
+      "answerText": "The simplest activation function. Think f(x) = x+1 or similar linear functions - and boring. Linear functions degenerate to a single layer when used in neural networks.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Think f(x) = x+1 or similar functions - and boring.  ______ activation functions degenerate to a single layer when used in neural networks. Which activation function does this describe?",
+      "answerText": "Linear Function",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe Binary Step Activation. (a few properties)",
+      "answerText": "It is on or off. Can't handle multiple classification, it's binary. Vertical slopes don't work with calculus. Typical step function, graph looks like stairs.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Activation Function that: It is on or off. Can't handle multiple classification Vertical slopes don't work with calculus. Typical step function, graph looks like stairs.",
+      "answerText": "Binary Step Function",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Sigmoid (Logistic) Activation Function .",
+      "answerText": "Scales everything from 0-1. Changes slowly for high or low values (The vanishing gradient problem). Computationally expensive. Part of non-linear activation functions that can create complex mappings between inputs and outputs, allow backpropagation (because they have useful derivative), and allow for multiple layers.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Scales everything from 0-1. Changes slowly for high or low values (The vanishing gradient problem). Computationally expensive. Part of non-linear activation functions?",
+      "answerText": "Sigmoid (Logistic)",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the TanH (Hyperbolic Tangent) Activation Function.",
+      "answerText": "Scales everything from -1 to 1. Changes slowly for high or low values (The vanishing gradient problem). Computationally expensive. Generally preferred over sigmoid because it's nice to have a function with a mean around zero. Part of non-linear activation functions.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Scales everything from -1 to 1. Changes slowly for high or low values (The vanishing gradient problem). Computationally expensive. Generally preferred over sigmoid because it's nice to have a function with a mean around zero. Which activation function does this describe?",
+      "answerText": "TanH (Hyperbolic Tangent)",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe Rectified Linear Unit (ReLU).",
+      "answerText": "Very popular choice. Easy and fast to compute. Nice because it's linear, easier to compute than curve. But when inputs are zero or negative, we have a linear function and all of its problems - The \"Dying ReLU\" problem.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": " Which activation function does this describe? Very popular choice. Easy and fast to compute. Nice because it's linear, easier to compute than curve. But when inputs are zero or negative, we have a linear function and all of its problems - The \"Dying ________\" problem.",
+      "answerText": "ReLU (Rectified Linear Unit)",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Leaky ReLU Activation Function .",
+      "answerText": "Solves the \"dying ReLU\" problem by introducing a negative slope below 0 (usually not as steep as the positive slope). This prevents the neuron from completely dying when inputs are zero or negative.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Which activation function does this describe? Solves the \"dying ReLU\" problem by introducing a negative slope below 0 (usually not as steep as the positive slope). This prevents the neuron from completely dying when inputs are zero or negative.",
+      "answerText": "Leaky ReLU",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe PReLU (Parametric ReLU) activation function.",
+      "answerText": "ReLU, but the slope in the negative part is learned via backpropagation. Complicated - your mileage may vary. Different kinds of problems will be impacted differently - the effectiveness is determined by the kind of problem. Computationally intensive so you lose some of the benefit of ReLU.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "ReLU, but the slope in the negative part is learned via backpropagation. Complicated - your mileage may vary. Computationally intensive so you lose some of the benefit of ReLU. Which activation function does this describe?",
+      "answerText": "PReLU (Parametric ReLU)",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Softmax Activation Function.",
+      "answerText": "Used on the final output layer of a multi-class classification problem. Basically converts outputs to probabilities of each classification (confidence score). Can't produce more than one label for something (Sigmoid can). Don't worry about the actual function for the EXAM, just know what it is used for.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Which activation function does this describe? Used on the final output layer of a multi-class classification problem. Basically converts outputs to probabilities of each classification (confidence score). Can't produce more than one label for something (Sigmoid can).",
+      "answerText": "Softmax",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe activation function ELU (Exponential Linear Unit).",
+      "answerText": "A ReLU variant. Exponential Linear Unit - one of the other ReLU variants mentioned alongside Swish and Maxout. Part of the family of activation functions that improve upon the standard ReLU.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Activation Function that: A ReLU variant. Exponential Linear Unit - one of the other ReLU variants mentioned alongside Swish and Maxout. Part of the family of activation functions that improve upon the standard ReLU.",
+      "answerText": "ELU (Exponential Linear Unit)",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Activation Function: ELU (Exponential Linear Unit)",
+      "answerText": "Activation Function that: A ReLU variant. Exponential Linear Unit - one of the other ReLU variants mentioned alongside Swish and Maxout. Part of the family of activation functions that improve upon the standard ReLU.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe activation function Swish.",
+      "answerText": "From Google, performs really well but it is from Google and Amazon. Mostly a benefit with very deep networks (40+ layers) - not likely on exam. A ReLU variant that is part of the other ReLU variants family.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "From Which activation function does this describe? Google, performs really well. Mostly a benefit with very deep networks (40+ layers) - not likely on exam. A ReLU variant.",
+      "answerText": "Swish",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe activation function Maxout.",
+      "answerText": "Outputs the max of the inputs. Technically ReLU is a special case of Maxout. But doubles parameters that need to be trained. A ReLU variant that is part of the other ReLU variants family.",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "A ReLU variant. Which activation function does this describe?  Outputs the max of the inputs. Technically ReLU is a special case of this. But doubles parameters that need to be trained.",
+      "answerText": "Maxout",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "These describe what: Linear Function.\nBinary Step Function\nnon-linear activation functions\n`Sigmoid` `Logistic` `TanH`Rectified Linear Unit(ReLU)\nLeaky ReLU\nParametric ReLu (PReLU)\nSoftmax",
+      "answerText": "Activation Functions",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "answerText": "List 8 of the Activation Functions",
+      "questionText": "Linear Function.\nBinary Step Function\nnon-linear activation functions\n`Sigmoid` `Logistic` `TanH`Rectified Linear Unit(ReLU)\nLeaky ReLU\nParametric ReLu (PReLU)\nSoftmax",
+      "tags": [
+        "sagemaker",
+        "deep-learning",
+        "training",
+        "activation-functions"
+      ],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "What use-case characteristics suggest using a Convolutional Neural Network (CNN)?",
+      "answerText": "CNNs are well-suited for data that does not neatly align into columns, such as images and text. They excel at finding features regardless of their location, making them feature-location invariant. Common use cases include image feature detection, machine translation, sentence classification, and sentiment analysis.",
+      "tags": ["cnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following characteristics describe a problem best solved with which type of neural network?\n> Data does not neatly align into columns\n> Features may appear in different locations\n> Examples include images and text-based problems",
+      "answerText": "Convolutional Neural Networks (CNN)",
+      "tags": ["cnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the biological phenomenon that inspired Convolutional Neural Networks.",
+      "answerText": "CNNs are inspired by the visual cortex. They use local receptive fields that respond to small parts of the visual input, overlapping to cover the entire visual field. Lower layers detect simple features like edges, while higher layers combine these into shapes and objects. Color images are handled with separate channels such as red, green, and blue.",
+      "tags": ["cnn", "biology-inspired"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "A neural network inspired by the visual cortex, using overlapping local receptive fields and hierarchical feature detection, describes which type of network?",
+      "answerText": "Convolutional Neural Networks (CNN)",
+      "tags": ["cnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How does a CNN mirror the way the brain recognizes a stop sign?",
+      "answerText": "Local receptive fields first detect edges in the image. Higher-level layers combine these edges to recognize shapes and letters, incorporating color information such as strong red signals. This information is processed through successive layers until the object is identified, similar to how the brain recognizes a stop sign.",
+      "tags": ["cnn", "feature-detection"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following process describes which type of neural network?\n> Edge detection by local receptive fields\n> Shape recognition in higher layers\n> Progressive abstraction of visual information",
+      "answerText": "Convolutional Neural Networks (CNN)",
+      "tags": ["cnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes how to build what type of neural network using Keras or TensorFlow?\n> Conv2D layers\n> MaxPooling layers\n> Flatten and Dense layers\n> Softmax output",
+      "answerText": "Convolutional Neural Networks (CNN)",
+      "tags": ["cnn", "keras", "tensorflow"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are some downsides of using Convolutional Neural Networks?",
+      "answerText": "CNNs are very resource-intensive, requiring significant CPU, GPU, and memory. They involve many hyperparameters such as kernel sizes and pooling configurations. Additionally, collecting, storing, and managing large training datasets is often difficult and costly.",
+      "tags": ["cnn", "limitations"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List several specialized CNN architectures and their key characteristics.",
+      "answerText": "LeNet-5 is good for handwriting recognition. AlexNet is deeper and used for image classification. GoogLeNet is even deeper and introduces inception modules. ResNet uses skip connections to maintain performance in very deep networks.",
+      "tags": ["cnn", "architectures"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following models—LeNet-5, AlexNet, GoogLeNet, and ResNet—are examples of what?",
+      "answerText": "Specialized or alternative CNN architectures",
+      "tags": ["cnn", "architectures"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "The following use-case is best suited for which type of neural network?\n> For sequences of data such as time-series, machine translation, image captions, or music generation.",
+      "answerText": "Recurrent Neural Networks (RNN)",
+      "tags": ["rnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the use-cases best suited for Recurrent Neural Networks.",
+      "answerText": "RNNs are best for sequential data where past inputs influence future outputs. Examples include time-series prediction, web logs, sensor data, stock trades, machine translation, image captioning, and machine-generated music. They are especially useful when the order of data matters.",
+      "tags": ["rnn", "sequential-data"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What makes a recurrent neuron \"recurrent\"?",
+      "answerText": "A recurrent neuron stores the output of its activation function and feeds it back into itself for the next time step. This feedback loop allows past behavior to influence future behavior, effectively giving the neuron a memory.",
+      "tags": ["rnn", "memory"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the different RNN topologies.",
+      "answerText": "RNNs support several topologies: sequence-to-sequence (e.g., stock price prediction), sequence-to-vector (e.g., sentiment analysis), vector-to-sequence (e.g., image captioning), and encoder–decoder architectures used in tasks like machine translation.",
+      "tags": ["rnn", "topologies"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following architectures—sequence-to-sequence, sequence-to-vector, vector-to-sequence, and encoder–decoder—describe which type of neural network?",
+      "answerText": "Recurrent Neural Networks (RNN)",
+      "tags": ["rnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the process and challenges involved in training a Recurrent Neural Network.",
+      "answerText": "RNNs are trained using backpropagation through time, where gradients are propagated across both layers and time steps. This causes the network to behave like a very deep neural network, making training expensive and unstable. Truncated backpropagation through time is often used to limit computational cost.",
+      "tags": ["rnn", "training"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following challenges—backpropagation through time, deep time-step expansion, and diluted early-state influence—are associated with training which type of neural network?",
+      "answerText": "Recurrent Neural Networks (RNN)",
+      "tags": ["rnn", "training-challenges"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss some of the sensitivities involved in training Recurrent Neural Networks.",
+      "answerText": "Training RNNs is difficult due to high sensitivity to topology and hyperparameter choices. They are resource-intensive, and poor design choices can lead to non-converging models that consume hours of training time without useful results.",
+      "tags": ["rnn", "optimization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following issues—high sensitivity to hyperparameters, heavy resource usage, and difficulty converging—describe training challenges for which neural network?",
+      "answerText": "Recurrent Neural Networks (RNN)",
+      "tags": ["rnn", "deep-learning"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the behavior/effects of the `batch size` hyperparameter on training.",
+      "answerText": "Batch size controls how many training samples are processed together in each training step. Smaller batch sizes introduce more randomness, which can help escape local minima, while larger batch sizes are more stable but can converge to suboptimal solutions.",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes the purpose of which hyperparameter?\n\n- How many training samples are used in each batch during an epoch\n- Smaller batches introduce randomness\n- Larger batches are more stable but risk converging incorrectly",
+      "answerText": "`batch size`",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which hyperparameter?\n\n- Smaller values help escape local minima\n- Larger values may converge on the wrong solution\n- Random shuffling can cause inconsistent results across runs",
+      "answerText": "`batch size`",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of adjusting the `batch size` hyperparameter.",
+      "answerText": "Smaller batch sizes make it easier for training to escape local minima due to added randomness, but can slow convergence. Larger batch sizes are more computationally efficient and stable, but can get stuck in local minima or converge to incorrect solutions, especially when combined with random shuffling.",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the behavior and purpose of the `learning rate` hyperparameter during training.",
+      "answerText": "The learning rate controls how far the model moves in parameter space during each update when performing gradient descent. It determines how large each step is when sampling new weight configurations in order to minimize the cost function across epochs.",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes the purpose of which hyperparameter?\n\n- Neural networks are trained using gradient descent\n- Each epoch samples different weight configurations\n- This hyperparameter controls how far apart those samples are\n- It determines step size when searching for the minimum of the cost function",
+      "answerText": "`learning rate`",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which hyperparameter?\n\n- Values that are too high may overshoot the optimal solution\n- Values that are too small increase training time\n- There is a tradeoff between accuracy and cost",
+      "answerText": "`learning rate`",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of adjusting the `learning rate` hyperparameter.",
+      "answerText": "A learning rate that is too high can cause the model to overshoot the optimal solution, leading to instability. A learning rate that is too small results in slow convergence and longer training times. Choosing an appropriate learning rate balances accuracy, convergence speed, and computational cost.",
+      "tags": ["deep-learning", "hyperparameters"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe the characteristics of overfitting and why it is a problem in neural networks.",
+      "answerText": "Overfitting occurs when a model performs very well on training data but poorly on unseen data. This happens when the model learns patterns specific to the training data that do not generalize to real-world data, often seen as high training accuracy but low evaluation or test accuracy.",
+      "tags": ["regularization", "overfitting"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what training condition and what is used to address it?\n\n- High accuracy on training data\n- Low accuracy on evaluation or test data\n- Learned patterns do not generalize",
+      "answerText": "Overfitting, which is addressed using regularization techniques",
+      "tags": ["regularization", "overfitting"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which training condition?\n\n- Model memorizes training data\n- Poor generalization to new data\n- Accuracy gap between training and evaluation datasets",
+      "answerText": "Overfitting",
+      "tags": ["regularization", "overfitting"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe how regularization helps prevent overfitting.",
+      "answerText": "Regularization introduces constraints that reduce a model’s ability to memorize training data, encouraging generalization. Techniques include reducing model size, dropout, early stopping, and weight penalties such as L1 and L2.",
+      "tags": ["regularization"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe the simplest regularization technique used in neural networks.",
+      "answerText": "The simplest regularization technique is reducing model capacity by using fewer neurons or fewer layers, which limits the model’s ability to overfit the training data.",
+      "tags": ["regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which regularization technique?\n\n- Reduce the number of neurons\n- Use fewer layers\n- Limit model complexity",
+      "answerText": "Reducing model capacity (simplest regularization technique)",
+      "tags": ["regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which regularization technique?\n\n- Smaller network\n- Reduced overfitting\n- Less model expressiveness",
+      "answerText": "Reducing the number of neurons or layers",
+      "tags": ["regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of reducing the number of neurons or layers.",
+      "answerText": "Reducing neurons or layers decreases model complexity, making it harder for the model to memorize training data. This reduces overfitting but may also limit the model’s ability to learn very complex patterns.",
+      "tags": ["regularization"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe what a dropout layer is and why it is used.",
+      "answerText": "A dropout layer is a regularization technique that randomly removes neurons during training iterations. This prevents any single neuron from dominating and encourages the network to learn more robust, distributed representations.",
+      "tags": ["dropout", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which regularization technique?\n\n- Randomly removes neurons between training iterations\n- Prevents neurons from overfitting specific data points\n- Often uses aggressive rates like 50%",
+      "answerText": "Dropout",
+      "tags": ["dropout", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which regularization technique?\n\n- Smaller effective network per iteration\n- Increased robustness\n- Reduced overfitting",
+      "answerText": "Dropout",
+      "tags": ["dropout", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of using a dropout layer.",
+      "answerText": "Dropout forces the network to rely on multiple neurons instead of any single one, improving generalization. While it reduces overfitting, high dropout rates can slow training or reduce model capacity.",
+      "tags": ["dropout", "regularization"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe what is meant by early stopping and how it is used.",
+      "answerText": "Early stopping is a regularization technique that halts training once performance stops improving on evaluation data. It prevents the model from continuing to train past the point where it begins to overfit.",
+      "tags": ["early-stopping", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which regularization technique?\n\n- Training accuracy plateaus or oscillates\n- Further training degrades performance\n- Training stops automatically",
+      "answerText": "Early stopping",
+      "tags": ["early-stopping", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which regularization technique?\n\n- Prevents unnecessary epochs\n- Saves training time\n- Reduces overfitting",
+      "answerText": "Early stopping",
+      "tags": ["early-stopping", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of using early stopping during training.",
+      "answerText": "Early stopping prevents overfitting by halting training once improvements stop. It reduces wasted computation and avoids degrading model generalization due to excessive training.",
+      "tags": ["early-stopping", "regularization"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe what L1 regularization is and when it should be used.",
+      "answerText": "L1 regularization adds a penalty equal to the sum of absolute weights. It performs automatic feature selection by driving some weights to zero and is best used when many features are irrelevant or interpretability is important.",
+      "tags": ["l1", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which regularization technique?\n\n- Sum of absolute weights\n- Produces sparse models\n- Performs feature selection",
+      "answerText": "L1 regularization",
+      "tags": ["l1", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which regularization technique?\n\n- Many weights go to zero\n- Reduced dimensionality\n- Sparse output",
+      "answerText": "L1 regularization",
+      "tags": ["l1", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of applying L1 regularization.",
+      "answerText": "L1 regularization reduces overfitting by eliminating less useful features, producing sparse models. While computationally expensive, the resulting reduced feature set can improve training efficiency and interpretability.",
+      "tags": ["l1", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe what L2 regularization is and when it should be used.",
+      "answerText": "L2 regularization adds a penalty equal to the sum of squared weights. It discourages large weights while keeping all features, making it suitable when most features are useful and training stability is important.",
+      "tags": ["l2", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which regularization technique?\n\n- Sum of squared weights\n- Dense output\n- Improves training stability",
+      "answerText": "L2 regularization",
+      "tags": ["l2", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following effects describe which regularization technique?\n\n- All features retained\n- Weights smoothly reduced\n- Dense model representation",
+      "answerText": "L2 regularization",
+      "tags": ["l2", "regularization"],
+      "domains": ["sagemaker"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the effects of applying L2 regularization.",
+      "answerText": "L2 regularization reduces overfitting by discouraging large weights while keeping all features active. It produces dense models, improves numerical stability, and is commonly used in deep neural networks.",
+      "tags": ["l2", "regularization"],
+      "domains": ["sagemaker"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe the vanishing gradient problem and the opposite problem.",
+      "answerText": "The vanishing gradient problem occurs when the slope (first derivative) of the loss function approaches zero, causing gradients to become very small. This slows down or stalls training and can introduce numerical issues, especially in deep networks and RNNs where vanishing gradients propagate to earlier layers. The opposite problem is the exploding gradient problem, where gradients grow very large and the slope approaches infinity.",
+      "tags": ["deep-learning", "training", "gradients", "neural-networks"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What problem does the following describe: when the slope of the learning curve approaches zero, values become very small, training slows down, and this affects deep networks and RNNs?",
+      "answerText": "This description refers to the vanishing gradient problem, where gradients approach zero and learning stalls. The related opposite issue is the exploding gradient problem, where gradients become extremely large and unstable.",
+      "tags": ["deep-learning", "training", "gradients", "neural-networks"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Exploding Gradients problem?",
+      "answerText": "The exploding gradients problem occurs when gradients grow excessively large, causing the slope of the loss function to approach infinity (nearly vertical). It is the opposite of the vanishing gradient problem and can lead to unstable training.",
+      "tags": ["deep-learning", "training", "gradients", "neural-networks"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Vanishing Gradient problem?",
+      "answerText": "The vanishing gradient problem occurs when gradients approach zero as they propagate backward through a network. This can correspond to a local minimum or even the correct solution, but it prevents effective learning in earlier layers. It is the opposite of the exploding gradient problem.",
+      "tags": ["deep-learning", "training", "gradients", "neural-networks"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List some techniques to deal with the Vanishing Gradient problem.",
+      "answerText": "Techniques include using multi-level hierarchies by breaking networks into sub-networks and training them independently, limiting how far gradients propagate; using LSTM architectures; applying residual networks such as ResNet, which act like ensembles of shorter networks; and choosing better activation functions, with ReLU being a common and effective choice.",
+      "tags": [
+        "deep-learning",
+        "training",
+        "gradients",
+        "network-architecture",
+        "activation-functions"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the most common and useful method of dealing with the Vanishing Gradient problem, and why?",
+      "answerText": "Using the ReLU activation function is the most common and useful method. ReLU maintains a strong gradient for positive inputs with a constant slope, which helps prevent gradients from vanishing during backpropagation.",
+      "tags": [
+        "deep-learning",
+        "training",
+        "gradients",
+        "activation-functions"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is meant by Gradient Checking and how is it used?",
+      "answerText": "Gradient checking is a debugging and validation technique where numerical approximations of gradients are compared against analytically computed gradients during training. It ensures the first derivatives of the loss function are correct. This is typically handled internally by deep learning frameworks and is mainly used to validate training code.",
+      "tags": ["deep-learning", "training", "gradients", "debugging"],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "What is a Confusion Matrix?",
+      "answerText": "A confusion matrix is a table that summarizes prediction results by comparing actual versus predicted outcomes. It shows true positives, true negatives, false positives, and false negatives. Some matrices also include row and column totals. The exact row/column layout may vary between implementations.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "classification",
+        "confusion-matrix"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the reasons a Confusion Matrix is necessary and its purpose.",
+      "answerText": "Accuracy alone can be misleading, especially in cases like rare disease detection where always predicting \"no\" can yield very high accuracy but a useless model. A confusion matrix exposes false positives, false negatives, true positives, and true negatives, allowing us to understand how a model behaves across different error types.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "classification",
+        "metrics"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe some attributes of a Confusion Matrix.",
+      "answerText": "A confusion matrix compares predicted yes/no against actual yes/no outcomes. There is no strict protocol for whether predictions or actual values appear in rows or columns. Correct predictions typically lie along the diagonal (true positives and true negatives). Some matrices include row and column totals. It is important to carefully interpret the matrix since axes may be reversed.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "classification",
+        "confusion-matrix"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a Confusion Matrix with Heat Map?",
+      "answerText": "A confusion matrix with a heat map is commonly used for multi-class classification problems. It extends beyond binary yes/no outcomes and uses color intensity to represent the magnitude of correct and incorrect predictions. Darker or stronger colors typically indicate higher values, but labeling and axis orientation can vary by implementation.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "classification",
+        "visualization"
+      ],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "What is the recall metric formula and what does it gauge?",
+      "answerText": "Recall is calculated as TP / (TP + FN). It measures the percentage of actual positives that are correctly identified. It is also known as sensitivity, true positive rate, or completeness, and is especially important when false negatives are costly, such as in fraud detection.",
+      "tags": ["machine-learning", "model-evaluation", "recall", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the recall metric? What does it gauge? When is it recommended?",
+      "answerText": "Recall, also known as sensitivity or true positive rate, measures the percentage of actual positives correctly predicted. It is recommended when minimizing false negatives is critical, such as in fraud detection or safety-related applications.",
+      "tags": ["machine-learning", "model-evaluation", "recall", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What does precision measure?",
+      "answerText": "Precision measures relevancy by indicating how many of the predicted positive results are actually positive.",
+      "tags": ["machine-learning", "model-evaluation", "precision", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the precision formula?",
+      "answerText": "Precision is calculated as TP / (TP + FP), where TP is true positives and FP is false positives.",
+      "tags": ["machine-learning", "model-evaluation", "precision", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How are the precision and recall formulas related?",
+      "answerText": "Precision and recall are closely related and differ only by which error term is used in the denominator. Recall uses false negatives (FN), while precision uses false positives (FP).",
+      "tags": ["machine-learning", "model-evaluation", "precision", "recall"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What does precision measure?",
+      "answerText": "Precision measures the percentage of correct positive predictions out of all predicted positives. It is also referred to as correct positives and is important when false positives are costly, such as in medical screening or drug testing.",
+      "tags": ["machine-learning", "model-evaluation", "precision", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are good uses for the precision metric?",
+      "answerText": "Precision is best used when false positives are expensive or harmful, such as in medical screening, drug testing, or other scenarios where incorrect positive predictions must be minimized.",
+      "tags": ["machine-learning", "model-evaluation", "precision", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the other metrics?",
+      "answerText": "Other metrics include Specificity (TN / (TN + FP), the true negative rate), F1 Score (the harmonic mean of precision and recall), and RMSE (Root Mean Square Error), which measures overall prediction error without considering precision or recall.",
+      "tags": ["machine-learning", "model-evaluation", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the ROC Curve? How is it read and what is it used for?",
+      "answerText": "The ROC (Receiver Operating Characteristic) curve plots the true positive rate (recall) against the false positive rate across different thresholds. Points above the diagonal indicate better-than-random performance, and curves that bend toward the upper-left corner indicate stronger classifiers. It is used to evaluate and compare models.",
+      "tags": ["machine-learning", "model-evaluation", "roc", "visualization"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what metric: plot of true positive rate vs false positive rate, ideal curve bends toward the upper-left?",
+      "answerText": "This describes the ROC (Receiver Operating Characteristic) Curve.",
+      "tags": ["machine-learning", "model-evaluation", "roc", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the AUC curve? How is it read and what does it tell us?",
+      "answerText": "AUC stands for Area Under the ROC Curve. It represents the probability that a classifier ranks a randomly chosen positive instance higher than a randomly chosen negative one. An AUC of 0.5 indicates a useless classifier, while 1.0 represents a perfect classifier. It is commonly used to compare models.",
+      "tags": ["machine-learning", "model-evaluation", "auc", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what metric: probability a classifier ranks a positive higher than a negative, 0.5 is useless and 1.0 is perfect?",
+      "answerText": "This describes the AUC (Area Under the ROC Curve) metric.",
+      "tags": ["machine-learning", "model-evaluation", "auc", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the metrics for evaluating classifiers?",
+      "answerText": "Common metrics for evaluating classifiers include Precision, Recall, F1 Score, ROC Curve, AUC, and the Precision-Recall (P-R) Curve.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "classification",
+        "metrics"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the P-R curve and what does it evaluate?",
+      "answerText": "The Precision-Recall (P-R) curve plots precision against recall. A higher area under the curve indicates better performance. It is similar to the ROC curve but is better suited for information retrieval problems, especially when dealing with highly imbalanced datasets.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "precision-recall",
+        "visualization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the differences between ROC and P-R curves, and when should each be used?",
+      "answerText": "Both ROC and P-R curves evaluate classifier performance, but P-R curves are better suited for information retrieval and highly imbalanced datasets. ROC curves can produce misleadingly small values when relevant instances are rare, while P-R curves focus more directly on precision and recall trade-offs.",
+      "tags": [
+        "machine-learning",
+        "model-evaluation",
+        "roc",
+        "precision-recall"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the metrics to evaluate numeric models (not classification)?",
+      "answerText": "Numeric models are evaluated using metrics designed for predicting continuous values rather than discrete classes. Common metrics include R² (R-Squared), which is the square of the correlation coefficient between observed and predicted values, and error-based metrics such as RMSE (Root Mean-Squared Error) and MAE (Mean Absolute Error), which measure the difference between actual and predicted values.",
+      "tags": ["machine-learning", "model-evaluation", "regression", "metrics"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what group of evaluation metrics: R² (R-Squared), RMSE, and MAE?",
+      "answerText": "These are numeric model evaluation metrics used for non-categorical, continuous value predictions rather than classification tasks.",
+      "tags": ["machine-learning", "model-evaluation", "regression", "metrics"],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe \"Random Cut Forest\" in general terms.",
+      "answerText": "Random Cut Forest (RCF) is an unsupervised machine learning algorithm used primarily for anomaly detection, especially in large-scale or streaming data. It works on the principle that anomalies are isolated more quickly than normal points. RCF builds an ensemble of binary trees using random subsets of the data, applies random cuts to partition the feature space, and scores anomalies based on how few cuts are required to isolate a data point. Points isolated quickly receive higher anomaly scores, while normal points embedded in dense regions require many cuts.",
+      "tags": [
+        "machine-learning",
+        "anomaly-detection",
+        "ensemble-methods",
+        "unsupervised-learning"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What do they mean by ensemble?",
+      "answerText": "An ensemble method combines multiple models and aggregates their outputs, typically by voting or averaging, to produce a final result. Each model is slightly different, often created using techniques such as bagging or boosting.",
+      "tags": ["machine-learning", "ensemble-methods", "model-combination"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Takes many models and makes them vote on the final result. Each model is slightly different (bagging/boosting). What is this?",
+      "answerText": "This describes an ensemble method, where multiple models are combined to improve overall prediction performance.",
+      "tags": ["machine-learning", "ensemble-methods", "model-combination"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a random forest?",
+      "answerText": "A random forest is an ensemble learning method that builds many decision trees and combines their predictions by voting or averaging. Since individual decision trees are prone to overfitting, random forests reduce this risk by training trees on different random subsets of the data and features.",
+      "tags": [
+        "machine-learning",
+        "ensemble-methods",
+        "random-forest",
+        "decision-trees"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe bagging.",
+      "answerText": "Bagging (Bootstrap Aggregating) generates multiple training datasets by random sampling with replacement from the original dataset. A separate model is trained on each dataset, and these models can be trained in parallel.",
+      "tags": ["machine-learning", "ensemble-methods", "bagging"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which technique: generate N new training sets by random sampling with replacement and train models in parallel?",
+      "answerText": "This describes bagging.",
+      "tags": ["machine-learning", "ensemble-methods", "bagging"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe what they mean by boosting.",
+      "answerText": "Boosting is an ensemble technique where observations are weighted so that harder-to-classify examples are emphasized in later models. Training is sequential, with each model learning from the errors of the previous one. Because of this dependency, boosting cannot be trained in parallel.",
+      "tags": ["machine-learning", "ensemble-methods", "boosting"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes boosting or bagging: observations are weighted, training is sequential, and each model depends on the previous one?",
+      "answerText": "This describes boosting.",
+      "tags": ["machine-learning", "ensemble-methods", "boosting"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How do you choose between boosting and bagging?",
+      "answerText": "Boosting often yields better accuracy through sequential learning and techniques like XGBoost, but it is harder to parallelize. Bagging helps reduce overfitting and is easier to parallelize. The choice depends on whether the priority is higher accuracy or scalability and overfitting control.",
+      "tags": ["machine-learning", "ensemble-methods", "bagging", "boosting"],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "What is the objective of Hyperparameter Tuning?",
+      "answerText": "The objective of hyperparameter tuning is to determine the best values for hyperparameters such as learning rate, batch size, and model depth. Because these values are not known in advance, tuning relies on experimentation. As the number of hyperparameters increases, the number of possible combinations grows exponentially, making automated approaches necessary to efficiently train, evaluate, and compare models.",
+      "tags": [
+        "machine-learning",
+        "hyperparameter-tuning",
+        "model-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following activity describes what: experimenting with learning rate, batch size, and depth, where combinations grow exponentially?",
+      "answerText": "This describes hyperparameter tuning.",
+      "tags": [
+        "machine-learning",
+        "hyperparameter-tuning",
+        "model-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe in basic terms SageMaker's Auto Hyperparameter Tuning.",
+      "answerText": "In SageMaker Auto Hyperparameter Tuning, you define the hyperparameters to optimize, their value ranges, and the evaluation metric. SageMaker then runs a hyperparameter tuning job that trains multiple model variants using different combinations, spinning up training instances as needed. The process learns from previous runs so it does not need to try every possible combination, and the best-performing hyperparameters can be deployed as a model. This approach is compute-intensive.",
+      "tags": ["aws", "sagemaker", "hyperparameter-tuning", "auto-ml"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe Auto Hyperparameter Tuning best practices.",
+      "answerText": "Best practices include avoiding optimization of too many hyperparameters at once, limiting parameter ranges to the smallest practical values, using logarithmic scales when appropriate, avoiding too many concurrent training jobs so the tuning process can learn effectively, and ensuring that training jobs running on multiple instances report the correct objective metric.",
+      "tags": [
+        "machine-learning",
+        "hyperparameter-tuning",
+        "best-practices",
+        "model-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "List 3 things Amazon Machine Training (AMT) can do to reduce cost and increase accuracy, and explain each.",
+      "answerText": "AMT can use Early Stopping to halt training jobs that are not improving the objective metric, reducing compute cost and avoiding overfitting. Warm Start allows new tuning jobs to reuse results from previous jobs to guide the search for better hyperparameters, saving time and resources. Resource Limits control the number of parallel tuning jobs, hyperparameters, and training jobs, helping manage cost and scalability (with increases requiring AWS quota requests).",
+      "tags": [
+        "aws",
+        "sagemaker",
+        "hyperparameter-tuning",
+        "cost-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is warm start?",
+      "answerText": "Warm start uses one or more previous hyperparameter tuning jobs as a starting point for a new tuning job. It informs which hyperparameter combinations to explore next and can resume progress from a stopped job. Supported types include IDENTICAL_DATA_AND_ALGORITHM and TRANSFER_LEARNING.",
+      "tags": ["aws", "sagemaker", "hyperparameter-tuning"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is Early Stopping?",
+      "answerText": "Early stopping automatically stops a training job when the objective metric stops improving significantly. This reduces compute time and helps avoid overfitting. It depends on algorithms emitting objective metrics after each epoch and is commonly set to Auto.",
+      "tags": ["aws", "sagemaker", "hyperparameter-tuning", "early-stopping"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the four Hyperparameter Tuning approaches?",
+      "answerText": "The four approaches are Grid Search, which brute-forces all combinations of categorical parameters; Random Search, which randomly samples combinations and can run fully in parallel; Bayesian Optimization, which treats tuning as a regression problem and learns from prior runs; and Hyperband, which is optimized for iterative results, dynamically allocates resources, supports early stopping, and is generally the fastest.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "optimization"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Grid Search hyperparameter tuning approach?",
+      "answerText": "Grid Search is a brute-force hyperparameter tuning method that tries every possible combination of values. It is typically limited to categorical parameters due to its high computational cost.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "grid-search"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes which hyperparameter tuning approach: limited to categorical parameters and tries every possible combination?",
+      "answerText": "This describes Grid Search.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "grid-search"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Random Search hyperparameter tuning approach?",
+      "answerText": "Random Search selects random combinations of hyperparameter values for each training job. It does not depend on results from prior runs, allowing all jobs to be executed in parallel.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "random-search"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What hyperparameter tuning approach does the following describe: random combinations with no dependence on prior runs and full parallelism?",
+      "answerText": "This describes Random Search.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "random-search"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What hyperparameter tuning approach treats tuning as a regression problem and learns from each run?",
+      "answerText": "This describes Bayesian Optimization.",
+      "tags": [
+        "machine-learning",
+        "hyperparameter-tuning",
+        "bayesian-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Bayesian Optimization hyperparameter tuning approach.",
+      "answerText": "Bayesian Optimization models the relationship between hyperparameters and performance as a regression problem. It uses results from previous runs to guide future searches toward optimal values.",
+      "tags": [
+        "machine-learning",
+        "hyperparameter-tuning",
+        "bayesian-optimization"
+      ],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What hyperparameter tuning approach is appropriate for algorithms with iterative results, supports early stopping, and is very fast?",
+      "answerText": "This describes the Hyperband approach.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "hyperband"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Hyperband hyperparameter tuning approach.",
+      "answerText": "Hyperband is designed for algorithms that publish results iteratively, such as neural networks trained over epochs. It dynamically allocates resources, supports early stopping, runs in parallel, and is significantly faster than random search or Bayesian optimization.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "hyperband"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the best hyperparameter tuning approach?",
+      "answerText": "Hyperband is generally considered the best approach because it efficiently allocates resources, supports early stopping, runs in parallel, and converges faster than other methods when iterative results are available.",
+      "tags": ["machine-learning", "hyperparameter-tuning", "hyperband"],
+      "domains": ["machine-learning"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Describe briefly SageMaker Autopilot.",
+      "answerText": "SageMaker Autopilot is AWS’s AutoML service that automates algorithm selection, data preprocessing, model tuning, and infrastructure provisioning. It performs trial-and-error experimentation for you and provides a guided wizard experience, making it easy to build ML models with minimal code.",
+      "tags": ["aws", "sagemaker", "automl"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What AWS service is described as a wrapper around AutoML that automates algorithm selection, data preprocessing, model tuning, and infrastructure?",
+      "answerText": "SageMaker Autopilot.",
+      "tags": ["aws", "sagemaker", "automl"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the SageMaker Autopilot workflow.",
+      "answerText": "The workflow starts by loading training data from S3 and selecting a target column. Autopilot automatically creates and tunes models, provides a generated notebook for transparency and control, ranks models in a leaderboard, and allows you to deploy, monitor, and refine the selected model.",
+      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following steps describe what workflow: load data from S3, select target column, automatic model creation, model notebook, model leaderboard, deploy and monitor?",
+      "answerText": "SageMaker Autopilot workflow.",
+      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List some SageMaker Autopilot capabilities.",
+      "answerText": "Autopilot supports human guidance, can be used with or without code via SageMaker Studio or AWS SDKs, and supports binary classification, multiclass classification, and regression. It works with tabular data (CSV or Parquet) and uses algorithms such as Linear Learner, XGBoost, deep learning (MLPs), and ensemble models.",
+      "tags": ["aws", "sagemaker", "automl", "capabilities"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List the three SageMaker Autopilot training modes.",
+      "answerText": "The three training modes are HPO (Hyperparameter Optimization), Ensembling, and Auto.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the HPO SageMaker Autopilot training mode. Which is the best training method?",
+      "answerText": "HPO selects the most relevant algorithm (Linear Learner, XGBoost, or deep learning) and tunes hyperparameters across up to 100 trials. It uses Bayesian optimization for datasets under 100 MB and multi-fidelity optimization with early stopping for larger datasets. HPO is best when fine-grained optimization is required.",
+      "tags": ["aws", "sagemaker", "hpo"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Ensembling SageMaker Autopilot training mode?",
+      "answerText": "Ensembling trains multiple base models using the AutoGluon library across about 10 trials with different model and parameter settings. The models are combined using a stacking method to improve overall performance.",
+      "tags": ["aws", "sagemaker", "ensembling"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Auto SageMaker Autopilot training mode and when it is used.",
+      "answerText": "Auto mode automatically chooses between HPO and Ensembling based on dataset size: Ensembling for datasets under 100 MB and HPO for datasets over 100 MB. If Autopilot cannot determine dataset size, it defaults to HPO.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "When should you use Auto or HPO SageMaker Autopilot training mode?",
+      "answerText": "Use Auto when you want Autopilot to choose the optimal strategy based on dataset size. Use HPO explicitly when you want controlled, fine-grained hyperparameter optimization regardless of dataset size.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is Autopilot Expandability?",
+      "answerText": "Autopilot Expandability integrates with SageMaker Clarify to provide transparency and explainability. It offers feature attribution using SHAP (Shapley values) from cooperative game theory to explain how features contribute to predictions and help detect bias in training data.",
+      "tags": ["aws", "sagemaker", "explainability", "clarify"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what SageMaker Autopilot feature: integrates with SageMaker Clarify, provides transparency, and uses SHAP values?",
+      "answerText": "Autopilot Expandability.",
+      "tags": ["aws", "sagemaker", "explainability", "clarify"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List some of SageMaker features.",
+      "answerText": "SageMaker provides several core features including SageMaker Studio, a browser-based IDE for building, training, and deploying ML models. It integrates with Jupyter Notebooks, allowing users to create, share, and collaborate on notebooks while easily switching between different hardware configurations without managing infrastructure. SageMaker Experiments helps organize, track, compare, and search ML training jobs, providing a structured and visual way to analyze and manage experiments.",
+      "tags": ["aws", "sagemaker", "features"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List features of SageMaker Debugger.",
+      "answerText": "SageMaker Debugger captures and analyzes the internal state of models during training. It saves tensors and gradients at periodic intervals and allows you to define rules that detect unwanted training conditions. Each rule can trigger a debug job and generate CloudWatch events when conditions are met. Debugger provides a visual dashboard in SageMaker Studio, auto-generated training reports, and built-in rule categories for system bottlenecks, framework profiling, and model parameter debugging. It supports TensorFlow, PyTorch, MXNet, XGBoost, and the SageMaker generic estimator. Debugger exposes APIs and the SMDebug client library to register hooks and access training data. It includes profiling capabilities via ProfileRules and ProfilerReports, tracks hardware and framework metrics, integrates with the SageMaker Insights Dashboard, and can trigger built-in actions such as stopping training or sending notifications via SNS (email or SMS).",
+      "tags": ["aws", "sagemaker", "debugger", "exam"],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the SageMaker Model Registry.",
+      "answerText": "The SageMaker Model Registry is a centralized catalog for managing machine learning models and their versions. It allows you to store models with associated metadata, track and manage different model versions, and control model approval status as part of a deployment workflow. The Model Registry supports deploying approved models to production through pipelines, integrating with CI/CD processes, and sharing models across teams. It can also integrate with SageMaker Model Cards, which provide a webpage-style summary describing a model’s purpose, limitations, performance, and versioning information.",
+      "tags": ["aws", "sagemaker", "model-registry", "exam"],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe briefly \"Analyzing Training Jobs with TensorBoard\".",
+      "answerText": "TensorBoard is a third-party visualization toolkit commonly used with TensorFlow and PyTorch to analyze and monitor model training. It allows you to visualize training metrics such as loss and accuracy, inspect the model computation graph, view histograms of weights and biases over time, project high-dimensional embeddings into lower dimensions for human interpretation, and perform profiling. TensorBoard can be integrated with SageMaker, either through the SageMaker console or via a direct URL, though this requires minor modifications to the training script.",
+      "tags": ["aws", "sagemaker", "tensorboard", "exam"],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe briefly \"SageMaker Training Compiler\".",
+      "answerText": "SageMaker Training Compiler is a (legacy, being phased out) feature that optimizes and compiles training jobs to run more efficiently on GPU instances. It is integrated into AWS Deep Learning Containers (DLCs), meaning you cannot bring your own container and must use pre-built images for frameworks such as TensorFlow, PyTorch, or MXNet. By enabling it via compiler_config=TrainingCompilerConfig() in the estimator, training jobs are compiled into hardware-optimized instructions, potentially accelerating training by up to 50%. It is commonly tested with Hugging Face Transformers, does not work with SageMaker distributed training libraries, and has best practices such as using GPU instances (ml.p3, ml.p4, ml.g4dn, ml.g5), using PyTorch/XLA save functions for PyTorch models, and enabling debug mode for troubleshooting.",
+      "tags": ["aws", "sagemaker", "training-compiler", "exam"],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe briefly \"Checkpointing, Cluster Health Checks, and Automatic Restarts\" in SageMaker.",
+      "answerText": "Checkpointing in SageMaker creates periodic snapshots of a training job so it can be resumed from a saved state or analyzed at different points in time. Checkpoints are automatically synchronized to Amazon S3 (by default from /opt/ml/checkpoint, configurable) and are enabled by specifying checkpoint_s3_uri and checkpoint_local_path in the estimator or UI. Cluster health checks and automatic restarts run automatically on GPU-based instances (ml.g and ml.p families). SageMaker monitors GPU health, validates NCCL communication, and detects faulty instances. If an instance fails or an internal service error occurs, SageMaker replaces the faulty instance and automatically restarts the training job, reducing the risk of failure when training large, multi-instance models.",
+      "tags": ["aws", "sagemaker", "training", "fault-tolerance", "exam"],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+
+    {
+      "questionId": null,
+      "questionText": "Discuss the three types of parallelism in distributed training. What is better for big data, big compute, and big expense? When should each be used?",
+      "answerText": "There are three main types of parallelism in distributed training: Job parallelism, Data parallelism, and Model parallelism. Job parallelism runs multiple independent training jobs in parallel and is useful for experimentation or hyperparameter tuning. Distributed data parallelism parallelizes a single training job by splitting data across multiple GPUs or instances and synchronizing gradients; it is best for large datasets with models that fit on a single GPU. Distributed model parallelism splits a very large model across multiple GPUs or instances and is used when the model is too large to fit in memory on a single device. Best practice is to scale up first by using larger instance types (for example, an ml.p4d.24xlarge with 8 GPUs) before scaling out to multiple instances, though this approach can be expensive.",
+      "tags": [
+        "aws",
+        "sagemaker",
+        "distributed-training",
+        "parallelism",
+        "exam"
+      ],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the two main SageMaker Distributed Training Libraries, and when should each be used?",
+      "answerText": "The two main SageMaker Distributed Training Libraries are based on collective communication patterns: AllReduce and AllGather. AllReduce is primarily used for distributed data parallel training to compute and synchronize gradient updates across GPUs or nodes. AllGather focuses on efficiently managing communication between nodes by offloading communication overhead to the CPU, improving overall performance in certain distributed training scenarios.",
+      "tags": ["aws", "sagemaker", "distributed-training"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following libraries (AllReduce and AllGather) belong to which AWS service?",
+      "answerText": "They are part of the SageMaker Distributed Training Libraries.",
+      "tags": ["aws", "sagemaker"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss the AllReduce Distributed Training Library. How is it specified and what is it used for?",
+      "answerText": "The AllReduce collective is used for distributed computation of gradient updates across GPUs or nodes. It is implemented in the SageMaker Distributed Data Parallelism Library and is designed to efficiently synchronize gradients during training. To use it, the training script specifies a backend of 'smdpp' in torch.distributed.init_process_group, and the SageMaker estimator is configured with distribution settings that enable smdistributed data parallelism.",
+      "tags": ["aws", "sagemaker", "distributed-training", "dataparallel"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss the AllGather Distributed Training Library.",
+      "answerText": "The AllGather distributed training library manages communication between nodes to improve training performance by offloading communication overhead to the CPU, freeing GPU resources for computation. It is not compatible with the SageMaker Training Compiler.",
+      "tags": ["aws", "sagemaker", "distributed-training"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the non-SageMaker (open-source) parallel or distributed training libraries?",
+      "answerText": "Common non-SageMaker distributed training libraries include PyTorch DistributedDataParallel (DDP), torchrun, mpirun, DeepSpeed, and Horovod. Many of these solutions are PyTorch-specific and are widely used in open-source and multi-cloud environments.",
+      "tags": ["distributed-training", "pytorch", "open-source"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following libraries (PyTorch DistributedDataParallel, torchrun, mpirun, DeepSpeed, horovod) are libraries for what type of service?",
+      "answerText": "They are training parallelism and distributed computation libraries that are not part of SageMaker and are generally open-source solutions.",
+      "tags": ["distributed-training"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "When models are so large (billions of parameters) that they will not fit on a single machine, how does SageMaker handle this? Describe the two libraries involved, what they do, and how they work.",
+      "answerText": "SageMaker addresses extremely large models using its Model Parallelism and Sharded Data Parallelism capabilities. The SageMaker Model Parallelism Library (MPP) is used when a model cannot fit into the memory of a single GPU or instance. It distributes the model itself across multiple GPUs or instances using interleaved pipeline parallelism, allowing different parts of the model to run on different devices. MPP is PyTorch-only and introduces several memory-saving techniques, including optimizer state sharding (splitting optimizer states like Adam weights across GPUs, typically useful for models larger than 1B parameters), activation checkpointing (discarding selected activations during the forward pass and recomputing them during backpropagation to save memory), and activation offloading (swapping checkpointed activations to and from CPU memory). Sharded Data Parallelism combines data parallelism with model parallelism by sharding optimizer states, trainable parameters, and gradients across groups of GPUs, reducing memory usage per device while still enabling parallel training. These features are implemented in SageMaker’s distributed training libraries and are available by default in PyTorch Deep Learning Containers, requiring modest changes to the training script and estimator configuration.",
+      "tags": [
+        "aws",
+        "sagemaker",
+        "distributed-training",
+        "model-parallelism",
+        "exam"
+      ],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is Elastic Fabric Adapter (EFA)?",
+      "answerText": "Elastic Fabric Adapter (EFA) is a high-performance network device that can be attached to SageMaker (and EC2) instances to support training extremely large models, including those with trillions of parameters. EFA enables very low-latency, high-throughput communication between instances, delivering performance comparable to on-premises high-performance computing (HPC) clusters. It is typically used with NVIDIA GPUs and the NVIDIA Collective Communication Library (NCCL). To use EFA, the training container must include NCCL, EFA, and the AWS OFI NCCL plugin, and environment variables such as FI_PROVIDER=efa must be configured. EFA helps minimize inter-node communication overhead, which is critical at trillion-parameter scale.",
+      "tags": ["aws", "sagemaker", "distributed-training", "efa", "exam"],
+      "domains": ["machine-learning", "high-performance-computing"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is MiCS?",
+      "answerText": "MiCS (Minimize the Communication Scale) is an Amazon approach for training ultra-large models with trillions of parameters. It focuses on reducing communication overhead between instances during distributed training, which is the primary bottleneck at this scale. MiCS builds on SageMaker’s sharded parallelism techniques, where model parameters, optimizer states, and gradients are distributed across GPUs and instances. Using larger, high-bandwidth instances such as EC2 P4de with up to 400 Gbps networking and 80 GB GPU memory further reduces communication costs. Together, these techniques enable scalable training beyond the billion-parameter range into the trillion-parameter regime.",
+      "tags": ["aws", "sagemaker", "distributed-training", "mics", "exam"],
+      "domains": ["machine-learning", "large-language-models"]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "Describe briefly SageMaker Autopilot.",
+      "answerText": "SageMaker Autopilot is AWS’s AutoML service that automates algorithm selection, data preprocessing, model tuning, and infrastructure provisioning. It performs trial-and-error experimentation for you and provides a guided wizard experience, making it easy to build ML models with minimal code.",
+      "tags": ["aws", "sagemaker", "automl"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What AWS service is described as a wrapper around AutoML that automates algorithm selection, data preprocessing, model tuning, and infrastructure?",
+      "answerText": "SageMaker Autopilot.",
+      "tags": ["aws", "sagemaker", "automl"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the SageMaker Autopilot workflow.",
+      "answerText": "The workflow starts by loading training data from S3 and selecting a target column. Autopilot automatically creates and tunes models, provides a generated notebook for transparency and control, ranks models in a leaderboard, and allows you to deploy, monitor, and refine the selected model.",
+      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following steps describe what workflow: load data from S3, select target column, automatic model creation, model notebook, model leaderboard, deploy and monitor?",
+      "answerText": "SageMaker Autopilot workflow.",
+      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List some SageMaker Autopilot capabilities.",
+      "answerText": "Autopilot supports human guidance, can be used with or without code via SageMaker Studio or AWS SDKs, and supports binary classification, multiclass classification, and regression. It works with tabular data (CSV or Parquet) and uses algorithms such as Linear Learner, XGBoost, deep learning (MLPs), and ensemble models.",
+      "tags": ["aws", "sagemaker", "automl", "capabilities"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List the three SageMaker Autopilot training modes.",
+      "answerText": "The three training modes are HPO (Hyperparameter Optimization), Ensembling, and Auto.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the HPO SageMaker Autopilot training mode. Which is the best training method?",
+      "answerText": "HPO selects the most relevant algorithm (Linear Learner, XGBoost, or deep learning) and tunes hyperparameters across up to 100 trials. It uses Bayesian optimization for datasets under 100 MB and multi-fidelity optimization with early stopping for larger datasets. HPO is best when fine-grained optimization is required.",
+      "tags": ["aws", "sagemaker", "hpo"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Ensembling SageMaker Autopilot training mode?",
+      "answerText": "Ensembling trains multiple base models using the AutoGluon library across about 10 trials with different model and parameter settings. The models are combined using a stacking method to improve overall performance.",
+      "tags": ["aws", "sagemaker", "ensembling"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Describe the Auto SageMaker Autopilot training mode and when it is used.",
+      "answerText": "Auto mode automatically chooses between HPO and Ensembling based on dataset size: Ensembling for datasets under 100 MB and HPO for datasets over 100 MB. If Autopilot cannot determine dataset size, it defaults to HPO.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "When should you use Auto or HPO SageMaker Autopilot training mode?",
+      "answerText": "Use Auto when you want Autopilot to choose the optimal strategy based on dataset size. Use HPO explicitly when you want controlled, fine-grained hyperparameter optimization regardless of dataset size.",
+      "tags": ["aws", "sagemaker", "automl", "training-modes"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is Autopilot Expandability?",
+      "answerText": "Autopilot Expandability integrates with SageMaker Clarify to provide transparency and explainability. It offers feature attribution using SHAP (Shapley values) from cooperative game theory to explain how features contribute to predictions and help detect bias in training data.",
+      "tags": ["aws", "sagemaker", "explainability", "clarify"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes what SageMaker Autopilot feature: integrates with SageMaker Clarify, provides transparency, and uses SHAP values?",
+      "answerText": "Autopilot Expandability.",
+      "tags": ["aws", "sagemaker", "explainability", "clarify"],
+      "domains": ["machine-learning"]
+    }
+  ]
+}

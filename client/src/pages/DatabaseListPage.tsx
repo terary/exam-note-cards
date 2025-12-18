@@ -102,8 +102,8 @@ function DatabaseListPage() {
     <div className="page-container">
       <header className="page-header">
         <div>
-          <h1>Exam Note Cards</h1>
-          <p>Select a quiz to start practicing.</p>
+        <h1>Exam Note Cards</h1>
+        <p>Select a quiz to start practicing.</p>
           <button
             className="link-button"
             onClick={() => navigate("/question-manager")}
