@@ -10,6 +10,7 @@ import { getModelToken } from "@nestjs/mongoose";
 import { existsSync, readdirSync, readFileSync } from "fs";
 import { join, basename, extname } from "path";
 import { Logger } from "@nestjs/common";
+import { v4 as uuid } from "uuid";
 
 async function migrateDatabases(
   databaseModel: Model<DatabaseDocument>,
@@ -55,6 +56,7 @@ async function migrateDatabases(
           databaseName: parsed.databaseName ?? databaseId,
           questionsWithAnswers: parsed.questionsWithAnswers.map((q) => ({
             ...q,
+            questionId: q.questionId || uuid(), // Generate UUID if missing
             timesAsked: q.timesAsked ?? 0,
             averageScore: q.averageScore ?? null,
             lastScore: q.lastScore ?? null,
