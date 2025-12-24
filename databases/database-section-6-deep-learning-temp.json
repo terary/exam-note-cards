@@ -2,86 +2,57 @@
   "questionsWithAnswers": [
     {
       "questionId": null,
-      "questionText": "Describe briefly SageMaker Autopilot.",
-      "answerText": "SageMaker Autopilot is AWS’s AutoML service that automates algorithm selection, data preprocessing, model tuning, and infrastructure provisioning. It performs trial-and-error experimentation for you and provides a guided wizard experience, making it easy to build ML models with minimal code.",
-      "tags": ["aws", "sagemaker", "automl"],
+      "questionText": "Discuss the three types of parallelism in distributed training. What is better for big data, big compute, and big expense? When should each be used?",
+      "answerText": "There are three main types of parallelism in distributed training: Job parallelism, Data parallelism, and Model parallelism. Job parallelism runs multiple independent training jobs in parallel and is useful for experimentation or hyperparameter tuning. Distributed data parallelism parallelizes a single training job by splitting data across multiple GPUs or instances and synchronizing gradients; it is best for large datasets with models that fit on a single GPU. Distributed model parallelism splits a very large model across multiple GPUs or instances and is used when the model is too large to fit in memory on a single device. Best practice is to scale up first by using larger instance types (for example, an ml.p4d.24xlarge with 8 GPUs) before scaling out to multiple instances, though this approach can be expensive.",
+      "tags": [
+        "aws",
+        "sagemaker",
+        "distributed-training",
+        "parallelism",
+        "exam"
+      ],
+      "domains": ["machine-learning", "ml-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the two main SageMaker Distributed Training Libraries, and when should each be used?",
+      "answerText": "The two main SageMaker Distributed Training Libraries are based on collective communication patterns: AllReduce and AllGather. AllReduce is primarily used for distributed data parallel training to compute and synchronize gradient updates across GPUs or nodes. AllGather focuses on efficiently managing communication between nodes by offloading communication overhead to the CPU, improving overall performance in certain distributed training scenarios.",
+      "tags": ["aws", "sagemaker", "distributed-training"],
       "domains": ["machine-learning"]
     },
     {
       "questionId": null,
-      "questionText": "What AWS service is described as a wrapper around AutoML that automates algorithm selection, data preprocessing, model tuning, and infrastructure?",
-      "answerText": "SageMaker Autopilot.",
-      "tags": ["aws", "sagemaker", "automl"],
+      "questionText": "The following libraries (AllReduce and AllGather) belong to which AWS service?",
+      "answerText": "They are part of the SageMaker Distributed Training Libraries.",
+      "tags": ["aws", "sagemaker"],
       "domains": ["machine-learning"]
     },
     {
       "questionId": null,
-      "questionText": "Describe the SageMaker Autopilot workflow.",
-      "answerText": "The workflow starts by loading training data from S3 and selecting a target column. Autopilot automatically creates and tunes models, provides a generated notebook for transparency and control, ranks models in a leaderboard, and allows you to deploy, monitor, and refine the selected model.",
-      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "questionText": "Discuss the AllReduce Distributed Training Library. How is it specified and what is it used for?",
+      "answerText": "The AllReduce collective is used for distributed computation of gradient updates across GPUs or nodes. It is implemented in the SageMaker Distributed Data Parallelism Library and is designed to efficiently synchronize gradients during training. To use it, the training script specifies a backend of 'smdpp' in torch.distributed.init_process_group, and the SageMaker estimator is configured with distribution settings that enable smdistributed data parallelism.",
+      "tags": ["aws", "sagemaker", "distributed-training", "dataparallel"],
       "domains": ["machine-learning"]
     },
     {
       "questionId": null,
-      "questionText": "The following steps describe what workflow: load data from S3, select target column, automatic model creation, model notebook, model leaderboard, deploy and monitor?",
-      "answerText": "SageMaker Autopilot workflow.",
-      "tags": ["aws", "sagemaker", "automl", "workflow"],
+      "questionText": "Discuss the AllGather Distributed Training Library.",
+      "answerText": "The AllGather distributed training library manages communication between nodes to improve training performance by offloading communication overhead to the CPU, freeing GPU resources for computation. It is not compatible with the SageMaker Training Compiler.",
+      "tags": ["aws", "sagemaker", "distributed-training"],
       "domains": ["machine-learning"]
     },
     {
       "questionId": null,
-      "questionText": "List some SageMaker Autopilot capabilities.",
-      "answerText": "Autopilot supports human guidance, can be used with or without code via SageMaker Studio or AWS SDKs, and supports binary classification, multiclass classification, and regression. It works with tabular data (CSV or Parquet) and uses algorithms such as Linear Learner, XGBoost, deep learning (MLPs), and ensemble models.",
-      "tags": ["aws", "sagemaker", "automl", "capabilities"],
+      "questionText": "What are the non-SageMaker (open-source) parallel or distributed training libraries?",
+      "answerText": "Common non-SageMaker distributed training libraries include PyTorch DistributedDataParallel (DDP), torchrun, mpirun, DeepSpeed, and Horovod. Many of these solutions are PyTorch-specific and are widely used in open-source and multi-cloud environments.",
+      "tags": ["distributed-training", "pytorch", "open-source"],
       "domains": ["machine-learning"]
     },
     {
       "questionId": null,
-      "questionText": "List the three SageMaker Autopilot training modes.",
-      "answerText": "The three training modes are HPO (Hyperparameter Optimization), Ensembling, and Auto.",
-      "tags": ["aws", "sagemaker", "automl", "training-modes"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "Describe the HPO SageMaker Autopilot training mode. Which is the best training method?",
-      "answerText": "HPO selects the most relevant algorithm (Linear Learner, XGBoost, or deep learning) and tunes hyperparameters across up to 100 trials. It uses Bayesian optimization for datasets under 100 MB and multi-fidelity optimization with early stopping for larger datasets. HPO is best when fine-grained optimization is required.",
-      "tags": ["aws", "sagemaker", "hpo"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "What is the Ensembling SageMaker Autopilot training mode?",
-      "answerText": "Ensembling trains multiple base models using the AutoGluon library across about 10 trials with different model and parameter settings. The models are combined using a stacking method to improve overall performance.",
-      "tags": ["aws", "sagemaker", "ensembling"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "Describe the Auto SageMaker Autopilot training mode and when it is used.",
-      "answerText": "Auto mode automatically chooses between HPO and Ensembling based on dataset size: Ensembling for datasets under 100 MB and HPO for datasets over 100 MB. If Autopilot cannot determine dataset size, it defaults to HPO.",
-      "tags": ["aws", "sagemaker", "automl", "training-modes"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "When should you use Auto or HPO SageMaker Autopilot training mode?",
-      "answerText": "Use Auto when you want Autopilot to choose the optimal strategy based on dataset size. Use HPO explicitly when you want controlled, fine-grained hyperparameter optimization regardless of dataset size.",
-      "tags": ["aws", "sagemaker", "automl", "training-modes"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "What is Autopilot Expandability?",
-      "answerText": "Autopilot Expandability integrates with SageMaker Clarify to provide transparency and explainability. It offers feature attribution using SHAP (Shapley values) from cooperative game theory to explain how features contribute to predictions and help detect bias in training data.",
-      "tags": ["aws", "sagemaker", "explainability", "clarify"],
-      "domains": ["machine-learning"]
-    },
-    {
-      "questionId": null,
-      "questionText": "The following describes what SageMaker Autopilot feature: integrates with SageMaker Clarify, provides transparency, and uses SHAP values?",
-      "answerText": "Autopilot Expandability.",
-      "tags": ["aws", "sagemaker", "explainability", "clarify"],
+      "questionText": "The following libraries (PyTorch DistributedDataParallel, torchrun, mpirun, DeepSpeed, horovod) are libraries for what type of service?",
+      "answerText": "They are training parallelism and distributed computation libraries that are not part of SageMaker and are generally open-source solutions.",
+      "tags": ["distributed-training"],
       "domains": ["machine-learning"]
     }
   ]
