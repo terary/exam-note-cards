@@ -1,0 +1,103 @@
+{
+  "databaseName": "Section 7 - Generative AI Model Fundamentals",
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "What is attention? Which network does it pertain to?",
+      "answerText": "Attention is a hidden contextual state that captures the meaning of the current token relative to other tokens in a sequence. As each word is processed, this hidden state is updated to reflect contextual meaning. Attention represents how much focus is allocated to each word. This concept originated in RNNs.",
+      "tags": ["attention", "rnn", "section-7", "generative-ai"],
+      "domains": ["deep-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss the similarity and differences between FFNN and RNN.",
+      "answerText": "RNNs process tokens sequentially and maintain a hidden contextual state (attention/weight) that is passed from one step to the next, making them recurrent. FFNNs do not depend on previous state and instead rely on self-attention so each token is aware of its position and relative importance, making them parallelizable.",
+      "tags": ["ffnn", "rnn", "comparison", "section-7"],
+      "domains": ["deep-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How is softmax used to normalize weights or scores in FFNN?",
+      "answerText": "After scores are computed for each token, the softmax function is applied to normalize these scores into a probability distribution.",
+      "tags": ["softmax", "normalization", "ffnn", "section-7"],
+      "domains": ["deep-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the q, k, v vectors?",
+      "answerText": "Q stands for Query vector, K for Key vector, and V for Value vector. These vectors are used to calculate attention weights in feed-forward neural networks and transformers.",
+      "tags": ["qkv", "attention", "transformers", "section-7"],
+      "domains": ["deep-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "List some common uses for Transformer applications.",
+      "answerText": "Common applications include chat systems, question answering, text classification (such as sentiment analysis), named entity recognition, summarization, translation, code generation, and text generation including automated customer service systems.",
+      "tags": ["transformers", "applications", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a major concern for Transformer applications?",
+      "answerText": "Transformer applications have no inherent understanding of truth or correctness and may generate outputs that merely sound reasonable. As a result, their responses are not guaranteed to be accurate and must be used with caution.",
+      "tags": ["limitations", "ethics", "transformers", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Explain how GPT works and what architectural components it uses.",
+      "answerText": "GPT uses encoder-style layers to predict the next token. Its architecture includes tokenization, positional encoding, embeddings, and encoding layers. The encoding layer combines feed-forward neural networks with masked self-attention, enabling parallel computation while preserving token order.",
+      "tags": ["gpt", "architecture", "transformers", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How does temperature work in generative models?",
+      "answerText": "Temperature controls randomness in token selection. A temperature of zero selects the highest-probability token, while values greater than zero allow more flexibility and creativity by sampling from a broader probability distribution.",
+      "tags": ["temperature", "sampling", "gpt", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Explain fine-tuning.",
+      "answerText": "Fine-tuning is a form of transfer learning where a foundation model is further trained on domain-specific data to adapt it to a particular use case, such as customer service or acting as a personal assistant.",
+      "tags": ["fine-tuning", "transfer-learning", "section-7"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are two methods of transfer learning or fine-tuning a model?",
+      "answerText": "One method is freezing certain layers while allowing others to train. Another method is further training the model with additional domain-specific data or prompts.",
+      "tags": ["transfer-learning", "fine-tuning", "section-7"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Contrast and compare TensorFlow and PyTorch.",
+      "answerText": "The comparison was not completed and requires further study.",
+      "tags": ["tensorflow", "pytorch", "frameworks", "section-7"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are Amazon's models?",
+      "answerText": "Amazon models include Nova, Titan, and possibly Alexa-related models. Titan is discussed in more detail, while Nova is mentioned as a newer offering with limited details. Alexa models may be available through SageMaker JumpStart.",
+      "tags": ["aws", "models", "titan", "section-7"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Which models are you not likely to find on AWS?",
+      "answerText": "Models from competing cloud providers are unlikely to be offered on AWS, including BERT from Google, GPT-n from OpenAI/Microsoft, and DALL-E from OpenAI.",
+      "tags": ["aws", "models", "competition", "section-7"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the Titan model and what makes it special?",
+      "answerText": "Titan is Amazon's proprietary model. It is designed to compete with other large models and supports tasks such as text summarization, text generation, question answering, and embeddings for personalization and search.",
+      "tags": ["titan", "aws", "foundation-models", "section-7"],
+      "domains": ["cloud-ai"]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "databaseName": "Section 7 - Generative AI Model Fundamentals Vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "What is \"Transformer Architecture\"?",
+      "answerText": "Transformer Architecture - Neural network architecture that LLMs are built on, using self-attention mechanisms instead of sequential RNN processing to enable parallel computation",
+      "tags": ["vocabulary", "section-7", "generative-ai", "transformers"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is a neural network architecture that LLMs are built on, using self-attention mechanisms instead of sequential RNN processing to enable parallel computation",
+      "answerText": "Transformer Architecture",
+      "tags": ["vocabulary", "section-7", "generative-ai", "transformers"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"self-attention\"?",
+      "answerText": "self-attention - FFNN concept. For RNN we have 'attention' awareness of previous tokens translated. This is a sequential process. \"Self Attention\" move that 'previous tokens' or hidden state into its own memory space 'self attention' making parallel processing possible",
+      "tags": [
+        "vocabulary",
+        "section-7",
+        "generative-ai",
+        "transformers",
+        "attention"
+      ],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is an FFNN concept. For RNN we have 'attention' awareness of previous tokens translated. This is a sequential process. _____ moves that 'previous tokens' or hidden state into its own memory space making parallel processing possible",
+      "answerText": "self-attention",
+      "tags": [
+        "vocabulary",
+        "section-7",
+        "generative-ai",
+        "transformers",
+        "attention"
+      ],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Attention Weight\"?",
+      "answerText": "Attention Weight - The weight or score that determines how much focus is allocated to each word/token when computing attention relationships between tokens",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the weight or score that determines how much focus is allocated to each word/token when computing attention relationships between tokens",
+      "answerText": "Attention Weight",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Scaled dot-product attention\"?",
+      "answerText": "Scaled dot-product attention - A similarity function used in self-attention that computes attention scores by taking the dot product of query and key vectors, then scaling them",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is a similarity function used in self-attention that computes attention scores by taking the dot product of query and key vectors, then scaling them",
+      "answerText": "Scaled dot-product attention",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Scaled data product attention\"?",
+      "answerText": "Scaled data product attention - Same as scaled dot-product attention; alternative naming for the dot product similarity function used to compute attention scores",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the same as scaled dot-product attention; it is alternative naming for the dot product similarity function used to compute attention scores",
+      "answerText": "Scaled data product attention",
+      "tags": ["vocabulary", "section-7", "generative-ai", "attention"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are \"q, k, v vectors\"?",
+      "answerText": "q, k, v vectors - Q (Query), K (Key), and V (Value) vectors used to calculate attention weights in transformers and feed-forward neural networks. Each token gets these three vectors by multiplying its embedding against learned weight matrices",
+      "tags": [
+        "vocabulary",
+        "section-7",
+        "generative-ai",
+        "transformers",
+        "attention"
+      ],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ are Q (Query), K (Key), and V (Value) vectors used to calculate attention weights in transformers and feed-forward neural networks. Each token gets these three vectors by multiplying its embedding against learned weight matrices",
+      "answerText": "q, k, v vectors",
+      "tags": [
+        "vocabulary",
+        "section-7",
+        "generative-ai",
+        "transformers",
+        "attention"
+      ],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"interleaved sinusoidal function\"?",
+      "answerText": "interleaved sinusoidal function - Mathematical function used for positional encoding that captures the position of tokens relative to others and works on inputs of any length",
+      "tags": ["vocabulary", "section-7", "generative-ai", "encoding"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is a mathematical function used for positional encoding that captures the position of tokens relative to others and works on inputs of any length",
+      "answerText": "interleaved sinusoidal function",
+      "tags": ["vocabulary", "section-7", "generative-ai", "encoding"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are \"logits\"?",
+      "answerText": "logits - The output probabilities for each token being the right next token in the sequence, computed by multiplying the decoder output vector with token embeddings",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ are the output probabilities for each token being the right next token in the sequence, computed by multiplying the decoder output vector with token embeddings",
+      "answerText": "logits",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are \"tokens\"?",
+      "answerText": "tokens - numerical representation of words or parts of words (numeric)",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ are numerical representations of words or parts of words (numeric)",
+      "answerText": "tokens",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are \"Embeddings\"?",
+      "answerText": "Embeddings - Mathematical representations (vectors) that encode \"meaning\" of a token (hence, spanish, german, english may map to the same token because we are working with 'meaning')",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ are mathematical representations (vectors) that encode \"meaning\" of a token (hence, spanish, german, english may map to the same token because we are working with 'meaning')",
+      "answerText": "Embeddings",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Top P\"?",
+      "answerText": "Top P - Threshold probability of a token inclusion (higher => greater randomness)",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the threshold probability of a token inclusion (higher => greater randomness)",
+      "answerText": "Top P",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Top K\"?",
+      "answerText": "Top K - Alternative to top p instead of \"top probability\" where \"top K\" candidates exist for inclusion. Higher K, higher randomness",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is an alternative to top p instead of \"top probability\" where \"top K\" candidates exist for inclusion. Higher K, higher randomness",
+      "answerText": "Top K",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"temperature\"?",
+      "answerText": "temperature - the level of randomness in selecting the next word in the output from those tokens. Higher temperature -> more random. Low temperature -> more consistent (less random)",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the level of randomness in selecting the next word in the output from those tokens. Higher _____ -> more random. Low _____ -> more consistent (less random)",
+      "answerText": "temperature",
+      "tags": ["vocabulary", "section-7", "generative-ai", "sampling"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Context window\"?",
+      "answerText": "Context window - The number of tokens an LLM can process at once",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the number of tokens an LLM can process at once",
+      "answerText": "Context window",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Max tokens\"?",
+      "answerText": "Max tokens - Limit for the total number of tokens (on input or output)",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the limit for the total number of tokens (on input or output)",
+      "answerText": "Max tokens",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"Embedding Space\"?",
+      "answerText": "Embedding Space - The high-dimensional vector space (often thousands of dimensions) where embeddings exist. The distance between vectors in this space determines how semantically close or related tokens are to each other",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Fill in the blank: _____ is the high-dimensional vector space (often thousands of dimensions) where embeddings exist. The distance between vectors in this space determines how semantically close or related tokens are to each other",
+      "answerText": "Embedding Space",
+      "tags": ["vocabulary", "section-7", "generative-ai"],
+      "domains": ["vocabulary"]
+    }
+  ]
+}
