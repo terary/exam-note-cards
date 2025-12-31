@@ -22,6 +22,14 @@ function QuestionManagerPage() {
     urlDatabaseId || null
   );
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [databaseStats, setDatabaseStats] = useState<Map<string, {
+    total: number;
+    bad: number;
+    answered: number;
+    poorScore: number;
+    goodScore: number;
+  }>>(new Map());
+  const [loadingStats, setLoadingStats] = useState(false);
   const [status, setStatus] = useState<
     "idle" | "loading" | "ready" | "error"
   >("idle");
@@ -55,16 +63,66 @@ function QuestionManagerPage() {
       try {
         setStatus("loading");
         const dbList = await fetchQuestionManagerDatabases();
-        setDatabases(dbList);
+        // Filter out unused databases
+        const filteredDbList = dbList.filter(
+          (db) => !["tmp", "tmp.md", "database", "database-one"].includes(db.databaseId)
+        );
+        setDatabases(filteredDbList);
         if (urlDatabaseId) {
           setSelectedDatabaseId(urlDatabaseId);
         }
         setStatus("ready");
+        
+        // Load stats for all databases
+        setLoadingStats(true);
+        const statsMap = new Map<string, {
+          total: number;
+          bad: number;
+          answered: number;
+          poorScore: number;
+          goodScore: number;
+        }>();
+        
+        for (const db of filteredDbList) {
+          try {
+            const qs = await fetchQuestionsInDatabase(db.databaseId);
+            const stats = {
+              total: qs.length,
+              bad: qs.filter(q => {
+                const score = q.lastScore ?? q.averageScore ?? null;
+                return score !== null && score < 0;
+              }).length,
+              answered: qs.filter(q => (q.timesAsked ?? 0) > 0).length,
+              poorScore: qs.filter(q => {
+                const score = q.lastScore ?? q.averageScore ?? null;
+                return score !== null && score >= 1 && score <= 80;
+              }).length,
+              goodScore: qs.filter(q => {
+                const score = q.lastScore ?? q.averageScore ?? null;
+                return score !== null && score > 80;
+              }).length,
+            };
+            statsMap.set(db.databaseId, stats);
+          } catch (err) {
+            // If we can't load questions for a database, set default stats
+            statsMap.set(db.databaseId, {
+              total: db.questionCount,
+              bad: 0,
+              answered: 0,
+              poorScore: 0,
+              goodScore: 0,
+            });
+          }
+        }
+        
+        setDatabaseStats(statsMap);
+        setLoadingStats(false);
       } catch (err) {
         const message =
           err instanceof Error ? err.message : "Failed to load databases";
         setError(message);
         setStatus("error");
+        setLoadingStats(false);
       }
     };
     loadDatabases();
@@ -316,33 +374,72 @@ function QuestionManagerPage() {
         </div>
       )}
 
-      <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center", flex: 1, minWidth: "200px" }}>
-          <label htmlFor="database-select" style={{ fontWeight: 600 }}>
-            Database:
-          </label>
-          <select
-            id="database-select"
-            value={selectedDatabaseId || ""}
-            onChange={(e) => handleDatabaseSelect(e.target.value)}
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "8px",
-              border: "1px solid #cbd5e1",
-              fontSize: "1rem",
-              flex: 1,
-              minWidth: "200px",
-            }}
-          >
-            <option value="">Select a database...</option>
-            {databases.map((db) => (
-              <option key={db.databaseId} value={db.databaseId}>
-                {db.databaseName} ({db.questionCount} questions)
-              </option>
-            ))}
-          </select>
+      {/* Database Selection Table */}
+      {status === "ready" && (
+        <div style={{ marginBottom: "2rem" }}>
+          <h2 style={{ marginBottom: "1rem" }}>Select Database</h2>
+          {loadingStats && <p style={{ color: "#64748b" }}>Loading statistics...</p>}
+          <table className="data-table" style={{ marginBottom: "2rem" }}>
+            <thead>
+              <tr>
+                <th>Database Name</th>
+                <th>Total Questions</th>
+                <th>Bad Questions</th>
+                <th>Questions Answered</th>
+                <th>Poor Score (1-80)</th>
+                <th>Good Score (&gt;80)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {databases.map((db) => {
+                const stats = databaseStats.get(db.databaseId) || {
+                  total: db.questionCount,
+                  bad: 0,
+                  answered: 0,
+                  poorScore: 0,
+                  goodScore: 0,
+                };
+                const isSelected = selectedDatabaseId === db.databaseId;
+                return (
+                  <tr
+                    key={db.databaseId}
+                    style={{
+                      backgroundColor: isSelected ? "#eff6ff" : undefined,
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleDatabaseSelect(db.databaseId)}
+                  >
+                    <td>
+                      <strong>{db.databaseName}</strong>
+                    </td>
+                    <td>{stats.total}</td>
+                    <td>{stats.bad}</td>
+                    <td>{stats.answered}</td>
+                    <td>{stats.poorScore}</td>
+                    <td>{stats.goodScore}</td>
+                    <td>
+                      <button
+                        className="table-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDatabaseSelect(db.databaseId);
+                        }}
+                      >
+                        {isSelected ? "Selected" : "Select"}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
+      )}
 
+      {/* Search and Actions */}
+      {status === "ready" && (
+        <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
         <input
           type="text"
           className="text-input"
@@ -384,7 +481,8 @@ function QuestionManagerPage() {
             Create Question
           </button>
         )}
-      </div>
+        </div>
+      )}
 
       {searchResults.length > 0 && (
         <div style={{ marginBottom: "1rem", color: "#64748b" }}>
