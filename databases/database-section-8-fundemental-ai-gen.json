@@ -2,337 +2,333 @@
   "databaseName": "Section 8 - Building Generative AI Applications with Bedrock",
   "questionsWithAnswers": [
     {
-      "questionsWithAnswers": [
-        {
-          "questionId": null,
-          "questionText": "What is a Foundation Model and how are they used?",
-          "answerText": "Foundation models are pre-trained large models such as Titan or Claude that can be used directly or extended to support specific applications.",
-          "tags": ["foundation-models", "bedrock", "section-7"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "________ are pre-trained models such as Titan and Claude that can be extended to support applications.",
-          "answerText": "Foundation models are pre-trained models such as Titan and Claude that can be extended to support applications.",
-          "tags": ["foundation-models", "definition", "section-7"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What makes Titan special?",
-          "answerText": "Titan is AWS's own foundation model. While it still requires approval, approval is much quicker and there is no third-party billing or external terms involved.",
-          "tags": ["titan", "aws", "foundation-models", "section-7"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Which model is AWS's own foundation model with quicker approval and no third-party billing?",
-          "answerText": "Titan.",
-          "tags": ["titan", "aws", "foundation-models", "section-7"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Is Amazon Bedrock serverless?",
-          "answerText": "Yes, Amazon Bedrock is serverless.",
-          "tags": ["bedrock", "serverless", "aws"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the four Bedrock API groups?",
-          "answerText": "The four API groups are: manage chat/continuation, execute chat/continuation (Converse, ConverseStream, InvokeModel, InvokeModelWithResponseStream), manage agents, and execute agents (InvokeAgent, Retrieve, RetrieveAndGenerate).",
-          "tags": ["bedrock", "apis", "agents"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the two most important Bedrock IAM permissions?",
-          "answerText": "Users must use an IAM user (not the root account) and have appropriate Bedrock permissions, most commonly AmazonBedrockFullAccess or AmazonBedrockFullReadonly. Admin roles may have these implicitly.",
-          "tags": ["iam", "bedrock", "security"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Discuss fine-tuning: what it is and how it is used.",
-          "answerText": "Fine-tuning adapts an existing LLM to a specific use case by extending the model through additional training. It reduces reliance on prompt engineering, can save tokens long-term, allows iterative improvement, and supports applications like custom chatbots, updated knowledge, proprietary data usage, and classification tasks. It can be more expensive upfront.",
-          "tags": ["fine-tuning", "transfer-learning", "exam"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "The following description refers to which concept?",
-          "answerText": "Fine-tuning.",
-          "tags": ["fine-tuning", "concept-identification"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is a custom model?",
-          "answerText": "A custom model is a model that has been fine-tuned.",
-          "tags": ["custom-model", "fine-tuning"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What does AWS call fine-tuning?",
-          "answerText": "AWS refers to fine-tuning as creating a custom model.",
-          "tags": ["aws", "fine-tuning", "terminology"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is a reason a model cannot be fine-tuned?",
-          "answerText": "Only certain models support fine-tuning. According to the lecture, Titan, Cohere, and Meta models support it on AWS, while other models such as OpenAI models may support fine-tuning outside AWS.",
-          "tags": ["fine-tuning", "model-limitations"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "In fine-tuning a model, how do we keep proprietary data secure?",
-          "answerText": "By using a VPC and AWS PrivateLink.",
-          "tags": ["security", "fine-tuning", "exam"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are some disadvantages of fine-tuning?",
-          "answerText": "Fine-tuning can be expensive upfront, time-consuming, and requires providing high-quality training data.",
-          "tags": ["fine-tuning", "tradeoffs"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is continued pre-training?",
-          "answerText": "Continued pre-training extends a model using unlabeled data by feeding it additional text so the knowledge becomes part of the model itself, reducing the need to include that data in prompts.",
-          "tags": ["continued-pretraining", "training"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is the difference between fine-tuning and continued pre-training?",
-          "answerText": "Fine-tuning uses labeled prompt-response data, while continued pre-training uses unlabeled fact-style data to extend the model's knowledge.",
-          "tags": ["fine-tuning", "continued-pretraining", "comparison"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How can a model's knowledge be extended with new or proprietary data without training?",
-          "answerText": "By using Retrieval-Augmented Generation (RAG), which retrieves relevant data at inference time rather than training the model on it.",
-          "tags": ["rag", "knowledge-extension"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How do you perform a semantic search?",
-          "answerText": "By embedding the query into a vector and performing a nearest-neighbor search against vectors stored in a knowledge base.",
-          "tags": ["semantic-search", "embeddings", "rag"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the pros of RAG?",
-          "answerText": "RAG is faster and cheaper than fine-tuning in the short term, easy to update, supports semantic search with vector stores, can reduce hallucinations, enables AI search use cases, and avoids training on proprietary data.",
-          "tags": ["rag", "advantages", "exam"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "The following describes the advantages of which technique?",
-          "answerText": "Retrieval-Augmented Generation (RAG).",
-          "tags": ["rag", "concept-identification"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the cons of RAG?",
-          "answerText": "RAG can behave like a poor search engine, is highly sensitive to chunking and prompt templates, is non-deterministic, can still hallucinate, and depends heavily on the quality of retrieved data.",
-          "tags": ["rag", "limitations"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Discuss cost tradeoffs between fine-tuning and RAG.",
-          "answerText": "Fine-tuning has higher upfront costs but may reduce future token usage. RAG has no training cost but increases ongoing token usage due to added context.",
-          "tags": ["rag", "fine-tuning", "costs"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is an embedding?",
-          "answerText": "An embedding is a high-dimensional vector representation of text or data used for semantic comparison.",
-          "tags": ["embeddings", "vectors"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is the basic flow of semantic search?",
-          "answerText": "Documents are embedded into vectors, stored, queries are embedded, nearest neighbors are retrieved, relevant documents are added to the prompt, and the augmented prompt is sent to the model.",
-          "tags": ["semantic-search", "rag", "workflow"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "The search results in semantic search are similar to which algorithm?",
-          "answerText": "K-Nearest Neighbor (KNN).",
-          "tags": ["knn", "semantic-search"],
-          "domains": ["machine-learning"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How do we store vectors and what does AWS recommend?",
-          "answerText": "Vectors are stored in vector stores or databases with vector search support. AWS typically recommends OpenSearch or Elasticsearch.",
-          "tags": ["vector-store", "aws", "opensearch"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Comment on the structure of data required for Bedrock knowledge bases.",
-          "answerText": "Bedrock can accept structured or unstructured data, but default chunking may not perform well. Proper chunking strategy is important.",
-          "tags": ["bedrock", "knowledge-base", "chunking"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What alternative data sources can be used for knowledge bases?",
-          "answerText": "Data can come from web crawlers, Jira, SNS/SQS, Salesforce, or any source that can land data in S3.",
-          "tags": ["knowledge-base", "data-sources"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the key activities in knowledge base search?",
-          "answerText": "Embedding data, storing vectors, embedding queries, performing vector search, and adding results to prompts.",
-          "tags": ["knowledge-base", "rag", "workflow"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What kinds of data can be used in a knowledge base?",
-          "answerText": "Text, spreadsheets, images, audio, PDFs, and other data types.",
-          "tags": ["knowledge-base", "data-types"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What data sources can be used for Bedrock knowledge bases?",
-          "answerText": "S3, web crawlers, Salesforce, and custom sources.",
-          "tags": ["bedrock", "knowledge-base"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What data structure is required for Bedrock knowledge bases?",
-          "answerText": "Bedrock can parse both structured and unstructured data using default, inferred, or custom parsers.",
-          "tags": ["bedrock", "parsing"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What chunking strategies are available in Bedrock?",
-          "answerText": "Default chunking, fixed-size chunking, hierarchical chunking, semantic chunking, no chunking, and custom Lambda-based chunking.",
-          "tags": ["bedrock", "chunking"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What guardrail features are available in Bedrock?",
-          "answerText": "Content filtering (words, topics, PII, profanity), context grounding checks, and blocked message responses.",
-          "tags": ["guardrails", "bedrock", "exam"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is context grounding check?",
-          "answerText": "It evaluates grounding against retrieved content and relevance to the query using configurable thresholds.",
-          "tags": ["guardrails", "grounding"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "For agents, what is memory?",
-          "answerText": "Agents have no persistent memory; the full conversation context is sent with each prompt and acts as memory.",
-          "tags": ["agents", "memory"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How does an agent know which tool to call and with what parameters?",
-          "answerText": "Tool and parameter descriptions define their purpose, types, and requirements, allowing the agent to determine which to invoke.",
-          "tags": ["agents", "tools"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is the recommended tool provider for agents?",
-          "answerText": "AWS Lambda is commonly used and promoted as a suitable tool provider depending on the use case.",
-          "tags": ["agents", "lambda"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are action groups?",
-          "answerText": "Action groups are collections of tools or functions used by agents.",
-          "tags": ["agents", "action-groups"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How are functions defined for agents?",
-          "answerText": "Functions are defined using an OpenAPI-style schema that specifies function names, descriptions, parameter types, and required fields.",
-          "tags": ["agents", "openapi"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How is RAG implemented with agents?",
-          "answerText": "RAG is implemented as a tool call, similar to other agent tools.",
-          "tags": ["rag", "agents"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is the code interpreter tool used for in agents?",
-          "answerText": "It allows agents to write and execute code, although the exact execution environment may depend on implementation.",
-          "tags": ["agents", "code-interpreter"],
-          "domains": ["generative-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How are agents billed and which model is best for different workloads?",
-          "answerText": "On-demand throughput is suited for low to normal usage, while provisioned throughput is best for high-volume workloads requiring guaranteed token capacity.",
-          "tags": ["agents", "billing"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What is InvokeAgent and what parameter is required?",
-          "answerText": "InvokeAgent is the API method used to call an agent and requires an agent alias ID in addition to the prompt.",
-          "tags": ["agents", "invokeagent", "api"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "What are the additional features of Bedrock?",
-          "answerText": "Additional features include imported models, model evaluation (automatic and human), provisioned throughput, watermark detection, and Bedrock Studio.",
-          "tags": ["bedrock", "features", "exam"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "Does Bedrock limit which foundation models you can use?",
-          "answerText": "Bedrock does not strictly limit models but restricts which providers it partners with. You can also bring your own models.",
-          "tags": ["bedrock", "foundation-models"],
-          "domains": ["cloud-ai"]
-        },
-        {
-          "questionId": null,
-          "questionText": "How can Bedrock be used to evaluate models?",
-          "answerText": "Through automatic metrics such as accuracy, toxicity, robustness, BERTScore, and F1, as well as human evaluation using your own team or AWS-managed teams.",
-          "tags": ["bedrock", "model-evaluation", "exam"],
-          "domains": ["cloud-ai"]
-        }
-      ]
+      "questionId": null,
+      "questionText": "What is a Foundation Model and how are they used?",
+      "answerText": "Foundation models are pre-trained large models such as Titan or Claude that can be used directly or extended to support specific applications.",
+      "tags": ["foundation-models", "bedrock", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "________ are pre-trained models such as Titan and Claude that can be extended to support applications.",
+      "answerText": "Foundation models are pre-trained models such as Titan and Claude that can be extended to support applications.",
+      "tags": ["foundation-models", "definition", "section-7"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What makes Titan special?",
+      "answerText": "Titan is AWS's own foundation model. While it still requires approval, approval is much quicker and there is no third-party billing or external terms involved.",
+      "tags": ["titan", "aws", "foundation-models", "section-7"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Which model is AWS's own foundation model with quicker approval and no third-party billing?",
+      "answerText": "Titan.",
+      "tags": ["titan", "aws", "foundation-models", "section-7"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Is Amazon Bedrock serverless?",
+      "answerText": "Yes, Amazon Bedrock is serverless.",
+      "tags": ["bedrock", "serverless", "aws"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the four Bedrock API groups?",
+      "answerText": "The four API groups are: manage chat/continuation, execute chat/continuation (Converse, ConverseStream, InvokeModel, InvokeModelWithResponseStream), manage agents, and execute agents (InvokeAgent, Retrieve, RetrieveAndGenerate).",
+      "tags": ["bedrock", "apis", "agents"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the two most important Bedrock IAM permissions?",
+      "answerText": "Users must use an IAM user (not the root account) and have appropriate Bedrock permissions, most commonly AmazonBedrockFullAccess or AmazonBedrockFullReadonly. Admin roles may have these implicitly.",
+      "tags": ["iam", "bedrock", "security"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss fine-tuning: what it is and how it is used.",
+      "answerText": "Fine-tuning adapts an existing LLM to a specific use case by extending the model through additional training. It reduces reliance on prompt engineering, can save tokens long-term, allows iterative improvement, and supports applications like custom chatbots, updated knowledge, proprietary data usage, and classification tasks. It can be more expensive upfront.",
+      "tags": ["fine-tuning", "transfer-learning", "exam"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following description refers to which concept?",
+      "answerText": "Fine-tuning.",
+      "tags": ["fine-tuning", "concept-identification"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a custom model?",
+      "answerText": "A custom model is a model that has been fine-tuned.",
+      "tags": ["custom-model", "fine-tuning"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What does AWS call fine-tuning?",
+      "answerText": "AWS refers to fine-tuning as creating a custom model.",
+      "tags": ["aws", "fine-tuning", "terminology"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a reason a model cannot be fine-tuned?",
+      "answerText": "Only certain models support fine-tuning. According to the lecture, Titan, Cohere, and Meta models support it on AWS, while other models such as OpenAI models may support fine-tuning outside AWS.",
+      "tags": ["fine-tuning", "model-limitations"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "In fine-tuning a model, how do we keep proprietary data secure?",
+      "answerText": "By using a VPC and AWS PrivateLink.",
+      "tags": ["security", "fine-tuning", "exam"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are some disadvantages of fine-tuning?",
+      "answerText": "Fine-tuning can be expensive upfront, time-consuming, and requires providing high-quality training data.",
+      "tags": ["fine-tuning", "tradeoffs"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is continued pre-training?",
+      "answerText": "Continued pre-training extends a model using unlabeled data by feeding it additional text so the knowledge becomes part of the model itself, reducing the need to include that data in prompts.",
+      "tags": ["continued-pretraining", "training"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the difference between fine-tuning and continued pre-training?",
+      "answerText": "Fine-tuning uses labeled prompt-response data, while continued pre-training uses unlabeled fact-style data to extend the model's knowledge.",
+      "tags": ["fine-tuning", "continued-pretraining", "comparison"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How can a model's knowledge be extended with new or proprietary data without training?",
+      "answerText": "By using Retrieval-Augmented Generation (RAG), which retrieves relevant data at inference time rather than training the model on it.",
+      "tags": ["rag", "knowledge-extension"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How do you perform a semantic search?",
+      "answerText": "By embedding the query into a vector and performing a nearest-neighbor search against vectors stored in a knowledge base.",
+      "tags": ["semantic-search", "embeddings", "rag"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the pros of RAG?",
+      "answerText": "RAG is faster and cheaper than fine-tuning in the short term, easy to update, supports semantic search with vector stores, can reduce hallucinations, enables AI search use cases, and avoids training on proprietary data.",
+      "tags": ["rag", "advantages", "exam"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The following describes the advantages of which technique?",
+      "answerText": "Retrieval-Augmented Generation (RAG).",
+      "tags": ["rag", "concept-identification"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the cons of RAG?",
+      "answerText": "RAG can behave like a poor search engine, is highly sensitive to chunking and prompt templates, is non-deterministic, can still hallucinate, and depends heavily on the quality of retrieved data.",
+      "tags": ["rag", "limitations"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss cost tradeoffs between fine-tuning and RAG.",
+      "answerText": "Fine-tuning has higher upfront costs but may reduce future token usage. RAG has no training cost but increases ongoing token usage due to added context.",
+      "tags": ["rag", "fine-tuning", "costs"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is an embedding?",
+      "answerText": "An embedding is a high-dimensional vector representation of text or data used for semantic comparison.",
+      "tags": ["embeddings", "vectors"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the basic flow of semantic search?",
+      "answerText": "Documents are embedded into vectors, stored, queries are embedded, nearest neighbors are retrieved, relevant documents are added to the prompt, and the augmented prompt is sent to the model.",
+      "tags": ["semantic-search", "rag", "workflow"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "The search results in semantic search are similar to which algorithm?",
+      "answerText": "K-Nearest Neighbor (KNN).",
+      "tags": ["knn", "semantic-search"],
+      "domains": ["machine-learning"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How do we store vectors and what does AWS recommend?",
+      "answerText": "Vectors are stored in vector stores or databases with vector search support. AWS typically recommends OpenSearch or Elasticsearch.",
+      "tags": ["vector-store", "aws", "opensearch"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Comment on the structure of data required for Bedrock knowledge bases.",
+      "answerText": "Bedrock can accept structured or unstructured data, but default chunking may not perform well. Proper chunking strategy is important.",
+      "tags": ["bedrock", "knowledge-base", "chunking"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What alternative data sources can be used for knowledge bases?",
+      "answerText": "Data can come from web crawlers, Jira, SNS/SQS, Salesforce, or any source that can land data in S3.",
+      "tags": ["knowledge-base", "data-sources"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the key activities in knowledge base search?",
+      "answerText": "Embedding data, storing vectors, embedding queries, performing vector search, and adding results to prompts.",
+      "tags": ["knowledge-base", "rag", "workflow"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What kinds of data can be used in a knowledge base?",
+      "answerText": "Text, spreadsheets, images, audio, PDFs, and other data types.",
+      "tags": ["knowledge-base", "data-types"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What data sources can be used for Bedrock knowledge bases?",
+      "answerText": "S3, web crawlers, Salesforce, and custom sources.",
+      "tags": ["bedrock", "knowledge-base"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What data structure is required for Bedrock knowledge bases?",
+      "answerText": "Bedrock can parse both structured and unstructured data using default, inferred, or custom parsers.",
+      "tags": ["bedrock", "parsing"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What chunking strategies are available in Bedrock?",
+      "answerText": "Default chunking, fixed-size chunking, hierarchical chunking, semantic chunking, no chunking, and custom Lambda-based chunking.",
+      "tags": ["bedrock", "chunking"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What guardrail features are available in Bedrock?",
+      "answerText": "Content filtering (words, topics, PII, profanity), context grounding checks, and blocked message responses.",
+      "tags": ["guardrails", "bedrock", "exam"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is context grounding check?",
+      "answerText": "It evaluates grounding against retrieved content and relevance to the query using configurable thresholds.",
+      "tags": ["guardrails", "grounding"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "For agents, what is memory?",
+      "answerText": "Agents have no persistent memory; the full conversation context is sent with each prompt and acts as memory.",
+      "tags": ["agents", "memory"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How does an agent know which tool to call and with what parameters?",
+      "answerText": "Tool and parameter descriptions define their purpose, types, and requirements, allowing the agent to determine which to invoke.",
+      "tags": ["agents", "tools"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the recommended tool provider for agents?",
+      "answerText": "AWS Lambda is commonly used and promoted as a suitable tool provider depending on the use case.",
+      "tags": ["agents", "lambda"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are action groups?",
+      "answerText": "Action groups are collections of tools or functions used by agents.",
+      "tags": ["agents", "action-groups"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How are functions defined for agents?",
+      "answerText": "Functions are defined using an OpenAPI-style schema that specifies function names, descriptions, parameter types, and required fields.",
+      "tags": ["agents", "openapi"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How is RAG implemented with agents?",
+      "answerText": "RAG is implemented as a tool call, similar to other agent tools.",
+      "tags": ["rag", "agents"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the code interpreter tool used for in agents?",
+      "answerText": "It allows agents to write and execute code, although the exact execution environment may depend on implementation.",
+      "tags": ["agents", "code-interpreter"],
+      "domains": ["generative-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How are agents billed and which model is best for different workloads?",
+      "answerText": "On-demand throughput is suited for low to normal usage, while provisioned throughput is best for high-volume workloads requiring guaranteed token capacity.",
+      "tags": ["agents", "billing"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is InvokeAgent and what parameter is required?",
+      "answerText": "InvokeAgent is the API method used to call an agent and requires an agent alias ID in addition to the prompt.",
+      "tags": ["agents", "invokeagent", "api"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the additional features of Bedrock?",
+      "answerText": "Additional features include imported models, model evaluation (automatic and human), provisioned throughput, watermark detection, and Bedrock Studio.",
+      "tags": ["bedrock", "features", "exam"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Does Bedrock limit which foundation models you can use?",
+      "answerText": "Bedrock does not strictly limit models but restricts which providers it partners with. You can also bring your own models.",
+      "tags": ["bedrock", "foundation-models"],
+      "domains": ["cloud-ai"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How can Bedrock be used to evaluate models?",
+      "answerText": "Through automatic metrics such as accuracy, toxicity, robustness, BERTScore, and F1, as well as human evaluation using your own team or AWS-managed teams.",
+      "tags": ["bedrock", "model-evaluation", "exam"],
+      "domains": ["cloud-ai"]
     }
   ]
 }
