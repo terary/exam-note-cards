@@ -144,92 +144,117 @@ function DatabaseListPage() {
         </div>
       )}
 
-      {databasesStatus === "succeeded" && databases.length === 0 && (
-        <p>No databases available.</p>
-      )}
-
+      {/* Quizzes Table */}
       {databasesStatus === "succeeded" && databases.length > 0 && (
-        <div className="database-grid">
-          {databases.map((database) => {
-            const isLoading =
-              pendingDatabaseId === database.databaseId &&
-              quizState.status === "loading";
-            return (
-              <div className="database-card" key={database.databaseId}>
-                <h2>{database.databaseName}</h2>
-                <p>{database.questionCount} Questions</p>
-                <button
-                  onClick={() => handleStartQuiz(database.databaseId)}
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Starting..." : "Start Quiz"}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {writeupsStatus === "ready" && (
         <>
-          {categorizedWriteups.writeups.length > 0 && (
-            <>
-              <h2 style={{ marginTop: "2rem" }}>Write-ups & Notes</h2>
-              <div className="database-grid">
-                {categorizedWriteups.writeups.map((w) => (
-                  <div className="database-card" key={w.id}>
-                    <h2>{w.id}</h2>
-                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
-                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
-                      Open Write-up
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {categorizedWriteups.vocabulary.length > 0 && (
-            <>
-              <h2 style={{ marginTop: "2rem" }}>Vocabulary</h2>
-              <div className="database-grid">
-                {categorizedWriteups.vocabulary.map((w) => (
-                  <div className="database-card" key={w.id}>
-                    <h2>{w.id}</h2>
-                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
-                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
-                      Open Write-up
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {categorizedWriteups.todo.length > 0 && (
-            <>
-              <h2 style={{ marginTop: "2rem" }}>To Do and Followup</h2>
-              <div className="database-grid">
-                {categorizedWriteups.todo.map((w) => (
-                  <div className="database-card" key={w.id}>
-                    <h2>{w.id}</h2>
-                    <p>Last updated: {new Date(w.lastModified).toLocaleString()}</p>
-                    <button onClick={() => navigate(`/write-up-notes/${w.id}`)}>
-                      Open Write-up
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {categorizedWriteups.writeups.length === 0 &&
-            categorizedWriteups.vocabulary.length === 0 &&
-            categorizedWriteups.todo.length === 0 && (
-              <p style={{ marginTop: "2rem" }}>No write-ups found.</p>
-            )}
+          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>Quizzes</h2>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Quiz Name</th>
+                <th>Questions</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {databases.map((database) => {
+                const isLoading =
+                  pendingDatabaseId === database.databaseId &&
+                  quizState.status === "loading";
+                return (
+                  <tr key={database.databaseId}>
+                    <td>{database.databaseName}</td>
+                    <td>{database.questionCount}</td>
+                    <td>
+                      <button
+                        onClick={() => handleStartQuiz(database.databaseId)}
+                        disabled={isLoading}
+                        className="table-button"
+                      >
+                        {isLoading ? "Starting..." : "Start Quiz"}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </>
       )}
+
+      {databasesStatus === "succeeded" && databases.length === 0 && (
+        <p style={{ marginTop: "2rem" }}>No quizzes available.</p>
+      )}
+
+      {/* Write-ups Table */}
+      {writeupsStatus === "ready" && categorizedWriteups.writeups.length > 0 && (
+        <>
+          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>Write-ups & Notes</h2>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Write-up Name</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categorizedWriteups.writeups.map((w) => (
+                <tr key={w.id}>
+                  <td>{w.id}</td>
+                  <td>{new Date(w.lastModified).toLocaleString()}</td>
+                  <td>
+                    <button
+                      onClick={() => navigate(`/write-up-notes/${w.id}`)}
+                      className="table-button"
+                    >
+                      Open Write-up
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+
+      {/* Vocab Files Table */}
+      {writeupsStatus === "ready" && categorizedWriteups.vocabulary.length > 0 && (
+        <>
+          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>Vocabulary Files</h2>
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th>Vocab File Name</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categorizedWriteups.vocabulary.map((w) => (
+                <tr key={w.id}>
+                  <td>{w.id}</td>
+                  <td>{new Date(w.lastModified).toLocaleString()}</td>
+                  <td>
+                    <button
+                      onClick={() => navigate(`/write-up-notes/${w.id}`)}
+                      className="table-button"
+                    >
+                      Open File
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+
+      {writeupsStatus === "ready" &&
+        categorizedWriteups.writeups.length === 0 &&
+        categorizedWriteups.vocabulary.length === 0 && (
+          <p style={{ marginTop: "2rem" }}>No write-ups or vocab files found.</p>
+        )}
       {quizState.status === "error" && (
         <div className="error-message">
           <p>Unable to start quiz: {quizState.error}</p>
