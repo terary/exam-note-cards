@@ -55,14 +55,17 @@ Several Kinds of Activation functions. Several to chose from and have significan
 - **Leaky ReLU**
   - Solves the "dying ReLU" by introducing a negative slope below 0 (usually no as steep as this)
 
-`![Alt text](https://miro.medium.com/v2/1*y1Gri2Hlk6X465Sfs_34zg.png "Optional title")
+![Alt text](https://miro.medium.com/v2/1*y1Gri2Hlk6X465Sfs_34zg.png)
+
+![Alt text](https://miro.medium.com/v2/1*y1Gri2Hlk6X465Sfs_34zg.png "width:250")
 
 - **Parametric ReLu (PReLU)**
 
-  - ReLu, but the slope in the negative part is learned via backpropagation
-  - Complicated YMMV
-    > Different kinds of problems will be impacted different, eg the effectiveness is determined by the kinda of problem.
-    > Computationally intensive so you loose some of the benefit of ReLU
+- ReLu, but the slope in the negative part is learned via backpropagation
+- Complicated YMMV
+
+  > Different kinds of problems will be impacted different, eg the effectiveness is determined by the kinda of problem.
+  > Computationally intensive so you loose some of the benefit of ReLU
 
 - **Other ReLU variants**
 

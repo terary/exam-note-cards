@@ -412,8 +412,9 @@ Recommender - two modes: "Instance Recommendations" and "Endpoint Recommendation
 - Components for Kuberflow Pipelines ( I think training, deploy, monitor, blah blah)
 - Enables hybrid ML workflow (on-prem + cloud)
 - Enables integration of existing ML platform built on K8S or Kubeflow
+  ![Alt text](https://d1.awsstatic.com/SageMaker/SageMaker%20reInvent%202020/K8/Amazon%20SageMaker%20Operators%20for%20Kubernetes.e2852ce0148e84e9c135dd155adda07eff6124e7.png "width:250")
 
-[diagram https://d1.awsstatic.com/SageMaker/SageMaker%20reInvent%202020/K8/Amazon%20SageMaker%20Operators%20for%20Kubernetes.e2852ce0148e84e9c135dd155adda07eff6124e7.png]
+[diagram ]
 
             Amazon EKS
         (K8S control plane)
@@ -432,7 +433,9 @@ Recommender - two modes: "Instance Recommendations" and "Endpoint Recommendation
 
 #### SageMaker Components for Kubeflow Pipelines (2:45)
 
-[Diagram https://d1.awsstatic.com/SageMaker/SageMaker%20reInvent%202020/K8/Amazon%20SageMaker%20Components%20for%20Kubeflow%20Pipelines.457ed1b488de6fe25a0b51951b6ba59f92cc0e38.png]
+[Diagram ]
+
+![Alt text](https://d1.awsstatic.com/SageMaker/SageMaker%20reInvent%202020/K8/Amazon%20SageMaker%20Components%20for%20Kubeflow%20Pipelines.457ed1b488de6fe25a0b51951b6ba59f92cc0e38.png "width:250")
 
 > Just integrating SM with Kubeflow
 
