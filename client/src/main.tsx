@@ -6,17 +6,16 @@ import "./index.css";
 import App from "./App";
 import { store } from "./store";
 
-// Determine environment (dev or prod)
-const isDev = import.meta.env.DEV || import.meta.env.MODE === 'development';
-const envName = isDev ? 'DEV' : 'PROD';
-const appTitle = `Exam Note Cards - ${envName}`;
+// Read APPLICATION_TITLE from environment variable (must be prefixed with VITE_)
+// Fall back to "production" if not set
+const appTitle = import.meta.env.VITE_APPLICATION_TITLE || 'production';
 
 // Update document title and meta description
 function updateDocumentMeta() {
   document.title = appTitle;
   const metaDescription = document.querySelector('meta[name="description"]');
   if (metaDescription) {
-    metaDescription.setAttribute('content', `Exam Note Cards - ${envName} Environment`);
+    metaDescription.setAttribute('content', appTitle);
   }
 }
 
