@@ -1,0 +1,25 @@
+# Section 9: Machine Learning Operations (MLOps) (Vocab)
+
+- `Shadow Tests` - A shadow model instance is deployed and reviewed in Sagemaker to determine if the shadow image should be promoted to product/current latest release
+- `Deployment Guardrails` - Deployment options for deploying models in controlled fashion to avoid deploying bad instances/models
+- `Horovod` - a service to distribute Tensorflow across several instances (training I assume)
+- `cool-down periods`
+- `Inference Node`
+- aws `JumpStart`
+- `MLeap format`
+- `Data Drift` - something to do with real-world usages deviates from training data.
+- `Tensorboard`
+- `Ground Truth` or `Ground Truth Labels`
+- `Normalized Discounted Cumulative Gain (NDCG)` (score) 0206/3:40
+- `MLOps` - is the set of AWS services and practices—primarily built around Amazon SageMaker—that automate and manage the end-to-end machine learning lifecycle, from data preparation and training to deployment, monitoring, and retraining. It enables teams to reliably scale, version, and operate ML models in production using CI/CD-style workflows.
+- `Kubeflow` -
+- `ECS Tasks` -
+- `Secrets Manager` or `SSM Parameter Store` - brief overview, I don't recall differences
+- `AWS Glue`
+- `AWS Infrastructure Composer` or maybe `AWS Application Composer`
+- `SAM` (cdk thing)
+- `cdk bootstrap`
+- `cdk destroy`
+- `Partner Event Bus`
+- `State Machine` - 'workflow' eg, step function
+- ` Apache Airflow` - is a batch-oriented workflow tool
