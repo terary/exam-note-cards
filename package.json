@@ -19,7 +19,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate:mongodb": "ts-node -r tsconfig-paths/register scripts/migrate-to-mongodb.ts",
-    "recalculate:stats": "ts-node -r tsconfig-paths/register scripts/recalculate-question-stats.ts"
+    "recalculate:stats": "ts-node -r tsconfig-paths/register scripts/recalculate-question-stats.ts",
+    "generate:database": "ts-node -r tsconfig-paths/register scripts/generate-database-from-markdown.ts",
+    "generate:vocab": "ts-node -r tsconfig-paths/register scripts/generate-database-from-vocab.ts"
   },
   "keywords": [],
   "author": "",

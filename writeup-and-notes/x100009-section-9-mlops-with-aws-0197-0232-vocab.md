@@ -3,23 +3,23 @@
 - `Shadow Tests` - A shadow model instance is deployed and reviewed in Sagemaker to determine if the shadow image should be promoted to product/current latest release
 - `Deployment Guardrails` - Deployment options for deploying models in controlled fashion to avoid deploying bad instances/models
 - `Horovod` - a service to distribute Tensorflow across several instances (training I assume)
-- `cool-down periods`
-- `Inference Node`
-- aws `JumpStart`
-- `MLeap format`
+- `cool-down periods` - Periods of time after scaling actions where no further scaling occurs, used in auto-scaling policies to prevent rapid scaling oscillations and allow metrics to stabilize
+- `Inference Node` - A compute instance in SageMaker that handles inference requests for deployed models; auto-scaling adds or removes inference nodes based on demand
+- aws `JumpStart` - A SageMaker feature that provides pre-trained models and pre-configured endpoints for easy deployment, giving you notebooks and ready-to-use inference endpoints
+- `MLeap format` - A serialization format for Spark ML models (noted as not important for consideration in the course)
 - `Data Drift` - something to do with real-world usages deviates from training data.
-- `Tensorboard`
-- `Ground Truth` or `Ground Truth Labels`
-- `Normalized Discounted Cumulative Gain (NDCG)` (score) 0206/3:40
+- `Tensorboard` - A visualization tool for TensorFlow that integrates with SageMaker for monitoring and visualizing training metrics, model graphs, and performance
+- `Ground Truth` or `Ground Truth Labels` - Human-annotated labels used for training and evaluating ML models; can integrate with SageMaker Model Monitor to compare model predictions against actual labeled data
+- `Normalized Discounted Cumulative Gain (NDCG)` (score) 0206/3:40 - A metric used to evaluate feature attribution drift by comparing feature rankings between training and live data; higher-ranked features that are more important get higher scores
 - `MLOps` - is the set of AWS services and practices—primarily built around Amazon SageMaker—that automate and manage the end-to-end machine learning lifecycle, from data preparation and training to deployment, monitoring, and retraining. It enables teams to reliably scale, version, and operate ML models in production using CI/CD-style workflows.
-- `Kubeflow` -
-- `ECS Tasks` -
-- `Secrets Manager` or `SSM Parameter Store` - brief overview, I don't recall differences
-- `AWS Glue`
-- `AWS Infrastructure Composer` or maybe `AWS Application Composer`
-- `SAM` (cdk thing)
-- `cdk bootstrap`
-- `cdk destroy`
-- `Partner Event Bus`
+- `Kubeflow` - An open-source platform for running ML workflows on Kubernetes; SageMaker provides components that enable integration with existing ML platforms built on Kubernetes or Kubeflow, allowing hybrid ML workflows (on-prem + cloud)
+- `ECS Tasks` - The running instances of Docker containers in Amazon ECS (Elastic Container Service); when you launch Docker containers on AWS, you launch ECS Tasks on ECS Clusters
+- `Secrets Manager` or `SSM Parameter Store` - AWS services for storing sensitive data like passwords, API keys, and configuration parameters; ECS tasks can reference sensitive data from these services (brief overview, I don't recall differences)
+- `AWS Glue` - An ETL (Extract, Transform, Load) service that runs Apache Spark code (Scala or Python) for data processing; includes a Data Catalog to make data available to Athena or Redshift Spectrum; focuses on ETL workloads and manages resources automatically
+- `AWS Infrastructure Composer` or maybe `AWS Application Composer` - A visual tool for creating CloudFormation templates with interactive diagrams; provides an advanced visual interface for designing and managing AWS infrastructure
+- `SAM` (cdk thing) - Serverless Application Model, a framework for building serverless applications using CloudFormation templates written in YAML or JSON; serverless-focused and great for quickly getting started with Lambda; leverages CloudFormation
+- `cdk bootstrap` - Initializes the CDK environment by creating necessary AWS resources (like the CDK toolkit stack) in your AWS account; must be run before deploying CDK apps for the first time in a region/account
+- `cdk destroy` - Removes all resources created by a CDK stack, cleaning up the infrastructure that was deployed
+- `Partner Event Bus` - An EventBridge bus where AWS partners (SaaS companies like Zendesk, Datadog, etc.) send events directly; allows you to react to events happening outside of your AWS account
 - `State Machine` - 'workflow' eg, step function
 - ` Apache Airflow` - is a batch-oriented workflow tool

@@ -1,0 +1,952 @@
+{
+  "databaseName": "Section 9 - Mlops With Aws",
+  "databaseId": "database-section-9-MlopsWithAws",
+  "questionsWithAnswers": [
+    {
+      "questionId": "38f352f6-3fe0-40cf-aeaa-2e3a95952bf8",
+      "questionText": "What is Deployment Guardrail?",
+      "answerText": "A service/method to deploy models in controlled manor to avoid deployement issues. Failed deployment or bad instance. Can compare new deploy to existing deploy to verify it performs as good or better.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cfe6c704-84e4-4300-8218-e5f6c63de252",
+      "questionText": "What is Shadow Test (shadow variant)?",
+      "answerText": "There are two 'deployment guardrail', controlled deployment (blue/green), or shadow deployment.\nAs far as I can tell the key difference is you deploye a single instance/model to review performance (IN SAGEMAKER). Where as controlled deployments deploy to a few instance. T",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e6353e5e-6aa9-443f-a3b1-ca48ad71a9ef",
+      "questionText": "With Deployment Guardrails, what are the 3 strategy for determine 'ok' status? (canary, all(?), linear)",
+      "answerText": "- Controls shifting traffic to new models\n  - \"Blue/Green Deployments\" **EXAM**\n    - All at once shift everything, monitor, terminate blue fleet\n    - Canary: shift a small portion of traffic and monitor\n    - Linear: Shift traffic in linearly spaces steps",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f8024b13-9673-458f-927e-c13e8afc6d90",
+      "questionText": "Which of the \"Deployment Safeguards\" has auto roll back and why",
+      "answerText": "Controlled release (blue/green or controlled release). Auto rollback only really applies to this option. Shadow Variant wouldn't need rollback.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a5ae82df-db6d-4064-a0a8-bdc01552ac29",
+      "questionText": "What is Horovod? How is it used? What is it used for?",
+      "answerText": "To distribute tensorflow across several instances, because\n\n- Pre-built Tensorflow, MXNet, Chainer, PyTorch\n  - Distributed training via Horovod, or Paremeter Servers **EXAM**, tensorflow does not distribute across all machines, use these to overcome that obstacle.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "956ecae2-303a-4515-9413-e47f34316e7d",
+      "questionText": "How to test/compare new model to existing model - realtime? (\"Production Variants\")",
+      "answerText": "- You can test out multiple models on live traffic using Production Variants\n  - Variant weights tell SageMaker how to distribute traffic among them\n  - So, you could roll out a new iteration of your model at say 10% variant weight\n- This lets you do A/B tests, and to validate performance in real world settings\n  - Offline validation is always useful",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "96d142c5-9ad2-4df7-a8da-9b7fa97eddf0",
+      "questionText": "What is the purpose of Neo?",
+      "answerText": "Compile once - run anywhere, specifically on edge devices.\n\n- **Train Once, Run anywhere**\n  - Edge devices:\n    - ARM, Intel, Nvidia processors (Support Local Processors on various devices)\n    - Embedded in whatever - your car?\n- Optimize code for specific devices\n  - Tensorflow, MXNet, PyTorch, ONNX, XGBoost, DarkNet, Keras **(Any code that can go into these, can be compiled by Neo)**\n- Consists of a **compiler** and a **runtime**\n\n> Neo is the way to compile your inference code to edge devices\n\n> Neo - Compile once, run anywhere\n\n> Best for **Minimal Latency**, if a smart car needs a signal to break, we can't wait for internet delays (need ms response time)\n\n> **XGBoost** (the hottest algorithm for machine learning) **EXAM** Need to know XGBoost inside-and-out.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f2ee214d-7b6d-4511-948b-03a6c08790ab",
+      "questionText": "How to build/deploy models with minimal latency.",
+      "answerText": "One method is to deploy the model on to the device using the model (car, phone, house, IoT, etc, etc).\nThe idea is to run the model locally with local data, therefore minimal latency. Millisecond Latency",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c36bc684-1825-423d-be9a-9e4a66fb94c6",
+      "questionText": "How is GreenGrass and Neo Related?",
+      "answerText": "Without greengrass we use Neo to compile to the various chip architecture (P2, C5, etc). With Greengrass we deploy it.\n\n- Neo-compiled models can be deployed to an HTTPS endpoint\n  - Hosted on **C5, M5, M4, P3, or P2** instances\n  - Must be same instance type used for compilation (**think machine code**)\n  - > This kinda defeats the purpose of Neo, so ... deploy greengrass\n- OR! You can deploy to IoT Greengrass\n  - This is how you get models to actual edge devices\n  - Inference at the edge with local data, using model trained in the cloud\n  - Uses Lambda Inference Application",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "475b3363-10e1-41c2-8ce7-dd195417515a",
+      "questionText": "Without knowing anything about the algorithms running. What is the rule of thumb for choosing your instance (processor) types?",
+      "answerText": "## ML Exam Cheat Sheet (Memorize This)\n\n| Letter  | Meaning         | ML Usage                 |\n| ------- | --------------- | ------------------------ |\n| **C**   | Compute         | CPU ML, preprocessing    |\n| **M**   | Mixed           | Dev, small ML            |\n| **R**   | RAM             | Large datasets           |\n| **P**   | GPU (Training)  | Deep learning training   |\n| **G**   | GPU (Inference) | DL inference             |\n| **Inf** | Inferentia      | Cost-optimized inference |\n| **Trn** | Trainium        | Cost-optimized training  |\n\n---\n\n## SageMaker Mapping (Exam Gold)\n\n- **Training jobs** → `P*` or `Trn*`\n- **Inference endpoints** → `G*` or `Inf*`\n- **Processing jobs** → `C*` or `M*`",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4a02c32c-509b-417f-b2be-c0d452900719",
+      "questionText": "How are GPU more cost effective if they are more costly?",
+      "answerText": "A single GPU may be more costly than a single CPU but they are more effecient (for deep learning) so GPU will take less time.\n\nHence, it may be better to run one machine with several GPU than run with sevearl CPU",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3db6a211-28a9-4cd8-a86f-c21253229241",
+      "questionText": "How to save up to 90% over on-demand instances, on training processing?",
+      "answerText": "Spot Instances can save up to 90%. However, they are subject to stop without warning so Checkpoints-to-S3 must be used so you don't have to start over.\n\nAdditionally, you may have to wait until spot capacity becomes available.\n\n> Comes at the expense of complexity (checkpoints) and time (wait for spot)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "30611986-2fd3-4a42-8f9b-51ccac70b7e0",
+      "questionText": "What do you need at least two Subnets in a VPC when using SM AutoScaling? (if you're using custom VPC)",
+      "answerText": "SM will try to distribute instances across AZs. You'll need multiple instances for this to work.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ed08ec38-5a93-4807-b719-dc8dc49c08e5",
+      "questionText": "Discuss brefiely SM AutoScaling",
+      "answerText": "#### Automatic Scaling (0:03)\n\n- You set up scaling policy to define target metrics, min/max capacity, cool-down periods\n- Works with CloudWatch\n- Dynamically adjust number of instances for **production variant**\n- Load test your configuration before using it **BEST PRACTICE**\n\n> Adds or removes Inference Node as needed\n\n> Want to make sure your Scaling Policy is working good before going to production\n\n#### SM and AZs (1:24)\n\n- SM automatically attempts to distribute instances across AZs\n- **But you need more than one instance for this to work**\n- Deploy multiple instances for each production endpoint\n- **Configure VPCs with at least two subnets, each in different AZs**",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5de8516e-79c7-4e9d-af1b-071627497a86",
+      "questionText": "From easiest to most complex - the five semi-automated deployment methds?\nGo into detail about simplicity-to-complexity?  \nWhich is more complex and why? When to use which (think, no answer provided)?",
+      "answerText": "JumpStart, ModelBuilder, CloudFormation\n\n- Sagemaker **JumpStart**\n- Deploying pre-trained models to pre-configured endpoints **EASIEST**\n- > gives notebook\n- > \"Hey I have a model that needs to do inference - deploy for me\"\n- ModelBuilder from the SageMaker Python SDK\n  - Configure deployment **settings from code**\n  - > If you want more control of the deployment\n- AWS CloudFormation\n  - For advanced users who need consistent and repeatable deployments\n    - Maybe part of CI/CD\n    - **Repeatable deployments**\n    - `AWS:SageMaker::model` resources create a model to host at an endpoint.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "15464a24-6ec9-4395-a12b-b504790bc3aa",
+      "questionText": "Deploying models with CloudFormation, what is the \"resource\" we use(Think `AWS::?::?::?`?",
+      "answerText": "`AWS::SageMaker::Model`",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "04b658e8-481a-4f8f-95cb-22797a959a76",
+      "questionText": "What are the 5 deploy methods supported by AWS? (you could do it differently in AWS but their 'services' to support deployment)? What are dis/advantages?\n\nThis is a general question. Think in terms, if we are doing inference, how are we doing it? What technical consideration have we made (3 deploy methods, 2 build methods = 5 total)",
+      "answerText": "1.  SageMaker JumpStart,\n2.  SageMaker Serverless,\n3.  Async Inference (copy the section text ),\n4.  Autoscaling (not really deply is it?),\n5.  SM Neo (for different chips, Inferentia as example)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d0bb0fe5-c668-4ab4-b1ff-448f85df55ec",
+      "questionText": "How to find \"What kind of instances to use for your inference endpoints\" and the two mode?",
+      "answerText": "SM Recommender and the two modes are: \"Instance Recommendation\" and \"Endpoint Recommendation\".",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7a4f180f-d247-4920-9a30-93050f41f791",
+      "questionText": "SM Recommender has two modes. contrast compare, pros and cons (copy text)",
+      "answerText": "- Instance Recommendations\n  - Runs load tests on recommended instance types\n  - **Takes about 45 minutes**\n- Endpoint Recommendation (custom load types)\n  - Custom Load tests\n  - You specify instances, traffic patterns, latency requirements, throughput requirements\n  - **Takes 2 hours**\n  - > Tailor to your SLAs",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "09c4385d-be6e-4305-88db-6a5f57a41d4a",
+      "questionText": "What is SM Recommmender?",
+      "answerText": "> New AWS feature since 2022\n\n- Introduce in 2022\n- Specify your container, memory requirements, concurrency requirements\n- Underlying capacity is automatically provisioned and scaled\n- Great when infrequent or unpredictable traffic; will scale to zero when there are no requests\n- Charged on usage, more use the more expensive, less used, less expensive\n- Can monitory in CloudWatch with metrics:\n  - `ModelSetupType`, `Invocation`, `MemoryUtilization`\n\n#### Amazon SageMaker Inference Recommender\n\n> Not to be confused with \"Recommendation Service\", it is only making recommendations about instance types and configuration of your model\n> **TODO** Try this - this is huge\n\n- Recommends best instance type (chip) and configuration for your models\n- Automate load testing, model tuning\n- Deploys to optimal inference endpoint\n- How it works:\n  - Register your model in the model registry\n  - Benchmark different endpoint configuration\n  - Collect and Visually metrics to decide instance types\n  - Existing models from zoos may have benchmark already\n- Instance Recommendations\n  - Runs load tests on recommended instance types\n  - **Takes about 45 minutes**\n- Endpoint Recommendation (custom load types)\n  - Custom Load tests\n  - You specify instances, traffic patterns, latency requirements, throughput requirements\n  - **Takes 2 hours**\n  - > Tailor to your SLAs\n\n> It may have some of the work done already when working with familiar models",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "317c2691-5ba7-493a-9ef9-b32ecf383eb6",
+      "questionText": "What is \"Inference Pipeline\"?",
+      "answerText": "> If this is, what I understand it to be, it is **HUGE** that you take one inference request and run it through several machines. Take NL request, convert to intent, send intent to machines A, R, Q (or whatever), Send results to machine Z (final) for 'polish' or similar \"pipeline\" activities\n\n> for **EXAM** need to know what it is, what it does, Section is 1:39 - not much detail required\n\n- Linear sequence of 2-15 containers\n- Any combination of pre-trained built-in algorithm or your own algorithms in Docker containers\n- Combine pre-processing, predictions, post-processing\n- Spark ML and scikit-learn containers OK\n  - Spark ML can be run with `Glue` or `EMR`\n  - Serialized into `MLeap format` (side note, said 'MLeap' format not really important for our consideration)\n- Can handle both real-time inference and batch transforms\n\n> Basically, a method of stringing together bunches (2-15) of containers to establish an inference pipeline.\n\n> If this is, what I understand it to be, it is **HUGE** that you take one inference request and run it through several machines. Take NL request, convert to intent, send intent to machines A, R, Q (or whatever), Send results to machine Z (final) for 'polish' or similar \"pipeline\" activities",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3db1a1ad-d98c-4f5d-b5a3-88fa9630b5a0",
+      "questionText": "Give a breif description of \"Inference Pipeline\", with use-case.",
+      "answerText": "> If this is, what I understand it to be, it is **HUGE** that you take one inference request and run it through several machines. Take NL request, convert to intent, send intent to machines A, R, Q (or whatever), Send results to machine Z (final) for 'polish' or similar \"pipeline\" activities\n\n> for **EXAM** need to know what it is, what it does, Section is 1:39 - not much detail required\n\n- Linear sequence of 2-15 containers\n- Any combination of pre-trained built-in algorithm or your own algorithms in Docker containers\n- Combine pre-processing, predictions, post-processing\n- Spark ML and scikit-learn containers OK\n  - Spark ML can be run with `Glue` or `EMR`\n  - Serialized into `MLeap format` (side note, said 'MLeap' format not really important for our consideration)\n- Can handle both real-time inference and batch transforms\n\n> Basically, a method of stringing together bunches (2-15) of containers to establish an inference pipeline.\n\n> If this is, what I understand it to be, it is **HUGE** that you take one inference request and run it through several machines. Take NL request, convert to intent, send intent to machines A, R, Q (or whatever), Send results to machine Z (final) for 'polish' or similar \"pipeline\" activities",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0ead7fb7-8ad7-4762-8829-a774e34ef8a6",
+      "questionText": "What are the 4 types of Drift we can detect with SageMaker Model Monitor? Discuss what each means",
+      "answerText": "- Data quality drift\n- Model quality drift (think it requires/compares human response)\n- Bias drift\n- Feature attribution drift",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5ddc99d9-a34a-4fea-bef4-a19e43b06a60",
+      "questionText": "What is SM Model Monitory? (drift sets in)",
+      "answerText": "> Newer feature but expect to be on the exam, some.\n\n> Get alerts about quality\n\n> Bias creeps in\n\n- Get alerts on quality deviations on your deployed models (via CloudWatch)\n- Visualize data drift\n  - Example: loan model starts giving people more credit due to drifting or missing input features\n- **Detect anomalies & and outliers**\n- **Detect new feature** (new feature, or replacement feature)\n- No Code Needed\n\n> As the data changes from the trained data, it is called data-drift\n\n- Data is stored in S3 and secured (normal S3 security measures)\n- Monitoring jobs are scheduled via Monitor Schedule\n- Metrics are emitted to CloudWatch\n  - CloudWatch notifications can be used to trigger alarms\n  - You'd then take corrective actions (retrain the model, audit the data)\n- Integrates with Tensorboard, QuickSight, Tableau\n  - Or just visualize with `SageMaker Studio`",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1afbe175-43b3-47c6-a816-de1cd950dc92",
+      "questionText": "What is the Advantage/purpose of SM Model Monitor + Clairify",
+      "answerText": "- Integrates with Clarify\n  - SageMaker Clarify detects potential bias\n  - i.e. imbalances across different groups/ages/income brackets\n  - With ModelMonitor you can monitor for bias and be alerted to new potential bias via CloudWatch\n  - SageMaker Clarify also helps explain model behavior\n    - Understand which features contribute the most to your prediction\n\n> Clarify is meant to detect bias\n\n> What changed to affect your predictions",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ad9c5c19-5f1a-4dbd-96d8-a318277da81f",
+      "questionText": "What is 'Model Monitor Data Capture'? Where and how does it store data?",
+      "answerText": "Used to capture data into/out-of inference endpoints, delivered to S3, can be configured to be encrytped, JSON formated",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1b8df3eb-1893-410c-b1b8-376c16352c95",
+      "questionText": "Give 3 uses of the data from SM-MM-Data Capture: further training (feedback loop), debug, monitoring.",
+      "answerText": "It can be used for: - Further training (feedback loop) - Debugging - Monitoring",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "03b8f50d-03db-4983-9cc3-0abb702f1070",
+      "questionText": "Describe SageMaker Model Monitor Data Capture (sm-MM data capture)",
+      "answerText": "> Logs all the data into and out of your inference endpoints\n\n- Logs inputs to your endpoints and inference outputs\n  - Data is delivered to S3 as JSON\n- This can be used for:\n  - Further training (feedback loop)\n  - Debugging\n  - Monitoring\n- Automatically compare data metrics to your baseline\n- Supported for both real-time and batch monitor modes\n- Supported or Python (Boto) and SageMaker Python SDK\n- Data can be encrypted",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2261f3b5-d7ab-460a-b142-af26f6bbece0",
+      "questionText": "What is 'SM Operators for K8S'",
+      "answerText": "MLOps is basically 'How do I managed building deploying some of my larger pipelines'",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ad0997c0-aae5-4826-8167-e2c4b0c3b83b",
+      "questionText": "How to integrate on-prem ML pipeline?\nOr \"how do we integrate with existing pipelines\"",
+      "answerText": "MLOps with SageMaker and K8S.\n\nBasically this will allow K8S to kick-off SM jobs from within K8S\n(not sure this is a good question or good answer)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "100f9e7d-e60d-452c-a5da-c2188e085f8e",
+      "questionText": "What are the components available in the SM compoents for Kubeflow Pipeline (4)?",
+      "answerText": "- Components for Kubeflow\n  - Processing (Spark container)\n  - Hyperparameter tuning\n  - Training\n  - Inference (actually hosting model)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "8835143c-db28-4dca-8ef4-6629e4992b77",
+      "questionText": "What is \"SM Projects\"?",
+      "answerText": "The way to do MLOps without K8S",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "049f187e-9935-4f9f-b7d2-7cb0d6e0a524",
+      "questionText": "What is MLOps?",
+      "answerText": "MLOps is the set of AWS services and practices—primarily built around Amazon SageMaker—that automate and manage the end-to-end machine learning lifecycle, from data preparation and training to deployment, monitoring, and retraining. It enables teams to reliably scale, version, and operate ML models in production using CI/CD-style workflows.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ca597e25-5ee7-4a1a-90a3-1fa5115563f9",
+      "questionText": "Things you can do with SageMaker Studio (6)?",
+      "answerText": "- SageMaker Studio's native MLOps solutions with CI/CD\n\n  - Build images\n  - Prep data, feature engineering\n  - Train models\n  - Evaluate Models\n  - Deploy models\n  - Monitor and Update Models",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "22dfae44-45f0-4ddb-9d83-f88561801a60",
+      "questionText": "How to do MLOps without K8S?",
+      "answerText": "\"SM Projects\"",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f4530977-9e76-4abe-a5b7-b3aa90e0560c",
+      "questionText": "What is \"SM Projects\"?",
+      "answerText": "How to do MLOps without K8S!",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cd7faf5e-c0aa-40fe-96ec-495b6a28ef12",
+      "questionText": "What is SM Pipelines?",
+      "answerText": "A way to chain different MLOps steps together?",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "98588e37-12d9-40f3-a76e-c0a9974c27a8",
+      "questionText": "What is s way to chain different MLOps steps together?",
+      "answerText": "SM Pipelines!",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "84904d5c-0a35-4f17-b0d3-fb73732fa7c0",
+      "questionText": "What is the use case for Docker in AWS, in general?\nNot likely exam question, good head space question",
+      "answerText": "\"Use cases: Microservices, lift-and-shift apps from on-prem to aws cloud\"",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "bfc12a2e-b2b9-41cd-9678-cd38ee560892",
+      "questionText": "What is \"ECR Public Gallery\"?",
+      "answerText": "Public ECR repo where as these are usually private and offer security from public.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4c09c0f3-6d8a-4dfc-bc09-f918e598f197",
+      "questionText": "Basic steps of Docker File to running docker container (4)?",
+      "answerText": "1. Write Dockerfile\n2. Dockerfile becomes docker image\n3. `Push` image to repo (docker hub or other) or ECR\n4. `pull` and run image. Running image is a container\n\n(remember 'image' is class and 'container' is instnace)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ca039a35-c99c-4533-908e-7d4d0950a3e0",
+      "questionText": "What is the difference between VM and Docker Container (this probably not exam, good headspace question)",
+      "answerText": "Virtual Machine:\n[guest Vm1][guest vm2][guest vm3]\n[guest os1][guest os2][guest os3]\n[--------- Hypervisor-----------]\n[----------- Host OS -----------]\n[-------- infrastructure -------]\n\nDocker\n[Container1][Containe2][Container3]\n[Cont4][Cont5][Cont6][Cont7][Cont8]\n[Cont9][Cont10][Cont11][ContainerN]\n[--------- docker daemon ---------]\n[-------- Host OS EC2 Inst. ------]\n[--------- infrastructure --------]\n\n> Docker is less secure as a virtual machine but allows you to run machines that can run more containers on a single server",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "582e2db1-1517-4d6b-bdfa-12cb19ff1d9f",
+      "questionText": "What are EKS, ECS, ECR, Fargate and what the Key differences between them?",
+      "answerText": "What is ECR - Elastic Container Registery - stores images\nWhat is ECS? - Amazon Elastic Container Service - Amazon's own container platform\nWhat is EKS? - Elastic Kubernetes Service - Amazon's managed Kubernetes (Open Source project)\nWhat is Fargate? - Amazons own Serverless container platform, works with ECS and EKS",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "45ee827d-5e8a-4311-9ddb-ff786223c2c3",
+      "questionText": "What is the difference between ECS Launch Types: EC2 and Fargate",
+      "answerText": "Launch Types: EC2 - builds EKS Cluster of EC2 - non serverless, must provision capacity\n\nLaunch Types: Farget - builds EKS Fargeet Cluster - Serverless, capacity is managed by Fargate (I believe the number/type of 'tasks' determine what is used).",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a43ddbbf-1a0a-4baf-85f9-e08c81ebd790",
+      "questionText": "Which is serverless, ECS-launch-type-farget or EC2-launch-type-ec2",
+      "answerText": "ECS-launch-type-farget",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0cffe026-ee5a-4879-ae0e-67945542b9c9",
+      "questionText": "Which requires provisioned capacity, ECS-launch-type-farget or EC2-launch-type-ec2",
+      "answerText": "EC2-launch-type-ec2 requires provisioned capacity.\n\nFargate is serverless",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "efa47481-dc4d-4562-87bf-5dd0375a063d",
+      "questionText": "How to scale ECS-launch-type-farget and EC2-launch-type-ec2",
+      "answerText": "Not sure about EC2 cluster, capacity gets provisioned.\n\nFargate you simply create a task.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "eb40af38-f730-4cba-918a-9b934ebfd88a",
+      "questionText": "What is the difference between 'EC2 Instance Role' and 'ECS Task Role'.",
+      "answerText": "- Create a EC2 instances Profile (EC2 Launch type only) [The agent will]\n  - Used by the ECS agent\n  - Make API calls to ECS service\n  - Send container logs to CloudWatch\n  - Pull Docker Image from **ECR**\n  - Reference sensitive data in Secrets Manager or SSM Parameter Store\n\n> Our ECS Tasks are going to get **ECS Task Roles**\n\n- ECS Task Role: (Fargate and EC2)\n  - Allows each task to have specific role (task A gets Role A, task B gets role by)\n  - Use different roles for the different ECS Services you run\n  - **Task Role is defined in the task definition service**\n\n> Remember 'EC2 Instance Role' and 'ECS Task Role' **EXAM**",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c73c0b4f-cbcf-4847-a930-e8561e86dba7",
+      "questionText": "What are the load balancer options (3)? - what is recommended?",
+      "answerText": "- `Application Load Balancer` supported and works for most use cases (this is the best general purpose option)\n  '\n- `Network Load Balancer` recommended only for high throughput / high performance (**very High**) use case, or to pair with `AWS Private Link`\n\n- `Classic Load Balance` supported but not recommend (no advance features)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a1bb557f-bd63-42f0-8479-c87cf196ec3e",
+      "questionText": "What is the Recommended File System do to use for ECS?",
+      "answerText": "We use EFS because it is a network file system\n\n- Mount EFS file system ECS tasks\n- Works for both EC2 and Fargate launch types\n- Tasks running in any AZ will share the same data in the EFS\n- **Fargate + EFS = Serverless** (the goal)\n- Use cases: \\_\\_persistent multi-AZ shared storage for your containers\n\n- Note:\n  - **Amazon S3 cannot be mounted as a file system (for ECS tasks)**",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b14122e7-9cb0-4154-85b7-16d8f639faf0",
+      "questionText": "Why do we use EFS File System?",
+      "answerText": "We use EFS because it is a network file system\n\n- Mount EFS file system ECS tasks\n- Works for both EC2 and Fargate launch types\n- Tasks running in any AZ will share the same data in the EFS\n- **Fargate + EFS = Serverless** (the goal)\n- Use cases: \\_\\_persistent multi-AZ shared storage for your containers\n\n- Note:\n  - **Amazon S3 cannot be mounted as a file system (for ECS tasks)**",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0850b2f1-f0b1-4e5e-9c00-c380234f1a12",
+      "questionText": "Describe/explain what is ECR?",
+      "answerText": "- ECR - Elastic Container Registry\n- Store and manage docker images on AWS\n- Two storage options\n  - Private (your own AWS accounts)\n  - Public Gallery (https://gallery.ecr.aws)\n- Fulling integrated with ECS, backed by Amazon S3\n- Instance gets IAM role that allows it to `pull` the image\n- Access is controlled through IAM (permission errors => policy)\n- ECR is awesome because it is fully integrated with ECS but also\n  - Supports image vulnerability scanning,\n  - versioning\n  - image tags\n  - image life-cycle\n\n> Overall think ECR when talking about storing images on **EXAM** (1:35)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ea1450ca-db89-42b9-b1ec-df6993a6355f",
+      "questionText": "**TODO** Get a better understanding of what he is talking about. Is there an AWS Kubernetes that is different that EKS? It's not clear to me why we are doing this twice. The demonstration shows EKS cluster, but he keeps talking about Kubernetes as if they're trying to promote it as a different service, perhaps to encourage people to change to AWS?.\n\nHis says \"pod\" not 'task'",
+      "answerText": "**TODO** Get a better understanding of what he is talking about. Is there an AWS Kubernetes that is different that EKS? It's not clear to me why we are doing this twice. The demonstration shows EKS cluster, but he keeps talking about Kubernetes as if they're trying to promote it as a different service, perhaps to encourage people to change to AWS?.\n\nHis says \"pod\" not 'task'",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6fed81fa-e1e0-43da-ae16-714b84dc740b",
+      "questionText": "What is the difference between Batch and Glue?",
+      "answerText": "**TODO** Not sure about Glue but Batch is:\n\n> Need to know at a high level\n\n- Run batch jobs as Docker images\n- Dynamic provisioning of the instances (EC2 & Spot)\n- Optimal quantity and type based on volume and requirements\n- No need to manage clusters - fully **serverless**\n- You just **pay** for the underlying EC2 instances\n\n- Schedule batch jobs using **CloudWatch** events\n- Orchestrate Batch Jobs using **AWS Step Functions**\n\n> What is the difference between Batch and Glue?\n\n- Glue:\n  - Glue ETL - Run Apache Spark code, scala, or Python based, focus on the **ETL**\n  - Glue ETL - Do not worry about configuring or managing the resources\n  - Data Catalog to make the data available to **Athena** or **Redshift Spectrum**\n- Batch:\n  - For any computing job, regardless of the job (Must provide Docker image)\n  - Resources are created in your account, managed by Batch\n  - for **any non-ETL** related work, batch is probably better\n\n> Glue - if you have ETL then Glue is probably the correct option, if you have non-ETL (anything except ETL) then probably Batch is the right choice",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "841bfead-af7f-4c0f-9b77-06c8289f0569",
+      "questionText": "When to use Glue? When to use Batch?",
+      "answerText": "**TODO** Not sure about Glue but Batch is:\n\n> Need to know at a high level\n\n- Run batch jobs as Docker images\n- Dynamic provisioning of the instances (EC2 & Spot)\n- Optimal quantity and type based on volume and requirements\n- No need to manage clusters - fully **serverless**\n- You just **pay** for the underlying EC2 instances\n\n- Schedule batch jobs using **CloudWatch** events\n- Orchestrate Batch Jobs using **AWS Step Functions**\n\n> What is the difference between Batch and Glue?\n\n- Glue:\n  - Glue ETL - Run Apache Spark code, scala, or Python based, focus on the **ETL**\n  - Glue ETL - Do not worry about configuring or managing the resources\n  - Data Catalog to make the data available to **Athena** or **Redshift Spectrum**\n- Batch:\n  - For any computing job, regardless of the job (Must provide Docker image)\n  - Resources are created in your account, managed by Batch\n  - for **any non-ETL** related work, batch is probably better\n\n> Glue - if you have ETL then Glue is probably the correct option, if you have non-ETL (anything except ETL) then probably Batch is the right choice",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cfbb3484-90c9-48a9-8854-f5d220b339e8",
+      "questionText": "What is the tool/service we use for infrastructure as code?",
+      "answerText": "CloudFormation",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2ff69767-cb83-4782-ab7c-e5b79f5bd31f",
+      "questionText": "What is is the tool/service we use when we need to duplicate/clone resources in other regions or possibly account?",
+      "answerText": "CloudFormation",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "930c5d6d-e40f-4a49-a140-6905564d6791",
+      "questionText": "Brief overviw of CloudFormation?",
+      "answerText": "> Deploying and Managing Infrastructure at Scale\n\n#### What is CloudFormation\n\n- CloudFormation is a declarative way of outlining your AWS infrastructure, for any resource (most of them are supported)\n- For example, within a CloudFormation template, you say:\n  - Security Group\n  - two (2) EC2 Instances using this SG\n  - S3 Bucket\n  - ELB in front of these machines\n- Then CloudFormation creates those for you, in the **right order**, with the **exact configuration** you specify\n\n#### Benefits of CloudFormation (1/2)\n\n- Infrastructure as Code\n\n  - No resources are manually created, which is excellent for control\n  - Changes to the infrastructure are reviewed through code\n\n- Cost\n  - Each resource within the stack is tagged with an identifier so you can easily see how much a stack costs you\n  - You can estimate cost of your resources using CloudFormation template\n  - **Saving strategy**: in Dev, you could automation deletion of template at 5 PM and recreated at 8 AM, safely\n\n#### Benefits of CloudFormation (2/2)\n\n- Productivity\n  - Ability to destroy and re-creation an infrastructure on the cloud on the fly\n  - Automated generation of Diagrams for your template\n  - Declarative programming (no need to figure out ordering or orchestration)\n- Don't re-invent the wheel\n\n  - Leveraging existing templates on the web! (eg, many stacks have been built and available)\n  - Leverage the documentation\n\n- Support (almost) all AWS resources\n  - Everything we'll see in the course is supported\n  - You can use \"Custom Resources\" for resources that are not supported\n\n#### CloudFormation + Infrastructure Composer (new)\n\n- Example: Wordpress CloudFormation Stack\n\n- We can see all the resources\n- We can see the relations between components\n\n> I think **Infrastructure Composer** is new to me and offers advance diagrams (better the CF's original diagrams?)\n\n> **EXAM** CF will be used when we need to repeat Infrastructure in other region or other accounts or when we have Infrastructure As Code",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cbfc1f32-9f00-4d1d-b57a-a8e83e3f8015",
+      "questionText": "When CDK code is compiled - what is the by product or output?",
+      "answerText": "CloudFromation YAML template file.\n`template` means 'stack template'",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "809c466b-70f0-40b2-aa87-9c1b2d544272",
+      "questionText": "CDK Compile and Error Detection. What advantage does CDK offer over CF?",
+      "answerText": "The 'compile layer' provides some error detection before trying to create the stack (time consuming).\n\n\"If it compiles, it is assumed the Infrastructure is sound, if the infrastructure is not sound, it is assumed there will be compile errors\"",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b97fb577-2390-4faa-ae4c-0d27981cf933",
+      "questionText": "CDK doesn't 'compile' into YAML - what is the process called?",
+      "answerText": "synthesis (`synth`)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5c5e0d41-aa2c-41b7-af2b-2aa58711a020",
+      "questionText": "What is the difference between SAM and CDK",
+      "answerText": "- SAM:\n  - **Serverless focused**\n  - Write your template declaratively in JSON or YAML\n  - Great for quickly getting started with Lambda\n  - Leverages CF\n- CDK:\n  - All AWS Services (mostly)\n  - Write infrastructure in a familiar programming language (Javascript, .NET, TS, etc)\n  - Leverages CF",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5a93b6bc-9baa-4100-83b1-94daba097e39",
+      "questionText": "How can I use SAM locally to run CDK YML template?",
+      "answerText": "First synth/compile CDK into YAML then use SAM on the YAML\n\n> This sounds like it was a lecture that was added after the course was creating, as if maybe there may be an **exam** question here\n\n> There is a way to combine SAM and CDK\n\n- You can use SAM CLI to locally test your CDK apps\n- You must first run `cdk synth` to get CF YAML\n- Use the CF Yaml for SAM to invoke lambda?",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "32740508-bdcd-4c76-9722-ca0015edd60f",
+      "questionText": "What is CodeDeploy used for?",
+      "answerText": "> CodeDeploy is a way for us to deploy our Application automatically\n\n- We want to deploy our application automatically\n  > Little more permissive\n- Works with EC2 instance\n- Works with On-Premise\n- **Hybrid** Service\n\n- Must provision capacity in advance, servers/instances and configured with **CodeDeploy Agent**\n- It is an event service so it can not be demo'd\n\n**EXAM** Remember CodeDeploy allows you to upgrade your servers (EC2 or onPrem) from v1 to v2 automatically from a single interface.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ed9775f0-b680-44e0-bf8a-ac84943816fa",
+      "questionText": "What is CodeBuild and what are some of the benifits",
+      "answerText": "- Code building service in the cloud\n- Compiles source code, run tests, produces packages that are ready to be deployed (by CodeDeploy for example)\n\n[diagram] codeCommit->CodeBuild->[ready to deploy]\n\nBenefits\n\n- Fully managed serverless\n- Continuously scalable and highly available\n- secure\n- Pay as you go pricing (you only pay for when your code is being built)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "35cc628c-afd6-48df-8f2c-028861742ec6",
+      "questionText": "What is CodePipeline? What are some of the benefits",
+      "answerText": "- Orchestrate the different steps to have the code automatically pushed to production\n  - Code => Build => Test => Provision => Deploy [given pipeline]\n  - Basis for CI/CD\n\n[Diagram, pipeline is the house, and CodeCommit, CodeBuild, CodeDeploy, Beanstalk are within the house]\n\n- Benefits:\n  - Fulling managed, compatible with cCommmit, cBuild, cDeploy, Elastic Beanstalk,... custom plugin\n  - Fast Delivery & rapid update\n\n**EXAM** Orchestration of pipeline (code pipeline), think AWS CodePipeLine",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2922f0eb-de92-4702-ba72-78c3629c2f42",
+      "questionText": "Most popular git commands?",
+      "answerText": "We have `remote` and `local` repos.\n\n- `clone` to get a copy of the repo\n- `pull` to suck recent change\n- `add` commit to branch\n- `merge` from other branch\n- `git init` - set-up\n- `git config` - set-up git env variables\n- `git status` - get status of the changes on the working directory (branch)\n- `git add` add files to the `staging area`\n- `git commit` commit the staged changes with a message\n- `git log` view commit logs (**didn't know this** were only commit logs, or logs of commit)\n\n#### Branching\n\n> The way to work on things in parallel\n\n- `git branch` - gives list of all local branches\n- `git checkout` - change to current branch\n- `git merge` - merge changes from a branch\n- `git branch -d [branch name]` to delete branch\n\n#### Remote Repos (3:22)\n\n- `git remote add` - add a repo to a server somewhere (**didn't know this**)\n- `git remote` list all remote repos\n- `git push` pushes the local branch on to the remote\n- `git pull` - pulls remote branch into current local branch\n\n#### Undoing changes\n\n- `get reset` resets your staging area to match the most recent commit, without affecting working directory\n- `get reset --hard` reset the staging area and the working directory to mach the most recent commit (same as check, I believe).\n- `get revert <commit>` - create a new commit that undoes all he changes from a previous commit\n- `git stash [push]`\n  - git stash pop to restore\n- `git rebase <branch>` reapply changes from one branch onto another, often used to integrate changes from one branch into another.\n- `git cherry-pick <commit>` apply changes from a specific commit to the current branch\n- `git blame <file>` to see who made changes and when\n- `git diff` changes between commit\n- `git fetch` fetches changes from one remote repo without merging them\n- `git fsck` check the database for errors **EXAM** not likely to be on the exam\n- `git gc` garbage collection, optimization I didn't know this\n- `git reflog` record when refs were updated in the local repo, useful for recovering lost commits.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4c1ee815-f27b-4186-ba2a-f869835e0269",
+      "questionText": "What is github flow, git flow? What is the advantage and what is the evnironment requirement?",
+      "answerText": "They talk about setting up the repo with several branches - and trying to keep track of everything\n\n- [main] - production code\n- [develop] - changes since last release\n- [feature] - branches from develop for new feature\n- [release] - merge changes with dev\n- [hotfix] - branch off of main for quick fix\n\n\"Git Flow\" is supposed to help with the mess. It has two branches. Main and any feature(s) branch. feature-xyz, feature-pqr, etc\n\n- Requires ability to release quickly.\n  - Automated tests and deployment\n  - Maybe release multiple times per day\n\n> Github flow only works if you have the ability to release frequently and quickly (true CI/CD)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a435bdc9-0ace-40f6-af66-eb289e0da1ba",
+      "questionText": "Just a few sentences about what is the Event Bridge",
+      "answerText": "Allows you to 'send' or 'capture' events from various AWS services and then send them to other AWS services using fitlers.\nBasically allows you to react to events within the AWS ecosystem, with exception that you can allow external parterners and you can define custom buses",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fe2b73fe-40d1-43ad-ac77-88d31b619188",
+      "questionText": "What are the 3 main event buses and what are their purposes? AWS/Default, Partner, Custom",
+      "answerText": "- Default Buss (AWS Events, AWS Services)\n- Partner Bus (DataDog, Zendesk, etc)\n- Custom Event bus - for your own app.\n\nIt's not clear to me if 'Zendesk' or other partners gets their own event bus?\nI am pretty sure we can define more than one custom event bus",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5f80ed6f-947d-48de-b122-9977f2615ba6",
+      "questionText": "How to replay events?",
+      "answerText": "You can replay Archive Events",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "785b57a9-a970-4f07-84f3-592f5f83ea48",
+      "questionText": "What is the Event Bridge Schema Registry ?",
+      "answerText": "Need to figure out how this works.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a0a7456a-52af-4c70-b08f-793180cacd8b",
+      "questionText": "Event Bridge - How are Resource Based Policies used",
+      "answerText": "For one, they allow you to allow other to send events to your bus?\nIts not clear if these are also used for the filter?\n\n** NEED TO FIGURE THAT OUT**",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "21c39a02-edcf-4661-b28f-c75f6e5b65d1",
+      "questionText": "How to schedule event to fire according to a schedule?",
+      "answerText": "Event bridge offers an option to set-up a schedule to send specific events every so often.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "22ecdc94-5a8d-4e8e-af97-6da95cdd3fca",
+      "questionText": "What is the EventBridge Bus, how is it used? Be sure to mention rule",
+      "answerText": "The bus is a logic construct to allow setting various attributes for certain event types (encrypts, archive, etc). The 'bus' has 'rules' to include events.",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f13012dc-8d67-4bd7-be87-d2b0300b13f0",
+      "questionText": "What is an Event Bridge Rule?",
+      "answerText": "Rules are what events belong to a Event Bridgue Bus",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c8b1a917-b706-4359-a02f-bd0271dd3b2c",
+      "questionText": "What are step functions used for?",
+      "answerText": "Step functions are Lambda that run in 'steps'. You can create workflows using 'step' functions.\n\nSteps are defined using json based Amazon States Language (ASL)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "596599f4-85c6-4ec8-9096-58c51a76f9d0",
+      "questionText": "Using a single lambda, how to build a workflow?",
+      "answerText": "Step functions are Lambda that run in 'steps'. You can create workflows using 'step' functions.\n\nSteps are defined using json based Amazon States Language (ASL)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "320b4ee3-8e73-4a81-8728-92926f1154e4",
+      "questionText": "What is the max execution time of a step-function",
+      "answerText": "1 year",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "345ea6c1-1707-41fa-bc57-6a7fd3895bed",
+      "questionText": "Step function overview - the basics",
+      "answerText": "- **used to design workflows**\n- Easy visualization\n- Advanced Error handling and Retry mechanism outside of code (hence you don't have to code this part, so much)\n- Audit of the history of workflows\n- Ability to 'wait' for an arbitrary amount of time\n- Max execution time of **state machine** is **1 year**\n\n- Amazon States Language (ASL)\n  **EXAM** will need to know what Step functions are, and how they can be used. You will not likely need to know how to set-up or any of the lower details (no need to know what ASL is, as example)\n\n- He goes on to explain that Step Functions can be used\n\n  - to build 'model training' workflow\n  - to tune a model\n  - Manage batch job\n\n- Sometimes a step function may be only one step",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2971766c-5272-419e-9925-077b2444845b",
+      "questionText": "For state machines - what are the valid states?",
+      "answerText": "- However there are many types of `state`\n  - `Task` - does something with Lambda, other AWS Services, or third party API\n  - `Choice` - Adds conditional logic via `Choice Rules`\n  - `Wait` - delays state machine for a specific period\n  - `Parallel` - Add separate branches of execution\n  - `Map` - run a set of steps for each item in a dataset **in parallel**\n    - This is most relevant to data engineers! Works with JSON, S3 Object, csv files, etc\n  - `Pass`, `Success`, `Fail` (terminal states, I assume)",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "db8105a3-f1a1-4bb7-b625-f2a5bffb8f6a",
+      "questionText": "Brief overview of MWAA",
+      "answerText": "- Your DAGs (python code) are uploaded into S3\n  - May also zip it together with required plugins and requirements\n- Amazon MWAA picks it up, and orchestrates and schedules the pipeline defined by each DAG\n- Runs within a VPC\n  - At least two AZs recommended\n- Private or Public endpoints\n  - IAM managed\n  - (Access to airflow Web Server) (this may have it's own permissions)\n- Automatic Scaling\n  - Airflow Workers autoscale up to the limits you define\n\n#### MWAA Integration (integrating with other services) (3:36)\n\n- Leverages open-source integrations\n  - Athena, Batch, CloudWatch, DynamoDB, DataSync\n  - EMR, Fargate, EKS, and on and on and on\n  - Security Services (AWS Secrets Manager, etc)\n- **Schedules and Workers are AWS Fargate Containers**\n  [diagram - two VPCs but I don't think its important for exam, its a fucking complicated diagram, I am not going to bother it].\n\n> If AirFlow webserver is not on a public VPC there is no way to access the management interface",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7b86a3b7-c40d-4e72-b7cd-9ac3e235b45b",
+      "questionText": "What does MWAA require (benefit from) - public VPC",
+      "answerText": "> If AirFlow webserver is not on a public VPC there is no way to access the management interface",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "66ffc80b-525d-4f20-a60d-ca0b773aef82",
+      "questionText": "Data Lake Formation\n\n- what is it?\n- What does it do?\n- how to set-up?\n- How to troubleshoot?",
+      "answerText": "- \"Makes it easy to set-up a secure data lake in days\"\n- Loading data and monitoring data flows\n- Setting up partitions\n- Encryption and managing keys\n- Defining transformation jobs and monitoring them\n- Access Control\n- Auditing\n- Built on top of **GLUE**\n\n> You can do almost everything, clean data, reformat data etc\n\n> Mostly its to guide you through building your data lake in a secure fashion\n\n[Diagram, demonstrates, AWS services and others can be source of data, there is middle ware/manager, and Athena, Redshift, EMR can be target of cleaned data]\n\n> Anything Glue can do, Lake Formation can do it also\n\n> EMR is new to Data lake formation\n\n- No cost for Lake Formation, itself\n- But there are costs for underlying services\n  - Glue\n  - S3\n  - EMR\n  - Athena\n  - Redshift\n\n#### Process of building a Lake (3:02)\n\n> its not overly simple, this is why it takes 'days' and not minutes\n\n[Diagram demonstrating all the steps 8+]\n\n- 1. Create IAM user for Data Analyst\n- 2. Create **AWS Glue** connection to your data source(s)\n- 3. Create S3 bucket to store lake\n- 4. Register Path to S3 in Lake Formation\n- 5. Create database within Formation for data catalog, grant permissions\n- 6. Use blueprint for a workflow (ie database snapshots)\n- 7. Run the workflow\n- 8. Grant SELECT permissions to whoever needs to read it (Athena, Redshift Spectrum, EMR, etc)\n\nHe goes on, but says the above is pretty much all the exam expects us to know\n\n#### Troubleshooting (4:25)\n\n- Cross account access can be tricky\n  - **Recipient must be set up as data lake administrator**\n  - Can use **AWS Resource Access Manager** for accounts external to your organization\n  - IAM permissions for x-account access\n  - IAM permissions on the KMS encryption key are needed for encrypting data catalogs in Lake Formation\n  - IAM permission needed to create blueprints and workflows",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "80dab4a3-f7ac-4cec-8440-373283a0ebc2",
+      "questionText": "Brief overview of what \"Lake Formation, Filters\" are, how are they used",
+      "answerText": "> Data Filters, another way to implement security restrictions\n\n- Column, row, or cell-level security\n- Applied when granting SELECT permission on tables\n- Row Level Security: \"Allow columns\" + row filter = row-level security\n- Column Level Security: \"Allow all rows\" + specific columns = Column-level security\n- Cell level security: Specify columns + specific rows = cell-level security\n- Create filters use the web-console or via `CreateDataCellFilter` API",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fee84657-7480-4b99-abe1-8141cb4e569b",
+      "questionText": "How to implement: row, column, cell level access restrictions?",
+      "answerText": "- Row Level Security: \"Allow columns\" + row filter = row-level security\n- Column Level Security: \"Allow all rows\" + specific columns = Column-level security\n- Cell level security: Specify columns + specific rows = cell-level security\n- Create filters use the web-console or via `CreateDataCellFilter` API",
+      "tags": [
+        "section-9"
+      ],
+      "domains": [
+        "general"
+      ]
+    }
+  ]
+}

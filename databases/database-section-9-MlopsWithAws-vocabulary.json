@@ -1,0 +1,558 @@
+{
+  "databaseName": "Section 9 - Mlops With Aws Vocabulary",
+  "databaseId": "database-section-9-MlopsWithAws-vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": "3bd8317b-f9ec-47f8-b2fe-6093897a0fc5",
+      "questionText": "What is \"Shadow Tests\"?",
+      "answerText": "Shadow Tests - A shadow model instance is deployed and reviewed in Sagemaker to determine if the shadow image should be promoted to product/current latest release",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "1792c8b9-96b0-4585-94a9-af4753deb7c1",
+      "questionText": "Fill in the blank: _____ is A shadow model instance is deployed and reviewed in Sagemaker to determine if the shadow image should be promoted to product/current latest release",
+      "answerText": "Shadow Tests",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5005bde8-2c54-44f3-85b7-fae3241b79e2",
+      "questionText": "What is \"Deployment Guardrails\"?",
+      "answerText": "Deployment Guardrails - Deployment options for deploying models in controlled fashion to avoid deploying bad instances/models",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "07268669-e054-4354-acb9-4e82d9d88f38",
+      "questionText": "Fill in the blank: _____ is Deployment options for deploying models in controlled fashion to avoid deploying bad instances/models",
+      "answerText": "Deployment Guardrails",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "af00974a-c1d3-436d-b1ed-c8808dc6a3e3",
+      "questionText": "What is \"Horovod\"?",
+      "answerText": "Horovod - a service to distribute Tensorflow across several instances (training I assume)",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ac59cdd1-54de-4255-bd2a-7528adc6348f",
+      "questionText": "Fill in the blank: _____ is a service to distribute Tensorflow across several instances (training I assume)",
+      "answerText": "Horovod",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b38ce34e-f5d4-4e55-840a-43aea1136d55",
+      "questionText": "What is \"cool-down periods\"?",
+      "answerText": "cool-down periods - Periods of time after scaling actions where no further scaling occurs, used in auto-scaling policies to prevent rapid scaling oscillations and allow metrics to stabilize",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "73ea31a1-d518-4bb1-b54e-08304e72d5d8",
+      "questionText": "Fill in the blank: _____ is Periods of time after scaling actions where no further scaling occurs, used in auto-scaling policies to prevent rapid scaling oscillations and allow metrics to stabilize",
+      "answerText": "cool-down periods",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "0c6b0364-5a41-4502-9b22-f1624de20872",
+      "questionText": "What is \"Inference Node\"?",
+      "answerText": "Inference Node - A compute instance in SageMaker that handles inference requests for deployed models; auto-scaling adds or removes inference nodes based on demand",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e54cb6cd-0312-40c2-a809-7a77abcaf122",
+      "questionText": "Fill in the blank: A compute instance in SageMaker that handles inference requests for deployed models; auto-scaling adds or removes _____s based on demand",
+      "answerText": "Inference Node",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e18ec72a-34a6-4482-8850-50b5ff778171",
+      "questionText": "What is \"JumpStart\"?",
+      "answerText": "JumpStart - A SageMaker feature that provides pre-trained models and pre-configured endpoints for easy deployment, giving you notebooks and ready-to-use inference endpoints",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "ddd6a3d8-4ff2-42f5-87f6-9a29b3213fe8",
+      "questionText": "Fill in the blank: _____ is A SageMaker feature that provides pre-trained models and pre-configured endpoints for easy deployment, giving you notebooks and ready-to-use inference endpoints",
+      "answerText": "JumpStart",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "8b624cf0-0f2c-43fc-ab85-4a0bd2e3f430",
+      "questionText": "What is \"MLeap format\"?",
+      "answerText": "MLeap format - A serialization format for Spark ML models (noted as not important for consideration in the course)",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e4658a52-40c4-4c44-8722-2c6fb12ac26c",
+      "questionText": "Fill in the blank: _____ is A serialization format for Spark ML models (noted as not important for consideration in the course)",
+      "answerText": "MLeap format",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e9a8844d-002f-4482-85d7-a8d6e0e42a36",
+      "questionText": "What is \"Data Drift\"?",
+      "answerText": "Data Drift - something to do with real-world usages deviates from training data.",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "36ae9531-f0d9-4c3c-a506-a75da2fe63aa",
+      "questionText": "Fill in the blank: _____ is something to do with real-world usages deviates from training data.",
+      "answerText": "Data Drift",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "43542ebb-f7fb-45f7-a839-0cc38bd88321",
+      "questionText": "What is \"Tensorboard\"?",
+      "answerText": "Tensorboard - A visualization tool for TensorFlow that integrates with SageMaker for monitoring and visualizing training metrics, model graphs, and performance",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bf98fb7b-244c-4162-809f-b67189a5fa92",
+      "questionText": "Fill in the blank: _____ is A visualization tool for TensorFlow that integrates with SageMaker for monitoring and visualizing training metrics, model graphs, and performance",
+      "answerText": "Tensorboard",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e9bd5554-e1a1-498b-8e4e-0f4fc30c7861",
+      "questionText": "What is \"Ground Truth\"?",
+      "answerText": "Ground Truth - Human-annotated labels used for training and evaluating ML models; can integrate with SageMaker Model Monitor to compare model predictions against actual labeled data",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "20fd3425-3031-4a4a-b2a4-cb0f296c6a3d",
+      "questionText": "Fill in the blank: _____ is Human-annotated labels used for training and evaluating ML models; can integrate with SageMaker Model Monitor to compare model predictions against actual labeled data",
+      "answerText": "Ground Truth",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "50a733d5-8d5e-426f-96d2-fba564e85482",
+      "questionText": "What is \"Normalized Discounted Cumulative Gain (NDCG)\"?",
+      "answerText": "Normalized Discounted Cumulative Gain (NDCG) - A metric used to evaluate feature attribution drift by comparing feature rankings between training and live data; higher-ranked features that are more important get higher scores",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "5ccacf08-5e22-407f-a6fd-d4a3838876c9",
+      "questionText": "Fill in the blank: _____ is A metric used to evaluate feature attribution drift by comparing feature rankings between training and live data; higher-ranked features that are more important get higher scores",
+      "answerText": "Normalized Discounted Cumulative Gain (NDCG)",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b4af5e5b-ba78-497f-b158-6360d27b4d98",
+      "questionText": "What is \"MLOps\"?",
+      "answerText": "MLOps - is the set of AWS services and practices—primarily built around Amazon SageMaker—that automate and manage the end-to-end machine learning lifecycle, from data preparation and training to deployment, monitoring, and retraining. It enables teams to reliably scale, version, and operate ML models in production using CI/CD-style workflows.",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "f35425ad-3f2f-4069-b5d5-254f0ef57b6b",
+      "questionText": "Fill in the blank: _____ is is the set of AWS services and practices—primarily built around Amazon SageMaker—that automate and manage the end-to-end machine learning lifecycle, from data preparation and training to deployment, monitoring, and retraining. It enables teams to reliably scale, version, and operate ML models in production using CI/CD-style workflows.",
+      "answerText": "MLOps",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "01e63d5e-a073-44c8-8b67-d6555ac729a2",
+      "questionText": "What is \"Kubeflow\"?",
+      "answerText": "Kubeflow - An open-source platform for running ML workflows on Kubernetes; SageMaker provides components that enable integration with existing ML platforms built on Kubernetes or Kubeflow, allowing hybrid ML workflows (on-prem + cloud)",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "88baf50c-4d3f-4e4c-9b78-34ad96c12227",
+      "questionText": "Fill in the blank: An open-source platform for running ML workflows on Kubernetes; SageMaker provides components that enable integration with existing ML platforms built on Kubernetes or _____, allowing hybrid ML workflows (on-prem + cloud)",
+      "answerText": "Kubeflow",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "23932554-c600-42ab-b135-e28e4fd60a48",
+      "questionText": "What is \"ECS Tasks\"?",
+      "answerText": "ECS Tasks - The running instances of Docker containers in Amazon ECS (Elastic Container Service); when you launch Docker containers on AWS, you launch ECS Tasks on ECS Clusters",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "397865e0-4638-44ec-87a6-404cb87b1705",
+      "questionText": "Fill in the blank: The running instances of Docker containers in Amazon ECS (Elastic Container Service); when you launch Docker containers on AWS, you launch _____ on ECS Clusters",
+      "answerText": "ECS Tasks",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "2f294778-516c-4bd2-80f9-38e6b1133a5b",
+      "questionText": "What is \"Secrets Manager\"?",
+      "answerText": "Secrets Manager - AWS services for storing sensitive data like passwords, API keys, and configuration parameters; ECS tasks can reference sensitive data from these services (brief overview, I don't recall differences)",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "11f73f26-5ca6-47df-9cf7-c075f3b99344",
+      "questionText": "Fill in the blank: _____ is AWS services for storing sensitive data like passwords, API keys, and configuration parameters; ECS tasks can reference sensitive data from these services (brief overview, I don't recall differences)",
+      "answerText": "Secrets Manager",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "cdd03c2f-d515-4e12-8de3-529045f44b4e",
+      "questionText": "What is \"AWS Glue\"?",
+      "answerText": "AWS Glue - An ETL (Extract, Transform, Load) service that runs Apache Spark code (Scala or Python) for data processing; includes a Data Catalog to make data available to Athena or Redshift Spectrum; focuses on ETL workloads and manages resources automatically",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "64149394-6e3e-404f-8bdd-500e05a80c0c",
+      "questionText": "Fill in the blank: _____ is An ETL (Extract, Transform, Load) service that runs Apache Spark code (Scala or Python) for data processing; includes a Data Catalog to make data available to Athena or Redshift Spectrum; focuses on ETL workloads and manages resources automatically",
+      "answerText": "AWS Glue",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "6c270f38-5b5e-4ca8-ba49-285fad45a8d5",
+      "questionText": "What is \"AWS Infrastructure Composer\"?",
+      "answerText": "AWS Infrastructure Composer - A visual tool for creating CloudFormation templates with interactive diagrams; provides an advanced visual interface for designing and managing AWS infrastructure",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "eeec05c9-e431-444a-8f36-c4ba3554e4a2",
+      "questionText": "Fill in the blank: _____ is A visual tool for creating CloudFormation templates with interactive diagrams; provides an advanced visual interface for designing and managing AWS infrastructure",
+      "answerText": "AWS Infrastructure Composer",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "215992d3-90ff-42b2-9f4f-730b4025033d",
+      "questionText": "What is \"SAM\"?",
+      "answerText": "SAM - Serverless Application Model, a framework for building serverless applications using CloudFormation templates written in YAML or JSON; serverless-focused and great for quickly getting started with Lambda; leverages CloudFormation",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "c905159f-0d7b-479f-8939-81f133edca51",
+      "questionText": "Fill in the blank: _____ is Serverless Application Model, a framework for building serverless applications using CloudFormation templates written in YAML or JSON; serverless-focused and great for quickly getting started with Lambda; leverages CloudFormation",
+      "answerText": "SAM",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "e57b8992-549f-49d7-8453-ec40081f88aa",
+      "questionText": "What is \"cdk bootstrap\"?",
+      "answerText": "cdk bootstrap - Initializes the CDK environment by creating necessary AWS resources (like the CDK toolkit stack) in your AWS account; must be run before deploying CDK apps for the first time in a region/account",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "cae18486-0fbc-41d6-851c-3691da1e126b",
+      "questionText": "Fill in the blank: _____ is Initializes the CDK environment by creating necessary AWS resources (like the CDK toolkit stack) in your AWS account; must be run before deploying CDK apps for the first time in a region/account",
+      "answerText": "cdk bootstrap",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "bc670516-e026-4b24-8351-64011c947607",
+      "questionText": "What is \"cdk destroy\"?",
+      "answerText": "cdk destroy - Removes all resources created by a CDK stack, cleaning up the infrastructure that was deployed",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "b865e118-657f-45a4-bd38-4bd04b59b109",
+      "questionText": "Fill in the blank: _____ is Removes all resources created by a CDK stack, cleaning up the infrastructure that was deployed",
+      "answerText": "cdk destroy",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "da28eaa3-dfc2-4c43-bb34-f68b0686dbc3",
+      "questionText": "What is \"Partner Event Bus\"?",
+      "answerText": "Partner Event Bus - An EventBridge bus where AWS partners (SaaS companies like Zendesk, Datadog, etc.) send events directly; allows you to react to events happening outside of your AWS account",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "42825581-08da-406e-8851-661af8939623",
+      "questionText": "Fill in the blank: _____ is An EventBridge bus where AWS partners (SaaS companies like Zendesk, Datadog, etc.) send events directly; allows you to react to events happening outside of your AWS account",
+      "answerText": "Partner Event Bus",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "6f211455-d5c3-44cd-82c8-7776b3e09323",
+      "questionText": "What is \"State Machine\"?",
+      "answerText": "State Machine - 'workflow' eg, step function",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "834d010c-2d48-4c0f-86a3-1238312ab9c6",
+      "questionText": "Fill in the blank: _____ is 'workflow' eg, step function",
+      "answerText": "State Machine",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "7123b858-1ffc-4647-8ad1-3d6952fa25c2",
+      "questionText": "What is \"Apache Airflow\"?",
+      "answerText": "Apache Airflow - is a batch-oriented workflow tool",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    },
+    {
+      "questionId": "9e6c8457-22d0-49f1-b899-93a7f2342e88",
+      "questionText": "Fill in the blank: _____ is is a batch-oriented workflow tool",
+      "answerText": "Apache Airflow",
+      "tags": [
+        "vocabulary",
+        "section-9"
+      ],
+      "domains": [
+        "vocabulary"
+      ]
+    }
+  ]
+}
