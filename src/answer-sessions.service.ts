@@ -122,18 +122,33 @@ export class AnswerSessionsService {
 
     session.answers.push(record);
     await session.save();
+    this.logger.log(
+      `Saved answer for question '${questionId}' in session '${sessionId}' (score: ${userCorrectnessPercentage}%)`
+    );
 
     // Update question statistics if QuestionStatsService is available
     if (this.questionStatsService) {
+      this.logger.log(
+        `QuestionStatsService is available, updating stats for question '${questionId}'`
+      );
       try {
         await this.questionStatsService.recordAnswerAndUpdateStats(questionId);
+        this.logger.log(
+          `Successfully updated stats for question '${questionId}'`
+        );
       } catch (error) {
         const message =
           error instanceof Error ? error.message : "Unknown error";
-        this.logger.warn(
-          `Failed to update question statistics for '${questionId}': ${message}`
+        const stack = error instanceof Error ? error.stack : undefined;
+        this.logger.error(
+          `Failed to update question statistics for '${questionId}': ${message}`,
+          stack
         );
       }
+    } else {
+      this.logger.warn(
+        `QuestionStatsService is not available - stats will not be updated for question '${questionId}'`
+      );
     }
   }
 }

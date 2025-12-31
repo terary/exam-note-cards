@@ -153,6 +153,8 @@ function DatabaseListPage() {
               <tr>
                 <th>Quiz Name</th>
                 <th>Questions</th>
+                <th>Unanswered</th>
+                <th>Bad</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -165,6 +167,8 @@ function DatabaseListPage() {
                   <tr key={database.databaseId}>
                     <td>{database.databaseName}</td>
                     <td>{database.questionCount}</td>
+                    <td>{database.unansweredCount ?? 0}</td>
+                    <td>{database.badCount ?? 0}</td>
                     <td>
                       <button
                         onClick={() => handleStartQuiz(database.databaseId)}

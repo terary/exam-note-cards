@@ -42,7 +42,9 @@ export class QuestionStatsService {
    * Aggregate question statistics from all answer sessions
    */
   async aggregateQuestionStats(questionId: string): Promise<QuestionStats> {
+    this.logger.log(`Aggregating stats for question '${questionId}'`);
     const sessions = await this.answerSessionModel.find().exec();
+    this.logger.log(`Found ${sessions.length} answer sessions to search`);
 
     const allAnswers: number[] = [];
     let lastScore: number | null = null;
@@ -67,11 +69,17 @@ export class QuestionStatsService {
         ? allAnswers.reduce((sum, score) => sum + score, 0) / timesAsked
         : null;
 
-    return {
+    const stats = {
       timesAsked,
       averageScore: averageScore !== null ? Math.round(averageScore * 100) / 100 : null,
       lastScore,
     };
+
+    this.logger.log(
+      `Aggregated stats for question '${questionId}': timesAsked=${stats.timesAsked}, avgScore=${stats.averageScore ?? "null"}, lastScore=${stats.lastScore ?? "null"}`
+    );
+
+    return stats;
   }
 
   /**
@@ -81,38 +89,75 @@ export class QuestionStatsService {
     questionId: string,
     stats: QuestionStats
   ): Promise<void> {
+    this.logger.log(
+      `Updating stats for question '${questionId}' with: timesAsked=${stats.timesAsked}, avgScore=${stats.averageScore ?? "null"}, lastScore=${stats.lastScore ?? "null"}`
+    );
+
     const database = await this.databaseModel
       .findOne({
         "questionsWithAnswers.questionId": questionId,
       })
       .exec();
 
-    if (!database || !database.questionsWithAnswers) {
+    if (!database) {
       this.logger.warn(`Question '${questionId}' not found in any database`);
       return;
     }
+
+    if (!database.questionsWithAnswers) {
+      this.logger.warn(
+        `Database '${database.databaseId}' has no questionsWithAnswers array`
+      );
+      return;
+    }
+
+    this.logger.log(
+      `Found database '${database.databaseId}' containing question '${questionId}'`
+    );
 
     const questionIndex = database.questionsWithAnswers.findIndex(
       (q) => q.questionId === questionId
     );
 
     if (questionIndex === -1) {
-      this.logger.warn(`Question '${questionId}' not found in database`);
+      this.logger.warn(
+        `Question '${questionId}' not found in database '${database.databaseId}' (searched ${database.questionsWithAnswers.length} questions)`
+      );
       return;
     }
 
+    this.logger.log(
+      `Found question at index ${questionIndex} in database '${database.databaseId}'`
+    );
+
     // Update the question statistics
     const question = database.questionsWithAnswers[questionIndex];
+    const oldStats = {
+      timesAsked: question.timesAsked,
+      averageScore: question.averageScore,
+      lastScore: question.lastScore,
+    };
+
     question.timesAsked = stats.timesAsked;
     question.averageScore = stats.averageScore;
     question.lastScore = stats.lastScore;
 
     database.questionsWithAnswers[questionIndex] = question;
-    await database.save();
 
-    this.logger.log(
-      `Updated question '${questionId}' in database '${database.databaseId}': timesAsked=${stats.timesAsked}, avgScore=${stats.averageScore ?? "null"}, lastScore=${stats.lastScore ?? "null"}`
-    );
+    try {
+      await database.save();
+      this.logger.log(
+        `Successfully saved updated question '${questionId}' in database '${database.databaseId}': timesAsked=${stats.timesAsked} (was ${oldStats.timesAsked ?? 0}), avgScore=${stats.averageScore ?? "null"} (was ${oldStats.averageScore ?? "null"}), lastScore=${stats.lastScore ?? "null"} (was ${oldStats.lastScore ?? "null"})`
+      );
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      const stack = error instanceof Error ? error.stack : undefined;
+      this.logger.error(
+        `Failed to save updated question '${questionId}' in database '${database.databaseId}': ${message}`,
+        stack
+      );
+      throw error;
+    }
   }
 
   /**
@@ -143,7 +188,19 @@ export class QuestionStatsService {
    * Record answer and update question statistics
    */
   async recordAnswerAndUpdateStats(questionId: string): Promise<void> {
-    const stats = await this.aggregateQuestionStats(questionId);
-    await this.updateQuestionStats(questionId, stats);
+    this.logger.log(`Starting recordAnswerAndUpdateStats for question '${questionId}'`);
+    try {
+      const stats = await this.aggregateQuestionStats(questionId);
+      await this.updateQuestionStats(questionId, stats);
+      this.logger.log(`Completed recordAnswerAndUpdateStats for question '${questionId}'`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      const stack = error instanceof Error ? error.stack : undefined;
+      this.logger.error(
+        `Error in recordAnswerAndUpdateStats for question '${questionId}': ${message}`,
+        stack
+      );
+      throw error;
+    }
   }
 }

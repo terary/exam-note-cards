@@ -14,11 +14,29 @@ export class QuestionsService {
 
   async getAllDatabases(): Promise<DatabaseInfo[]> {
     const databases = await this.databaseModel.find().exec();
-    const databaseInfos: DatabaseInfo[] = databases.map((db) => ({
-      databaseId: db.databaseId,
-      databaseName: db.databaseName,
-      questionCount: db.questionsWithAnswers?.length ?? 0,
-    }));
+    const databaseInfos: DatabaseInfo[] = databases.map((db) => {
+      const questions = db.questionsWithAnswers || [];
+      const questionCount = questions.length;
+      
+      // Count unanswered questions (timesAsked === 0 or undefined)
+      const unansweredCount = questions.filter(
+        (q) => (q.timesAsked ?? 0) === 0
+      ).length;
+      
+      // Count bad questions (score < 0)
+      const badCount = questions.filter((q) => {
+        const score = q.lastScore ?? q.averageScore ?? null;
+        return score !== null && score < 0;
+      }).length;
+      
+      return {
+        databaseId: db.databaseId,
+        databaseName: db.databaseName,
+        questionCount,
+        unansweredCount,
+        badCount,
+      };
+    });
 
     this.logger.log(
       `Retrieved ${databaseInfos.length} databases (${databaseInfos.reduce((sum, db) => sum + db.questionCount, 0)} total questions)`

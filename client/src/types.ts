@@ -2,6 +2,8 @@ export interface DatabaseInfo {
   databaseId: string;
   databaseName: string;
   questionCount: number;
+  unansweredCount: number;
+  badCount: number;
 }
 
 export interface Question {

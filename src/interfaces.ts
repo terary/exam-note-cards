@@ -26,4 +26,6 @@ export interface DatabaseInfo {
   databaseId: string;
   databaseName: string;
   questionCount: number;
+  unansweredCount: number;
+  badCount: number;
 }

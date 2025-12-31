@@ -11,6 +11,8 @@ interface StartQuizPayload {
   databaseId: string;
 }
 
+type ActiveQuestionGroup = "A" | "B" | "C"; // Groups that can be current (D is excluded)
+
 interface QuizState {
   status: "idle" | "loading" | "ready" | "error";
   error?: string;
@@ -18,8 +20,19 @@ interface QuizState {
   databaseName?: string;
   sessionId?: string;
   questions: Question[];
-  shuffledQuestions: Question[]; // Shuffled copy for randomization
-  currentQuestionIndex: number; // Index in shuffled array
+  questionGroups: {
+    A: Question[]; // Never asked before
+    B: Question[]; // Score 0-80
+    C: Question[]; // Score > 80
+    D: Question[]; // Score < 0 (excluded)
+  };
+  currentGroup: ActiveQuestionGroup;
+  groupIndices: {
+    A: number;
+    B: number;
+    C: number;
+  };
+  askedInSession: string[]; // Questions asked in current session (questionIds)
   currentQuestion?: Question;
   answerRevealed: boolean;
   correctnessByQuestion: Record<string, number>;
@@ -34,8 +47,19 @@ export type { QuizState };
 const createInitialState = (): QuizState => ({
   status: "idle",
   questions: [],
-  shuffledQuestions: [],
-  currentQuestionIndex: 0,
+  questionGroups: {
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+  },
+  currentGroup: "A",
+  groupIndices: {
+    A: 0,
+    B: 0,
+    C: 0,
+  },
+  askedInSession: [],
   answerRevealed: false,
   correctnessByQuestion: {},
   userAnswerByQuestion: {},
@@ -56,22 +80,120 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
+// Categorize questions into groups based on their stats
+function categorizeQuestions(questions: Question[]): {
+  A: Question[];
+  B: Question[];
+  C: Question[];
+  D: Question[];
+} {
+  const groups: {
+    A: Question[];
+    B: Question[];
+    C: Question[];
+    D: Question[];
+  } = {
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+  };
+
+  for (const question of questions) {
+    const timesAsked = question.timesAsked ?? 0;
+    const score = question.lastScore ?? question.averageScore ?? null;
+
+    // Group D: Score < 0 (excluded)
+    if (score !== null && score < 0) {
+      groups.D.push(question);
+      continue;
+    }
+
+    // Group A: Never asked before
+    if (timesAsked === 0) {
+      groups.A.push(question);
+    }
+    // Group B: Score 0-80
+    else if (score !== null && score >= 0 && score <= 80) {
+      groups.B.push(question);
+    }
+    // Group C: Score > 80
+    else if (score !== null && score > 80) {
+      groups.C.push(question);
+    }
+    // Fallback: If no score but has been asked, put in Group B
+    else {
+      groups.B.push(question);
+    }
+  }
+
+  // Shuffle each group
+  groups.A = shuffleArray(groups.A);
+  groups.B = shuffleArray(groups.B);
+  groups.C = shuffleArray(groups.C);
+
+  return groups;
+}
+
 function getNextQuestion(state: QuizState): void {
-  if (state.shuffledQuestions.length === 0) {
+  // Helper to get next available question from a group (not yet asked in this session)
+  const getNextFromGroup = (group: Question[], startIndex: number): { question: Question | null; nextIndex: number } => {
+    for (let i = startIndex; i < group.length; i++) {
+      const question = group[i];
+      if (!state.askedInSession.includes(question.questionId)) {
+        return { question, nextIndex: i + 1 };
+      }
+    }
+    return { question: null, nextIndex: group.length };
+  };
+
+  // Try to get question from current group
+  let question: Question | null = null;
+  let nextIndex = state.groupIndices[state.currentGroup];
+
+  if (state.currentGroup === "A") {
+    const result = getNextFromGroup(state.questionGroups.A, nextIndex);
+    question = result.question;
+    state.groupIndices.A = result.nextIndex;
+    
+    // If no more in Group A, move to Group B
+    if (!question) {
+      state.currentGroup = "B";
+      const resultB = getNextFromGroup(state.questionGroups.B, 0);
+      question = resultB.question;
+      state.groupIndices.B = resultB.nextIndex;
+    }
+  } else if (state.currentGroup === "B") {
+    const result = getNextFromGroup(state.questionGroups.B, nextIndex);
+    question = result.question;
+    state.groupIndices.B = result.nextIndex;
+    
+    // If no more in Group B, move to Group C
+    if (!question) {
+      state.currentGroup = "C";
+      const resultC = getNextFromGroup(state.questionGroups.C, 0);
+      question = resultC.question;
+      state.groupIndices.C = resultC.nextIndex;
+    }
+  } else if (state.currentGroup === "C") {
+    const result = getNextFromGroup(state.questionGroups.C, nextIndex);
+    question = result.question;
+    state.groupIndices.C = result.nextIndex;
+  }
+
+  if (!question) {
+    // All questions exhausted
     state.currentQuestion = undefined;
     return;
   }
 
-  // If we've gone through all questions, reshuffle
-  if (state.currentQuestionIndex >= state.shuffledQuestions.length) {
-    state.shuffledQuestions = shuffleArray(state.questions);
-    state.currentQuestionIndex = 0;
+  // Mark as asked in session
+  if (!state.askedInSession.includes(question.questionId)) {
+    state.askedInSession.push(question.questionId);
   }
 
-  // Get next question from shuffled array
-  state.currentQuestion = state.shuffledQuestions[state.currentQuestionIndex];
-  state.currentQuestionIndex += 1;
-  state.answerRevealed = false; // Reset answer revealed state
+  state.currentQuestion = question;
+  state.answerRevealed = false;
   state.questionsAsked += 1;
 }
 
@@ -176,8 +298,13 @@ const quizSlice = createSlice({
         state.databaseName = databaseName;
         state.sessionId = sessionId;
         state.questions = questions; // Store in original order
-        state.shuffledQuestions = shuffleArray(questions); // Create shuffled copy
-        state.currentQuestionIndex = 0;
+        
+        // Categorize and shuffle questions into priority groups
+        state.questionGroups = categorizeQuestions(questions);
+        state.currentGroup = "A";
+        state.groupIndices = { A: 0, B: 0, C: 0 };
+        state.askedInSession = [];
+        
         state.correctnessByQuestion = {};
         state.userAnswerByQuestion = {};
         state.questionsAnswered = 0;
@@ -202,12 +329,22 @@ const quizSlice = createSlice({
         }
         const { questionId, correctnessPercentage, userAnswerText } =
           action.payload;
-        if (state.correctnessByQuestion[questionId] === undefined) {
+        const isNewQuestion = state.correctnessByQuestion[questionId] === undefined;
+        console.log(
+          `[Quiz] Answer submitted for question '${questionId}': isNewQuestion=${isNewQuestion}, correctness=${correctnessPercentage}%, current questionsAnswered=${state.questionsAnswered}`
+        );
+        if (isNewQuestion) {
           state.questionsAnswered += 1;
           state.correctnessSum += correctnessPercentage;
+          console.log(
+            `[Quiz] Incremented questionsAnswered to ${state.questionsAnswered} (new question)`
+          );
         } else {
           state.correctnessSum -= state.correctnessByQuestion[questionId];
           state.correctnessSum += correctnessPercentage;
+          console.log(
+            `[Quiz] Updated correctness for previously answered question (questionsAnswered stays at ${state.questionsAnswered})`
+          );
         }
         state.correctnessByQuestion[questionId] = correctnessPercentage;
         state.userAnswerByQuestion[questionId] = userAnswerText;

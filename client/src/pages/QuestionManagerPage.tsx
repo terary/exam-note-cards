@@ -25,6 +25,7 @@ function QuestionManagerPage() {
   const [databaseStats, setDatabaseStats] = useState<Map<string, {
     total: number;
     bad: number;
+    unanswered: number;
     answered: number;
     poorScore: number;
     goodScore: number;
@@ -78,6 +79,7 @@ function QuestionManagerPage() {
         const statsMap = new Map<string, {
           total: number;
           bad: number;
+          unanswered: number;
           answered: number;
           poorScore: number;
           goodScore: number;
@@ -92,6 +94,7 @@ function QuestionManagerPage() {
                 const score = q.lastScore ?? q.averageScore ?? null;
                 return score !== null && score < 0;
               }).length,
+              unanswered: qs.filter(q => (q.timesAsked ?? 0) === 0).length,
               answered: qs.filter(q => (q.timesAsked ?? 0) > 0).length,
               poorScore: qs.filter(q => {
                 const score = q.lastScore ?? q.averageScore ?? null;
@@ -108,6 +111,7 @@ function QuestionManagerPage() {
             statsMap.set(db.databaseId, {
               total: db.questionCount,
               bad: 0,
+              unanswered: 0,
               answered: 0,
               poorScore: 0,
               goodScore: 0,
@@ -385,6 +389,7 @@ function QuestionManagerPage() {
                 <th>Database Name</th>
                 <th>Total Questions</th>
                 <th>Bad Questions</th>
+                <th>Unanswered</th>
                 <th>Questions Answered</th>
                 <th>Poor Score (1-80)</th>
                 <th>Good Score (&gt;80)</th>
@@ -396,6 +401,7 @@ function QuestionManagerPage() {
                 const stats = databaseStats.get(db.databaseId) || {
                   total: db.questionCount,
                   bad: 0,
+                  unanswered: 0,
                   answered: 0,
                   poorScore: 0,
                   goodScore: 0,
@@ -415,6 +421,7 @@ function QuestionManagerPage() {
                     </td>
                     <td>{stats.total}</td>
                     <td>{stats.bad}</td>
+                    <td>{stats.unanswered}</td>
                     <td>{stats.answered}</td>
                     <td>{stats.poorScore}</td>
                     <td>{stats.goodScore}</td>
