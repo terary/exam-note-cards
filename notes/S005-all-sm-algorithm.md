@@ -37,3 +37,26 @@
 18. **IP Insights** (UNSUPERVISED | PURPOSE: Anomaly Detection) - Unsupervised learning algorithm that identifies suspicious IP address usage patterns in weblogs, detecting anomalous logins or resource creation from unusual IPs.
 
 The document notes these are commonly tested on the AWS exam, so understanding each algorithm's purpose, input formats, and instance type requirements is important.
+
+**IMPORTANT**
+SageMaker Algorithms → ML Architectures:
+
+LINEAR:
+├─ Linear Learner (pure linear)
+└─ Factorization Machines (linear + interactions) ← YOU ARE HERE
+
+TREE-BASED:
+├─ XGBoost (gradient boosting)
+├─ LightGBM (gradient boosting)
+└─ KNN (similarity-based)
+
+NEURAL NETWORKS:
+├─ CNNs: Object Detection, Image Classification, Semantic Segmentation
+├─ RNNs: Seq2Seq, DeepAR
+└─ Feedforward: BlazingText, Object2Vec, NTM
+
+UNSUPERVISED:
+├─ K-Means (clustering)
+├─ PCA (dimensionality reduction)
+├─ RCF, IP Insights (anomaly detection)
+└─ LDA, NTM (topic modeling)

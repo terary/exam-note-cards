@@ -1,0 +1,7 @@
+- `IAM Access Analyzer`
+- `Glue DataBrew`
+- `inter container traffic encryption`
+- `Multi Session Support`
+- `Inline Policy` (IAM) Attached to the user (or resource), not group
+- `SSE-S3`, `SSE-SQS`, `SSE-DDB`
+- `VPC Flow Logs` (all three) : VPC, Subnet, Elastic Network Interface (EC2 interface)

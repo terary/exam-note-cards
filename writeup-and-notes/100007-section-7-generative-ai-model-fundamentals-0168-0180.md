@@ -305,7 +305,7 @@ The key here is the competitor's offering Meta/Facebook does not offer cloud ser
 - **huggingface model are cheap**
 - There are cheaper Alternative (google lab or something), but AWS's system offers greater flexibilities. (he didn't go into detail)
 - Huggingface model details "card", will give more details about the model, one point is 'fine tuning' is supported or not
-- Create SM domain (meta-data environment)
+- Create SM domain (meta-data environment) (3:42)
 - setup for individual or organization (encryption, networking, etc)
 - 5 minutes to get Domain set-up
   - Default: permissions, names, roles, user profiles

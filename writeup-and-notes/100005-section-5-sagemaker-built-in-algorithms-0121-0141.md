@@ -689,9 +689,9 @@ Currently only train on a single machine
 
 Multi-GPU, Multi-Machine - OK
 
-### ⭐0132 Imagine Classification
+### ⭐0133 Image Classification
 
-"Close cousin of the Object Detection algorithm are the Imagine classification Algorithms"
+"Close cousin of the Object Detection algorithm are the Image classification Algorithms"
 
 **Exam** expect a question about the differences between the two
 

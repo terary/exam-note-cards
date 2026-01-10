@@ -1,0 +1,194 @@
+{
+  "databaseName": "Section 10 - Security and Identity and Compliance",
+  "databaseId": "database-section-10-security",
+  "questionsWithAnswers": [
+    {
+      "questionId": null,
+      "questionText": "What is \"Principle of Least Privilege\"?",
+      "answerText": "Grant only the permissions required to perform a task.",
+      "tags": ["iam", "security", "least-privilege"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is \"IAM Access Analyzer\" and how is it used for developing least privilege policy?",
+      "answerText": "It can be used to help generate least privilege policies and to audit a user's activity.",
+      "tags": ["iam", "access-analyzer", "least-privilege"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "If I want to generate a least privilege policy, what is the go-to tool?",
+      "answerText": "IAM Access Analyzer.",
+      "tags": ["iam", "access-analyzer"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the most secure way of dealing with PII or other sensitive data?",
+      "answerText": "Do not import it or delete it when possible. Otherwise obfuscate or anonymize the data.",
+      "tags": ["pii", "data-security"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the most basic AWS security practices?",
+      "answerText": "Use IAM, grant only required permissions, enable MFA, use SSL/TLS, log activity with CloudTrail, encrypt data, and carefully handle PII and sensitive data.",
+      "tags": [
+        "security-best-practices",
+        "iam",
+        "mfa",
+        "encryption",
+        "cloudtrail"
+      ],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the difference between CloudTrail and CloudWatch?",
+      "answerText": "CloudTrail audits and records API and user activity, while CloudWatch monitors metrics and logs and raises alarms when something is wrong.",
+      "tags": ["cloudtrail", "cloudwatch", "monitoring", "auditing"],
+      "domains": ["aws-security", "aws-operations"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Should we encrypt /opt/ml and /tmp in SageMaker?",
+      "answerText": "It is likely recommended, but further research is needed to confirm best practices.",
+      "tags": ["sagemaker", "encryption"],
+      "domains": ["aws-ml", "aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss briefly SageMaker's in-flight encryption.",
+      "answerText": "All traffic supports TLS/SSL, IAM roles control access, and inter-node training communication can optionally be encrypted, though this may increase cost and latency and is usually only required for strict compliance.",
+      "tags": ["sagemaker", "encryption", "tls"],
+      "domains": ["aws-ml", "aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the common IAM policies related to SageMaker?",
+      "answerText": "User actions include CreateTrainingJob, CreateModel, CreateEndpointConfig, CreateTransformJob, CreateHyperParameterTuningJob, CreateNotebookInstance, and UpdateNotebookInstance. Predefined policies include AmazonSageMakerReadOnly, AmazonSageMakerFullAccess, AdministratorAccess, and DataScientist.",
+      "tags": ["iam", "sagemaker", "policies"],
+      "domains": ["aws-ml", "aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Using IAM, how can we prevent users from running expensive jobs?",
+      "answerText": "By restricting permissions so users cannot access costly actions or instance types.",
+      "tags": ["iam", "cost-control"],
+      "domains": ["aws-security", "aws-cost"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Discuss briefly the roles CloudWatch and CloudTrail play within SageMaker.",
+      "answerText": "CloudWatch monitors metrics, logs, latency, and alarms, while CloudTrail records user, role, and service actions for auditing.",
+      "tags": ["cloudwatch", "cloudtrail", "sagemaker"],
+      "domains": ["aws-ml", "aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Is IAM regional or global?",
+      "answerText": "IAM is a global service.",
+      "tags": ["iam", "global-service"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What restriction do IAM Groups have?",
+      "answerText": "Groups cannot contain other groups, though users can belong to multiple groups.",
+      "tags": ["iam", "groups"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is Multi-Session Support and what is its limitation?",
+      "answerText": "It allows logging into multiple AWS accounts simultaneously from the console, but it works at the account level rather than per user.",
+      "tags": ["iam", "console"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the statement elements of an IAM policy?",
+      "answerText": "Version, ID, Statement, SID, Effect, Principal, Action, Resource, and Condition.",
+      "tags": ["iam", "policy"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is the key benefit of MFA?",
+      "answerText": "Even if a password is compromised, the account remains secure because a second device is required.",
+      "tags": ["mfa", "security"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What password protection mechanisms does AWS offer?",
+      "answerText": "Password policies and Multi-Factor Authentication (MFA).",
+      "tags": ["iam", "passwords", "mfa"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What devices are supported for MFA?",
+      "answerText": "Virtual MFA apps, U2F hardware keys, hardware key fobs, and government cloud key fobs.",
+      "tags": ["mfa", "iam"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is a government MFA device?",
+      "answerText": "A special hardware key fob supported for AWS GovCloud environments.",
+      "tags": ["mfa", "govcloud"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "For services that perform tasks on our behalf, what is the IAM requirement?",
+      "answerText": "They must use an IAM Service Role with appropriate permissions.",
+      "tags": ["iam", "roles"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How do we set up IAM for services that work on our behalf?",
+      "answerText": "Create an IAM role for the service and attach the required policies.",
+      "tags": ["iam", "roles"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How can we prevent Man-in-the-Middle attacks?",
+      "answerText": "By using in-flight encryption with SSL/TLS.",
+      "tags": ["encryption", "tls"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What are the three mechanisms for encryption in the cloud?",
+      "answerText": "Encryption in transit, encryption at rest, and envelope encryption.",
+      "tags": ["encryption"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "What is envelope encryption?",
+      "answerText": "Clients encrypt data locally before sending it to an untrusted server so the server can never decrypt it.",
+      "tags": ["encryption", "kms"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "How frequently are KMS keys rotated?",
+      "answerText": "AWS-managed keys rotate annually; customer-managed keys can be rotated manually or on a schedule.",
+      "tags": ["kms", "encryption"],
+      "domains": ["aws-security"]
+    },
+    {
+      "questionId": null,
+      "questionText": "Are KMS keys regional or global?",
+      "answerText": "KMS keys are regional, with an option for multi-region keys.",
+      "tags": ["kms", "regions"],
+      "domains": ["aws-security"]
+    }
+  ]
+}
