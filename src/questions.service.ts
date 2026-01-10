@@ -38,6 +38,9 @@ export class QuestionsService {
       };
     });
 
+    // Sort databases alphabetically by databaseName
+    databaseInfos.sort((a, b) => a.databaseName.localeCompare(b.databaseName, undefined, { numeric: false, sensitivity: 'base' }));
+
     this.logger.log(
       `Retrieved ${databaseInfos.length} databases (${databaseInfos.reduce((sum, db) => sum + db.questionCount, 0)} total questions)`
     );

@@ -50,15 +50,11 @@ export class WriteupsController {
       })
     );
     
-    const sortedItems = items.sort(
-      (a, b) => new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime()
-    );
-
     const vocabulary: WriteupListItem[] = [];
     const todo: WriteupListItem[] = [];
     const writeups: WriteupListItem[] = [];
 
-    for (const item of sortedItems) {
+    for (const item of items) {
       if (item.filename.endsWith("-vocab.md")) {
         vocabulary.push(item);
       } else if (item.filename.endsWith("-questions-todo.md")) {
@@ -67,6 +63,11 @@ export class WriteupsController {
         writeups.push(item);
       }
     }
+
+    // Sort each category alphabetically by id/filename (not by date)
+    vocabulary.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
+    todo.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
+    writeups.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
 
     return { writeups, vocabulary, todo };
   }
