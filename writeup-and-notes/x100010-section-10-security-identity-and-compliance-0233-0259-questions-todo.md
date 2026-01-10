@@ -1,48 +1,48 @@
-#### QUESTION X
+#### QUESTION 1
 
 What is "Principle of Least Privilege"?
 
-#### ANSWER X
+#### ANSWER 1
 
 Grant only the permissions required to perform a task
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 2
 
 What is "IAM Access Analyzer" How is it used, specifically for developing least privilege policy?
 
-#### ANSWER X
+#### ANSWER 2
 
 It can be used to help generate least privilege policy, or audit a user's activity
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 3
 
 If I want to generate a 'List privilege policy' what is the go-to tool?
 
-#### ANSWER X
+#### ANSWER 3
 
 "IAM Access Analyzer"
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 4
 
 What is the securest way of dealing with PII or other sensitive data?
 
-#### ANSWER X
+#### ANSWER 4
 
 Don't import it or delete it, when possible. Otherwise obfuscate, Anonymize
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 5
 
 What is the most basic AWS security practices (6)?
 
-#### ANSWER X
+#### ANSWER 5
 
 - use identity and Access Management (IAM)
 - setup user accounts with only the permissions they need
@@ -54,11 +54,11 @@ What is the most basic AWS security practices (6)?
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 6
 
 What is the difference/purpose of CloudTrail vs CloudWatch
 
-#### ANSWER X
+#### ANSWER 6
 
 CloudTrail is for auditing trail of activity log of what every one did, CloudWatch - Watching Log data raising alarms/monitors when something is wrong
 
@@ -66,21 +66,21 @@ CloudTrail is for auditing trail of activity log of what every one did, CloudWat
 
 ---
 
-#### QUESTION X
+#### QUESTION 7
 
 SM - Should we encrypt /opt/ml and/or /tmp?
 
-#### ANSWER X
+#### ANSWER 7
 
 Not sure but I _think_ so? - need to research this
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 8
 
 Discuss briefly SageMaker's Inflight Encryption
 
-#### ANSWER X
+#### ANSWER 8
 
 #### Protecting your data **in transit** with SageMaker (3:26)
 
@@ -96,14 +96,14 @@ Discuss briefly SageMaker's Inflight Encryption
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 9
 
 What are the common IAM policies related to SageMaker?
-(user Policy/action (7) and Predifned Policy (4))#### ANSWER X
+(user Policy/action (7) and Predifned Policy (4))
+
+#### ANSWER 9
 
 It is not necessary to know these but it will be a good idea to be familar
-
-#### ANSWER X
 
 - User permissions for:
   - CreateTrainingJob
@@ -121,21 +121,21 @@ It is not necessary to know these but it will be a good idea to be familar
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 10
 
 Using IAM, how can we prevent users from running expensive jobs?
 
-#### ANSWER X
+#### ANSWER 10
 
 > Using IAM you can lock-down expensive functionality so that the user can do some stuff, but not expensive stuff.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 11
 
 Discuss breifly the roles CloudWatch and CloudTrail play within SageMaker
 
-#### ANSWER X
+#### ANSWER 11
 
 - CloudWatch can log, monitor and alarm on:
   - INvocations and latency of endpoints
@@ -146,32 +146,32 @@ Discuss breifly the roles CloudWatch and CloudTrail play within SageMaker
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 12
 
 IAM is regional or global?
 
-#### ANSWER X
+#### ANSWER 12
 
 Global - need to get a uniform permission from single source of truth - must be global
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 13
 
 IAM Groups have a significant restriction - what?
 
-#### ANSWER X
+#### ANSWER 13
 
 Group can not contain other groups.
 A user can belong to zero group (not best practice), more than one group.. But group can not contain another group
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 14
 
 What is Multi Session Support how to enable it and what does it do? what is the limitation?
 
-#### ANSWER X
+#### ANSWER 14
 
 - "Multi Session Support" - is an option under the menu option (top-right) with other user specific options
 
@@ -179,11 +179,11 @@ What is Multi Session Support how to enable it and what does it do? what is the 
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 15
 
 What are the statement elements of a policy file (6)?
 
-#### ANSWER X
+#### ANSWER 15
 
 - Consists of:
   - Version Policy - 2012-10-17
@@ -198,32 +198,32 @@ What are the statement elements of a policy file (6)?
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 16
 
 Key benefit of MFA?
 
-#### ANSWER X
+#### ANSWER 16
 
 **EXAM** If user looses password, account does not become compromised because the device is necessary.. This allows opportunity to change password and does not require EVERYBODY to change password **MAIN BENEFIT**
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 17
 
 What are the two Password Protection mechanism AWS Offers
 
-#### ANSWER X
+#### ANSWER 17
 
 Password policy (min, length, expire, etc)
 and MFA -
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 18
 
 What are the allowed devices for MFA (4)?
 
-#### ANSWER X
+#### ANSWER 18
 
 - Virtual Device (Authy/google auth, etc)
 - Universal 2nd factor (U2F) - hardward/usb drive
@@ -232,32 +232,32 @@ What are the allowed devices for MFA (4)?
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 19
 
 Government MFA device - what is it?
 
-#### ANSWER X
+#### ANSWER 19
 
 - Hardware Key Fob **GOVERNMENT** AwsGovCloud
   I guess there is a special device that can be used for gov cloud.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 20
 
 For services that perform tasks on our bahalf, what is the IAM requirement
 
-#### ANSWER X
+#### ANSWER 20
 
 Services require Service Roles (IAM Role for Service). The "role" will need a policy that allows the action.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 21
 
 How to set-up IAM for services that work on our behalf?
 
-#### ANSWER X
+#### ANSWER 21
 
 We are focusing on creating a role for "AWS service"
 
@@ -266,21 +266,21 @@ We are focusing on creating a role for "AWS service"
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 22
 
 How to prevent Man In The Middle Attacks?
 
-#### ANSWER X
+#### ANSWER 22
 
 Inflight Encryption (SSL/TSL)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 23
 
 What are the three mechanism for encryption in the cloud? (It is supposed to be a very basic question)
 
-#### ANSWER X
+#### ANSWER 23
 
 Three Mechanism for Encryption in the cloud
 
@@ -292,32 +292,32 @@ I think this is the pre-cursor for the argument for KMS encryption
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 24
 
 What is "Envelope Encryption"
 
-#### ANSWER X
+#### ANSWER 24
 
 If working with untrusted servers, client can post encrypted files. The client would de/encrypt the file and server can never decrypt
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 25
 
 How frequently are KMS keys rotated?
 
-#### ANSWER X
+#### ANSWER 25
 
 AWS Managed keys are rotated once a year
 Customer managed keys and be set to rotate however frequently or manually (not sure if there is a max 1 year)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 26
 
 How many regions can a KMS key exist in?
 
-#### ANSWER X
+#### ANSWER 26
 
 Natually a KMS key can only exist in one region. However I saw an option in the Hands One that allowed 'multi-regaion', which I imagine means few not many.
 
@@ -325,11 +325,11 @@ They go on to say you can have 'multi-region' keys?(0249/2:44)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 27
 
 KMS Keys are regional or global
 
-#### ANSWER X
+#### ANSWER 27
 
 Natually a KMS key can only exist in one region. However I saw an option in the Hands One that allowed 'multi-regaion', which I imagine means few not many.
 
@@ -337,11 +337,11 @@ They go on to say you can have 'multi-region' keys?(0249/2:44)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 28
 
 How to copy encrypted snapshot (EBS as example)?
 
-#### ANSWER X
+#### ANSWER 28
 
 If you are copying snapshots across accounts
 
@@ -353,42 +353,42 @@ If you are copying snapshots across accounts
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 29
 
 The default, KMS Key Access Policy - who can access the key?
 
-#### ANSWER X
+#### ANSWER 29
 
 Without a policy nobday can access key. AWS's default policy allows everybody within the account to access the key.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 30
 
 How to implement Cross-Account KMS Key Access?
 
-#### ANSWER X
+#### ANSWER 30
 
 You have to have a IAM policy that allows external account to access the key.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 31
 
 What two conditionals are required for AWS managed key IAM policy?
 probably not important for the exam but good confidence booster
 
-#### ANSWER X
+#### ANSWER 31
 
 The policy conditionals need to include: `kms:ViaService` and `kms:CallerAccount`
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 32
 
 What is Amazon Macie? (Brief description)
 
-#### ANSWER X
+#### ANSWER 32
 
 - Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS.
 
@@ -400,41 +400,41 @@ No cost mentioned.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 33
 
 Which is recommended Parameter Store or Secrets Manager - why?
 
-#### ANSWER X
+#### ANSWER 33
 
 SM is newer and can force rotation
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 34
 
 How to implement multi-region secret
 
-#### ANSWER X
+#### ANSWER 34
 
 When you create the secrets there is an option to make it multi-region (I guess)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 35
 
 Secrets are region or global (explain) ? (kinda of a trick)
 
-#### ANSWER X
+#### ANSWER 35
 
 Secrets are Regional with an option to create multi-region secrets
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 36
 
 What are some advantages of multi-region secrets?
 
-#### ANSWER X
+#### ANSWER 36
 
 Why is this good?
 
@@ -445,11 +445,11 @@ Why is this good?
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 37
 
 What are the 5 services that support WAF?
 
-#### ANSWER X
+#### ANSWER 37
 
 - Deployed on:
   - Application Load Balancer
@@ -460,31 +460,31 @@ What are the 5 services that support WAF?
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 38
 
 What is the big restriction/limitation with WAF?
 
-#### ANSWER X
+#### ANSWER 38
 
 Only supports Layer7 (http) hence only deals with http requests
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 39
 
 What is WAF Rule Group
 
-#### ANSWER X
+#### ANSWER 39
 
 Just a collection of rules that can be re-used. Rule template, I assume.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 40
 
 What are the common attacks WAF can help prevent
 
-#### ANSWER X
+#### ANSWER 40
 
 - IP Set: up to 10,000 IP addresses - use multiple rules for IPs
 - HTTP headers, HTTP body, or URL strings protects from common attack, SQL Injection, Cross-site scripting (XSS)
@@ -494,11 +494,11 @@ What are the common attacks WAF can help prevent
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 41
 
 Describe WAF briefly
 
-#### ANSWER X
+#### ANSWER 41
 
 - Protect your app from common web exploits (**LAYER 7, HTTP**)
 - Layer 7 is HTTP (vs Layer 4, TCP/UDP)
@@ -536,11 +536,11 @@ The point is that the GA sits in front of the ALB and makes requests directly to
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 42
 
 Briefly describe AWS Shield
 
-#### ANSWER X
+#### ANSWER 42
 
 - DDoS Distributed Denial of Service - many requests at the same time.
 
@@ -558,11 +558,11 @@ This section really seem more about promoting the $3000/month service than anyth
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 43
 
 Discuss briefly how we use IGW and NAT Gateway to allow access to the internet while proventing access FROM the internet to private subnets
 
-#### ANSWER X
+#### ANSWER 43
 
 > A public subnet will have a **Route** to the internet gateway
 
@@ -577,11 +577,11 @@ The Internet Gateway sits in the entire VPC, Subnets within IGW. The Nat Gateway
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 44
 
 A brief discussion of NACL vs Security group
 
-#### ANSWER X
+#### ANSWER 44
 
 - Network Access Control List (NACL, Network ACL)
 
@@ -601,11 +601,11 @@ Default NACL allows everything in and out. Hence, we don't interact with it too 
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 45
 
 A brief discussion about VPC Flow Logs (3)
 
-#### ANSWER X
+#### ANSWER 45
 
 - Capture information about IP traffic going into your interfaces:
   - VPC Flow Logs
@@ -624,31 +624,31 @@ A brief discussion about VPC Flow Logs (3)
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 46
 
 Where can we send flow logs (3)?
 
-#### ANSWER X
+#### ANSWER 46
 
 S3, CloudWatch Logs, and Kineses Data Firehose
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 47
 
 If we are expreiencing connectivity issues, what is one of the first places to check?
 
-#### ANSWER X
+#### ANSWER 47
 
 VPC Flow Logs
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 48
 
 What can VPC Flow Logs help troubleshoot
 
-#### ANSWER X
+#### ANSWER 48
 
 - Helps to monitor & troubleshoot connectivity issues. Example:
 
@@ -660,12 +660,12 @@ What can VPC Flow Logs help troubleshoot
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 49
 
 What is the VPC Cheat Sheet, (11 items)?
 This isn't very important but you should know what all the the things are.
 
-#### ANSWER X
+#### ANSWER 49
 
 - VPC - virtual private cloud (we always use default therefore never see it)
 - Subnets - tied to AZ, network partition of the VPC
@@ -681,12 +681,12 @@ This isn't very important but you should know what all the the things are.
 
 #### END QUESTION
 
-#### QUESTION X
+#### QUESTION 50
 
 Discuss briefly PrivateLink
 ( You just need the very basics, use case)
 
-#### ANSWER X
+#### ANSWER 50
 
 - VPC Peering doesn't scale
 - PrivateLink the most secure and scalable way to expose a service to 1000s of VPCs

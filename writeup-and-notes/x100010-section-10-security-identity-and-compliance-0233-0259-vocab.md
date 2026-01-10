@@ -1,7 +1,7 @@
-- `IAM Access Analyzer`
-- `Glue DataBrew`
-- `inter container traffic encryption`
-- `Multi Session Support`
+- `IAM Access Analyzer` - a security service that helps you identify resources shared with external AWS accounts, find unused access, and validate your IAM policies to ensure least privilege,
+- `Glue DataBrew` - AWS Glue DataBrew is a visual data preparation tool that enables users to clean and normalize data without writing any code. Using DataBrew helps reduce the time it takes to prepare data for analytics and machine learning (ML) by up to 80 percent, compared to custom developed data preparation. You can choose from over 250 ready-made transformations to automate data preparation tasks, such as filtering anomalies, converting data to standard formats, and correcting invalid values
+- `inter container traffic encryption` - For use cases in the healthcare sector, the best practice for security is to encrypt communication between the nodes.
+- `Multi Session Support` - The ability to log into AWS using different accounts (not sure if they have to be in the same organization)
 - `Inline Policy` (IAM) Attached to the user (or resource), not group
-- `SSE-S3`, `SSE-SQS`, `SSE-DDB`
+- `SSE-S3` (S3 managed), `SSE-KMS` (kms managed), `SSE-C` (client side), `SSE-SQS`, `SSE-DDB`, What are the 5 primary S3 encryption types (3 S3, 2 other services)?
 - `VPC Flow Logs` (all three) : VPC, Subnet, Elastic Network Interface (EC2 interface)

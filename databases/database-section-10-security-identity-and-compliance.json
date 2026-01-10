@@ -3,192 +3,554 @@
   "databaseId": "database-section-10-security",
   "questionsWithAnswers": [
     {
-      "questionId": null,
+      "questionId": "9f8f30fc-5219-42d0-874c-ae0207888779",
       "questionText": "What is \"Principle of Least Privilege\"?",
-      "answerText": "Grant only the permissions required to perform a task.",
-      "tags": ["iam", "security", "least-privilege"],
-      "domains": ["aws-security"]
-    },
-    {
-      "questionId": null,
-      "questionText": "What is \"IAM Access Analyzer\" and how is it used for developing least privilege policy?",
-      "answerText": "It can be used to help generate least privilege policies and to audit a user's activity.",
-      "tags": ["iam", "access-analyzer", "least-privilege"],
-      "domains": ["aws-security"]
-    },
-    {
-      "questionId": null,
-      "questionText": "If I want to generate a least privilege policy, what is the go-to tool?",
-      "answerText": "IAM Access Analyzer.",
-      "tags": ["iam", "access-analyzer"],
-      "domains": ["aws-security"]
-    },
-    {
-      "questionId": null,
-      "questionText": "What is the most secure way of dealing with PII or other sensitive data?",
-      "answerText": "Do not import it or delete it when possible. Otherwise obfuscate or anonymize the data.",
-      "tags": ["pii", "data-security"],
-      "domains": ["aws-security"]
-    },
-    {
-      "questionId": null,
-      "questionText": "What are the most basic AWS security practices?",
-      "answerText": "Use IAM, grant only required permissions, enable MFA, use SSL/TLS, log activity with CloudTrail, encrypt data, and carefully handle PII and sensitive data.",
+      "answerText": "Grant only the permissions required to perform a task",
       "tags": [
-        "security-best-practices",
-        "iam",
-        "mfa",
-        "encryption",
-        "cloudtrail"
+        "section-10"
       ],
-      "domains": ["aws-security"]
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What is the difference between CloudTrail and CloudWatch?",
-      "answerText": "CloudTrail audits and records API and user activity, while CloudWatch monitors metrics and logs and raises alarms when something is wrong.",
-      "tags": ["cloudtrail", "cloudwatch", "monitoring", "auditing"],
-      "domains": ["aws-security", "aws-operations"]
+      "questionId": "9a7226b1-fffb-4e6e-b421-621865be1fa6",
+      "questionText": "What is \"IAM Access Analyzer\" How is it used, specifically for developing least privilege policy?",
+      "answerText": "It can be used to help generate least privilege policy, or audit a user's activity",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "Should we encrypt /opt/ml and /tmp in SageMaker?",
-      "answerText": "It is likely recommended, but further research is needed to confirm best practices.",
-      "tags": ["sagemaker", "encryption"],
-      "domains": ["aws-ml", "aws-security"]
+      "questionId": "7225d890-afd4-4d5d-93db-9e719b9433ff",
+      "questionText": "If I want to generate a 'List privilege policy' what is the go-to tool?",
+      "answerText": "\"IAM Access Analyzer\"",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "Discuss briefly SageMaker's in-flight encryption.",
-      "answerText": "All traffic supports TLS/SSL, IAM roles control access, and inter-node training communication can optionally be encrypted, though this may increase cost and latency and is usually only required for strict compliance.",
-      "tags": ["sagemaker", "encryption", "tls"],
-      "domains": ["aws-ml", "aws-security"]
+      "questionId": "6d0511f2-397c-4cc8-aaaf-f5036c056d59",
+      "questionText": "What is the securest way of dealing with PII or other sensitive data?",
+      "answerText": "Don't import it or delete it, when possible. Otherwise obfuscate, Anonymize",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What are the common IAM policies related to SageMaker?",
-      "answerText": "User actions include CreateTrainingJob, CreateModel, CreateEndpointConfig, CreateTransformJob, CreateHyperParameterTuningJob, CreateNotebookInstance, and UpdateNotebookInstance. Predefined policies include AmazonSageMakerReadOnly, AmazonSageMakerFullAccess, AdministratorAccess, and DataScientist.",
-      "tags": ["iam", "sagemaker", "policies"],
-      "domains": ["aws-ml", "aws-security"]
+      "questionId": "c480d643-436e-4665-bc14-371f1ee2b520",
+      "questionText": "What is the most basic AWS security practices (6)?",
+      "answerText": "- use identity and Access Management (IAM)\n- setup user accounts with only the permissions they need\n- Use MFA\n- Use SSL/TLS when connecting to anything\n- Use **CloudTrail** to log API and user activity\n- Use Encrypting\n- Be careful with PII and other sensitive data",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
+      "questionId": "3b667725-0bf8-4e7f-aba1-6aaa8227bb5a",
+      "questionText": "What is the difference/purpose of CloudTrail vs CloudWatch",
+      "answerText": "CloudTrail is for auditing trail of activity log of what every one did, CloudWatch - Watching Log data raising alarms/monitors when something is wrong",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "857f1359-e461-4027-bad7-4207ca588775",
+      "questionText": "SM - Should we encrypt /opt/ml and/or /tmp?",
+      "answerText": "Not sure but I _think_ so? - need to research this",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1623f517-1d46-4c97-a58f-c823d6887869",
+      "questionText": "Discuss briefly SageMaker's Inflight Encryption",
+      "answerText": "#### Protecting your data **in transit** with SageMaker (3:26)\n- All traffic support TLS/SSL\n- IAM roles are assigned to SageMaker to give permissions to access resources\n- Inter-node training communication may be **optionally** encrypted\n  - Can increase training time and cost with deep learning\n  - AKA inter-container traffic encryption\n  - Enable via console or API when setting up training/tuning job\n  - **THIS IS LIKELY UNNECESSARY UNLESS FOR SPECIAL COMPLIANCE OR CONTRACTUAL REQUIREMENTS** This will have a sizable cost impact when dealing with several nodes - use only if necessary, rely more on VPC `inter container traffic encryption`\n> IAM Policy should implement 'principle of least privilege'",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3472ed56-f48f-4867-bcc7-3c74fd6e0854",
+      "questionText": "What are the common IAM policies related to SageMaker?\n(user Policy/action (7) and Predifned Policy (4))",
+      "answerText": "It is not necessary to know these but it will be a good idea to be familar\n- User permissions for:\n  - CreateTrainingJob\n  - CreateModel\n  - CreateEndpointConfig\n  - CreateTransformJob\n  - CreateHyperParameterTuningJob\n  - CreateNotebookInstance\n  - UpdateNotebookInstance\n- Predefined policy:\n  - AmazonSAageMakerReadOnly\n  - AmazonSageMakerFullAccess\n  - AdministratorAccess\n  - DataScientist",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1bd5c5a7-d8cb-4796-bb5c-cae274039838",
       "questionText": "Using IAM, how can we prevent users from running expensive jobs?",
-      "answerText": "By restricting permissions so users cannot access costly actions or instance types.",
-      "tags": ["iam", "cost-control"],
-      "domains": ["aws-security", "aws-cost"]
+      "answerText": "> Using IAM you can lock-down expensive functionality so that the user can do some stuff, but not expensive stuff.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "Discuss briefly the roles CloudWatch and CloudTrail play within SageMaker.",
-      "answerText": "CloudWatch monitors metrics, logs, latency, and alarms, while CloudTrail records user, role, and service actions for auditing.",
-      "tags": ["cloudwatch", "cloudtrail", "sagemaker"],
-      "domains": ["aws-ml", "aws-security"]
+      "questionId": "2bbedf4a-f309-4d43-af44-dcc7c4125db7",
+      "questionText": "Discuss breifly the roles CloudWatch and CloudTrail play within SageMaker",
+      "answerText": "- CloudWatch can log, monitor and alarm on:\n  - INvocations and latency of endpoints\n  - Health of instance nodes (CPU, memory, et)\n  - **Ground Truth** (active workers, how much they are doing, can monitory performance of humans doing work, label tasks, confirm bad inference (probably))\n- CloudTrail records actions from users, roles, and services\n  - Log files are delivered to S3 for auditing",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "Is IAM regional or global?",
-      "answerText": "IAM is a global service.",
-      "tags": ["iam", "global-service"],
-      "domains": ["aws-security"]
+      "questionId": "40c35a42-9ee1-46b3-a422-a4fd4f7ab953",
+      "questionText": "IAM is regional or global?",
+      "answerText": "Global - need to get a uniform permission from single source of truth - must be global",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What restriction do IAM Groups have?",
-      "answerText": "Groups cannot contain other groups, though users can belong to multiple groups.",
-      "tags": ["iam", "groups"],
-      "domains": ["aws-security"]
+      "questionId": "2bdf1544-87f9-45bd-91ea-62d73b457a03",
+      "questionText": "IAM Groups have a significant restriction - what?",
+      "answerText": "Group can not contain other groups.\nA user can belong to zero group (not best practice), more than one group.. But group can not contain another group",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What is Multi-Session Support and what is its limitation?",
-      "answerText": "It allows logging into multiple AWS accounts simultaneously from the console, but it works at the account level rather than per user.",
-      "tags": ["iam", "console"],
-      "domains": ["aws-security"]
+      "questionId": "6cbb7ac8-9e54-4936-be5f-351bd732ad5b",
+      "questionText": "What is Multi Session Support how to enable it and what does it do? what is the limitation?",
+      "answerText": "- \"Multi Session Support\" - is an option under the menu option (top-right) with other user specific options\n- This allows you to log-in using different **ACCOUNT** (not necessarily user)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What are the statement elements of an IAM policy?",
-      "answerText": "Version, ID, Statement, SID, Effect, Principal, Action, Resource, and Condition.",
-      "tags": ["iam", "policy"],
-      "domains": ["aws-security"]
+      "questionId": "6fda2621-a2d1-4c81-a346-8f7690de74dd",
+      "questionText": "What are the statement elements of a policy file (6)?",
+      "answerText": "- Consists of:\n  - Version Policy - 2012-10-17\n  - id - option identify policy\n  - statements (one or more)\n    - sid statement id, optional\n    - effect, wither allow or deny (Allow|Deny)\n    - principal - user(s) or role(s) - can have multiple principals\n    - Action - list of actions this policy allows or denies\n    - Resource: the resources the policy applies to\n    - Conditions: (doesn't demonstrate but mentions it)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What is the key benefit of MFA?",
-      "answerText": "Even if a password is compromised, the account remains secure because a second device is required.",
-      "tags": ["mfa", "security"],
-      "domains": ["aws-security"]
+      "questionId": "da6beb06-113f-4f9f-ac18-7cae691da7e2",
+      "questionText": "Key benefit of MFA?",
+      "answerText": "**EXAM** If user looses password, account does not become compromised because the device is necessary.. This allows opportunity to change password and does not require EVERYBODY to change password **MAIN BENEFIT**",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What password protection mechanisms does AWS offer?",
-      "answerText": "Password policies and Multi-Factor Authentication (MFA).",
-      "tags": ["iam", "passwords", "mfa"],
-      "domains": ["aws-security"]
+      "questionId": "7fa71061-856b-4704-8b60-74267164d723",
+      "questionText": "What are the two Password Protection mechanism AWS Offers",
+      "answerText": "Password policy (min, length, expire, etc)\nand MFA -",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What devices are supported for MFA?",
-      "answerText": "Virtual MFA apps, U2F hardware keys, hardware key fobs, and government cloud key fobs.",
-      "tags": ["mfa", "iam"],
-      "domains": ["aws-security"]
+      "questionId": "0ce9a540-df6b-4b1b-96f9-dfb0337a6902",
+      "questionText": "What are the allowed devices for MFA (4)?",
+      "answerText": "- Virtual Device (Authy/google auth, etc)\n- Universal 2nd factor (U2F) - hardward/usb drive\n- Hardware Key Fob MFA Device (fancy hardware)\n- Hardware Key Fob **GOVERNMENT** AwsGovCloud",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What is a government MFA device?",
-      "answerText": "A special hardware key fob supported for AWS GovCloud environments.",
-      "tags": ["mfa", "govcloud"],
-      "domains": ["aws-security"]
+      "questionId": "f3f0abaa-7e9d-4d87-a6da-67e2b228d62f",
+      "questionText": "Government MFA device - what is it?",
+      "answerText": "- Hardware Key Fob **GOVERNMENT** AwsGovCloud\n  I guess there is a special device that can be used for gov cloud.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "For services that perform tasks on our behalf, what is the IAM requirement?",
-      "answerText": "They must use an IAM Service Role with appropriate permissions.",
-      "tags": ["iam", "roles"],
-      "domains": ["aws-security"]
+      "questionId": "b71e6d31-2a65-4511-b7ba-b0561fadf375",
+      "questionText": "For services that perform tasks on our bahalf, what is the IAM requirement",
+      "answerText": "Services require Service Roles (IAM Role for Service). The \"role\" will need a policy that allows the action.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "How do we set up IAM for services that work on our behalf?",
-      "answerText": "Create an IAM role for the service and attach the required policies.",
-      "tags": ["iam", "roles"],
-      "domains": ["aws-security"]
+      "questionId": "3ee4aeea-8b3d-458a-b213-c1809b35b662",
+      "questionText": "How to set-up IAM for services that work on our behalf?",
+      "answerText": "We are focusing on creating a role for \"AWS service\"\n1. create role\n2. attach policy to role",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "How can we prevent Man-in-the-Middle attacks?",
-      "answerText": "By using in-flight encryption with SSL/TLS.",
-      "tags": ["encryption", "tls"],
-      "domains": ["aws-security"]
+      "questionId": "5337dc42-bd39-42ef-bcbf-757896b6c173",
+      "questionText": "How to prevent Man In The Middle Attacks?",
+      "answerText": "Inflight Encryption (SSL/TSL)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What are the three mechanisms for encryption in the cloud?",
-      "answerText": "Encryption in transit, encryption at rest, and envelope encryption.",
-      "tags": ["encryption"],
-      "domains": ["aws-security"]
+      "questionId": "6e35c085-da2a-48f6-803e-af42871f6db7",
+      "questionText": "What are the three mechanism for encryption in the cloud? (It is supposed to be a very basic question)",
+      "answerText": "Three Mechanism for Encryption in the cloud\n- Inflight - SSL/TSL\n- At rest ( I guess)\n- Envelope (client stores encrypted files on untrusted server)\nI think this is the pre-cursor for the argument for KMS encryption",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "What is envelope encryption?",
-      "answerText": "Clients encrypt data locally before sending it to an untrusted server so the server can never decrypt it.",
-      "tags": ["encryption", "kms"],
-      "domains": ["aws-security"]
+      "questionId": "69951169-d90e-4622-94c2-b22ae72ed1fd",
+      "questionText": "What is \"Envelope Encryption\"",
+      "answerText": "If working with untrusted servers, client can post encrypted files. The client would de/encrypt the file and server can never decrypt",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
+      "questionId": "4f842ad0-4e46-4464-9f39-771119a8f81f",
       "questionText": "How frequently are KMS keys rotated?",
-      "answerText": "AWS-managed keys rotate annually; customer-managed keys can be rotated manually or on a schedule.",
-      "tags": ["kms", "encryption"],
-      "domains": ["aws-security"]
+      "answerText": "AWS Managed keys are rotated once a year\nCustomer managed keys and be set to rotate however frequently or manually (not sure if there is a max 1 year)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     },
     {
-      "questionId": null,
-      "questionText": "Are KMS keys regional or global?",
-      "answerText": "KMS keys are regional, with an option for multi-region keys.",
-      "tags": ["kms", "regions"],
-      "domains": ["aws-security"]
+      "questionId": "7782dd42-4b87-47d2-b9ea-cbef8058c745",
+      "questionText": "How many regions can a KMS key exist in?",
+      "answerText": "Natually a KMS key can only exist in one region. However I saw an option in the Hands One that allowed 'multi-regaion', which I imagine means few not many.\nThey go on to say you can have 'multi-region' keys?(0249/2:44)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "bf3d98d6-6608-4f1a-9364-a2cc3969b16e",
+      "questionText": "KMS Keys are regional or global",
+      "answerText": "Natually a KMS key can only exist in one region. However I saw an option in the Hands One that allowed 'multi-regaion', which I imagine means few not many.\nThey go on to say you can have 'multi-region' keys?(0249/2:44)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "88031c1b-7d66-4540-8425-ae7be8dce762",
+      "questionText": "How to copy encrypted snapshot (EBS as example)?",
+      "answerText": "If you are copying snapshots across accounts\n1. Create a snapshot, encrypted with your own KMS key (customer managed Key)\n2. Attached a KMS key Policy to authorized cross-account access\n3. Share the encrypted snapshot\n4. (in target) Create a copy of the snapshot, encrypt it with a CMK in your account\n5. Create a volume form the snapshot",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "93349e4f-91c9-4d92-a63d-1d8e4e0dff2e",
+      "questionText": "The default, KMS Key Access Policy - who can access the key?",
+      "answerText": "Without a policy nobday can access key. AWS's default policy allows everybody within the account to access the key.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b29e2d1d-2452-4b55-9f98-01ca75f19f95",
+      "questionText": "How to implement Cross-Account KMS Key Access?",
+      "answerText": "You have to have a IAM policy that allows external account to access the key.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2d7e668d-aac4-4190-a1ca-f3d206a4b212",
+      "questionText": "What two conditionals are required for AWS managed key IAM policy?\nprobably not important for the exam but good confidence booster",
+      "answerText": "The policy conditionals need to include: `kms:ViaService` and `kms:CallerAccount`",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b60ba1fc-3c00-4e8d-81c6-4f64157d67f2",
+      "questionText": "What is Amazon Macie? (Brief description)",
+      "answerText": "- Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS.\n- Macie helps identify and alert you to sensitive data, such as PII\n[S3 Bucket] ---analyze---> [Macie] ----notify----> [EventBridge]---> integrations\nNo cost mentioned.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f24592b9-9fa4-4f20-bcb3-495a55eb9491",
+      "questionText": "Which is recommended Parameter Store or Secrets Manager - why?",
+      "answerText": "SM is newer and can force rotation",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ff2d7f31-c5ad-4a0c-9b1d-2a4c1545cdad",
+      "questionText": "How to implement multi-region secret",
+      "answerText": "When you create the secrets there is an option to make it multi-region (I guess)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "935cddef-75de-4585-954e-67e23ac81717",
+      "questionText": "Secrets are region or global (explain) ? (kinda of a trick)",
+      "answerText": "Secrets are Regional with an option to create multi-region secrets",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9494f365-9ad4-4bc5-afed-9ad28653a9ee",
+      "questionText": "What are some advantages of multi-region secrets?",
+      "answerText": "Why is this good?\n- Ability to promote a read replica Secret to a standalone secret\n- Multi Region Apps\n- Disaster Recovery\n- Multi region RDS, replica can use same secrets",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7e027b6c-5361-43fc-abdb-e510b0734e2f",
+      "questionText": "What are the 5 services that support WAF?",
+      "answerText": "- Deployed on:\n  - Application Load Balancer\n  - API Gateway\n  - CloudFront\n  - AppSync - GraphQL - API\n  - Cognito User Pool",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "91b23632-42d3-42c8-83b1-83d623dd6c7e",
+      "questionText": "What is the big restriction/limitation with WAF?",
+      "answerText": "Only supports Layer7 (http) hence only deals with http requests",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "98058f05-aa71-4567-8b26-b42a0a46f77d",
+      "questionText": "What is WAF Rule Group",
+      "answerText": "Just a collection of rules that can be re-used. Rule template, I assume.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ca0b42f7-36cb-4dad-9ef7-837d67841649",
+      "questionText": "What are the common attacks WAF can help prevent",
+      "answerText": "- IP Set: up to 10,000 IP addresses - use multiple rules for IPs\n- HTTP headers, HTTP body, or URL strings protects from common attack, SQL Injection, Cross-site scripting (XSS)\n- Size constraints\n- Geo-match (block country)\n- Rate-base rules (to count occurrences of events) - DDoS protection",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2216de7a-fbaf-4b3d-a900-a2141e14f59c",
+      "questionText": "Describe WAF briefly",
+      "answerText": "- Protect your app from common web exploits (**LAYER 7, HTTP**)\n- Layer 7 is HTTP (vs Layer 4, TCP/UDP)\n- Deployed on:\n  - Application Load Balancer\n  - API Gateway\n  - CloudFront\n  - AppSync - GraphQL - API\n  - Cognito User Pool\n**EXAM** He said the exam will be tricky. That it may ask about deploying network load balancer(NLB). From what I recall NLB support both Layer 7 and Layer 4, but may not support WAF. Also, make sure to the 5 services.\n#### WAF ACL (0:54)\n- Define Web ACL Rules:\n  - IP Set: up to 10,000 IP addresses - use multiple rules for IPs\n  - HTTP headers, HTTP body, or URL strings protects from common attack, SQL Injection, Cross-site scripting (XSS)\n  - Size constraints\n  - Geo-match (block country)\n  - Rate-base rules (to count occurrences of events) - DDoS protection\n- Web ACL are Regional except CloudFront\n- A rule group is a **reusable set of rules**\n#### Fixed IP using WAF with Load Balancer (2:08)\n- WAF does not support the NLB (layer 4)\n- We can use **Global Accelerator** for fixed IP and WAF on the ALB\nDiagram\n[end-users] -> [Global Accelerator] <--->[VPC, ALB <-> EC2]\nThe point is that the GA sits in front of the ALB and makes requests directly to the ALB on behalf of the end-user. The ALB calls WAF/ACL then processes request.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d4700248-1fd0-42b0-9ba5-6f1b4bd7a8d5",
+      "questionText": "Briefly describe AWS Shield",
+      "answerText": "- DDoS Distributed Denial of Service - many requests at the same time.\n- **AWS Shield Standard**:\n  - Free service that is activated for every AWS customer\n  - Provides protection from attacks such as SYN/UDP floods, Reflection attacks and other **Layer 3/Layer 4** attacks\n- AWS Shield **Advanced**:\n  - Optional DDoS mitigation service ($3,000 per month per organization)\n  - Protects against more sophisticated attack on EC2, ELB, CloudFront, Global Accelerator, Route 53\n  - 24/7 access to AWS DDoS response (DRP)\n  - Protects against **higher fees during usage spikes** due to DDoS (**closest thing to insurance for DDoS**)\n  - Shield Advanced automatic application DDoS mitigation automatically creates, evaluates and deploys AWS WAF rules to mitigate layer 7 attacks\nThis section really seem more about promoting the $3000/month service than anything else.",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0c4b815a-4804-421e-8837-47124edcec13",
+      "questionText": "Discuss briefly how we use IGW and NAT Gateway to allow access to the internet while proventing access FROM the internet to private subnets",
+      "answerText": "> A public subnet will have a **Route** to the internet gateway\n- Internet Gateways help our VPC instances connect with the internet\n- Public subnets have a route to the internet gateway\n- NAT Gateways (AWS-Managed) & NAT Instances (self managed) allow your instances in your **Private Subnets** to access the internet while remain private (one way communication initiation)\nThe Internet Gateway sits in the entire VPC, Subnets within IGW. The Nat Gateway sits in the public Subnet, and provides access to the private subnet\n![Alt text](https://www.cloudzero.com/wp-content/uploads/2024/08/nat-gateway-diagram.webp \"width:250\")",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fee34d24-daf8-4fc6-bae2-d5e7abc1593b",
+      "questionText": "A brief discussion of NACL vs Security group",
+      "answerText": "- Network Access Control List (NACL, Network ACL)\n  - A firewall which controls traffic from and to **subnet**\n  - Can have **ALLOW** and **DENY** rules\n  - Rules only include IP Addresses ( I think because level 4)\n- Security Groups\n  - A Firewall that controls traffic to and from an ENI / an EC2 Instances\n  - Can have **only ALLOW** rules\n  - Rules include **IP and other Security Groups** (huge)\nENI - Elastic Network Interface\nDefault NACL allows everything in and out. Hence, we don't interact with it too much but it can be an extra level of security.\n**EXAM** Before traffic gets to EC2 (ENI), it has to go through NACL",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e8af5eec-9208-419d-8fc0-390eb4f8c016",
+      "questionText": "A brief discussion about VPC Flow Logs (3)",
+      "answerText": "- Capture information about IP traffic going into your interfaces:\n  - VPC Flow Logs\n  - Subnet Flow Logs\n  - Elastic Network Interface (ENI/EC2 Instances)\n- Helps to monitor & troubleshoot connectivity issues. Example:\n  - subnet2subnet\n  - subnet2internet\n  - internet2subnet\n- Captures network information from AWS Manged interfaces too: Elastic Load Balancers, ElasticCache, RDS, Aurora, etc\n- VPC Flow Logs data can go to S3, CloudWatch Logs, and Kineses Data Firehose\n  **EXAM** How to troubleshoot connectivity issue to/from Security Group or ENI/EC2, from/to internet and from/to AWS Services (or some)",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9c11905e-fd75-4e62-92a3-61b0164c3504",
+      "questionText": "Where can we send flow logs (3)?",
+      "answerText": "S3, CloudWatch Logs, and Kineses Data Firehose",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5c582bbb-e0f0-48f9-a718-ba733795c1da",
+      "questionText": "If we are expreiencing connectivity issues, what is one of the first places to check?",
+      "answerText": "VPC Flow Logs",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "56c061dd-b369-4fea-8642-431892c29d91",
+      "questionText": "What can VPC Flow Logs help troubleshoot",
+      "answerText": "- Helps to monitor & troubleshoot connectivity issues. Example:\n  - subnet2subnet\n  - subnet2internet\n  - internet2subnet\n- Captures network information from AWS Manged interfaces too: Elastic Load Balancers, ElasticCache, RDS, Aurora, etc",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4d571482-a8ed-446f-b2e0-2b8872d2cfc8",
+      "questionText": "What is the VPC Cheat Sheet, (11 items)?\nThis isn't very important but you should know what all the the things are.",
+      "answerText": "- VPC - virtual private cloud (we always use default therefore never see it)\n- Subnets - tied to AZ, network partition of the VPC\n- Internet Gateway: at the VPC level, provide internet access\n- NAT Gateway / Instances: give internet access to private subnets\n- NACL Stateless, subnet rules for inbound and outbout\n- Security Groups: stateful, operate at the EC2 instance level or ENI\n- VPC Peering: Connect two VPC, no IP overlap\n- VPC Endpoints: Provides Private Access to AWS services within VPC\n- VPC Flow Logs: Network traffic Logs\n- Site to Site VPN\n- Direct Connect: direct private connection to AWS",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fa5a73c4-7a4b-4344-84de-fe208ffd1b43",
+      "questionText": "Discuss briefly PrivateLink\n( You just need the very basics, use case)",
+      "answerText": "- VPC Peering doesn't scale\n- PrivateLink the most secure and scalable way to expose a service to 1000s of VPCs\n- Does not require VPC Peering, internet gateway, NET, route tables\nSuppose there is a vendor using AWS and they want to provide services to other AWS clients. They want to allow direct access to the VPC. They need to be able to allow 1000's of connections.\nPrivateLink is **Their Network Load Balancer connected to your Elastic Network Interface**",
+      "tags": [
+        "section-10"
+      ],
+      "domains": [
+        "general"
+      ]
     }
   ]
 }

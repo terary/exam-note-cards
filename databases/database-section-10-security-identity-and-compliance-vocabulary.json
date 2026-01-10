@@ -1,0 +1,55 @@
+{
+  "databaseName": "Section 10 - Security and Identity and Compliance Vocabulary",
+  "databaseId": "database-section-10-security-identity-and-compliance-vocabulary",
+  "questionsWithAnswers": [
+    {
+      "questionId": "6daeaed9-7b8a-40a7-b5a2-1f63de7e0091",
+      "questionText": "vocabulary question: a security service that helps you identify resources shared with external AWS accounts, find unused access, and validate your IAM policies to ensure least privilege,",
+      "answerText": "IAM Access Analyzer",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "c735395e-34c6-4d09-aa4f-a1c5d2372a65",
+      "questionText": "vocabulary question: ________ is a visual data preparation tool that enables users to clean and normalize data without writing any code. Using ________ helps reduce the time it takes to prepare data for analytics and machine learning (ML) by up to 80 percent, compared to custom developed data preparation. You can choose from over 250 ready-made transformations to automate data preparation tasks, such as filtering anomalies, converting data to standard formats, and correcting invalid values",
+      "answerText": "Glue DataBrew",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "5ff16922-3447-4f96-964c-90ba092a5635",
+      "questionText": "vocabulary question: For use cases in the healthcare sector, the best practice for security is to encrypt communication between the nodes.",
+      "answerText": "'inter container traffic encryption'",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "9cb34521-0920-40ae-80dc-7c39cc3fe489",
+      "questionText": "vocabulary question: The ability to log into AWS using different accounts (not sure if they have to be in the same organization)",
+      "answerText": "Multi Session Support",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "8dd95c43-37cc-469f-b122-82651b0ca6d8",
+      "questionText": "vocabulary question: What is an IM Policy attached to the user (or resource), not group",
+      "answerText": "Inline Policy",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "eeebf92e-c0f6-4083-bfb6-7a2b349bca04",
+      "questionText": "vocabulary question: What are the 5 primary S3 encryption types (3 S3, 2 other services)?",
+      "answerText": "`SSE-S3` (S3 managed), `SSE-KMS` (kms managed), `SSE-C` (client side), `SSE-SQS`, `SSE-DDB`",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    },
+    {
+      "questionId": "92ba698b-f543-4b95-a161-34b50c883809",
+      "questionText": "vocabulary question: a network monitoring feature that captures information about IP traffic going to and from network interfaces in your virtual private cloud (VPC)",
+      "answerText": "VPC Flow Logs for each: VPC, Subnet, Elastic Network Interface (EC2 interface)",
+      "tags": ["vocabulary", "section-10"],
+      "domains": ["vocabulary"]
+    }
+  ]
+}
