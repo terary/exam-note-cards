@@ -119,8 +119,8 @@ function QuizPage() {
 
       {!isLoading && currentQuestion && (
         <section className="question-card">
-          <h2>Question</h2>
-          <div className="question-text">
+          <h2>Question (questionId: {currentQuestion.questionId})</h2>
+          <div className="question-text markdown-body">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeSanitize]}
@@ -153,7 +153,7 @@ function QuizPage() {
             <>
               <div className="answer-section">
                 <h3>Answer</h3>
-                <div className="answer-text">
+                <div className="answer-text markdown-body">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeSanitize]}

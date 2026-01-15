@@ -1214,25 +1214,29 @@ The document notes these are commonly tested on the AWS exam, so understanding e
 **IMPORTANT**
 SageMaker Algorithms → ML Architectures:
 
-LINEAR:
-├─ Linear Learner (pure linear)
-└─ Factorization Machines (linear + interactions) ← YOU ARE HERE
+**LINEAR:**
 
-TREE-BASED:
-├─ XGBoost (gradient boosting)
-├─ LightGBM (gradient boosting)
-└─ KNN (similarity-based)
+- Linear Learner (pure linear)
+- Factorization Machines (linear + interactions) ← YOU ARE HERE
 
-NEURAL NETWORKS:
-├─ CNNs: Object Detection, Image Classification, Semantic Segmentation
-├─ RNNs: Seq2Seq, DeepAR
-└─ Feedforward: BlazingText, Object2Vec, NTM
+**TREE-BASED:**
 
-UNSUPERVISED:
-├─ K-Means (clustering)
-├─ PCA (dimensionality reduction)
-├─ RCF, IP Insights (anomaly detection)
-└─ LDA, NTM (topic modeling)
+- XGBoost (gradient boosting)
+- LightGBM (gradient boosting)
+- KNN (similarity-based)
+
+**NEURAL NETWORKS:**
+
+- **CNNs:** Object Detection, Image Classification, Semantic Segmentation
+- **RNNs:** Seq2Seq, DeepAR
+- **Feedforward:** BlazingText, Object2Vec, NTM
+
+**UNSUPERVISED:**
+
+- K-Means (clustering)
+- PCA (dimensionality reduction)
+- RCF, IP Insights (anomaly detection)
+- LDA, NTM (topic modeling)
 
 ## Comparison for your MNIST task
 
