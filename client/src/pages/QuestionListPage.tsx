@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchQuestionsInDatabase,
+  fetchQuestion,
   fetchQuestionAnswerHistory,
   deleteQuestion,
   deleteAnswerHistoryRecord,
@@ -16,7 +17,7 @@ import rehypeSanitize from "rehype-sanitize";
 import "../App.css";
 
 function QuestionListPage() {
-  const { databaseId } = useParams<{ databaseId: string }>();
+  const { databaseId, questionId } = useParams<{ databaseId: string; questionId?: string }>();
   const navigate = useNavigate();
 
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -63,6 +64,78 @@ function QuestionListPage() {
     loadQuestions();
   }, [databaseId, navigate]);
 
+  // Handle loading a specific question when questionId is provided in URL
+  // This ONLY runs when someone directly navigates to a URL with questionId (bookmark, link, etc.)
+  // It does NOT run when questionId is undefined/null
+  useEffect(() => {
+    // Only run if questionId is actually present in URL
+    if (!questionId) {
+      return;
+    }
+
+    if (!databaseId) {
+      return;
+    }
+
+    // If we're already editing this exact question, don't reload
+    if (editingQuestion?.questionId === questionId && showEditModal) {
+      return;
+    }
+
+    // Only load if questions are ready (to avoid race conditions)
+    if (status !== "ready") {
+      return;
+    }
+
+    const loadSpecificQuestion = async () => {
+      try {
+        // Try to find question in the loaded list first
+        const existingQuestion = questions.find((q) => q.questionId === questionId);
+        
+        if (existingQuestion) {
+          // Question is already in the list, use it
+          setEditingQuestion(existingQuestion);
+          setEditData({
+            questionText: existingQuestion.questionText,
+            answerText: existingQuestion.answerText,
+            tags: existingQuestion.tags || [],
+            domains: existingQuestion.domains || [],
+            timesAsked: existingQuestion.timesAsked,
+            averageScore: existingQuestion.averageScore,
+            lastScore: existingQuestion.lastScore,
+          });
+          setEditTagsInput((existingQuestion.tags || []).join(", "));
+          setEditDomainsInput((existingQuestion.domains || []).join(", "));
+          setShowEditModal(true);
+        } else {
+          // Question not in list, fetch it directly
+          const question = await fetchQuestion(questionId);
+          setEditingQuestion(question);
+          setEditData({
+            questionText: question.questionText,
+            answerText: question.answerText,
+            tags: question.tags || [],
+            domains: question.domains || [],
+            timesAsked: question.timesAsked,
+            averageScore: question.averageScore,
+            lastScore: question.lastScore,
+          });
+          setEditTagsInput((question.tags || []).join(", "));
+          setEditDomainsInput((question.domains || []).join(", "));
+          setShowEditModal(true);
+        }
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Failed to load question";
+        alert(message);
+        // Remove questionId from URL if question not found
+        navigate(`/question-manager/${databaseId}/questions`, { replace: true });
+      }
+    };
+
+    loadSpecificQuestion();
+  }, [questionId, databaseId, questions, status, editingQuestion, showEditModal, navigate]);
+
   const handleToggleExpand = async (questionId: string) => {
     if (expandedQuestions.has(questionId)) {
       // Collapse
@@ -95,7 +168,17 @@ function QuestionListPage() {
     }
   };
 
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+    setEditingQuestion(null);
+    // Remove questionId from URL when closing modal (only if it exists)
+    if (databaseId && questionId) {
+      navigate(`/question-manager/${databaseId}/questions`, { replace: true });
+    }
+  };
+
   const handleEditClick = (question: Question) => {
+    // Just open the modal directly - no URL navigation
     setEditingQuestion(question);
     setEditData({
       questionText: question.questionText,
@@ -134,8 +217,7 @@ function QuestionListPage() {
         tags: tags.length > 0 ? tags : undefined,
         domains,
       });
-      setShowEditModal(false);
-      setEditingQuestion(null);
+      handleCloseEditModal();
       setEditData({});
       // Reload questions
       const qs = await fetchQuestionsInDatabase(databaseId);
@@ -780,11 +862,7 @@ function QuestionListPage() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
               <h2>Edit Question (questionId: {editingQuestion.questionId})</h2>
               <button
-                onClick={() => {
-                  setShowEditModal(false);
-                  setEditingQuestion(null);
-                  setEditData({});
-                }}
+                onClick={handleCloseEditModal}
                 style={{ backgroundColor: "#64748b", padding: "0.5rem 1rem" }}
               >
                 ✕ Close

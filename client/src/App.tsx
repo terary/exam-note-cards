@@ -14,7 +14,7 @@ function App() {
       <Route path="/write-up-notes/:writeUpId" element={<WriteUpPage />} />
       <Route path="/question-manager" element={<QuestionManagerPage />} />
       <Route path="/question-manager/:databaseId" element={<QuestionManagerPage />} />
-      <Route path="/question-manager/:databaseId/questions" element={<QuestionListPage />} />
+      <Route path="/question-manager/:databaseId/questions/:questionId?" element={<QuestionListPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
