@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<DatabaseListPage />} />
-      <Route path="/quiz/:databaseId" element={<QuizPage />} />
+      <Route path="/quiz/:databaseId/:questionId?" element={<QuizPage />} />
       <Route path="/write-up-notes/:writeUpId" element={<WriteUpPage />} />
       <Route path="/question-manager" element={<QuestionManagerPage />} />
       <Route path="/question-manager/:databaseId" element={<QuestionManagerPage />} />

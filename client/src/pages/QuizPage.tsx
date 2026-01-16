@@ -8,13 +8,18 @@ import {
   startQuiz,
   submitAnswer,
 } from "../store/quizSlice";
+import { fetchQuestion } from "../api/examApi";
+import type { Question } from "../types";
 import "../App.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSanitize from "rehype-sanitize";
 
 function QuizPage() {
-  const { databaseId } = useParams<{ databaseId: string }>();
+  const { databaseId, questionId } = useParams<{
+    databaseId: string;
+    questionId?: string;
+  }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const quizState = useAppSelector((state) => state.quiz);
@@ -23,14 +28,81 @@ function QuizPage() {
   const [hasAdjustedSlider, setHasAdjustedSlider] = useState<boolean>(false);
   const [userAnswerInput, setUserAnswerInput] = useState<string>("");
   const [answerNotes, setAnswerNotes] = useState<string>("");
+  const [specificQuestion, setSpecificQuestion] = useState<Question | null>(
+    null
+  );
+  const [loadingSpecificQuestion, setLoadingSpecificQuestion] =
+    useState<boolean>(false);
+  const [specificQuestionError, setSpecificQuestionError] = useState<
+    string | null
+  >(null);
 
+  // Handle loading a specific question by ID
   useEffect(() => {
-    if (!databaseId) return;
+    if (!databaseId || !questionId) {
+      // Clear specific question state when questionId is removed
+      setSpecificQuestion(null);
+      setSpecificQuestionError(null);
+      return;
+    }
+
+    // TypeScript narrowing - we know both are defined at this point
+    const dbId = databaseId;
+    const qId = questionId;
+
+    // If we already have this question loaded and it matches, don't reload
+    if (specificQuestion?.questionId === questionId) return;
+
+    async function loadSpecificQuestion() {
+      setLoadingSpecificQuestion(true);
+      setSpecificQuestionError(null);
+      try {
+        // Ensure we have database info and session for stats/recording
+        // Initialize quiz state if not already initialized for this database
+        if (
+          !quizState.databaseId ||
+          quizState.databaseId !== dbId ||
+          quizState.status === "idle"
+        ) {
+          dispatch(startQuiz({ databaseId: dbId }));
+        }
+
+        // Fetch the specific question
+        const question = await fetchQuestion(qId);
+        setSpecificQuestion(question);
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Failed to load question";
+        setSpecificQuestionError(message);
+      } finally {
+        setLoadingSpecificQuestion(false);
+      }
+    }
+
+    loadSpecificQuestion();
+  }, [
+    databaseId,
+    questionId,
+    specificQuestion?.questionId,
+    quizState.databaseId,
+    quizState.status,
+    dispatch,
+  ]);
+
+  // Handle normal quiz flow (no specific questionId)
+  useEffect(() => {
+    if (!databaseId || questionId) return; // Skip if questionId is provided
 
     if (quizState.status === "idle" || quizState.databaseId !== databaseId) {
       dispatch(startQuiz({ databaseId }));
     }
-  }, [databaseId, quizState.status, quizState.databaseId, dispatch]);
+  }, [
+    databaseId,
+    questionId,
+    quizState.status,
+    quizState.databaseId,
+    dispatch,
+  ]);
 
   // Clear all input state whenever question changes
   // Don't restore previous answers - each question should start fresh
@@ -57,7 +129,11 @@ function QuizPage() {
     );
   }
 
-  const { currentQuestion, answerRevealed } = quizState;
+  // Use specific question if provided, otherwise use quiz state question
+  const currentQuestion = questionId
+    ? specificQuestion
+    : quizState.currentQuestion;
+  const answerRevealed = quizState.answerRevealed;
   const correctnessAverage =
     quizState.questionsAnswered > 0
       ? Math.round(
@@ -84,7 +160,9 @@ function QuizPage() {
     navigate("/");
   };
 
-  const isLoading = quizState.status === "loading";
+  const isLoading = questionId
+    ? loadingSpecificQuestion
+    : quizState.status === "loading";
 
   return (
     <div className="page-container">
@@ -110,7 +188,14 @@ function QuizPage() {
 
       {isLoading && <p>Loading quiz...</p>}
 
-      {!isLoading && !currentQuestion && (
+      {specificQuestionError && (
+        <div className="error-message">
+          <p>{specificQuestionError}</p>
+          <button onClick={handleBackToDatabases}>Back to databases</button>
+        </div>
+      )}
+
+      {!isLoading && !currentQuestion && !specificQuestionError && (
         <div className="info-message">
           <p>No questions available in this quiz.</p>
           <button onClick={handleBackToDatabases}>Choose another quiz</button>
@@ -120,7 +205,10 @@ function QuizPage() {
       {!isLoading && currentQuestion && (
         <section className="question-card">
           <h2>
-            Question{currentQuestion.questionId ? ` (questionId: ${currentQuestion.questionId})` : ' (questionId: missing)'}
+            Question
+            {currentQuestion.questionId
+              ? ` (questionId: ${currentQuestion.questionId})`
+              : " (questionId: missing)"}
           </h2>
           <div className="question-text markdown-body">
             <ReactMarkdown

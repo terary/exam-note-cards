@@ -10,6 +10,9 @@ import {
   type AnswerHistoryRecord,
 } from "../api/examApi";
 import type { Question } from "../types";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 import "../App.css";
 
 function QuestionListPage() {
@@ -403,8 +406,13 @@ function QuestionListPage() {
                               BAD
                             </span>
                           )}
-                          <span style={{ color: "#1f2933" }}>
-                            {truncateText(question.questionText, 150)}
+                          <span style={{ color: "#1f2933" }} className="markdown-body">
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              rehypePlugins={[rehypeSanitize]}
+                            >
+                              {question.questionText}
+                            </ReactMarkdown>
                           </span>
                         </div>
                       </td>
@@ -515,16 +523,14 @@ function QuestionListPage() {
                               >
                                 Answer
                               </h4>
-                              <p
-                                style={{
-                                  margin: 0,
-                                  color: "#1f2933",
-                                  fontSize: "1rem",
-                                  lineHeight: "1.6",
-                                }}
-                              >
-                                {question.answerText}
-                              </p>
+                              <div className="markdown-body">
+                                <ReactMarkdown
+                                  remarkPlugins={[remarkGfm]}
+                                  rehypePlugins={[rehypeSanitize]}
+                                >
+                                  {question.answerText}
+                                </ReactMarkdown>
+                              </div>
                             </div>
                             <h4
                               style={{
@@ -670,9 +676,18 @@ function QuestionListPage() {
                                           color: "#1f2933",
                                         }}
                                       >
-                                        {question.answerText
-                                          ? truncateText(question.answerText, 100)
-                                          : "—"}
+                                        {question.answerText ? (
+                                          <div className="markdown-body" style={{ fontSize: "0.875rem" }}>
+                                            <ReactMarkdown
+                                              remarkPlugins={[remarkGfm]}
+                                              rehypePlugins={[rehypeSanitize]}
+                                            >
+                                              {question.answerText}
+                                            </ReactMarkdown>
+                                          </div>
+                                        ) : (
+                                          "—"
+                                        )}
                                       </td>
                                       <td
                                         style={{
