@@ -119,7 +119,9 @@ function QuizPage() {
 
       {!isLoading && currentQuestion && (
         <section className="question-card">
-          <h2>Question (questionId: {currentQuestion.questionId})</h2>
+          <h2>
+            Question{currentQuestion.questionId ? ` (questionId: ${currentQuestion.questionId})` : ' (questionId: missing)'}
+          </h2>
           <div className="question-text markdown-body">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
