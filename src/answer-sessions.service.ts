@@ -151,4 +151,38 @@ export class AnswerSessionsService {
       );
     }
   }
+
+  async deleteAnswerRecord(
+    sessionId: string,
+    questionId: string,
+    recordedAt: string
+  ): Promise<void> {
+    const session = await this.answerSessionModel
+      .findOne({ sessionId })
+      .exec();
+
+    if (!session) {
+      throw new NotFoundException(`Answer session '${sessionId}' not found`);
+    }
+
+    const initialLength = session.answers.length;
+    session.answers = session.answers.filter(
+      (answer) =>
+        !(
+          answer.questionId === questionId &&
+          answer.recordedAt === recordedAt
+        )
+    );
+
+    if (session.answers.length === initialLength) {
+      throw new NotFoundException(
+        `Answer record not found in session '${sessionId}' for question '${questionId}' at '${recordedAt}'`
+      );
+    }
+
+    await session.save();
+    this.logger.log(
+      `Deleted answer record for question '${questionId}' from session '${sessionId}' (recordedAt: '${recordedAt}')`
+    );
+  }
 }

@@ -5,6 +5,10 @@ import { v4 as uuid } from "uuid";
 import { Database, DatabaseDocument } from "./schemas/database.schema";
 import { Question } from "./interfaces";
 import { QuestionsService } from "./questions.service";
+import {
+  AnswerSession,
+  AnswerSessionDocument,
+} from "./schemas/answer-session.schema";
 
 @Injectable()
 export class QuestionManagerService {
@@ -12,6 +16,8 @@ export class QuestionManagerService {
 
   constructor(
     @InjectModel(Database.name) private databaseModel: Model<DatabaseDocument>,
+    @InjectModel(AnswerSession.name)
+    private answerSessionModel: Model<AnswerSessionDocument>,
     private readonly questionsService: QuestionsService
   ) {}
 
@@ -246,5 +252,65 @@ export class QuestionManagerService {
     );
 
     return matchingQuestions;
+  }
+
+  async getQuestionAnswerHistory(questionId: string): Promise<
+    Array<{
+      sessionId: string;
+      databaseName: string;
+      userAnswerText: string;
+      actualAnswerText: string;
+      userCorrectnessPercentage: number;
+      answerNotes?: string;
+      recordedAt: string;
+    }>
+  > {
+    const sessions = await this.answerSessionModel.find().exec();
+    const history: Array<{
+      sessionId: string;
+      databaseName: string;
+      userAnswerText: string;
+      actualAnswerText: string;
+      userCorrectnessPercentage: number;
+      answerNotes?: string;
+      recordedAt: string;
+    }> = [];
+
+    for (const session of sessions) {
+      for (const answer of session.answers || []) {
+        if (answer.questionId === questionId) {
+          history.push({
+            sessionId: session.sessionId,
+            databaseName: session.databaseName,
+            userAnswerText: answer.userAnswerText,
+            actualAnswerText: answer.actualAnswerText,
+            userCorrectnessPercentage: answer.userCorrectnessPercentage,
+            answerNotes: answer.answerNotes,
+            recordedAt: answer.recordedAt,
+          });
+        }
+      }
+    }
+
+    // Sort by recordedAt descending (most recent first)
+    history.sort((a, b) => b.recordedAt.localeCompare(a.recordedAt));
+
+    this.logger.log(
+      `Retrieved ${history.length} answer records for question '${questionId}'`
+    );
+
+    return history;
+  }
+
+  async deleteAnswerHistoryRecord(
+    sessionId: string,
+    questionId: string,
+    recordedAt: string
+  ): Promise<void> {
+    // The AnswerSessionsService needs to be injected for this
+    // For now, we'll need to inject it in the controller
+    throw new Error(
+      "deleteAnswerHistoryRecord should be called via AnswerSessionsService"
+    );
   }
 }

@@ -214,3 +214,38 @@ export async function searchQuestions(
   );
   return handleResponse<Question[]>(response);
 }
+
+export interface AnswerHistoryRecord {
+  sessionId: string;
+  databaseName: string;
+  userAnswerText: string;
+  actualAnswerText: string;
+  userCorrectnessPercentage: number;
+  answerNotes?: string;
+  recordedAt: string;
+}
+
+export async function fetchQuestionAnswerHistory(
+  questionId: string
+): Promise<AnswerHistoryRecord[]> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/questions/${questionId}/answer-history`
+  );
+  return handleResponse<AnswerHistoryRecord[]>(response);
+}
+
+export async function deleteAnswerHistoryRecord(
+  questionId: string,
+  sessionId: string,
+  recordedAt: string
+): Promise<void> {
+  const response = await fetch(
+    `${QUESTION_MANAGER_BASE}/questions/${questionId}/answer-history`,
+    {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId, recordedAt }),
+    }
+  );
+  await handleResponse(response);
+}

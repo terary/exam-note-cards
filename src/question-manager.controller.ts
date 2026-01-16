@@ -12,6 +12,7 @@ import {
 import { QuestionManagerService } from "./question-manager.service";
 import { QuestionStatsService } from "./question-stats.service";
 import { QuestionsService } from "./questions.service";
+import { AnswerSessionsService } from "./answer-sessions.service";
 import { Question, DatabaseInfo } from "./interfaces";
 
 interface CreateQuestionDto {
@@ -38,7 +39,8 @@ export class QuestionManagerController {
   constructor(
     private readonly questionManagerService: QuestionManagerService,
     private readonly questionStatsService: QuestionStatsService,
-    private readonly questionsService: QuestionsService
+    private readonly questionsService: QuestionsService,
+    private readonly answerSessionsService: AnswerSessionsService
   ) {}
 
   @Get("databases")
@@ -155,6 +157,40 @@ export class QuestionManagerController {
       return [];
     }
     return this.questionManagerService.searchQuestions(query.trim(), databaseId);
+  }
+
+  @Get("questions/:questionId/answer-history")
+  async getQuestionAnswerHistory(@Param("questionId") questionId: string): Promise<
+    Array<{
+      sessionId: string;
+      databaseName: string;
+      userAnswerText: string;
+      actualAnswerText: string;
+      userCorrectnessPercentage: number;
+      answerNotes?: string;
+      recordedAt: string;
+    }>
+  > {
+    this.logger.log(
+      `GET /question-manager/questions/${questionId}/answer-history - Retrieving answer history`
+    );
+    return this.questionManagerService.getQuestionAnswerHistory(questionId);
+  }
+
+  @Delete("questions/:questionId/answer-history")
+  async deleteAnswerHistoryRecord(
+    @Param("questionId") questionId: string,
+    @Body() body: { sessionId: string; recordedAt: string }
+  ): Promise<{ status: "deleted" }> {
+    this.logger.log(
+      `DELETE /question-manager/questions/${questionId}/answer-history - Deleting answer history record`
+    );
+    await this.answerSessionsService.deleteAnswerRecord(
+      body.sessionId,
+      questionId,
+      body.recordedAt
+    );
+    return { status: "deleted" };
   }
 }
 

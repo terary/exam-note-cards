@@ -156,7 +156,7 @@ function QuestionManagerPage() {
     setSearchQuery("");
     setSearchResults([]);
     setIsSearching(false);
-    navigate(`/question-manager/${dbId}`);
+    navigate(`/question-manager/${dbId}/questions`);
   };
 
   const handleSearch = async () => {
@@ -501,11 +501,11 @@ function QuestionManagerPage() {
         <p>Please select a database to view questions.</p>
       )}
 
-      {status === "ready" && selectedDatabaseId && displayQuestions.length === 0 && (
-        <p>No questions found.</p>
+      {status === "ready" && selectedDatabaseId && displayQuestions.length === 0 && !isSearching && (
+        <p>Click "Select" to view questions for this database.</p>
       )}
 
-      {status === "ready" && displayQuestions.length > 0 && (
+      {status === "ready" && displayQuestions.length > 0 && isSearching && (
         <div style={{ overflowX: "auto" }}>
           <table
             style={{

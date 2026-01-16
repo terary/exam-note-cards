@@ -3,6 +3,7 @@ import DatabaseListPage from "./pages/DatabaseListPage";
 import QuizPage from "./pages/QuizPage";
 import WriteUpPage from "./pages/WriteUpPage";
 import QuestionManagerPage from "./pages/QuestionManagerPage";
+import QuestionListPage from "./pages/QuestionListPage";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/write-up-notes/:writeUpId" element={<WriteUpPage />} />
       <Route path="/question-manager" element={<QuestionManagerPage />} />
       <Route path="/question-manager/:databaseId" element={<QuestionManagerPage />} />
+      <Route path="/question-manager/:databaseId/questions" element={<QuestionListPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
