@@ -5,6 +5,8 @@ import {
   fetchQuestionAnswerHistory,
   deleteQuestion,
   deleteAnswerHistoryRecord,
+  updateQuestion,
+  type UpdateQuestionDto,
   type AnswerHistoryRecord,
 } from "../api/examApi";
 import type { Question } from "../types";
@@ -29,6 +31,11 @@ function QuestionListPage() {
     "timesAsked" | "avgScore" | "lastScore" | null
   >(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [editData, setEditData] = useState<UpdateQuestionDto>({});
+  const [editTagsInput, setEditTagsInput] = useState("");
+  const [editDomainsInput, setEditDomainsInput] = useState("");
 
   useEffect(() => {
     if (!databaseId) {
@@ -82,6 +89,58 @@ function QuestionListPage() {
         }
       }
       setExpandedQuestions((prev) => new Set(prev).add(questionId));
+    }
+  };
+
+  const handleEditClick = (question: Question) => {
+    setEditingQuestion(question);
+    setEditData({
+      questionText: question.questionText,
+      answerText: question.answerText,
+      tags: question.tags,
+      domains: question.domains,
+      timesAsked: question.timesAsked,
+      averageScore: question.averageScore,
+      lastScore: question.lastScore,
+    });
+    setEditTagsInput(question.tags?.join(", ") || "");
+    setEditDomainsInput(question.domains.join(", "));
+    setShowEditModal(true);
+  };
+
+  const handleUpdateQuestion = async () => {
+    if (!editingQuestion || !databaseId) return;
+
+    const tags = editTagsInput
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+    const domains = editDomainsInput
+      .split(",")
+      .map((d) => d.trim())
+      .filter((d) => d.length > 0);
+
+    if (domains.length === 0) {
+      alert("Please provide at least one domain");
+      return;
+    }
+
+    try {
+      await updateQuestion(editingQuestion.questionId, {
+        ...editData,
+        tags: tags.length > 0 ? tags : undefined,
+        domains,
+      });
+      setShowEditModal(false);
+      setEditingQuestion(null);
+      setEditData({});
+      // Reload questions
+      const qs = await fetchQuestionsInDatabase(databaseId);
+      setQuestions(qs);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to update question";
+      alert(message);
     }
   };
 
@@ -395,6 +454,16 @@ function QuestionListPage() {
                           }}
                         >
                           <button
+                            onClick={() => handleEditClick(question)}
+                            style={{
+                              backgroundColor: "#3b82f6",
+                              padding: "0.5rem 1rem",
+                              fontSize: "0.875rem",
+                            }}
+                          >
+                            Edit
+                          </button>
+                          <button
                             onClick={() => handleDeleteQuestion(question.questionId)}
                             style={{
                               backgroundColor: "#ef4444",
@@ -658,6 +727,193 @@ function QuestionListPage() {
               })}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Edit Modal */}
+      {showEditModal && editingQuestion && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1000,
+            padding: "2rem",
+          }}
+          onClick={() => {
+            setShowEditModal(false);
+            setEditingQuestion(null);
+            setEditData({});
+          }}
+        >
+          <div
+            className="question-card"
+            style={{
+              maxWidth: "800px",
+              width: "100%",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+              <h2>Edit Question (questionId: {editingQuestion.questionId})</h2>
+              <button
+                onClick={() => {
+                  setShowEditModal(false);
+                  setEditingQuestion(null);
+                  setEditData({});
+                }}
+                style={{ backgroundColor: "#64748b", padding: "0.5rem 1rem" }}
+              >
+                ✕ Close
+              </button>
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Question Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={editData.questionText ?? ""}
+                onChange={(e) =>
+                  setEditData({ ...editData, questionText: e.target.value })
+                }
+                placeholder="Enter the question..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Answer Text *
+              </label>
+              <textarea
+                className="text-input"
+                value={editData.answerText ?? ""}
+                onChange={(e) =>
+                  setEditData({ ...editData, answerText: e.target.value })
+                }
+                placeholder="Enter the answer..."
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Tags (comma-separated)
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={editTagsInput}
+                onChange={(e) => setEditTagsInput(e.target.value)}
+                placeholder="tag1, tag2, tag3"
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600 }}>
+                Domains (comma-separated) *
+              </label>
+              <input
+                type="text"
+                className="text-input"
+                style={{ minHeight: "auto", padding: "0.5rem" }}
+                value={editDomainsInput}
+                onChange={(e) => setEditDomainsInput(e.target.value)}
+                placeholder="domain1, domain2"
+              />
+            </div>
+
+            <div style={{ marginBottom: "1rem", padding: "1rem", backgroundColor: "#f8fafc", borderRadius: "8px" }}>
+              <h3 style={{ marginBottom: "1rem", fontSize: "1.1rem", fontWeight: 600 }}>Statistics</h3>
+              
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1rem" }}>
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Times Asked
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.timesAsked ?? 0}
+                    onChange={(e) =>
+                      setEditData({ ...editData, timesAsked: parseInt(e.target.value) || 0 })
+                    }
+                    min="0"
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Average Score (%)
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.averageScore ?? ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEditData({
+                        ...editData,
+                        averageScore: val === "" ? null : parseFloat(val),
+                      });
+                    }}
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    placeholder="—"
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.875rem" }}>
+                    Last Score (%)
+                  </label>
+                  <input
+                    type="number"
+                    className="text-input"
+                    style={{ minHeight: "auto", padding: "0.5rem" }}
+                    value={editData.lastScore ?? ""}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setEditData({
+                        ...editData,
+                        lastScore: val === "" ? null : parseFloat(val),
+                      });
+                    }}
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    placeholder="—"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <button onClick={handleUpdateQuestion}>Save Changes</button>
+              <button
+                onClick={() => {
+                  setShowEditModal(false);
+                  setEditingQuestion(null);
+                  setEditData({});
+                }}
+                style={{ backgroundColor: "#64748b" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
