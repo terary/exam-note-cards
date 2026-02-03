@@ -6,10 +6,10 @@
       "questionText": "What is Elastic MapReduce (EMR)?",
       "answerText": "- Elastic MapReduce\n- Managed Hadoop framework on EC2 instances\n- Includes Spark, HBase, Presto, Flink, Have and more\n- EMR Notebooks\n- Several integration points with AWS",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -17,10 +17,10 @@
       "questionText": "The follow describes which AWS product/service?\n\n- Managed Hadoop framework on EC2 instances\n- Includes Spark, HBase, Presto, Flink, Have and more\n- EMR Notebooks\n- Several integration points with AWS",
       "answerText": "Elastic MapReduce (EMR)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -28,10 +28,10 @@
       "questionText": "What are the two types of EMR Cluster and when to use each?",
       "answerText": "EMR Usage\n\n- Transient vs Long-Running Clusters\n    - Can spin up task nodes using Spot instances for temporary capacity\n    - can use reserved instances for long-running clusters to save money\n- Connect directly to master to run jobs\n- Submit ordered steps via the console\n\nIf you have a known set of steps/tasks to run. You can run a transient cluster and reserved instances.\n\nIf you have long running queries or if you need to interact with the app(s), you can run a long running cluster and terminate by hand when done",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -39,10 +39,10 @@
       "questionText": "Which AWS Services does the EMR cluster use to interact with (7)?",
       "answerText": "- EC2 for instances that comprise nodes in the cluster\n- VPC to configure the virtual network in which you launch instances\n- S3 to store input/output data (alternative to Hadoop)\n- CloudWatch to monitor cluster performance and configure alarms\n- IAM to configure permissions\n- CloudTrail to audit requests to service\n- Data PipeLine to schedule and start your clusters",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -50,10 +50,10 @@
       "questionText": "What are the EMR storage options (3)?\nWhich is default? What are the pros and cons of the default FS? What is the best alternative?",
       "answerText": "- HDFS (default)\n- EMRFS: access S3 as if it were HDFS\n    - EMRFS Consistent View - optional for S3 consistency\n    - Uses DynamoDB to track consistency\n- Local File system\n- EBS for HDFS\n\nCon to HDFS is it's temporary. Once the cluster is gone so is the filesystem (your data).\n\nPro to HDFS probably fastest (high performance)\n\n> Key point is that you can use S3 in place of HDFS (EMRFS)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -61,10 +61,10 @@
       "questionText": "What are the EMR Promises (contract)? (4)",
       "answerText": "- EMR Charges by the hour\n    - plus ECS charges\n- Provisions new nodes if a core node fails\n- Can add and remove task nodes on the fly\n- Can resize a running cluster's core nodes",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -72,10 +72,10 @@
       "questionText": "Describe briefly what is EMR Serverless?\nIs it really serverless?",
       "answerText": "- Choose an EMR Release and Runtime (Spark, Hive, Presto)\n- submit query / scripts via `job run requests` (instead of logging into master node directory), Then the serverless aspect will figure out how much capacity you actually need\n- EMR Manages underlying capacity\n    - But you can specify default worker sizes and pre-initialized capacity\n    - EMR computes resources needed for your jbo & schedules workers accordingly\n    - All within one region (multi AZ)\n\n> If you want to 'think' about the capacity you can.  This may be a good idea.  Regardless of your suggestions, it will compute as necessary and add more as necessary\n\n- Why is this a big deal\n    - You no longer have to estimate how many workers are needed for your workloads - they are provisioned as needed, automatically\n\n- Serverless? Really?\n    - TBH you still need to think about worker nodes and how they are configured\n\n\n> If you are thinking about `(Spark, Hive, Presto)` then you are already thinking about the underlying configuration\n\n> __ONLY CLI is supported at this time__, no SDK no web console.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -83,10 +83,10 @@
       "questionText": "Because EMR is serverless, its easy to think AWS will do everything automatically. However, there is a very import step that MUST be done for each application. \n\nAlso, what is the EMR Lifecycle?",
       "answerText": "- Create\n- Created\n- Starting\n- Started\n- Stopping\n- Stopped\n- Terminate\n\n__EACH HAS TO BE MANUALLY__  Hence, you __MUST__ terminate!! You will be billed otherwise.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -94,10 +94,10 @@
       "questionText": "When creating a EMR Serverless application and it uses Spark.  There is something important we must consider in capacity planning (yes even for serverless)",
       "answerText": "- Spark adds 10% overhead to memory requested for drivers and executors\n- Be sure initial capacity is at least 10% more than requested by the job",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -105,10 +105,10 @@
       "questionText": "What is the advantage of running EMR (serverless) on EKS?",
       "answerText": "You can share application resources with your other apps that may also be running in EKS.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -116,10 +116,10 @@
       "questionText": "At it's core, MapReduce is a stack of 3 modules.  Discuss the three components",
       "answerText": "These are the main modules\n[MapReduce]\n[YARN]\n[HDFS]\n\n> They presented a diagram with a stack\n\n`HDFS` - Hadoop file system. It is temporary but super fast for caching intermediate results (less compute time)\n\n`YARN` - Yet Another Resource Negotiator\n`MapReduce` - __Framework to create Application that processes vasts amount of data in parallel__\n\n\nBasically you write Map functions and Reduce functions\n\n> A map function maps data to sets of key value paris called 'intermediate results' and map functions (transform, extract)\n\n> A reduce function combines intermediate results and maybe transform for final output\n\n> Generally Mapper transfer/prepare  Reduce Distill/aggregate",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -127,10 +127,10 @@
       "questionText": "Spark is highly versatile and can support much of the Machine Learning activity.. However, it is not good at something particular, what is it?",
       "answerText": "",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -138,10 +138,10 @@
       "questionText": "MapReduced had 3 main modules, Spark has 4.  What is the 'module stack' compared to MapReduce?",
       "answerText": "[MapReduce] [Spark]\n[----- YARN ------]\n[----- HDFS ------]\n\n> Spark has largely replaced MapReduce and is faster\n\n- Highly versatile but __not used for batch__, more for transforming data as it comes in",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -149,10 +149,10 @@
       "questionText": "What languages does Spark support(4)?",
       "answerText": "Spark has APIs for Java, Scala, Python and R",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -160,10 +160,10 @@
       "questionText": "Spark MLLib offers several algorithms which have alternative. What makes the Spark edition different? \n\nWhat are the algorithms?",
       "answerText": "- Classification: logistic regression, naive Bayes\n- Regression\n- Decision trees\n- Recommendation engine (ALS)\n- Clustering (K-Means)\n- LDS (topic modeling)\n- ML Workflow utilities (pipelines, feature transformation, persistence)\n- SVD, PCA, Statistics\n\n> What is important here is all of these are offered in a way that they are distributed and scalable, not all ML algorithms are scalable/distributed. These will run on Cluster where as alternative may not be able to.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -171,10 +171,10 @@
       "questionText": "What is Spark + Zeppelin?",
       "answerText": "- Can run Spark code interactively (like you can Spark shell) \n  - This speeds up or development cycle\n  - And allows easy experimentation and exploration of your big data\n- Can execute SQL queries directly against SparkSQL\n- Query results may be visualized in charts and graphs\n- Makes Spark feel more like a data science tool",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -182,10 +182,10 @@
       "questionText": "What is the curse of dimensionality?  More specifically, discuss how/why dimensional space grows causing sparse data.",
       "answerText": "> When we add a feature we add dimensional space.  When a model represents a single feature, say 'age'.  That is graphed along a single axis.  When we add a second feature, height - this adds a second axis, adds second dimensional space.  Dimensional space increases.. In school, with graphing on paper, we always used 2 or 3 axis.. Are universe was limited to 2 or 3 dimensions.. Machine learning we add axis (dimensional space) ... hence we add space/universe for each dimension.  With too many dimensions are data becomes sparse.\n\n\n\n> It is best to limit the dimensions to relevant features.. This is true for accuracy of the model, but also performance (real money)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -193,10 +193,10 @@
       "questionText": "Explain TF-IDF, TF and DF. \n\nNeed to understand the terms but also the formula.",
       "answerText": "TF-IDF\n\n- Stands for \"Term Frequency and Inverse Document Frequency\"\n- Important data for search - figures out what terms are most relevant for a document\n\n\n\n- _Term Frequency_ just measures how often a word occurs in a document\n  - A word that occurs frequently is probably important to that document's meaning\n\n- _Document Frequency_ is how often a word occurs in a entire set of documents, ie, all of wikipedia or every web page\n  - This tells us about common words that just appear everywhere no matter what topic like \"a\", \"the\", \"and\", etc, _how common the word is for all documents_\n\n\n__TF-IDF Explained (01:36)__\n\n\n- So a measure of the relevancy of a word to a document might be:\n  (Term Frequency)/(Document Frequency)\n\n  Or: Term Frequency * (Document Frequency)^-1\n\n  That is, take how often the word appears in a document, over how often it just appears everywhere.  That give you a measure of how important and unique this word is for a this document.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -204,10 +204,10 @@
       "questionText": "Explain, \"unigram\", \"bi-gram\", \"tri-gram\".",
       "answerText": "- An extension of TF-IDF is to not only compute relevancy for individual words (terms) but also for bi-grams or more generally, n-grams\n- \"I love certification exams\"\n  - Unigram: \"I\", \"love\", \"certification\", \"exams\"\n  - Bi-grams: \"I love\", \"love certification\", \"certification exam\"\n  - Tri-grams: \"I love certification\", \"love certification exam\"\n\n__EXAM__ You may have a question on exam that will ask you to break a sentences into unigram, bi-grams. It's not clear to me if we are suppose to give the number of occurence of each bi-gram, tri-gram etc or if we were supposed to break but the sentences into bigram.  __trick__ in the end we are counting popularity... not actual bigram/trigram",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -215,10 +215,10 @@
       "questionText": "When imputing missing data what is the least recommended method (2)?\nWhat is the most recommend method, numeric data, categorical data?",
       "answerText": "Least recommended\n- Dropping rows with missing data\n- Using mean value or median value\n\nMore recommended\n\nUse machine learning!\n\n- KNN: find K \"nearest\" (most similar) rows and average their values\n  - Assumes numerical data, not categorical\n  - There are ways to handle categorical data (Hamming distance), but categorical data is probably better served by...\n\n- Deep Learning (best)\n  - Build machine learning model to impute data for your machine learning model\n  - Works well for categorical data.  Really Well. But it's complicated\n\n- Regression\n  - Find linear or non-linear relationships between the missing feature and other features\n  - Most advanced technique: MICE (Multiple Imputation by Chained Equations)\n\n__EXAM__ probably not on the exam, MICE is newer, but if it is an option than it is probably the best option\n\n\n__EXAM__ The best option over 'imputing' is to get more data",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -226,10 +226,10 @@
       "questionText": "What is unbalanced data?\nGive example of why it matters.",
       "answerText": "- Large discrepancy between \"positive\" and \"negative\" cases\n  - ie fraud detection. Fraud is rare and most rows will not be fraud\n  - don't let the terminology confuse you; \"positive\" doesn't mean \"good\"\n    - it means the thing you're testing for is what happened\n    - if your machine learning model is made to detect fraud, then fraud is the positive case\n\n- Mainly a problem with neural networks\n\n> Model sees in training data 99.9% of the case are negative for fraud so the model will start assuming everything is fraud and will be accurate 99.9% of the time.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -237,10 +237,10 @@
       "questionText": "What are common technique of dealing with `unbalanced data` (4)?",
       "answerText": "1. Oversampling\n- Duplicate samples from minority class\n- Can be done at random\n\n2. under-sampling\n- Instead of create more positive samples, remove negative samples\n- Throwing data away is __usually not the right answer__\n  - Unless you are specifically trying to avoid \"big data\" scaling issues\n\n3. SMOTE\n- Synthetic Minority Over-sampling TEchnique\n- Artificially generate new samples of the minority class using nearest neighbors\n  - Run K-nearest-neighbors of each sample of the minority class\n  - Create a new sample from the KNN result (mean of the neighbors)\n- Both generate new samples and under-samples majority class\n- Generally better than just over-sampling\n\n4. Adjusting Thresholds\n\n- When making predictions about classification (fraud / not fraud), you have some sort of threshold of probability at which point you'll flag something as the positive case (fraud)\n- If you have too many false positive, one way to fix that is to simply increase that threshold\n  - Guarantee to reduce false positive\n  - But, could result in more false negative\n\n> He goes on to say many models will provide a probability of fraud / not fraud, this is the threshold he talking about.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -248,10 +248,10 @@
       "questionText": "Outliers, what are they? how do we deal with them (3).",
       "answerText": "Three recommendations for dealing with outlier\n1. throw out (be responsible)\n2. Standard deviation threshold (only data within one STD)\n3. Random Cut Forest (most likely answer on the exam) \n\n\n> He demonstrates with diagrams/graphs how outliers can cause the data to zoom out, missing the relationships of most of the data.  When we remove the outliers the graph zooms-in so we have a more detailed view of the data/graph\n\nOutliers are datapoints that don't necessarily fit within the 'norm' or the dat we are modelling.  Marathon participants may have outliers... Occasionally a 95 year person will run a marathon. The true mean age may be skewed, so we may want to throw out that outlier.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -259,10 +259,10 @@
       "questionText": "Explain 'binning' and mention qunatile binning.",
       "answerText": "- Bucket observations together based on range values\n- Example: estimate ages of people\n  - put all 20-something in one classification, 30-something in another, etc\n- Quntile binning categorizes data by their place in the data distribution\n  - Ensures even sizes of bing\n- Transforms numeric data to ordinal data\n- Especially useful when there is uncertainty in the measurements\n\n\n> Binning think 'index box'\n\n> Binning is good for categorizing imprecise data, age 20.3 or 30 20-somethings\n\n> Binning will throw out of data so do it if you need categorization or your data has errors \n\n> Qunatile binning means that there are the same number samples for each bin (instead of creating bins on categorize, we categorize data and create the bins) __Will have evan sizes in each bin__",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -270,10 +270,10 @@
       "questionText": "Explain what it is to transform data.",
       "answerText": "- Applying some function to a feature to make it better suited for training\n- Feature data with an exponential trend may benefit from logarithmic transform\n- Example: YouTube recommendation\n  - A numeric feature X mis also represented by X^2, sqrt(X)\n  - This allows learning of super and sub-linear functions\n\n\n> Youtube, for each numeric feature they also look at X^2 and sqrt(X), to look for other patterns that may not be present with the linear X\n\n\n> He makes the point that transformation doesn't necessarily mean change a feature, you can derive other features for a value (youtube)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -281,10 +281,10 @@
       "questionText": "Discuss briefly \"Scaling and Normalizing Data\".  Why do we do it?",
       "answerText": "- __Some models prefer feature data to be normally distributed around 0 (most neural nets)__\n- Most models require feature data to at least to be scaled to comparable values\n  - Otherwise features with larger magnitudes will have more weight than the should\n  - Example: modeling age and income as features - incomes will be much higher values than age\n- `Scikit_learn` has a preprocessor module that helps(`MinMaxScaler`, etc)\n- Remember to scale your result back up (if you scaled them down)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -292,10 +292,10 @@
       "questionText": "Discuss \"Shuffling\" what is it? Why do we do it?",
       "answerText": "- Many algorithms benefit from shuffling their training data\n- Otherwise they may learn from residual signals in the training data resulting from the order which they were collected",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -303,10 +303,10 @@
       "questionText": "How to configure SM Domain to use one VPC",
       "answerText": "In the domain set-up/creation process, there should be an option to 'vpc only' which will indicate to SM, not to create the secondary Domain.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -314,10 +314,10 @@
       "questionText": "Describe briefly what is a SageMaker domain. What are created under the domain? What is the option about VPCs?",
       "answerText": "Before you get started you need a SM domain.  Everything you do is under the umbrella of SM Domain.\n\n- Domains organize users, apps, resources\n  - __Single EFS shared__\n  - User Profiles with personal apps\n    - SM Studio Instances\n    - Private EFS directory (from shared volume)\n    - Shared resources across other users\n  - Shared Spaces\n    - Shared EFS Directory\n    - Communal IDE App    \n\n#### VPC's for SageMaker AI Domains (01:56)\n> Notice how domains are associated with VPC\n\n\n> SM Domain by default a domain has two VPCs\n  - One for Internet Access\n    - Manged by SM AI\n  - And your own\n    - Encrypted traffic to your EFS volume\n    - You specify the VPC, it's subnets, and Security Groups\n\nYou must bring your own VPC, SM will create an additional.\n\n- You can change this\n  - Send all traffic to your own VPC\n    - Select \"VPC Only\" when creating the domain.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -325,10 +325,10 @@
       "questionText": "What is SM Ground Truth?",
       "answerText": "Ground Truth is a service that lets you farm-out your image labeling work (maybe other work?).  It will create a model to attempt to label images itself (save money), and only images that have low confidence score will get labled by Humans.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -336,10 +336,10 @@
       "questionText": "Ground Truth leverages actual Humans.  Who are the Humans? Where do they come from?",
       "answerText": "- Mechanical Turk\n- Your own internal team\n- Professional Labeling companies",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -347,10 +347,10 @@
       "questionText": "What is Ground Truth Plus?",
       "answerText": "Same purpose as Ground Truth except Amazon does all the work for you.\n\n- Turkey solution\n- \"Our team of EWS Experts\" manages the workflow and team of labelers\n  - You fill out an intake form\n  - They contact you and discuss pricing\n\n- You tran progress via the Ground Truth Plus Project Portal\n- Get labeled data from S3 when done",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -358,10 +358,10 @@
       "questionText": "What is Mechanical Turk?",
       "answerText": "- Crowd-sourcing marketplace to perform simple human tasks\n- Distributed virtual workforce\n\n- Example\n  - You have a data set of 10,000,000 images and you want to labels these images\n  - You distribute the task on Mechanical Turk and humans will tag those images\n  - You set the reward per image (example $0.10/image)\n  - > Up to you to determine the cost of the task\n\n- Use cases: image classification, data collection, business processing  \n\n- Integrate with Amazon A2I, SageMaker Ground Truth....",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -369,10 +369,10 @@
       "questionText": "What is SM Data Wrangler - Quick Model",
       "answerText": "\"Quick Model\" to train your model with your data and measure its results",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -380,10 +380,10 @@
       "questionText": "__TODO__ Do a hands on with DataWrangler  - you may not necessarily need to accomplish something but you do want to click around.\n0071 / 03:30\n\nI __think__ the output of Data Wrangler is a Notebook..",
       "answerText": "__TODO__ 0071 / 03:30",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -391,10 +391,10 @@
       "questionText": "__TODO__ ⭐0073 Demo SageMaker Studio Canvas and Data Wrangler (24:20)\n__COSTS BIG MONEY__ The hands on could be expensive also the UI changes frequently so the test will not actually include UI questions.\n\nHowever, I should have familiarity so I should click around",
       "answerText": "__TODO__ ⭐0073 Demo SageMaker Studio Canvas and Data Wrangler (24:20)\nHands On, Lab.. They recommend DO NOT FOLLOW ALONG due to costs. \n\nStill worth watching and x2 speed.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -402,10 +402,10 @@
       "questionText": "Describe SageMaker Model Monitor (9 points)",
       "answerText": "> Get alerts on quality deviations on your deployed models (via CloudWatch)\n\n- Visualize data drift\n  - Example: loan model starts given people more credit due ot drift in missing input features\n\n\n- Detect anomalies & outliers\n- Detect new features\n- No Code Needed\n\n- Data is stored in S3 and secured\n- Monitoring jobs are scheduled via a Monitoring Schedule\n- Metrics are emitted to CloudWatch\n  - CloudWatch notification can be used to trigger alarms\n  - You'd then take corrective action (retrain the model, audit the data)\n- Integrates with Tensorboard, QuickSight, Tableau\n  - Or just visualize within SageMaker Studio",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -413,10 +413,10 @@
       "questionText": "What is the advantage of using Clarify with Model Monitor?",
       "answerText": "- SageMaker Clarify detects potential bias\n- ie imbalance across different groups/ages/income brackets\n- With Model Monitor you can monitor for bias and be alerted to new potential bias via CloudWatch\n-SageMaker Clarify also helps explain model behavior\n  - understand which features contribute the most to your predictions",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -424,10 +424,10 @@
       "questionText": "What are the monitor types (drift types), of Model Monitor (4)?",
       "answerText": "- Monitoring Types\n  - Drift in __data__ quality\n    - Relative to baseline you create\n    - Quality is just statistical properties of the feature\n  - Drift in __model__ quality\n    - Works the same way with a model quality baseline\n    - Can integrate with Ground Truth Labels\n  - Bias Drift\n  - Feature attribution drift\n    - base on normalized discounted cumulative Gain (NDCG) score\n    - This compares feature ranking of training vs live data",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -435,10 +435,10 @@
       "questionText": "What are Shapley, SHAP, and Async Shapley Values?",
       "answerText": "> Shapley Drop individual features and see what effect that has on your model\n\n> SHAP is a way of approximating so we don't have to do the brute force technique for models with many features.\n\n> Asymmetric Shapley Values are across time which can add some complication\n\n- Shapley values are the algorithm used to determine the contribution of each feature towards a mode's predictions.\n  - Originated in the __game theory__, adapted to ML\n  - Basically measures the impact of dropping individual features\n  - Gets complicated with lots of features\n    - SageMaker Clarify uses Shapley Additive exPlanations (SHAP) as an approximation technique.\n\n- Asymmetric Shapley Values:\n  - For Time Series\n  - The algorithm used to determine the contribution of input features at each time step toward forecasted predictions",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -446,10 +446,10 @@
       "questionText": "Describe SM Feature Store",
       "answerText": "SageMaker Feature Store\n\n- A \"feature\" is just a property used to train a machine learning model\n  - Like, you might predict someone's political party based on \"features\" such as their address, income, age, etc.\n- Machine Learning models require fast, secure access to feature data for training\n- It's also a challenge to keep it organized and share features across different models\n\n> Features could come from anywhere, any source.  There is a slide that makes it clear that AWS's services are well integrated with the Feature Store\n\n- How SageMaker Feature Store Organizes your Data (01:56)\n> Feature's power is that it allows you to organize your features\n\n\n----------------------------------------------\n|                 Feature Store              |\n| |---Feature Group---|  |---Feature Group---|\n    recordId\n    feature Name\n    event Time  \n\n\n- How does it all work (2:10)\nData Ingestion (streaming or batch)\n\nFeature Store has two modes/type\n- Online (real time/Streaming)\n- Offline (Batch)\n\n- Online\n  - Stream data into Feature Store with `PutRecord` / `GetRecord`\n\n- Offline\n - Batch access via the offline S3 store (use with anything hits S3)\n\n- Security Feature Store Security\n    - Encrypted at rest and in transit\n    - Works with KMS customer Master Keys\n    - Fine-grained access control with IAM\n    - May also be secured with AWS PrivateLink",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -457,10 +457,10 @@
       "questionText": "Describe is SageMaker Canvas.",
       "answerText": "__No-Code machine learning for business analysts__\n> Also a user friendly application for building Generative AI, via bedrock\n\n- No-Code machine learning for business analysts\n- Upload csv data (csv only for now), select a column to predict, build it, and make predictions\n- Can join datasets\n- Classification or regression\n- Automatic data cleaning\n  - Missing values\n  - Outliers\n  - Duplicates\n- Share models and datasets with SageMaker Studio  \n- Also has generative AI support via Bedrock or JumpStart foundation models \n  - Many are fine-tunable within Canvas",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -468,10 +468,10 @@
       "questionText": "Describe GLUE in a nut-shell (two main purpose).",
       "answerText": "- Serverless discovery and definition of table definitions and schema\n  - S3 - \"data lakes\"\n  - RDS\n  - Redshift\n  - Most other SQL database\n\n- Custom ETL Jobs\n  - Trigger-driven, on schedule or on demand\n  - Fully managed",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -479,10 +479,10 @@
       "questionText": "What is Glue Crawler?\nDescribe what data goes where and how do we view/use it?",
       "answerText": "- Glue crawler scans dat in S3, creates a schema\n- Can run periodically\n- Populates Glue Data Catalog\n  - Store only table definitions go\n  - Original data stays in S3\n- Once cataloged, you can treat your unstructured data like its structured\n  - Redshift Spectrum\n  - Athena\n  - EMR\n  - QuickSight\n\n\n__TODO__ Put all my notes (unstructured) in S3 And let Glue do its thing\n\n\n[Diagram https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2020/01/23/S3SpendwithGlueRedshift2-788x630.png]",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -490,10 +490,10 @@
       "questionText": "For Glue, what is the best way to partition (organize) your buckets?",
       "answerText": "- Glue crawler will extract partitions based on how your S3 data is organized\n- Think up front about how you will be querying your data lake in S3\n- Example: devices send sensor data every how\n- Do you query primarily by time ranges?\n  - if so, organize your buckets as yyyy/mm/dd/device\n- Do you query primary by device?\n  - If so organize your buckets as device/yyyy/mm/dd\n\n> Think carefully about 'domain', 'subdomain', and 'sub-subdomain' the greatest to the least. \n\n> How to partition your S3 buckets for Glue?",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -501,10 +501,10 @@
       "questionText": "What is Glue Studio? 8 points, and has an alternative name.",
       "answerText": "- Visual interface for ETL workflows\n- Visual Job Editor\n  - Create DAGS for complex workflow\n  - Sources include S3, Kinesis, Kafka, JDBC\n  - Transform / sample/join data\n  - Target to S3 or Glue Data Catalog\n  - Support partitioning\n- Visual job dashboard\n\n__TODO__ What to look at the DAG editor, Observe also how it can create Schema\n\n__EXAM__ he said GLUE Studio is kinda new and not expected to be on the exam too much... However, he may not know.",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -512,10 +512,10 @@
       "questionText": "What is Glue DataBrew?",
       "answerText": "__EXAM__ Probably big on the Exam\n\n> Visual Tool, for the T in ETL\n\n- Visual data prep tool\n  - UI for Pre-processing large data sets\n  - Input form S3, data warehouse, or database\n  - Output to S3\n\n- Over 250 read-made transformations\n- you create \"recipe\" of transformations that can be saved as jobs within a larger project\n- May define quality rules\n- May create datasets with custom SQL from Redshift or Snowflake\n- Security\n  - Can integrate with KMS (with customer master key only)\n  - SSL in transit\n  - IAM can restrict who can do what\n  - CloudWatch & CloudTrain\n\n__TODO__ Look at the '250 read made transformations'\n\n\n__- __Output many formats... Hence it may be a good tool for converting from one file format to another__\n\n- Run jobs immediately or Schedule for later use\n\nSession $1.00, + $0.48/per node-hour (need to verify with AWS)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -523,10 +523,10 @@
       "questionText": "Glue DataBrew, what are the PII important transformations (8 total)?",
       "answerText": "- Substitutions (`REPLACE_WITH_RANDOM`)\n- Shuffle (`SHUFFLE_ROWS`)\n- Deterministic encryption (`DETERMINISTIC_ENCRYPT`)\n- Probabilistic Encryptions (`ENCRYPT`, \"Probabilistic\" encryption routine may be more than one result, not sure about this)\n- Decrypt (`DECRYPT`)\n- Nulling out or deleting (`DELETE`)\n- Masking out (`MASK_CUSTOM`, `_DATE`, `_DELIMITER`, `_RANGE`) (maybe cc ending or similar, mask first ... characters)\n- Hashing (`CRYPTOGRAPHIC_HASH`)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -534,10 +534,10 @@
       "questionText": "In general, what are the most common File Formats in ML (5 and compressions)?",
       "answerText": "- CSV, TSV (human readable)\n  - JSON  (human readable)\n  - ORC (columnar, splittable)\n  - Parguet (columnar, splittable)\n  - Avro (Splittable)\n  - Snappy, Zlib, LZO, Gzip Compressions (this may not be \"formats\")\n\nWhy does \"splittable\" matter?\n\n__EXAM__ all the formats and their advantages. \n\nAvro is only splittable.\n\nSplittable is good for parallelizing your data/jobs\n\nData can be structure, semi-structured, or structured.. Athena doesn't care",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -545,10 +545,10 @@
       "questionText": "What are Athena Work-groups (4)?",
       "answerText": "- Can organize users/teams/apps workloads into Workgroups\n- Can control query access and track costs by workgroup\n- Integrate with __IAM, CloudWatch, SNS__\n- Each workgroup can have its own:\n  - Query History\n    - Data Limits (you can limit how much data queries my scan by workgroup)\n    - IAM policies\n    - Encryption Settings\n\n> Can limit the data scanned (costs) by work-group",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -556,10 +556,10 @@
       "questionText": "What is Athena's cost model?\nHow to save 90%?",
       "answerText": "- Pay as you go\n  - $5 per TB scanned\n  - Successful or cancelled queries count, __failed queries do not__\n  - No charge for DDL (CREATE/ALTER/DROP)\n- __Save LOTS of money by using columnar formats__\n  - ORC, Parquet\n  - Save 30-90% and get better performance\n  - > Because columnar format is more about only what you use (not read the whole record)\n- Glue and S3 Have their own charges\n\n> Partitioning your data in S3 can also help to reduce costs",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -567,10 +567,10 @@
       "questionText": "Describe Athena Security (4)",
       "answerText": "- Access Control\n  - IAM, ACLs, S3 Bucket Policies\n  - `AmazonAthenaFullAccess` / `AWSQuicksightAthenaAccess`\n- Encrypt results at rest in S3 staging directory\n  - Server-side encryption with S3-manged key (SSE-S3)\n  - Server-side encryption KMS Key (SSE-KMS)\n  - CLient-side encryption with KMS Key (CSE-KMS)\n- Cross account access in S3 bucket policy, possible\n- Transport Layer Security (TLS), encrypts in-transit (between Athena and S3)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -578,10 +578,10 @@
       "questionText": "What are the two Athena Anti-patterns?",
       "answerText": "- Highly formatted reports / visualization\n  - That is what Quicksight is for\n- ETL\n  - use Glue instead",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -589,10 +589,10 @@
       "questionText": "Using Athena, what is a quick, down and dirty way to covert data from one type to another?",
       "answerText": "`CREATE TABLE AS SELECT`\n\n> Because you can redefine the structure 'SELECT some_num as String` (not athena code but you get the idea)\n\n- You might see this in the context of Amazon Athena\n  - But it exists in other databases as well\n- Create new table for query results (CTAS)\n- Can bue sued to create new table that's a subset of another\n- __Can ALSO be used to convert data into a new underlying format__\n  - So this is a track to get Athena to covert data stored in S3",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -600,10 +600,10 @@
       "questionText": "For Athena, What are performance best practices (3 + 1)?",
       "answerText": "- Use columnar data (ORC or Parquet)\n- Small number of large files performs better than a large number of small files\n- Use partitions\n  - If added partitions after the face, use `MSCK REPAIR TABLE` command\n\nAlso, if using ACID (iceberg tables), doing \n```\nOPTIMIZE REWRITE DATA USING BIN_PACK WHERE CATALOG=`c1`\n```\nWill help to reduce overhead created by ACID.\n__EXAM__ may ask something like \"What to do if your Athena is getting slower over time",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -611,10 +611,10 @@
       "questionText": "What two AWS big-data services Support ACID transaction?",
       "answerText": "Lake house or Athena\n(Lake Formation?)",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -622,10 +622,10 @@
       "questionText": "7 Points about Athena ACID transactions",
       "answerText": "- Powered by Apache Iceberg\n  - Just add `table_type = 'ICEBERG'` in your `CREATE TABLE` command\n- Concurrent users can safely make __row-level__ modification\n- Removes need for custom record locking [removes need for roll your own code]\n- Time Travel operations\n  - Recover data recently deleted with by using a select statement\n- Remember governed tables in Lake Formation, This is another way of getting ACID features in Athena\n- Benefit from period compaction to preserve performance",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     },
     {
@@ -633,10 +633,10 @@
       "questionText": "Requirement to get Athena to use ACID transactions?",
       "answerText": "Athena is Powered by Apache Iceberg\n  - Just add `table_type = 'ICEBERG'` in your `CREATE TABLE` command",
       "tags": [
-        "chap2"
+        "chap3"
       ],
       "domains": [
-        "chap2"
+        "chap3"
       ]
     }
   ]
