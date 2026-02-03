@@ -125,7 +125,7 @@
     {
       "questionId": "244ff1e36c9743b48467773e310d0332",
       "questionText": "Spark is highly versatile and can support much of the Machine Learning activity.. However, it is not good at something particular, what is it?",
-      "answerText": "",
+      "answerText": "Highly versatile but not used for batch; more for transforming data as it comes in (streaming).",
       "tags": [
         "chap3"
       ],
