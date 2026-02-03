@@ -21,6 +21,7 @@
     "migrate:mongodb": "ts-node -r tsconfig-paths/register scripts/migrate-to-mongodb.ts",
     "recalculate:stats": "ts-node -r tsconfig-paths/register scripts/recalculate-question-stats.ts",
     "generate:database": "ts-node -r tsconfig-paths/register scripts/generate-database-from-markdown.ts",
+    "transform:questions-todo": "ts-node -r tsconfig-paths/register scripts/transform-questions-todo-md-to-json.ts",
     "generate:vocab": "ts-node -r tsconfig-paths/register scripts/generate-database-from-vocab.ts",
     "fix:question-ids": "ts-node -r tsconfig-paths/register scripts/fix-null-question-ids.ts",
     "delete:database": "ts-node -r tsconfig-paths/register scripts/delete-database-from-mongodb.ts",
