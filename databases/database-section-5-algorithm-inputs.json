@@ -1,0 +1,145 @@
+{
+  "databaseName": "Section 5 - SageMaker Algorithms: Input formats and File/Pipe mode",
+  "questionsWithAnswers": [
+    {
+      "questionId": "7d07dde7-ead8-4d77-b9cb-9e01552c6932",
+      "questionText": "What are the input file format for `Linear Learner`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: RecordIO-protobuf (Float32 only), CSV (first column label, then features). Both `file` and `pipe` mode are supported.",
+      "tags": ["input-formats", "linear-learner", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "81f55849-cf48-4919-8a3b-3f2588f49de7",
+      "questionText": "What are the input file format for `XGBoost`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: CSV, libsvm, recordIO-protobuf, Parquet (AWS extended). Distributed GPU (XGBoost 1.5) only works with CSV or Parquet. File and pipe mode typically supported; check docs for specific version.",
+      "tags": ["input-formats", "xgboost", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "08fda706-709d-443d-8f01-2ca4eeb08d17",
+      "questionText": "What are the input file format for `LightGBM`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: text/CSV only (required for training and inference); same format for training and validation. File and pipe mode support: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "lightgbm", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "8cc1e767-51c2-4b0a-8365-9d000ddf0960",
+      "questionText": "What are the input file format for `Seq2Seq`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: RecordIO-protobuf (tokens as integers), with vocabulary files; must provide training data, validation data, and vocabulary files. File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "seq2seq", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "bca6127f-cc7f-4a00-8c3d-56a4b258599c",
+      "questionText": "What are the input file format for `DeepAR`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: JSON Lines (jsonl), gzip or parquet. Each record must have start (timestamp) and target (time series values); can include dynamic_feat and cat (categorical). File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "deepar", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "a80b50c2-8231-408a-a1f5-243b43b3054e",
+      "questionText": "What are the input file format for `BlazingText`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: For text classification — one sentence per line, first word __Label__ followed by label; also augmented manifest text format. For Word2Vec — text file with one training sentence per line. File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "blazingtext", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "ea3f469a-c0a5-4b19-8df1-60632409fb99",
+      "questionText": "What are the input file format for `Object2Vec`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: Tokenized data (integers); training data is pairs or sequences of tokens (e.g. JSON with label, in0, in1 arrays). File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "object2vec", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "aa3b8e80-fb03-4a29-98b2-902326fc7c82",
+      "questionText": "What are the input file format for `Object Detection`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: MXNet — RecordIO or Image format (jpg, png) with a JSON file for annotations per image. TensorFlow — determined by underlying model. File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "object-detection", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "c02e504b-38bc-48ad-8c9c-85a34be224da",
+      "questionText": "What are the input file format for `Image Classification`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: MXNet/TensorFlow — typically RecordIO or image format (e.g. 3-channel 224x224); details depend on framework and mode. File/pipe: see AWS docs (source skipped input details).",
+      "tags": ["input-formats", "image-classification", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "165f9686-1b6e-4d7b-a1cd-3d0099fe2f74",
+      "questionText": "What are the input file format for `Semantic Segmentation`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: jpg or png with annotations; label maps for annotations. Augmented manifest image format supported for Pipe Mode. Inference: JPG accepted. Both `file` and `pipe` supported (pipe via augmented manifest).",
+      "tags": ["input-formats", "semantic-segmentation", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "5945f138-fe6b-4d1a-bafa-5cef6f50f379",
+      "questionText": "What are the input file format for `Neural Topic Model (NTM)`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: RecordIO-protobuf or CSV (tokenized; each document has word counts for vocabulary). Train channel required; validation, test, auxiliary optional. Both `file` and `pipe` mode supported.",
+      "tags": ["input-formats", "ntm", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "436e8f41-724d-4216-a814-9598d0adda1c",
+      "questionText": "What are the input file format for `Random Cut Forest (RCF)`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: RecordIO-protobuf or CSV. Optional test channel for accuracy, precision, recall, F1 on labeled data. Both `file` and `pipe` mode supported.",
+      "tags": ["input-formats", "rcf", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "3c294edb-57ae-40d4-9ec1-0015bbdb5500",
+      "questionText": "What are the input file format for `LDA (Latent Dirichlet Allocation)`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: RecordIO-protobuf or CSV (tokenized; each document has counts for every word in vocabulary). Train channel required, optional test channel. `Pipe` mode only supported with recordIO; `file` mode supported for both recordIO and CSV.",
+      "tags": ["input-formats", "lda", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "0d6659de-b5cb-4158-baa9-bb50932beb34",
+      "questionText": "What are the input file format for `KNN`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: recordIO-protobuf or CSV (first column is label). Train and test channels. Both `file` and `pipe` mode supported on either channel.",
+      "tags": ["input-formats", "knn", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "dfdfe90a-b32a-446c-b8b6-74dd77417a62",
+      "questionText": "What are the input file format for `K-Means`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: recordIO-protobuf or CSV. Train channel (ShardedByS3Key), optional test (FullyReplicated). Both `file` and `pipe` supported on either.",
+      "tags": ["input-formats", "k-means", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "8dce6da3-99e7-490a-9a44-0565ca84f8a7",
+      "questionText": "What are the input file format for `PCA (Principal Component Analysis)`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: recordIO-protobuf or CSV. Both `file` and `pipe` mode supported.",
+      "tags": ["input-formats", "pca", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "ac599411-04f1-4e6f-929f-117c8a1f6413",
+      "questionText": "What are the input file format for `Factorization Machines`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: recordIO-protobuf with Float32 only; CSV is not available (sparse data). File/pipe: typically both supported for recordIO; see AWS docs.",
+      "tags": ["input-formats", "factorization-machines", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "e35f6a86-b021-4d72-b31a-83ffc8198e09",
+      "questionText": "What are the input file format for `IP Insights`?, Is `pipe`/`file` supported?",
+      "answerText": "Input formats: CSV only — entity and IP columns (e.g. user names, account IDs). Training channel required, optional validation (AUC). File/pipe: see AWS docs (not explicitly stated in source).",
+      "tags": ["input-formats", "ip-insights", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "0c28d7db-5ab2-4fc3-a9d0-4317bef24843",
+      "questionText": "Which algorithms support `pipe`?",
+      "answerText": "Linear Learner, Random Cut Forest (RCF), Neural Topic Model (NTM), Semantic Segmentation (augmented manifest image for pipe), LDA (pipe only with recordIO, not with CSV), KNN, K-Means, PCA (Principal Component Analysis).",
+      "tags": ["input-formats", "pipe-mode", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "830264c1-6edc-461f-97e6-8b8abf16533d",
+      "questionText": "Which algorithms do not support `pipe`?",
+      "answerText": "Pipe support is not stated in the source for: XGBoost, LightGBM, Seq2Seq, DeepAR, BlazingText, Object2Vec, Object Detection, Image Classification, Factorization Machines, IP Insights. (Check AWS docs for current support.)",
+      "tags": ["input-formats", "pipe-mode", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    }
+  ]
+}

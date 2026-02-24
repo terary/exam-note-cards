@@ -1,0 +1,257 @@
+{
+  "databaseName": "Section 5 - SageMaker Algorithms: Shared Hyperparameters (2+ algorithms)",
+  "questionsWithAnswers": [
+    {
+      "questionId": "05f33821-158d-414b-b330-fab6000503b8",
+      "questionText": "Describe `Learning_rate` and what are the applicable Algorithms?",
+      "answerText": "Learning_rate (float, often small, e.g. 0.1, 0.002): Step size used by the optimizer (e.g., gradient descent). Controls speed of convergence and final solution quality; too high can diverge, too low can be slow. Applicable algorithms: Linear Learner, LightGBM, Seq2Seq, DeepAR, BlazingText (Word2Vec and text classification), Object2Vec, Object Detection, Image Classification, Semantic Segmentation, Neural Topic Model (NTM), IP Insights.",
+      "tags": [
+        "hyperparameters",
+        "learning-rate",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "121a4fbd-f237-44be-a06c-5eb7ab8ead3b",
+      "questionText": "Describe `Batch_size` and what are the applicable Algorithms?",
+      "answerText": "Batch_size (integer): Number of samples per training step. Affects memory use, throughput, and often convergence. Applicable algorithms: Seq2Seq, Object2Vec, Image Classification, Semantic Segmentation, IP Insights.",
+      "tags": [
+        "hyperparameters",
+        "batch-size",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "41c93b49-e42a-4851-9493-ec111a87b358",
+      "questionText": "Describe `Mini_batch_size` and what are the applicable Algorithms?",
+      "answerText": "Mini_batch_size (integer): Number of samples per mini-batch for one training step. Affects memory, speed, and stability. Applicable algorithms: Linear Learner, DeepAR, Object Detection, Neural Topic Model (NTM), K-Means.",
+      "tags": [
+        "hyperparameters",
+        "mini-batch-size",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "f26bdc53-4c21-47b3-911f-f6981b493e5c",
+      "questionText": "Describe `Epochs` and what are the applicable Algorithms?",
+      "answerText": "Epochs (integer): Number of full passes over the training dataset. Applicable algorithms: DeepAR, BlazingText (text classification), Object2Vec, Semantic Segmentation, IP Insights.",
+      "tags": [
+        "hyperparameters",
+        "epochs",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "ea7e045c-262e-4ca7-b51d-02de2f1fbc69",
+      "questionText": "Describe `Optimizer` / `Optimize_type` and what are the applicable Algorithms?",
+      "answerText": "Optimizer / Optimize_type (categorical: sgd, adam, rmsprop, adadelta, etc.): Optimization algorithm used for weight updates (e.g., SGD, Adam, RMSprop, Adadelta). Applicable algorithms: Seq2Seq (Optimize_type), Object Detection, Image Classification, Semantic Segmentation, Object2Vec (optimizer).",
+      "tags": [
+        "hyperparameters",
+        "optimizer",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "b411ff3a-2ce8-4231-9402-33d832f118d8",
+      "questionText": "Describe `Max_depth` and what are the applicable Algorithms?",
+      "answerText": "Max_depth (integer): Maximum depth of each tree. Deeper trees can overfit; limiting depth regularizes the model. Applicable algorithms: XGBoost, LightGBM.",
+      "tags": [
+        "hyperparameters",
+        "max-depth",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "871bd3ee-732f-4816-a6fa-36ce50beb070",
+      "questionText": "Describe `Num_topics` and what are the applicable Algorithms?",
+      "answerText": "Num_topics (integer): Number of topics (latent themes) to discover. Defines the size of the topic representation. Applicable algorithms: Neural Topic Model (NTM), LDA (Latent Dirichlet Allocation).",
+      "tags": [
+        "hyperparameters",
+        "num-topics",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "95ecae72-4f69-4a9c-81a0-0a80d70bf558",
+      "questionText": "Describe `K` and what are the applicable Algorithms?",
+      "answerText": "K (integer): Number of nearest neighbors (KNN) or number of clusters (K-Means). In KNN: number of neighbors used for classification/regression. In K-Means: number of clusters. Applicable algorithms: KNN, K-Means.",
+      "tags": [
+        "hyperparameters",
+        "k",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "e8612b56-4783-4c32-8398-3243078ca8bf",
+      "questionText": "Describe `Vector_dim` and what are the applicable Algorithms?",
+      "answerText": "Vector_dim (integer): Dimensionality of embedding vectors. In BlazingText (text classification): context window / how many words are considered together. In IP Insights: size of entity/IP embeddings; too large can overfit. Applicable algorithms: BlazingText (text classification), IP Insights.",
+      "tags": [
+        "hyperparameters",
+        "vector-dim",
+        "section-5",
+        "sagemaker-algorithms"
+      ],
+      "domains": [
+        "sagemaker-algorithms"
+      ]
+    },
+    {
+      "questionId": "d1508819-a12e-4497-855e-12b525008734",
+      "questionText": "What are the hyperparameters for `Linear Learner`?",
+      "answerText": "Learning_rate, Mini_batch_size, binary_classifier_model_selection_criteria, Balance_multiclass_weights, L1, target_precision, target_recall, Wd.",
+      "tags": ["hyperparameters", "algorithms", "linear-learner", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "fb9a4306-dd0a-4484-9c89-0fb993d1dbc2",
+      "questionText": "What are the hyperparameters for `XGBoost`?",
+      "answerText": "Learning_rate, Max_depth, Alpha, Eta, eval_metric, Gamma, Lambda, scale_pos_weight, Subsample, tree_method, use_dask_gpu_training.",
+      "tags": ["hyperparameters", "algorithms", "xgboost", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "70a3c334-325f-4e88-860c-51be714cbf7d",
+      "questionText": "What are the hyperparameters for `LightGBM`?",
+      "answerText": "Learning_rate, Max_depth, Bagging_fraction, Bagging_freq, Feature_fraction, Min_data_in_leaf, Num_leaves.",
+      "tags": ["hyperparameters", "algorithms", "lightgbm", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "0d23dcf9-f7ca-4d48-937a-352ca0c7ba2c",
+      "questionText": "What are the hyperparameters for `Seq2Seq`?",
+      "answerText": "Learning_rate, Batch_size, Optimize_type, Num_layers_encoder, Num_layers_decoder.",
+      "tags": ["hyperparameters", "algorithms", "seq2seq", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "25813b47-4a43-484b-8778-bed34f0a4fd3",
+      "questionText": "What are the hyperparameters for `DeepAR`?",
+      "answerText": "Learning_rate, Mini_batch_size, Epochs, Context_length, Num_cells.",
+      "tags": ["hyperparameters", "algorithms", "deepar", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "9b704f96-9592-4149-bc75-4e32c393fbca",
+      "questionText": "What are the hyperparameters for `BlazingText`?",
+      "answerText": "Learning_rate, Epochs, Vector_dim, Mode, Negative_samples, Window_size, Word_ngrams.",
+      "tags": ["hyperparameters", "algorithms", "blazingtext", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "296bf2ff-d374-4786-8c30-cb5b0e81566d",
+      "questionText": "What are the hyperparameters for `Object2Vec`?",
+      "answerText": "Learning_rate, Batch_size, Epochs, Optimizer, Enc1_network, Enc2_network, dropout, early_stopping, layers, activation function, weight decay.",
+      "tags": ["hyperparameters", "algorithms", "object2vec", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "ec9f8ffd-e3ab-4519-9357-e137022b9193",
+      "questionText": "What are the hyperparameters for `Object Detection`?",
+      "answerText": "Learning_rate, Mini_batch_size, Optimizer.",
+      "tags": ["hyperparameters", "algorithms", "object-detection", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "e416520b-eea3-46b3-84fb-34c1681c34ae",
+      "questionText": "What are the hyperparameters for `Image Classification`?",
+      "answerText": "Learning_rate, Batch_size, Optimizer, Optimizer-specific parameters.",
+      "tags": ["hyperparameters", "algorithms", "image-classification", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "d8537e37-0186-4269-8d92-3c0225e641c2",
+      "questionText": "What are the hyperparameters for `Semantic Segmentation`?",
+      "answerText": "Learning_rate, Batch_size, Epochs, Optimizer, Algorithm, Backbone.",
+      "tags": ["hyperparameters", "algorithms", "semantic-segmentation", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "67402657-9ac1-46e4-aee7-b52fa4d2fc70",
+      "questionText": "What are the hyperparameters for `Neural Topic Model (NTM)`?",
+      "answerText": "Learning_rate, Mini_batch_size, Num_topics.",
+      "tags": ["hyperparameters", "algorithms", "ntm", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "162cd997-d716-4adf-896b-1accd024b898",
+      "questionText": "What are the hyperparameters for `Random Cut Forest (RCF)`?",
+      "answerText": "Num_samples_per_tree, Num_trees.",
+      "tags": ["hyperparameters", "algorithms", "rcf", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "006cee26-1c2b-4609-84c3-3433cc9a91b6",
+      "questionText": "What are the hyperparameters for `LDA (Latent Dirichlet Allocation)`?",
+      "answerText": "Num_topics, Alpha0.",
+      "tags": ["hyperparameters", "algorithms", "lda", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "b2425913-db79-4d3a-91cf-769433e90631",
+      "questionText": "What are the hyperparameters for `KNN`?",
+      "answerText": "K, Sample_size.",
+      "tags": ["hyperparameters", "algorithms", "knn", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "0dd8094b-06a0-41fa-88df-688415421a26",
+      "questionText": "What are the hyperparameters for `K-Means`?",
+      "answerText": "K, Mini_batch_size, Extra_center_factor, Init_method.",
+      "tags": ["hyperparameters", "algorithms", "k-means", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "43fe2fd9-6deb-4f45-8fc4-cb62805d9431",
+      "questionText": "What are the hyperparameters for `PCA (Principal Component Analysis)`?",
+      "answerText": "Algorithm_mode, Subtract_mean.",
+      "tags": ["hyperparameters", "algorithms", "pca", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "2f317782-2f65-41ae-8255-57314925dd57",
+      "questionText": "What are the hyperparameters for `Factorization Machines`?",
+      "answerText": "Initialization methods (bias, factors, linear terms).",
+      "tags": ["hyperparameters", "algorithms", "factorization-machines", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "45112dc4-d974-4909-b897-b725bea4a03b",
+      "questionText": "What are the hyperparameters for `IP Insights`?",
+      "answerText": "Learning_rate, Batch_size, Epochs, Vector_dim, Num_entity_vectors.",
+      "tags": ["hyperparameters", "algorithms", "ip-insights", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    }
+  ]
+}

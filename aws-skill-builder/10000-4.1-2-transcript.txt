@@ -1,0 +1,60 @@
+Let's continue with task statement 4.1, which is to monitor model inference, and let's start with a question. 
+
+Question:
+How do you understand the effects of data drift on model performance and implement strategies that monitor and adapt to data drift through re-training?
+
+Solution:
+One solution is to use SageMaker Model Monitor and SageMaker Clarify to maintain high-quality machine learning models and to detect model and concept drift in real time. Model Monitor is integrated with SageMaker Clarify to help identify potential bias in your machine learning models, and you can configure alerts, receive notifications and take immediate action. 
+
+Question:
+Here's another question. Your model performance has degraded over time for reasons such as data quality, model quality, model bias and model explainability. You want to continuously monitor the quality of the machine learning model in real time. You also want to identify the right time and frequency to re-train and update the model. You need to configure alerts to notify and initiate actions if any drift in model performance is observed. What is your solution? 
+
+Solution:
+You can monitor model performance with Model Monitor and establish a baseline during the training and before the model is in production, then collect data while in production and compare changes in model inferences. You can use SageMaker Clarify to identify model bias, and you can configure alerting systems with CloudWatch to send notifications for unexpected bias or changes in data quality, then you can monitor the model performance in production by using A/B testing. 
+
+Question:
+What is your solution to also configure automatic scaling for your monitored metrics? 
+
+Solution:
+Remember SageMaker includes automatic scaling capabilities for your hosted model to dynamically adjust underlying compute supporting and endpoint based on a demand. If you also want to monitor endpoint metrics, SageMaker also outputs endpoint metrics for monitoring the usage and health of the endpoint. 
+
+SageMaker Model Monitor helps you to monitor your models in production and provides alert when data quality issues appear. You can create a mechanism to aggregate and analyze model prediction endpoint metrics using services, such as Amazon OpenSearch Service, which supports Kibana for dashboards and visualization. 
+
+The traceability of hosting metrics back to version inputs helps to analyze changes that could be impacting current operational performance, and remember to include human in the loop monitoring to monitor model performance efficiently. 
+
+
+When automating decision processes, the human labeling of model results is a reliable quality test for model inferences. You can compare human labels with model inferences to estimate model performance degradation, and you can perform mitigation as model re-training. You can use Amazon Augmented AI to get human reviews. 
+
+Question:
+How do you monitor workflows to detect anomalies or errors in the data processing or model inference? 
+
+Solution (I):
+One solution is to use AWS Glue Data Quality anomaly detection to apply machine learning algorithms on data statistics over time to detect abnormal patterns and hidden data quality issues that are hard to detect through rules. 
+
+Solution (II):
+You can also use Amazon Lookout for Metrics, which is a service that finds anomalies in your data, determines their root causes and helps you to quickly take action. You can add alerts and configure the alerts to run a Lambda function or send notification to an Amazon SNS topic. Also, Monitor Model has model quality monitoring jobs that monitor the performance of a model by comparing the predictions that the model makes with the actual ground truth labels that the model attempts to predict. 
+
+Question:
+Here's a question. You deployed a machine learning model in SageMaker that provides product recommendations, but you have noticed that the total number of customers purchasing the recommended products has been declining over the last few weeks. What is your solution to improve the accuracy of the model and ensure it is providing high-value predictions?
+
+Solution:
+If you detect a significant change in customer data, you can re-train your model using both the original, updated, and new data. 
+
+Question:
+Can you re-train the model periodically using the original data and apply regularization to improve prediction accuracy?
+
+Solution:
+Regularization does reduce overfitting, but re-training the model with the original data is unlikely to produce better results. 
+
+Question:
+Can you tune the hyper parameters to reduce model drift? 
+
+Solution:
+Well, this solution also would be working with the original data. 
+
+Instead, you need to re-train the model based on the original data plus the new data to give product recommendations. 
+
+Monitoring is also important to maintain the performance of your AWS CodePipeline and storage of your metrics, traces and logs can be in CloudWatch and AWS CloudTrail. 
+
+
+Let's get started with the second task statement from Domain 4, which is to monitor and optimize infrastructure and costs.

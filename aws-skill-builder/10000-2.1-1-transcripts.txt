@@ -1,0 +1,35 @@
+Let's get started with the first task statement from Domain 2, which is to choose a modeling approach. This task statement is split into three lessons. For the exam, ensure you understand different machine learning algorithms such as:
+logistic regression, 
+linear regression, 
+gradient descent, 
+support vector machines, 
+decision trees, 
+random forests, 
+K-means clustering, 
+K-nearest neighbor, 
+latent Dirichlet allocation, 
+principal component analysis, 
+sequence-to-sequence, 
+word2vec, 
+multinominal logistic regression, and more. 
+
+
+> You'll also need to ensure you understand deep learning, neural networks, artificial neurons, activation functions, weights and bias. 
+
+
+> Neural networks such as convolutional neural networks use sophisticated layers inside of the networks and introduce different layer types. Convolutional neural networks are mostly used for image classification.
+
+
+ > Recurrent neural networks, which is a different type of architecture for neural networks, are used for sequence or time-based inputs. For example, recurrent neural networks are great at translation because some languages with the different dialects have words in different order to each other. And having the order of the words in the context of the sentence it is in is important for translation, audio analysis, sentiment analysis, and time series data analysis.
+ 
+ 
+  > For the exam, ensure you understand most of the machine learning models and how to mitigate problems in neural networks. 
+  
+  
+  Here's a question. What is the solution to help mitigate the vanishing gate problem? Well, there is long short term memory, or LSTM, which is a type of recurrent neural network. LSTM uses gates to be able to determine what is important and should be remembered, but also, what it should forget. It introduces multiple neural networks inside of the LSTM node inside of the neural network. And this does add time to train because there are multiple neural networks at all stages along the process. And if you don't have the extra time needed to train, then you can use a gated recurrent units, or GRU, which is another type of recurrent neural network and also uses gates. But it is structured differently, it is not as complicated, needs less processing than an LSTM, and it might be faster to train. 
+  
+  
+  
+  
+  
+  Here is another question. How do you consider interpretability during model selection or your algorithm selection? The higher the interpretability of a machine learning model, the easier it is to comprehend the model's predictions. But there is a tradeoff to be considered between what the model has predicted, which is the model performance, and why the model has made such a prediction, which is the model interpretability. And there are methods for model interpretability that can be classified into intrinsic analysis and post hoc analysis. Intrinsic analysis can be applied to interpret models that have low complexity or simple relationships between the input variables and the predictions. These models are based on algorithms such as linear regression where the prediction is the weighted sum of the inputs and decision trees, where the prediction is based off of a set of if-then rules. Post hoc analysis can be applied to interpret simple relationship models and more complex models such as neural networks, which have the capability to capture non-linear interactions. These methods are often model-agnostic and provide mechanisms to interpret a trained model based on the inputs and output predictions. Post hoc analysis can be performed at a local level and zoom in on a single data point or at a global level and zoom out and view the overall behavior of the model. I'm gonna stop this lesson here. And in the next lesson, we'll continue talking about task statement 2.1.

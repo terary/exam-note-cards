@@ -1,0 +1,953 @@
+{
+  "databaseName": "Skills Builder (AWS Skill Builder questions)",
+  "questionsWithAnswers": [
+    {
+      "questionId": "ea3552df-6b47-40c2-a59d-9c9611192abd",
+      "questionText": "You were asked to redesign and reduce the operational management and the cost of the transformation pipeline that ingests training data from multiple custom sources. Currently, the pipeline uses Amazon EMR and AWS Data Pipeline. What is your solution?",
+      "answerText": "One solution would be to create an ETL job using AWS Glue to transform the data and deliver the results into an S3 bucket.",
+      "tags": [
+        "skills-builder",
+        "10000-1.1-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "fd41372b-f9c3-45c6-9eae-3f14c6325d7f",
+      "questionText": "You have been asked to redesign and reduce the operational overhead and use AWS services to detect anomalies in transaction data and assign anomaly scores to malicious records. The records are streamed in real-time and stored in an Amazon S3 data lake for processing and analysis.  What is your solution?",
+      "answerText": "One solution is to use Firehose to stream transaction data and Amazon Managed Service for Apache Flink RANDOM_CUT_FOREST function to detect anomalies. __TODO__ Could you also use Firehose to stream transaction data into Amazon S3 with the SageMaker Random Cut Forest to detect anomalies?  This is a valid solution, but it won't meet the requirements of reducing the operational overhead, because SageMaker requires more operational management than Amazon Managed Service for Apache Flink. __EXAM__ SageMaker requires more operational management than Amazon Managed Service for Apache Flink",
+      "tags": [
+        "skills-builder",
+        "10000-1.1-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "c2f525d5-5c1b-4f31-bfbe-0125e47e6487",
+      "questionText": "You've been asked to improve the process time to ingest and store data in Amazon Redshift to conduct near real-time analytics.",
+      "answerText": "One solution would be to use Kinesis Data Stream to ingest the location data. Load the streaming data into the cluster using Amazon Redshift streaming ingestion. Could you also use Amazon Managed Streaming for Apache Kafka to ingest the location data and use Amazon Redshift Spectrum to deliver the data in the cluster?  No. Redshift Spectrum is an Amazon Redshift feature to query data in Amazon S3 without loading that data into Amazon Redshift tables. Redshift Spectrum is not capable of moving data from S3 to Amazon Redshift. __TODO__ Better understand Redshift and Redshift Spectrum Could you use Firehose to ingest the location data and load the streaming data into the cluster using Amazon Redshift streaming ingestion?  No, and I added this specifically because Firehose only streams data to certain AWS services.  We added a link for Firehose destinations. Firehose is not a valid streaming source for Amazon Redshift streaming ingestion. Could you use Firehose to ingest the location data and set the Amazon Redshift cluster as a destination? No, you can configure Amazon Redshift as a destination for Firehose. But Firehose does not actually load the data directly into Amazon Redshift. It stages the data in Amazon S3, and then copies the data into Amazon Redshift using the copy command. __TODO__ Observe this in action",
+      "tags": [
+        "skills-builder",
+        "10000-1.1-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "5108186b-eb66-4cdb-bc28-fe16cf4498ff",
+      "questionText": "You are migrating a data analysis solution to AWS. The application produces the data as CSV files in near real time. You need a solution to convert the data format to Apache Parquet before saving it to an S3 bucket. What is your solution?",
+      "answerText": "Well, my first thought is to use Kinesis Data Streams and create a streaming AWS Glue ETL job to convert the data into Apache Parquet. Also, as the streaming data is processed in the AWS Glue job, you have access to Spark Structured Streaming to implement data transformations to enrich or cleanse the data for analysis. __TODO__ Observe this One solution is to use an AWS Managed Service for Apache Flink application configured with Lambda to transform the data. You can configure AWS Managed Service for Apache Flink to transform data before it's processed by your SQL code and use AWS Lambda to convert formats, enrich data, filter data, and more. After the data is transformed by your function, the Managed Service sends the data to your applications SQL code for real-time analytics, and provides Lambda blueprints for use cases such as converting GZIP and Kinesis Producer Library formats to JSON. You can use these blueprints without any change or writing your own custom functions. Could you transform the data with Amazon Kinesis Client Library and deliver the results to an Amazon OpenSearch cluster? No, KCL is a client library used for writing consumer applications for Kinesis Data Streams, and it is designed to read from Kinesis Data Streams not from a Firehose delivery stream. #### Extras An __AWS Lambda blueprint__ is a pre-configured template provided by AWS to help developers quickly create Lambda functions for common use cases. These templates include sample code, trigger configurations (like S3 or DynamoDB), and basic IAM roles to demonstrate how to process events in languages such as Python or Node.js.",
+      "tags": [
+        "skills-builder",
+        "10000-1.1-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "d4c982ad-d0e9-4f48-8c74-2187f9247b99",
+      "questionText": "Here's a question. You are preparing a dataset to train a predictive model. The dataset contains numerical, categorical, and ordinal features. To increase prediction accuracy, you need to transform categorical features into numeric values.  What is your solution?",
+      "answerText": "One solution is to use AWS Glue DataBrew and perform one-hot encoding. In AWS Glue DataBrew, you can use recipe actions to tabulate and summarize data from different perspectives or to perform advanced transformations. Another solution might be the Data Wrangler experience in Amazon SageMaker Canvas, I added links under the additional resources for more explanations of data types and encoding. #### Feature Engineering and SageMaker For the exam, ensure you understand feature engineering and pre-processing algorithms, such as feature reduction algorithm and principle component analysis, and understand why you transform data and perform feature engineering to your data. You can use SageMaker Canvas to import, prepare, transform, visualize, and analyze data in your machine learning workflows to pre-process and feature engineer your data using little to no code. You can also add your own Python scripts and transformations to customize your data prep workflow. You can also import data from Amazon S3, Amazon Redshift, Athena, and use SageMaker Canvas to create machine learning data prep workflows with built-in and custom data transformations and analysis. After you've defined a data workflow, you can integrate it with SageMaker Processing, SageMaker Pipelines and SageMaker Feature Store to perform the task of processing, sharing, and storing the machine learning training data. You can also export your data flow to a Python script and create a custom machine learning data prep pipeline. #### Let's ask a few questions (2:44)",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "28510a1f-59ff-40f6-ae0e-c0f078826f92",
+      "questionText": "You are preparing a dataset that contains numerical, categorical, and ordinal features. To train a predictive model, to increase the prediction accuracy of the model, you need to transform the categorical features into numerical values. Which feature engineering solution do you choose?",
+      "answerText": "One-hot encoding, feature scaling, dimensionality reduction, or date formatting. My choice would be one-hot encoding and with AWS Glue DataBrew, you can use recipe actions to tabulate and summarize data from different perspectives or to perform advanced transformations.",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "f4b27620-b9fd-4bde-b9ec-66f4527aa6bd",
+      "questionText": "Here's another question. You want to convert a column in your training data into binary values first, before training the model, which method do you choose, one-hot encoding, tokenization, or target encoding?",
+      "answerText": "One-hot encoding Categorical data that is converted into numerical forms to be used in machine learning algorithms is encoding, and one-hot encoding is a process by which categorical variables are converted into numerical values that could be provided to the machine learning algorithms for better predictions. Target encoding is incorrect, because this type of encoding is achieved by replacing categorical variables with just one new numerical variable and replacing each category of the categorical variable with its corresponding probability of the target. This won't convert categorical variables into binary values, and tokenization is also incorrect because this method is commonly used in natural language processing where you split a string into a list of words that have a semantic meaning.",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "49357093-16dc-44d6-a344-c3c0be4c1e75",
+      "questionText": "Here's another question. Let's say that during data preparation, you discovered missing values on some columns of a dataset containing categorical features. You need to ensure that this will not misrepresent the data and reduce the model reliability. What is your solution?",
+      "answerText": "One solution would be to use Amazon Forecast because Forecast provides several filling methods such as middle filling, backfilling, and future filling to help handle missing values in your dataset. You can also use the multiple imputations by chain equations, or MICE, algorithm, which can help to deal with missing data in your dataset. MICE is usually a better imputation method than filling missing values with zero or dropping columns.",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "8b4ef6b7-eec4-4e48-bb4d-999ad614592c",
+      "questionText": "Let's also ask a question around feature processing. You are preparing a dataset to be used for training a linear learner model in SageMaker. During your exploratory data analysis, you detected multiple feature columns that have missing values. The percentage of the missing data across the whole training dataset is about 15%. You want to reduce the bias to your model that might lead to inaccurate results. What is your solution to reduce the bias caused by missing values?",
+      "answerText": "One solution is to use supervised learning methods to estimate the missing values for each feature. If you drop the columns that include missing values, because they only account for 10% of the training data, you might remove features that might be valuable to your machine learning task. There are valid imputation techniques such as. compute the mean of non-missing values in the same row and use the result to replace missing values, and also compute the mean of non-missing values in the same column and use the result to",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "7cd2b150-6b91-4ce0-8efe-9d553d38ac74",
+      "questionText": "Let's ask one more question about SageMaker and normalization. You are training a k-nearest neighbor model and during data analysis you observe different input variables that vary significantly. You want to ensure that your dataset does not have features with a larger value that greatly influence the model's predictive capability. Which transformation do you choose?",
+      "answerText": "I sort of gave it away, but I would choose a normalization transformation. ### Notes #### One Hot Encoding One-hot encoding isa data preprocessing technique in machine learning that converts categorical data into a numerical, binary format (0s and 1s). It creates new binary columns (dummy variables) for each unique category, marking 1 for the presence of a value and 0 otherwise. This prevents algorithms from assuming a false order or ranking between categories. Key Aspects of One-Hot Encoding Purpose: It transforms non-numerical, nominal data (eg, \"Red\", \"Green\", \"Blue\") into a format that models can understand without imposing unintended numerical relationships.How it Works: If a feature has\\(N\\)unique categories, one-hot encoding creates\\(N\\)new binary columns. For instance, a \"Color\" column with \"Red\", \"Blue\" would become two columns: is_redand is_blue. A red item is\\([1,0]\\)and a blue item is\\([0,1]\\).Benefits: It eliminates the issue where algorithms treat numerical labels (eg,\\(1,2,3\\)) as having ordinal relationships (like\\(3>1\\)).Drawbacks: It can lead to high-dimensional, sparse data (curse of dimensionality) if a column has too many unique values. It can also create multicollinearity, where variables are highly correlated.Alternative to Avoid Dummy Variable Trap: To prevent high correlation, one column is often dropped, reducing\\(N\\)categories to\\(N-1\\)columns. Example Original Data: [\"Apple\", \"Banana\", \"Orange\"]One-Hot Encoded:Apple:[1, 0, 0]Banana:[0, 1, 0]Orange:[0, 0, 1]",
+      "tags": [
+        "skills-builder",
+        "10000-1.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "efac27df-718d-434d-9eae-73d18e63353e",
+      "questionText": "Which AWS service can you use to help address class imbalances?",
+      "answerText": "To train a machine learning model, you need a large, high-quality labeled dataset. You can label your data using SageMaker Ground Truth with Ground Truth built-in task types or create your own custom labeling workflow.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "334c1c50-a6bd-4da7-87cc-fbe2249ad1e4",
+      "questionText": "what's the difference between augmented and synthetic data?",
+      "answerText": "Synthetic data is generated data that does not use the original dataset. Data augmentation artificially creates new training data from the existing training data. You can use the SageMaker image classification algorithm and generate more training data using data augmentation techniques. It is a supervised learning algorithm that supports multi-label classification and it uses a convolutional neural network that can be trained from scratch or trained using transferred learning when a large number of training images are not available.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "7902d607-a10d-4235-a4c4-7c5d5a7054d4",
+      "questionText": "What is the recommended input format for the SageMaker image classification algorithms?",
+      "answerText": "Apache MXNet RecordIO or raw images in .jpg or .png format. You can also use a data augmentation type hyper-parameter to configure your input images to be augmented in multiple ways. In task statement 1.2, we talked about how SageMaker Canvas provides numerous machine learning data transforms to clean, transform, and featurize your data. SageMaker Canvas has built-in transforms, which you can use to transform columns without any code. You can also add custom transformations. Some transforms operate in place while others create a new output column in your dataset.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "674880d7-6407-4c70-9f43-bce6085d8ace",
+      "questionText": "Here's a question: what can you do if you need data that is taken at regular intervals? Temporal or time series data usually has observations that aren't taken at regular intervals.",
+      "answerText": "One solution is to re-sample your data. For example, a dataset could have some observations that are recorded hourly or other observations that are recorded every 2 hours. If you are using a forecasting algorithm, it might require the observations to be taken at regular intervals. Re-sampling helps to establish regular intervals for the data in your dataset. You could either up-sample or down-sample a time series and you can re-sample both numeric and non-numeric data and use the re-sample operation to re-sample your time series data.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "5a73daea-01b1-407d-869f-5baeb5064868",
+      "questionText": "what can you do if you need data that is taken at regular intervals? Temporal or time series data usually has observations that aren't taken at regular intervals.",
+      "answerText": "One solution is to re-sample your data. For example, a dataset could have some observations that are recorded hourly or other observations that are recorded every 2 hours. If you are using a forecasting algorithm, it might require the observations to be taken at regular intervals. Re-sampling helps to establish regular intervals for the data in your dataset. You could either up-sample or down-sample a time series and you can re-sample both numeric and non-numeric data and use the re-sample operation to re-sample your time series data.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "bcdb7e09-2d2b-47d1-b11d-fcd0452be8eb",
+      "questionText": "why is it important to randomize training data?",
+      "answerText": "Randomizing your data when appropriate is important before training the data and you can split the data into training data and testing data. If we're trying to teach the algorithm to recognize the differences between images of a fish and a manatee and we input the images in groups that are not randomized, starting with the images of a fish, then the algorithm will think everything looks like a fish and the algorithm will be confident. And if we're changing our weights and biases as we're processing through the images, the model will start to have weights and biases that are prejudiced toward the fact that everything looks like a fish and trying to change that inside of the model becomes difficult. But if your data is randomized and you input the images into the model, then the model will see a difference of all of the class types that are in the dataset and each sample image going in will be randomized and it will adjust the weights and biases iteratively as it goes through all of the class types. This is similar to fraud detection, only that a majority of the observations will be non-fraud, hence over-fitting?",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "7e2d74f5-456d-4dd4-be4c-b5c9595b4397",
+      "questionText": "What is an example of when you __should not__ randomize the data?",
+      "answerText": "Well, what if you're looking for the relationships between data? An example is if you have a time series dataset of records throughout the day, starting at midnight to midnight the next day. So in this case, you might use a recurrent neural network to load in data points and make a prediction of possible times to turn off your pool's heater based on what has happened in the past. So in this scenario, if you randomize the data, then you lose the context of the data. The ordering of the dataset is important, so you would not randomize the data. __For the exam, also ensure you understand why you split the data into training data and testing data.__",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "d9f20776-7f48-4622-aadc-e6db0e976581",
+      "questionText": "What are the two entry points for AWS Glue Data Quality?",
+      "answerText": "Both the AWS Glue Data Catalog and AWS Glue ETL jobs. When you create a training job in SageMaker, you specify the location of a training dataset and an input mode for accessing the dataset. For data location, SageMaker supports Amazon S3, Amazon EFS, and Amazon FSx for Lustre. The input modes determine whether to stream data files of the dataset in real time, or download the whole dataset at the start of the training job. For this task statement, also ensure you understand encryption and techniques to encrypt data in AWS. I am not sure what the answer is supposed to be... I mean it seems straight forward the the transcript, slide and audio do not quite align.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "07c6cdd9-9a04-4a5e-9a5a-5486bc930e3f",
+      "questionText": "Here's a question. Your datasets contain confidential information and you must ensure that the data is encrypted and redacted. You need to build a machine learning model using these datasets. What is your solution?",
+      "answerText": "One solution is to store your data in Amazon S3 and choose AWS Key Management Service, or AWS KMS, and use AWS Glue to redact the sensitive information within the dataset. Then create an Amazon SageMaker Notebook and choose KMS encryption for the notebook. And then to encrypt the machine learning storage volume that is attached to the notebooks, preprocessing jobs, training jobs, hyper parameter tuning jobs, batch transform jobs, and endpoints, you can pass an AWS KMS key to SageMaker.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "454dec0e-3e64-4fce-bcdb-64ac0e184ff2",
+      "questionText": "Let's say you're using SageMaker Studio to analyze and build your models. You have five terabytes of data stored in an Amazon Redshift cluster. You need to choose a secure solution to export a subset of this data stored from your cluster and input that subset of data as your training data into Amazon S3. What is your solution?",
+      "answerText": "One solution is to use SageMaker Canvas to import data from Amazon Redshift. You can integrate a data preparation flow to preprocess and feature engineer your data, and then query data from the cluster and output the results to an S3 bucket. For added security, Amazon Redshift credentials can be stored as secrets in Secret Manager and use a library to retrieve the connection credentials at runtime. Another solution might be to create an Apache Spark job in AWS Glue to query data from the cluster and export the results to Amazon S3.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "689b25a4-c88c-462a-8143-f3b5be0cce92",
+      "questionText": "Here's another question. You have a model that only accepts preprocessed data as input in generating real-time predictions. You are using scikit-learn to perform data processing and feature engineering on raw data before using the data for model training in SageMaker. So how can you preprocess this data most efficiently?",
+      "answerText": "One solution is to reuse the scikit-learn code in the preprocessing of your data using an inference pipeline. And you can add SageMaker Spark ML Serving and scikit-learn containers that reuse the data transformers developed for the training models. Then the inference pipeline can be considered as a SageMaker model that you can use to make real-time predictions or to process batch transforms directly without any external preprocessing. And to get us rolling into Domain 2, ensure you understand how to transform the output of a model, specifically the softmax activation function, the rectified linear unit function, and the Sigmoid function, and the hyperbolic tangent function. Let's get started with our first walkthrough question.",
+      "tags": [
+        "skills-builder",
+        "10000-1.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "6dc1684a-0c75-45fa-8106-8f76321a4a11",
+      "questionText": "What is the solution to help mitigate the vanishing gate problem?",
+      "answerText": "Well, there is long short term memory, or LSTM, which is a type of recurrent neural network. LSTM uses gates to be able to determine what is important and should be remembered, but also, what it should forget. It introduces multiple neural networks inside of the LSTM node inside of the neural network. And this does add time to train because there are multiple neural networks at all stages along the process. And if you don't have the extra time needed to train, then you can use a gated recurrent units, or GRU, which is another type of recurrent neural network and also uses gates. But it is structured differently, it is not as complicated, needs less processing than an LSTM, and it might be faster to train.",
+      "tags": [
+        "skills-builder",
+        "10000-2.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "512dd854-71b9-44e4-a441-ae4d2c1602e6",
+      "questionText": "How do you consider interpretability during model selection or your algorithm selection?",
+      "answerText": "The higher the interpretability of a machine learning model, the easier it is to comprehend the model's predictions. But there is a tradeoff to be considered between what the model has predicted, which is the model performance, and why the model has made such a prediction, which is the model interpretability. And there are methods for model interpretability that can be classified into __intrinsic analysis__ and post hoc analysis. __Intrinsic analysis__ can be applied to interpret models that have low complexity or simple relationships between the input variables and the predictions. These models are based on algorithms such as linear regression where the prediction is the weighted sum of the inputs and decision trees, where the prediction is based off of a set of if-then rules. __Post hoc analysis__ can be applied to interpret simple relationship models and more complex models such as neural networks, which have the capability to capture non-linear interactions. These methods are often model-agnostic and provide mechanisms to interpret a trained model based on the inputs and output predictions. Post hoc analysis can be performed at a local level and zoom in on a single data point or at a global level and zoom out and view the overall behavior of the model. __She asserts__ that RNN are good for series..  Words in a sentence, financial data (maybe), etc",
+      "tags": [
+        "skills-builder",
+        "10000-2.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "ac458a26-f408-4250-a0e1-0b28a52859cc",
+      "questionText": "Here is a question. You are using Amazon Polly to translate plaintext documents to speech. After testing, some acronyms and business-specific terms are being pronounced incorrectly. What is your solution to ensure the terms are pronounced correctly?",
+      "answerText": "With Amazon Polly, you can use the pronunciation lexicons and you can modify the pronunciation of the words and customize the pronunciations too.",
+      "tags": [
+        "skills-builder",
+        "10000-2.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "60a313c1-f04a-42b7-99c1-16662d30f7f0",
+      "questionText": "Here is another question. You're building a crawler to analyze social media posts using sentiment analysis. You need to index the posts and the sentiment as metadata in an Amazon OpenSearch Service cluster. Which AWS AI services will help?",
+      "answerText": "Amazon Comprehend uses machine learning to discover the insights and relationships in your unstructured data. It extracts key phrases, places, people, brands, or events, understands the positive or negative of the text, analyzes the text using tokenization and parts of speech, and automatically organizes text files by topic. So my first thought of a design would be to expose the application through a RESTful endpoint, have it invoke a Lambda function that will call Amazon Comprehend for sentiment analysis, and index data into the cluster. I'm gonna stop this lesson here and in the next lesson, we'll continue talking about task statement 2.1.",
+      "tags": [
+        "skills-builder",
+        "10000-2.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "cf8ed005-d243-4c0c-a49c-31b493169b9a",
+      "questionText": "Here is a question. How do you choose the right hyperparameter values when using cross-validation?",
+      "answerText": "One solution is to use regularization to minimize the adjusted loss function and prevent overfitting. For the exam, ensure you understand regularization, both Lasso regularization, or L1 regularization, and Ridge Regression regularization, or L2 regularization, and the use cases. Parameters are obtained from the data, and are the values inside the algorithm which influence how the calculations of weights, biases, coefficient, and so on actually work. When we pass in our data, the algorithm completes some calculations and comes up with numbers, weights, biases, coefficients, and so on, and then creates the model. Hyperparameters are how we control a training model, improve model performance and the model outcome. Hyperparameters are set by us to define how the training and learning process takes place. But all of this depends on the algorithm we use and the implementation of that algorithm. What are examples of hyperparameters? Epoch count, batch size, learning rate, regression type, number of nodes, layers, and more. Here is a question.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "33c10fb1-b9c2-40b6-84ba-ddf89d6edcef",
+      "questionText": "You are developing an image classification model in Amazon SageMaker using 20 epochs. During training, you observed that the validation loss starts to increase from the 15th epoch onwards and results in poor model performance. How can you prevent this from adding expense and also reduce the training times?",
+      "answerText": "One solution is to use the early stopping option in Amazon SageMaker to stop the training jobs earlier if the results are not improving based on a particular metric to reduce compute time and avoid overfitting your model. And we'll talk more about compute under task statement 3.1. __For the exam, also ensure you understand optimizers. Optimizers are one of the hyperparameters we can set on our algorithms as we train our models__. A few examples of optimizers are Gradient Descent, Stochastic Gradient Descent, Adam, and many others. The optimizer that is best for your scenario and data depend on your requirements and the needed performance, and we'll dive deeper into performance under Domain 3. Here is a question.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "a3afd57b-6379-438f-afe0-309683a6d69e",
+      "questionText": "You are using Amazon SageMaker to train an image classification model using a large training dataset stored in Amazon S3. But you need to experiment with different hyperparameter tunings to achieve the best result, and you want fast startup and training times to run iterations.",
+      "answerText": "One solution might be to use Amazon FSx for Lustre to serve the Amazon S3 training data to Amazon SageMaker. Amazon FSx for Lustre file system is integrated with Amazon S3 and can speed up your training jobs by serving your Amazon S3 data to Amazon SageMaker at high speeds.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "569e8ce6-788e-4add-82cf-d91759a63fa8",
+      "questionText": "What if you apply Principal Component Analysis on the Amazon S3 training data to reduce the file size? Will this work? No, this solution might reduce the overall size of the training data and improve the model performance, but it won't speed up the training job start and training times because you will need to load the data from the S3 bucket to Amazon SageMaker for iterations. What if you use Amazon EFS to serve the Amazon S3 training data to SageMaker? Will this solution work? It would, but Amazon FSx has a higher throughput than Amazon EFS, so using FSx would be the better choice. I'm gonna stop this lesson here. And in the next lesson, we'll continue talking about task statement 2.2.",
+      "answerText": "(No solution text)",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "63997c1a-ed73-4926-aa52-ed1b05c05af7",
+      "questionText": "What is the solution to fine-tune and train a pre-trained model on a new dataset without training from scratch?",
+      "answerText": "You can use transfer learning and a generalized model from a generalized dataset that can be transferred into your training process with your new dataset. Then you can train your model, and the algorithm already knows some information and understand what it needs to do. But the model still needs to figure out how the information it understands maps to your new dataset. You can also use SageMaker Studio. SageMaker Studio does not run on a single instance server in your account like SageMaker Notebooks. SageMaker Studio is in an environment on a server managed by AWS with an Amazon EFS share to store the data. SageMaker Studio also has __SageMaker JumpStart__, which can help you find projects that are already built with datasets, models, algorithm types, and solutions that are based on industry best practices. And SageMaker Studio also has SageMaker resources, with projects, pipelines, experiments and trials, model registry, endpoints, compilation jobs, and more. `They kinda go off the rails and don't fully give a second solution... just lists purposes of the different SM services` And you can use SageMaker ML Lineage Tracking to create and store information of your machine learning workflow from data preparation to model deployment, to help reproduce the workflow steps, track the model and data lineage, and establish model governance and audit standards. And to manage your model versions for repeatability and audits, you can use the SageMaker Model Registry, which helps to catalog models for production, manage model versions, associate metadata, manage the approval status of a model, deploys models to production, and automate model deployment with continuous integration and continuous delivery. As machine learning and artificial intelligence has evolved, we've seen different approaches in types of machine learning models. __For the exam, ensure you understand ensemble modeling, and how you can train, optimize, and deploy your custom ensembles using SageMaker__.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "7d6130a7-da38-4491-9309-c7c1ba75b115",
+      "questionText": "What is a use case for ensemble learning?",
+      "answerText": "Cybersecurity, fraud detection, remote sensing, predicting best next steps in financial decision making, medical diagnosis, and even computer vision and natural language processing tasks. There are also several libraries and frameworks that provide implementations of ensemble models such as eXtreme Gradient Boost, CatBoost, or the scikit-learn random forest, And again, with SageMaker, you can also bring your own models and use them as stacking ensemble, and then deploy a custom ensemble using a single SageMaker training job, and a single tuning job, to deploy a single endpoint which might reduce cost and operational overhead.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "02038915-d1e5-4874-8495-e9dfacc6fbd4",
+      "questionText": "Here's a question. You've created a data pipeline that extracts input features from a Redshift cluster and saves it as CSV files in Amazon S3. The exported data is then fed into a SageMaker instance to make inferences. You need to lower costs and generate predictions quicker. What is your solution?",
+      "answerText": "One solution is to use Amazon Redshift ML to create a recommender system model and perform in-database local inference. You can use SageMaker and SQL statements to create and train SageMaker machine learning models using your Redshift data and then use these models to make predictions. For this scenario question, the data is already in a Redshift cluster. Using Redshift ML, the input data can be processed directly within the Redshift cluster, reducing the time and resources required to move data between Redshift and Amazon S3. Additionally, Redshift ML is designed to perform fast in-database machine learning, which can help speed up the prediction generation process and reduce the overall cost of inference.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "2cfe55e6-040d-4860-89e6-a3af01bf4e45",
+      "questionText": "Here is a related question. Can you use Amazon Redshift streaming ingestion to feed inference data directly to the SageMaker instance?",
+      "answerText": "No. Redshift streaming ingestion is a feature for consuming data directly from streaming sources such as Amazon Data Streams and Amazon Managed Streaming for Apache Kafka. It cannot be used to send inference requests to a SageMaker instance.",
+      "tags": [
+        "skills-builder",
+        "10000-2.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "470ad73c-7aef-4a0c-94d4-8d24653dcad9",
+      "questionText": "Here's a question. You have deployed an Amazon SageMaker endpoint in productions to generate predictions. You need a solution to visualize the prediction's precision recall curve. What is your solution?",
+      "answerText": "One solution is to generate the precision recall data by executing a daily Amazon EMR workflow, storing the results in an S3 bucket, and using Amazon QuickSight to produce a dashboard of the results.",
+      "tags": [
+        "skills-builder",
+        "10000-2.3-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "20f9f495-eb11-4968-bd7c-961dd4ffda98",
+      "questionText": "Here's another question. You want to load test the model you have developed using Amazon SageMaker notebook instance to right size the instance before deploying to production. What is your solution to visualize the load tests?",
+      "answerText": "One solution is to create a CloudWatch dashboard to build a unified operational view of the metrics generated by the notebook instance. You can monitor SageMaker using Amazon CloudWatch and build customized dashboards for your CloudWatch metrics. Let's also talk about how to create a model quality baseline in AWS to compare your model predictions in AWS. You can use Amazon SageMaker Ground Truth with Ground Truth labels in a baseline dataset that you have stored in Amazon S3. You can also use model quality monitoring jobs to monitor the performance of a model and compare the predictions that the model makes with the actual Ground Truth labels that the model attempts to predict. To measure model quality, SageMaker Model Monitor uses metrics that depend on the machine learning problem type. For example, if your model is for a regression problem, one of the metrics evaluated is mean squared error. I added a link to all of the metrics used for the different machine learning problem types in SageMaker. I'm gonna stop this lesson here, and in the next lesson we'll continue talking about task statement 2.3.",
+      "tags": [
+        "skills-builder",
+        "10000-2.3-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "daf88510-25cc-43d6-95cb-6f47ed0b1c4d",
+      "questionText": "Let's ask a few questions on SageMaker hosting services. After you train your machine learning model, you can deploy your model using SageMaker to get predictions. What SageMaker hosting service do you use if you need persistent real-time endpoints that make one prediction at a time?",
+      "answerText": "SageMaker real-time hosting services and real-time inferences.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "55efbc47-d7be-4bff-8f69-0a69d476951e",
+      "questionText": "What if you have workloads that have idle periods between traffic spurts, and can tolerate cold starts, what would you use?",
+      "answerText": "Serverless inference.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "a60f9b6e-4b7d-44c8-a80c-805ad575f84f",
+      "questionText": "What if your requests have large payload size, up to one gigabyte, long processing times, and near real-time latency requirements? What do you use?",
+      "answerText": "SageMaker Asynchronous Inference.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "b864600d-2c9f-43ed-90b3-6e29f4e55949",
+      "questionText": "What if you need to get predictions for an entire dataset, what would you use?",
+      "answerText": "SageMaker Batch Transform. SageMaker also provides features to manage resources and optimize inference performance when deploying machine learning models. __SageMaker Neo__ helps you to train your model once, and then run that model anywhere in the cloud, and at the edge.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "3084d89e-3c35-4b7c-a81e-79e5ee40b75b",
+      "questionText": "Here's a question. You want to run inference for real-time data and test multiple variants of your model hosted in your development environment. To identify the best model to deploy to production, you are going to perform A/B testing. What is your solution?",
+      "answerText": "One solution is to deploy the model variants behind a single SageMaker endpoint, specify a traffic percentage for each variant, and shift all traffic to the best-performing model after the A/B test is done. Instead, could you use API Gateway to an API endpoint for each model variant, advertise the endpoints for A/B testing, delete all model endpoints that perform poorly, and only retain the API endpoint of the best-performing model? Well, this solution is possible, but you would have to publish a number of API endpoints that you would need to monitor and track. Using a single SageMaker endpoint is a less-effort solution for A/B testing, because it will perform load balancing on multiple models. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 3.1.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "cbaa592e-8b94-456a-9938-627f12de5965",
+      "questionText": "Here's a question. You are training an Apache MXNet model using SageMaker. You want to accelerate this inference workload, but also optimize cost and right size the instance. What is your solution?",
+      "answerText": "One solution is to use AWS Inferentia, which is a custom machine learning chip that you can use for high-performance inference predictions. Let's also talk about Amazon Elastic Map Reducer, Amazon EMR. You can use Amazon EMR Studio notebooks, which are managed Jupyter notebooks that you can use as an integrated development environment into the EMR environment to manage the code that runs inside of your EMR cluster. You can run Apache Spark with Python, Scala, or SQL, and you can analyze the data inside EMR from this in-memory perspective. And Amazon EMR with Spark has a library of a code called __Spark MLLib__. The algorithms are pre-baked into MLLib, and you can use them to train your data that is inside of EMR through Spark. And you can use MLLib to not only train the model, but run the model. And with this design, AWS is supporting this __machine learning inside of EMR__, but you can also use the SageMaker Spark Library. The SageMaker Spark Library is a specific SDK for your Spark code to interact with the SageMaker services. It can use the k-means algorithm, the principal component algorithm, or XGBoost, which are prebuilt algorithms inside of SageMaker. And you can also extend it out with the estimator model. And if you choose to use SageMaker Spark Library instead of MLLib, you will also not need cluster training and hosted production endpoints, so you do not need to off-size your cluster for the training job you need to complete. And you can host your production endpoints outside of your Amazon EMR cluster and have infrastructure spun up to make inference on your model. __AWS Batch is a fully managed service to manage batch compute jobs__. And the components of AWS Batch are the compute environments, job queues for prioritization, and job definitions, which are descriptions of what we want the job to look like. __The options for AWS Batch compute environments are Fargate and EC2__. If you use Fargate as your compute environment, you need to choose the max virtual centralized processing unit, or vCPUs, that you need to have available. If you choose EC2, you can set the maximum, minimum, and desired vCPU, or you can select GPUs. __And for both, you can use on-demand instances or spot instances__. I'm gonna stop this lesson here. And in the next lesson, we'll continue talking about task statement 3.1.",
+      "tags": [
+        "skills-builder",
+        "10000-3.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "a3ac4677-a2a1-4b1b-9bbb-046f76cb86aa",
+      "questionText": "How do you scale up or down an existing endpoint?",
+      "answerText": "You must create a new production variant and shift traffic. For example, if you want a system to handle 1,000 requests per second scale up instead of out, Accelerator instances such as G5 and Inf1 can process higher numbers of requests on a single host.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "6730ffa9-a240-4fe0-b108-a9f9b0ce10cd",
+      "questionText": "What is the solution if you have unpredictable traffic patterns or you don't want to set up scaling policies?",
+      "answerText": "You can use serverless inference for an endpoint and SageMaker manages the auto scaling for you. Serverless inference also integrates with AWS Lambda for high availability, built-in fault tolerance, and automatic scaling.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "5130092a-bacd-422e-82d1-4ccc0c00b622",
+      "questionText": "Here's another question. You are using a SageMaker endpoint to predict outcomes. You need to ensure that the SageMaker model scales. What is your solution?",
+      "answerText": "One solution is to configure auto scaling on the SageMaker endpoint. When you host a model on SageMaker, you can also configure auto scaling to adjust the number of instances in response to the actual workload. Could you instead use an AWS Inferentia instance? No, AWS __Inferentia is designed for accelerating inference workloads at a reduced cost__. These instances can offer improved inference performance, but they can have failures due to a surge in a load. SageMaker multi-model endpoints support automatic scaling to help manage replicas of models to ensure model scale based on your traffic patterns. You can also optimize the cost of training your models by using managed spot instances, and __for the exam, ensure you understand how to choose metrics for auto scaling__.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "fe45e9a3-cf53-4873-a4ba-9e73c49b1fa3",
+      "questionText": "What metrics would you need to monitor for your models?",
+      "answerText": "My first thoughts are model latency, CPU utilization, invocations per instance, and explanations per instance. And we've talked about using Amazon CloudWatch to monitor SageMaker. You can build customized dashboards for your CloudWatch metrics that can display multiple metrics and include text and images. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 3.2.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "3c3149e2-48c6-4a5c-86f9-d7bc24785438",
+      "questionText": "How do you configure secure connections for your Amazon Virtual Private Cloud, or Amazon VPC, networks and your SageMaker endpoints?",
+      "answerText": "Instead of connecting over the internet, you can configure and connect to the SageMaker API or to SageMaker Runtime through an interface endpoint. When you use a VPC interface endpoint, communication between your Amazon VPC and the SageMaker API or Runtime is within an AWS network, and these connections can be set in your CloudFormation templates, which ties back to maintainability and scalability. Each VPC endpoint is represented by one or more elastic network interfaces with private IP addresses in your Amazon VPC subnets. So if you have an application inside your Amazon VPC, it uses AWS PrivateLink to communicate with SageMaker Runtime, and then SageMaker Runtime communicates with the SageMaker Endpoint. __TODO__ This is not how I understood 'private link' to work.. The VPC Interface Endpoint connects to your Amazon VPC directly to the SageMaker API or SageMaker Runtime using AWS PrivateLink without using an internet gateway, NAT device, VPN connection, or an AWS Direct Connect connection. You can also connect to SageMaker Studio Classic and connect your notebook instances from your Amazon VPC through an interface endpoint in your Amazon VPC instead of connecting over the internet.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "8a8f47f8-fee5-4fe5-ab47-04b7a6f465f6",
+      "questionText": "Here's a question. You are using SageMaker notebooks to clean and train your data. You received a new security requirement that all training data must be stored in a private S3 bucket. What is your solution?",
+      "answerText": "One solution is to host the SageMaker notebooks in a private subnet of an Amazon VPC and associate a VPC endpoint for the SageMaker notebook and Amazon S3.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "01bad0e5-3704-4902-a42e-04cc6370ac98",
+      "questionText": "Could you host the SageMaker notebook in a private subnet of a VPC, create an outbound network access control list rule that blocks access from the public internet?",
+      "answerText": "No, a network ACL will prevent your SageMaker notebooks from connecting to SageMaker APIs, which are needed to perform SageMaker operations. We will talk more about network ACLs in Domain 4. Let's get started with the third task statement from Domain 3, which is use automated orchestration tools to set up continuous integration and continuous delivery pipelines.",
+      "tags": [
+        "skills-builder",
+        "10000-3.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "bce7ac50-5572-402d-a64d-065d78b1fa4a",
+      "questionText": "Could you use AWS CodePipeline to deploy code maintained in AWS CodeCommit repository to a single Amazon EC2 instance?",
+      "answerText": "Yes, your pipeline is initiated when you push a change to the CodeCommit repository, and then the pipeline deploys your changes to an Amazon EC2 instance using AWS CodeDeploy as a deployment service. You can also use CodePipeline to orchestrate each step in your release process. By defining stages in a pipeline, you can retrieve code from a source code repository, build that source code into a releaseable artifact, test the artifact and deploy it to production. AWS Step Functions can also be used to orchestrate workflows and can handle nested workflow logic errors and retries. Ensure you know how to configure and integrate other AWS services into AWS CodePipeline to complete your machine learning pipeline and also understand the set of AWS CI/CD developer tools. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 3.3.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "d7918757-4441-421e-923e-66f7d266f051",
+      "questionText": "Here is a question. What are some deployment strategies for serverless?",
+      "answerText": "AWS CloudFormation, AWS Serverless Application Model, or AWS SAM, but also all-at-once, blue/green, and canary or linear. One basic deployment strategy in serverless is to update your function code in production, publish a new version, invoke the version directly to run your integration test, and after validating, you can switch the alias that your production uses to point to the new version. AWS CodeDeploy has different deployment strategies such as linear and canary, and you can monitor the deployment, create alarms, and initiate the rollback if needed. It also can define pre-traffic and post-traffic hooks to verify that the newly deployed code is configured correctly and your application works as expected. As you scale your machine learning operations, you can use SageMaker manage workflow services to implement continuous integration and deployment practices for your machine learning lifecycle. With the SageMaker Model Building Pipelines and the SageMaker Pipelines SDK, you can choose and integrate pipeline steps into a solution that automates the building process from data preparation to model deployment. For Kubernetes orchestration and Kubernetes-based architectures, you can install SageMaker Operators on your Kubernetes cluster to create SageMaker jobs using the Kubernetes API and command line Kubernetes tool, such as kubectl. For SageMaker notebook jobs, and to schedule non-interactive batch runs of your Jupyter notebook. You can use the notebook-based workflow service to initiate standalone or regular runs on a defined schedule. SageMaker Notebooks runs Jupyter notebooks and models that can be trained, saved, loaded, and there are also environments or kernels inside the notebooks. You can also use other services such as Airflow workflows and AWS Step Functions to integrate with SageMaker to build your workflows. For Airflow workflows, the SageMaker API exports configurations for creating and managing airflow workflows. And for Step Functions, you can use multi-step machine learning workflows in Python that orchestrate SageMaker infrastructure without provisioning your resources separately.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "765006f7-4c76-4615-9cc9-c0e57e8cc0ba",
+      "questionText": "Here's a question. Let's say you have existing infrastructure. How do you select the correct deployment orchestrator in AWS?",
+      "answerText": "One option is to use Amazon Managed Workflows for Apache Airflow, which is a managed orchestration service for Airflow, and you can use it to set up and operate data pipelines in AWS and create workflows without having to manage the infrastructure for scalability, availability, and security. You can also use SageMaker Model Building Pipelines and set up SageMaker projects for orchestration using a tool that handles most of the step creation and management for you.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "52da7c6c-fac2-4cbe-acc9-d0677911818a",
+      "questionText": "What is your solution to optimize functions that act as orchestrators that include idle time in the function and increased costs?",
+      "answerText": "One solution is to move the orchestration flow to Step Functions. You can also automate data ingestion with AWS Data Exchange and send the data to Amazon S3. AWS Data Exchange helps to securely exchange file-based datasets in AWS, then you can use the ingested data with the AWS analytics and machine learning services.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "b135a24b-dda4-4b39-8cd0-e8032b07631a",
+      "questionText": "Here is a question. You are granted access to a SQL server hosted on Amazon RDS to train a model in SageMaker. You need to design an automated workflow. What is your solution?",
+      "answerText": "One solution is to use AWS Data Pipeline to copy the data from the SQL server to an Amazon S3 bucket, and then provide the Amazon S3 endpoint within the SageMaker notebook.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "3d563e87-fbbd-4376-9da3-d74ca99fee21",
+      "questionText": "Here's another question. How can you train a model in SageMaker?",
+      "answerText": "One solution is to create a training job that includes the URL for the S3 bucket where the data is stored, the compute resources you want SageMaker to use for the model training, the URL of the S3 bucket where you want to store the output of the job and the Amazon Elastic Container Registry, or Amazon ECR, path where the training code is stored.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "11859382-bfa7-4a75-a212-e96ce2588b5c",
+      "questionText": "What services could we use for testing?",
+      "answerText": "Dive deeper into AWS SAM, CodePipeline, CloudFormation, and how to automate your test environments. Code quality testing begins when the code is checked out from the source code repository. If you compile your code, your code will be tested to see if it can create a fresh build. Then you run unit tests to configure your CI/CD tool to execute the tests that are in your codebase.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "dcad235a-98b2-42e8-953c-484c73905245",
+      "questionText": "How can you test proposed code changes and pull requests before merging?",
+      "answerText": "My first thoughts are using AWS CodeCommit, AWS CodeBuild, and AWS Lambda. We can also use services such as AWS CodePipeline for visualizing and creating our pipeline and automatically building and deploying merged code that has met the validation bar for the pull requests. It is important to understand your user data flows and the user interface too.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "63013ff0-4b12-4224-8127-83ee9f54c657",
+      "questionText": "How can you test your serverless applications end-to-end?",
+      "answerText": "One solution is to configure tests using AWS Lambda. Another solution is AWS Glue that provides both visual and code-based interfaces to help with data integration, can be integrated with unit test Python scripts for Glue jobs, and can deploy AWS Glue jobs using AWS CodePipeline.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "ee5a4537-7d96-48ef-86ec-5d2825f52188",
+      "questionText": "Here's a question. You recently migrated your application to AWS and you're using AWS CodePipeline. Your application has a test environment and a production environment and are both configured in the pipeline. You want to ensure that any issues are identified before the deployment for new updates, revisions, or versions. What steps can you take?",
+      "answerText": "Well, this is a bit vague, but what I hope you're thinking is to add a test action to the pipeline for both unit and functional testing using AWS CodeBuild to verify the test results passed before moving on to the deployment. You could also use AWS CodeDeploy action to deploy the latest version to a pre-production test environment and set up manual approval actions in the pipeline to have the needed test performed. Then have another CodeDeploy action that deploys the verified code to the production environment. For running load or stress tests, performance benchmarking, and application testing at scale, check out the AWS Prescriptive Guidance for load testing applications. I added a link under additional resources. Let's wrap up this task statement and talk about how to configure training and inference jobs in your CI/CD pipelines. There are additional considerations for the pipeline when you implement continuous integration and continuous deployment processes such as automated re-training, scheduled inference, and similar extensions of the pipeline. Here is one solution. You can develop the initial machine learning model and evaluate its inference performance with Jupyter notebooks. You can integrate the model with runtime Python scripts so that it can be managed and provisioned by a machine learning framework using SageMaker. These Python scripts include predefined SageMaker callback functions and environment variables. Remember, they run inside a SageMaker container that is hosted on an Amazon EC2 instance. For processing jobs, SageMaker provides two options for performing batch-mode model inference. You can use SageMaker processing job or batch transform job. A processing job consists of a Python file that runs inside a SageMaker container. Batch transfer jobs are an extension of the concept of a SageMaker endpoint. At runtime, the jobs import callback functions, which then handle the input/output for reading the data, loading the model, and making the predictions. Then you define your pipeline. With SageMaker, you can use AWS Step Functions or ML Max Framework, which also support other pipeline or state machine systems for the development and deployment of machine learning pipelines. You can define the input and output placeholders for each step of the pipeline with a focus on training, inference, cross-validation, and back-testing. You can create the underlying infrastructure using AWS CloudFormation and include the AWS Step Function state machine instance or Airflow. You can also prepare metadata and data or data locations to fill in concrete values for the input/output placeholders that you define, including the runtime scripts and model hyperparameters. Then you run your pipeline and implement continuous integration and continuous deployment processes, automated re-training, scheduled inference, and similar extensions of the pipeline, and monitor.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "2394b540-d601-4df6-8509-34d9ad5b1d5d",
+      "questionText": "What can you configure to monitor for any SageMaker model state changes?",
+      "answerText": "You can use Amazon EventBridge to monitor status change events in SageMaker. Let's get started with our fifth walkthrough question.",
+      "tags": [
+        "skills-builder",
+        "10000-3.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "3554dca8-cc18-44a0-9cdc-6562d87b4a8a",
+      "questionText": "How do you understand the effects of data drift on model performance and implement strategies that monitor and adapt to data drift through re-training?",
+      "answerText": "One solution is to use SageMaker Model Monitor and SageMaker Clarify to maintain high-quality machine learning models and to detect model and concept drift in real time. Model Monitor is integrated with SageMaker Clarify to help identify potential bias in your machine learning models, and you can configure alerts, receive notifications and take immediate action.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "587a2514-7c1a-4fea-ac24-50f97a3aefea",
+      "questionText": "Here's another question. Your model performance has degraded over time for reasons such as data quality, model quality, model bias and model explainability. You want to continuously monitor the quality of the machine learning model in real time. You also want to identify the right time and frequency to re-train and update the model. You need to configure alerts to notify and initiate actions if any drift in model performance is observed. What is your solution?",
+      "answerText": "You can monitor model performance with Model Monitor and establish a baseline during the training and before the model is in production, then collect data while in production and compare changes in model inferences. You can use SageMaker Clarify to identify model bias, and you can configure alerting systems with CloudWatch to send notifications for unexpected bias or changes in data quality, then you can monitor the model performance in production by using A/B testing.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "b0eeddc5-30c3-4afc-98a1-773da22a316d",
+      "questionText": "What is your solution to also configure automatic scaling for your monitored metrics?",
+      "answerText": "Remember SageMaker includes automatic scaling capabilities for your hosted model to dynamically adjust underlying compute supporting and endpoint based on a demand. If you also want to monitor endpoint metrics, SageMaker also outputs endpoint metrics for monitoring the usage and health of the endpoint. SageMaker Model Monitor helps you to monitor your models in production and provides alert when data quality issues appear. You can create a mechanism to aggregate and analyze model prediction endpoint metrics using services, such as Amazon OpenSearch Service, which supports Kibana for dashboards and visualization. The traceability of hosting metrics back to version inputs helps to analyze changes that could be impacting current operational performance, and remember to include human in the loop monitoring to monitor model performance efficiently. When automating decision processes, the human labeling of model results is a reliable quality test for model inferences. You can compare human labels with model inferences to estimate model performance degradation, and you can perform mitigation as model re-training. You can use Amazon Augmented AI to get human reviews.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "1a5038c9-9925-4779-93a7-5589b110182d",
+      "questionText": "How do you monitor workflows to detect anomalies or errors in the data processing or model inference?",
+      "answerText": "One solution is to use AWS Glue Data Quality anomaly detection to apply machine learning algorithms on data statistics over time to detect abnormal patterns and hidden data quality issues that are hard to detect through rules. You can also use Amazon Lookout for Metrics, which is a service that finds anomalies in your data, determines their root causes and helps you to quickly take action. You can add alerts and configure the alerts to run a Lambda function or send notification to an Amazon SNS topic. Also, Monitor Model has model quality monitoring jobs that monitor the performance of a model by comparing the predictions that the model makes with the actual ground truth labels that the model attempts to predict.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "89870f5f-6e55-4e84-b7d7-9f5c4aa5824b",
+      "questionText": "Here's a question. You deployed a machine learning model in SageMaker that provides product recommendations, but you have noticed that the total number of customers purchasing the recommended products has been declining over the last few weeks. What is your solution to improve the accuracy of the model and ensure it is providing high-value predictions?",
+      "answerText": "If you detect a significant change in customer data, you can re-train your model using both the original, updated, and new data.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "718f5fb3-c7ce-4b88-becb-4141911ab308",
+      "questionText": "Can you re-train the model periodically using the original data and apply regularization to improve prediction accuracy?",
+      "answerText": "Regularization does reduce overfitting, but re-training the model with the original data is unlikely to produce better results.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "96edde66-1e04-449f-b121-801b67c86eb9",
+      "questionText": "Can you tune the hyper parameters to reduce model drift?",
+      "answerText": "Well, this solution also would be working with the original data. Instead, you need to re-train the model based on the original data plus the new data to give product recommendations. Monitoring is also important to maintain the performance of your AWS CodePipeline and storage of your metrics, traces and logs can be in CloudWatch and AWS CloudTrail. Let's get started with the second task statement from Domain 4, which is to monitor and optimize infrastructure and costs.",
+      "tags": [
+        "skills-builder",
+        "10000-4.1-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "857574a8-51ea-4c8a-a89d-df66c3111fc5",
+      "questionText": "What AWS services are available to help you troubleshoot latency and performance issues in AWS?",
+      "answerText": "You can use CloudWatch to log and monitor SageMaker. For example, CloudWatch can be used to monitor SageMaker endpoints, and detect anomalies in their performance, which can help optimize resource usage and reduce costs. CloudWatch provides metrics related to SageMaker endpoints, such as endpoint latency, endpoint invocations, CPU and memory utilization, and data input and output rates. To keep track of batch and real-time predictions, you can monitor the predict count metric, according to the request mode dimension, and to keep track of batch and real-time predictions, you can monitor the predict count metric according to the request mode dimension. CloudWatch Logs can monitor information in the log files, and notify you when certain thresholds are met. You can create CloudWatch Event rules that react to a status change in a SageMaker training, hyperparameter tuning, or batch transform job. Using EventBridge, you can automate SageMaker, and respond automatically to events, such as training job status change, or endpoint status change. CloudWatch also provides several features to help analyze logs and metrics, such as CloudWatch application insights, to collectively define and monitor metrics and logs, for an application across different AWS resources, CloudWatch anomaly detection to surface anomalies for your metrics, and CloudWatch Logs Insights, to interactively search and analyze your log data in CloudWatch Logs. You can also use CloudWatch Service Lens to correlate traces, metrics, and logs and alarms, for diagnosing issues. SageMaker is also integrated with AWS CloudTrail, and provides a record of actions taken by a user role, or an AWS service in SageMaker. AWS Lambda automatically logs each invocation of your Lambda functions. You can also add custom log statements to your Lambda functions, using programming languages. CloudWatch Lambda Insights is a monitoring and troubleshooting solution for serverless applications, running on AWS Lambda, that collects, aggregates, and summarizes system-level metrics. And to ensure auditing and traceability in AWS, you can deploy logging and monitoring solutions that capture and analyze activities, and events across your infrastructure and services.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "6730c53d-2e0e-4440-a26e-31caea0b826d",
+      "questionText": "What AWS services are available to ensure traceability?",
+      "answerText": "One service is AWS X-Ray, that provides end-to-end tracing and analysis, to visualize and understand the interactions between components of your application, performance optimization and issue resolution. And to ensure the accuracy and reliability of the data for traceability and audits, it is important to verify and clean your data. AWS provides services for data verification and cleaning, such as Lambda, Athena, QuickSight, Jupyter Notebooks, and Amazon SageMaker Canvas. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 4.2.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-1"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "2528c224-1933-4868-b4cc-43bb0ae7bcf1",
+      "questionText": "Here's a question. You have a current S3 bucket that is shared by your team to store datasets for your CI/CD pipeline. The S3 bucket policy was accidentally changed and caused a denial of a download for a needed artifact and stopped the deployment.",
+      "answerText": "What solution can you add to ensure you are notified of any policy changes or issues? One solution is to create a CloudTrail trail to send logs to a CloudWatch logs group, create a CloudWatch metric filter for an S3 bucket policy event on the CloudWatch log group, and then create a CloudWatch alarm with a metric threshold of greater than or equal to one, and send a notification whenever this metric threshold is breached. You can also configure AWS CodeDeploy to use the rollback when alarm thresholds are met. Alert notifications and remediation actions are important for your entire system to ensure high availability, fault tolerance, and the security of your data.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "4a5da0cc-1313-4a2b-a25b-93f268b067e7",
+      "questionText": "Here is a question. For data protection, what AWS service can you use to ensure you can trace integrity of each file and prevent the files from being tampered with?",
+      "answerText": "If you enable the log file integrity feature of AWS CloudTrail, CloudTrail will create a hash for every log file it delivers. Then each hour, CloudTrail creates and delivers a file that references the log files for the last hour and contains a hash of each. __For the exam__, ensure you understand automation and CloudWatch alarms.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "785a32e9-4344-4d8c-8559-139e4dd0ac5f",
+      "questionText": "Let's say that you need to ensure all EC2 instances with low utilization are terminated to optimize cost. What is your solution?",
+      "answerText": "One solution is to integrate a CloudWatch event rule with AWS Trusted Advisor to detect Amazon EC2 instances with low utilization, then create a trigger with a Lambda function and create a second trigger to invoke a second Lambda function to terminate the underutilized Amazon EC2 instances.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "be1ab88a-b49d-4426-bacb-649b91cd07d7",
+      "questionText": "Here's another question. For your machine learning pipeline, you have a large Hadoop cluster with more than 100 Amazon EC2 instance nodes. Currently, you forward email notifications from the AWS Health service to the team if there is an instance that needs maintenance or an instance type that may be retired soon. Notifications are important because the team must decide how the needed maintenance will affect the cluster, but also to ensure that the Hadoop distributed file system component can recover from failure. How do you automate this notification process?",
+      "answerText": "One solution is to create an EventBridge rule for AWS Health and select the EC2 service and events you need notifications for, along with creating an Amazon Simple Notification Service topic and subscribe your team to that topic. Tracking metrics, logs, and events helps in the process of auditing your application, systems, and infrastructure in AWS to troubleshoot and identify root cause and implementing real-time logs to CloudWatch using subscription filters can deliver logs to Kinesis Stream, a Firehose stream, or Lambda for processing and analysis. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 4.2.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "71845af5-8ac4-4deb-8d86-de731f4dd9d1",
+      "questionText": "Here's a question. How do you troubleshoot latency with your SageMaker endpoint?",
+      "answerText": "For a single endpoint, you can use CloudWatch to monitor the latency metrics, model latency, and overhead latency for a SageMaker endpoint. If you use a SageMaker multi-model endpoint, you can also use CloudWatch to track model loading wait time, model downloading time, model loading time, and model cache hit. And then to reduce latency, ensure you benchmark the model outside of a SageMaker endpoint to test performance. If SageMaker Neo supports your model, then you can compile the model and SageMaker Neo will optimize the model to run up to twice as fast. If AWS Inferentia supports your model, then it can add up to three times higher throughput and up to 45% lower cost per inference compared to the AWS GPU-based instances. For further troubleshooting, remember that the inference code might affect the model latency, depending on how the code handles the inference. Any delays in code, increase the latency. Also, infrequent requests might also lead to an increase in overhead latency, and an overused endpoint might cause higher model latency. To dynamically increase and decrease the number of instances that are available for an endpoint, you can add auto scaling to the endpoint. Also, the first invocation for an endpoint might have an increase in latency because of a cold start, but you can prewarm the endpoint and send test requests. The third pillar for cost optimization is choosing the right pricing model. Ensure you understand the different pricing options, such as On-Demand, Savings Plans, Reserved Instances, Spot Instances, Dedicated hosts, Dedicated instances, Scheduled instances, Capacity reservations, and so on.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "41d4f953-8d9c-42d2-9764-bbf4f5079de1",
+      "questionText": "For example, which pricing option would you choose if you had a batch processing job that was designed to handle interruptions and you wanted to minimize your cost?",
+      "answerText": "My first thought is spot instances.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "78193bd5-2d32-44d8-a0d5-1748b80e6f4d",
+      "questionText": "What pricing option would you choose if you couldn't handle interruptions, but you wanted to save as much as possible, and you want to have the flexibility of using EC2, Fargate, or Lambda for your compute needs?",
+      "answerText": "For this question, dive deeper into savings plans such as Compute Saving Plan, EC2 Savings Plan, and the SageMaker Saving Plan. __TODO__ \"[whatever] Savings Plan\" is new to me, review online documentation The fourth pillar of cost optimization is to match your storage to your usage. Know the different use cases and requirements for different storage to match your workloads, and we talked about this under lessons for Domain 1, so go back and read those lessons if you need a refresher. The fifth pillar of cost optimization is continual improvement with measuring and monitoring to optimize your architecture. You need measures in place to monitor and track your metrics, measure your usage and your cost, and set alarms to immediately take action. You can also use other services like AWS Cost Explorer, AWS Trusted Advisor, AWS Budgets, and more to help define your metrics, set target goals, define and enforce your tagging strategy, use cost allocation tags, and make sure you review regularly for any infrastructure changes. I'm gonna stop this lesson here, and in the next lesson, we'll continue to talk about task statement 4.2.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "84de05a0-bf0c-42df-bed0-f9e08a19db7f",
+      "questionText": "For example, if you wanted high-level, interactive financial reports, would you use AWS Cost Explorer or the AWS Cost and Usage Report?",
+      "answerText": "__Cost Explorer gives you a high-level view___ that you can then drill down into more specifics. AWS Cost and Usage Reports breakdown costs by the hour, day, month, product, resource tags, and more. We've mentioned alarms and alerting with CloudWatch, but you can also set up alarms and alerts to automate notifications when your bill exceeds a certain threshold. You can create billing alarms, free-tier alarms, and also alarms with AWS Budgets. Ensure you understand how to optimize costs and set cost quotas by using appropriate Cost Management tools. __EXAM___ Dive deeper into Cost Explorer, AWS Cost Management, AWS Organizations, and AWS Control Tower to help centrally manage billing, control access, compliance, security, and share resources too. There are also data and storage lifecycle rules that we did not mention under Domain 1 that you can use to automatically delete data that is no longer needed, and services such as Amazon Data Lifecycle Manager and AWS Backup that help you automatically delete old Amazon EBS snapshots or backups from other AWS services. And this can help you reduce the storage costs within an AWS account. There are also different options for optimizing the data migration calls for hybrid environments such as AWS DataSync, the Snow Family, the AWS Transfer Family, and AWS Storage Gateway. Architecting for data transfer can help to minimize data transfer costs. For example, you might use content delivery networks such as Amazon CloudFront, SageMaker Neo, or using dedicated private connections with AWS Direct Connect. Amazon SageMaker Inference Recommender helps you select the best instance types, configurations, optimizations to deploy your model to a real-time or serverless inference endpoint that delivers the best performance at the lowest cost for your machine learning models and workloads. AWS Compute Optimizer helps to analyze the configuration and utilization of metrics of your AWS resources and generates optimization recommendations to reduce the cost and improve the performance of your workload. Tags are so important for cost tracking and allocation techniques. You can use the AWS Cost Optimization Hub to identify, filter, and aggregate AWS cost optimization recommendations across your AWS accounts and Regions, which you can use to evaluate which recommendation provides the best price-performance tradeoff. Let's get started with the third task statement from Domain 4, which is to secure AWS resources.",
+      "tags": [
+        "skills-builder",
+        "10000-4.2-4"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "0d9b8282-6adb-48de-b294-6223ff8380a3",
+      "questionText": "How do you automate a solution to keep your data secure and prevent manual logins into instances in an auto scaling group that your application hosts?",
+      "answerText": "One solution is to install the __CloudWatch agent__ on the instances. Set up a CloudWatch Logs subscription. Create a Lambda function to add a FOR_DELETION tag to any EC2 instance that produces an SSH login event. Create a second Lambda function using an EventBridge rule to terminate all instances that have the custom FOR_DELETION tag. I added this question even though it relates more to architecting than machine learning because I wanted to make this distinction. __By default, when you create a SageMaker notebook instance, users that log into that notebook instance have root access__. And the reasoning is that data science is an iterative process and you might need to test and use different software tools and packages, and many notebook instance users need to have root access to be able to install these tools and packages. __Because users with root access have administrator privileges, users can access and edit all files on a notebook instance with root access enabled__. __To secure shared SageMaker notebook instances, you can use IAM policies when granting individuals access to notebook instances that are attached to an Amazon VPC that contains sensitive information__. So, the distinction is for Amazon EC2 instances, you have to grant all access, __but for SageMaker notebook instances, you need to secure the access__. And also, for both you need to ensure you are using the principle of least privilege. SageMaker Studio uses file system and container permissions for access control and isolation of SageMaker Studio users and notebooks. And this ties into adding security based on access patterns. Certain services, such as Amazon S3, give you the ability to manage security for the entire buckets, but also to add controls based on specific paths or objects. You can also add intrusion detection and prevention with AWS Gateway Load Balancer. AWS Network Firewall can be used to filter outbound traffic and supports inbound and outbound web filtering for unencrypted web traffic. For encrypted web traffic, Server Name Indication is used for blocking access to specific sites. In addition, AWS Network Firewall can filter fully qualified domain names. If access is needed to an AWS service that does not support interface VPC endpoints or to a resource outside of AWS, you can configure a NAT gateway with security groups to allow outbound connections. I'm going to stop this lesson here, and in the next lesson we'll continue talking about task statement 4.3.",
+      "tags": [
+        "skills-builder",
+        "10000-4.3-2"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "6fa323b5-3873-4349-ae90-bb6f6b4798c3",
+      "questionText": "How do you design data protection when using a VPN over the internet, or a private connection through AWS Direct Connect, or connections between Amazon VPCs, or for the transfer of your data between services, and how do you protect the data in transit when reaching end users over the public internet?",
+      "answerText": "Ensure you understand how to protect data at rest with the AWS Key Management Service, or AWS KMS, that can be used to encrypt your machine learning data, studio notebook, and SageMaker notebook instances. SageMaker uses KMS keys by default for more control on encryption and key management. For studio notebooks, the machine learning data is primarily stored in multiple locations. An Amazon S3 bucket host notebook snapshots and metadata, Amazon EFS volumes contains studio notebook and data files, and Amazon Elastic Block Store, Amazon EBS, volumes are attached to the instance that the notebook runs on. KMS can be used for encryption for all of these storage locations. To protect data in transit, AWS uses HTTPS communication for its APIs. Requests to the SageMaker API and console are made over a secure sockets layer connection. In addition to passing all API calls through a transport layer security encrypted channel, __AWS APIs also require that requests are signed using the Signature Version 4 signing process__. Additionally, communication between instances in a distributed training job can be further protected and another level of security can be added to protect your training containers and data by configuring a private Amazon VPC. SageMaker can be instructed to encrypt inter-node communication automatically for the training job. The data passed between nodes is then passed over an encrypted tunnel without the algorithm having to take on responsibility for encrypting and decrypting the data.",
+      "tags": [
+        "skills-builder",
+        "10000-4.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    },
+    {
+      "questionId": "20284360-ec31-4b89-a049-67b4a7b62bb0",
+      "questionText": "What are the recommended best practices of using version control to track code or model artifacts?",
+      "answerText": "If model artifacts are stored in Amazon S3, versioning should be enabled and also paired with multi-factor authentication, or MFA, delete to ensure that only users authenticated with MFA can permanently delete an object version, or change the versioning state of the bucket. You can also associate Git repositories with new or existing SageMaker notebook instances and add version control. SageMaker supports AWS CodeCommit, GitHub, and other Git-based repositories. And if you use AWS CodeCommit, the repository can be further secured by rotating credentials and enabling MFA. Additionally, the SageMaker Model Registry can also be used to register, deploy, and manage models. And to tie in logging, monitoring, and compliance, Amazon SageMaker is part of multiple AWS compliance programs, including FedRAMP, HIPAA, and others. And third-party audit reports can be downloaded using AWS Artifact. For the exam, ensure you dive deeper into the security pillar of the AWS Well-Architected Framework. AWS provides tools and features to help you secure your AWS environment. We've talked about these before, such as AWS CloudTrail, CloudWatch, __Amazon GuardDuty__, and more. Prioritize security at every layer, study with security in mind, and evaluate how protection can be added both in original designs as well as reinforcing existing deployments. Let's get started with our seventh walkthrough question.",
+      "tags": [
+        "skills-builder",
+        "10000-4.3-3"
+      ],
+      "domains": [
+        "skills-builder"
+      ]
+    }
+  ]
+}

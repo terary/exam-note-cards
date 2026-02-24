@@ -1,0 +1,31 @@
+Let's continue with task statement 4.3, which is to secure AWS resources. 
+
+Let's move on and talk about data retention, classification, and data recovery. There are best practices for securing sensitive data in AWS data stores. Ensure you understand general data security patterns and a clear mapping of these patterns to cloud security controls. 
+
+AWS provides the __AWS Cloud Adoption Framework__ with a specific security perspective to help. I added a link for you to dive deeper under the additional resources. It is important to understand what data protection looks like for your architecture and requirements. 
+
+
+Here are some questions to consider. 
+
+
+Question:
+How do you design data protection when using a VPN over the internet, or a private connection through AWS Direct Connect, or connections between Amazon VPCs, or for the transfer of your data between services, and how do you protect the data in transit when reaching end users over the public internet?
+
+Solution:
+Ensure you understand how to protect data at rest with the AWS Key Management Service, or AWS KMS, that can be used to encrypt your machine learning data, studio notebook, and SageMaker notebook instances. SageMaker uses KMS keys by default for more control on encryption and key management. For studio notebooks, the machine learning data is primarily stored in multiple locations. An Amazon S3 bucket host notebook snapshots and metadata, Amazon EFS volumes contains studio notebook and data files, and Amazon Elastic Block Store, Amazon EBS, volumes are attached to the instance that the notebook runs on. KMS can be used for encryption for all of these storage locations. To protect data in transit, AWS uses HTTPS communication for its APIs. Requests to the SageMaker API and console are made over a secure sockets layer connection. 
+
+In addition to passing all API calls through a transport layer security encrypted channel, __AWS APIs also require that requests are signed using the Signature Version 4 signing process__. Additionally, communication between instances in a distributed training job can be further protected and another level of security can be added to protect your training containers and data by configuring a private Amazon VPC. 
+
+
+SageMaker can be instructed to encrypt inter-node communication automatically for the training job. The data passed between nodes is then passed over an encrypted tunnel without the algorithm having to take on responsibility for encrypting and decrypting the data. 
+
+
+Question:
+What are the recommended best practices of using version control to track code or model artifacts? 
+
+Solution:
+If model artifacts are stored in Amazon S3, versioning should be enabled and also paired with multi-factor authentication, or MFA, delete to ensure that only users authenticated with MFA can permanently delete an object version, or change the versioning state of the bucket. You can also associate Git repositories with new or existing SageMaker notebook instances and add version control. 
+
+SageMaker supports AWS CodeCommit, GitHub, and other Git-based repositories. And if you use AWS CodeCommit, the repository can be further secured by rotating credentials and enabling MFA. Additionally, the SageMaker Model Registry can also be used to register, deploy, and manage models. And to tie in logging, monitoring, and compliance, Amazon SageMaker is part of multiple AWS compliance programs, including FedRAMP, HIPAA, and others. And third-party audit reports can be downloaded using AWS Artifact. 
+
+> For the exam, ensure you dive deeper into the security pillar of the AWS Well-Architected Framework. AWS provides tools and features to help you secure your AWS environment. We've talked about these before, such as AWS CloudTrail, CloudWatch, __Amazon GuardDuty__, and more. Prioritize security at every layer, study with security in mind, and evaluate how protection can be added both in original designs as well as reinforcing existing deployments. Let's get started with our seventh walkthrough question. 

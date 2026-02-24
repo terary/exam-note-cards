@@ -1,0 +1,62 @@
+Let's continue with task statement 1.1 and talk about extracting data from storage by using AWS service options. Let's go back to our earlier question of building a scalable and cost-efficient repository to store thousands of existing training datasets and new sets to train models. The storage solution was Amazon S3. What are options to extract data from an S3 bucket? You can use Amazon S3 Select and SQL statements to filter the contents of an Amazon S3 object and retrieve only the subset of data that you need. This also reduces the cost and latency to retrieve the needed data. As far as data formats, Amazon S3 Select works on objects stored in CSV, JSON, or Apache Parquet format. It also works with objects that are compressed with GZIP or BZIP2 and server-side encrypted objects. For Amazon S3, you can also use Amazon S3 Transfer Acceleration to extract data from your S3 bucket. If your data is stored in Amazon EBS volumes, ensure you understand the relationship between the maximum performance of your EBS volumes, the needed size and number of input and output operations, and the time it takes for each action to complete. On instances without support for EBS-optimized throughput, network traffic might compete with traffic between your instance and your EBS volumes. But on Amazon EBS optimized instances, the two types of traffic are kept separate. Let's move on and talk about troubleshooting and debugging data ingestion and storage issues that involve capacity and scalability. Here's a question. You were asked to redesign and reduce the operational management and the cost of the transformation pipeline that ingests training data from multiple custom sources. Currently, the pipeline uses Amazon EMR and AWS Data Pipeline. What is your solution? One solution would be to create an ETL job using AWS Glue to transform the data and deliver the results into an S3 bucket.
+
+ Here's another question. 
+You have been asked to redesign and reduce the operational overhead and use AWS services to detect anomalies in transaction data and assign anomaly scores to malicious records.
+The records are streamed in real-time and stored in an Amazon S3 data lake for processing and analysis. 
+What is your solution? 
+
+
+One solution is to use Firehose to stream transaction data and Amazon Managed Service for Apache Flink RANDOM_CUT_FOREST function to detect anomalies. 
+
+Could you also use Firehose to stream transaction data into Amazon S3 with the 
+SageMaker Random Cut Forest to detect anomalies? 
+This is a valid solution, but it won't meet the requirements of reducing the operational
+ overhead, because SageMaker requires more operational management than Amazon Managed Service for Apache Flink. 
+ 
+ 
+Here's another scenario. 
+You've been asked to improve the process time to ingest and store data in Amazon Redshift to conduct 
+near real-time analytics. 
+
+
+One solution would be to use Kinesis Data Stream to ingest the location data. Load the streaming data into the cluster using Amazon Redshift streaming ingestion. 
+
+Could you also use Amazon Managed Streaming for Apache Kafka to ingest the location data and use Amazon Redshift Spectrum to deliver the data in the cluster? 
+No. Redshift Spectrum is an Amazon Redshift feature to query data in Amazon S3 without loading that data into Amazon Redshift tables. Redshift Spectrum is not capable of moving data from S3 to Amazon Redshift. 
+
+Could you use Firehose to ingest the location data and load the streaming data into the cluster using Amazon Redshift streaming ingestion? 
+No, and I added this specifically because Firehose only streams data to certain AWS services. 
+We added a link for Firehose destinations. Firehose is not a valid streaming source for Amazon Redshift streaming ingestion. 
+
+
+Could you use Firehose to ingest the location data and set the Amazon Redshift cluster as a destination?
+ No, you can configure Amazon Redshift as a destination for Firehose. 
+ But Firehose does not actually load the data directly into Amazon Redshift. 
+ It stages the data in Amazon S3, and then copies the data into Amazon Redshift using the copy command. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Here's another question. 
+ 
+You are migrating a data analysis solution to AWS. The application produces the data as CSV files in near real time. You need a solution to convert the data format to Apache Parquet before saving it to an S3 bucket.
+What is your solution? 
+  
+  
+  
+  Well, my first thought is to use Kinesis Data Streams and create a streaming AWS Glue ETL job to convert the data into Apache Parquet. Also, as the streaming data is processed in the AWS Glue job, you have access to Spark Structured Streaming to implement data transformations to enrich or cleanse the data for analysis. 
+  
+  
+  Here's one last question. You are using Firehose to ingest data records from on premises. The records are compressed using GZIP compression. How can you perform SQL queries against the data stream to gain real-time insights and reduce the latency for queries? 
+  
+  One solution is to use an AWS Managed Service for Apache Flink application configured with Lambda to transform the data. You can configure AWS Managed Service for Apache Flink to transform data before it's processed by your SQL code and use AWS Lambda to convert formats, enrich data, filter data, and more. After the data is transformed by your function, the Managed Service sends the data to your applications SQL code for real-time analytics, and provides Lambda blueprints for use cases such as converting GZIP and Kinesis Producer Library formats to JSON. You can use these blueprints without any change or writing your own custom functions.
+  
+  
+   Could you transform the data with Amazon Kinesis Client Library and deliver the results to an Amazon OpenSearch cluster? No, KCL is a client library used for writing consumer applications for Kinesis Data Streams, and it is designed to read from Kinesis Data Streams not from a Firehose delivery stream. 
+   
+   
+   
+   Let's get started with the second task statement from Domain 1, which is to transform data and perform feature engineering. 

@@ -1,0 +1,42 @@
+Let's continue with task statement 4.2, which is to monitor and optimize infrastructure and costs. To ensure cost optimization with real-time endpoint monitoring, you can use SageMaker tools and techniques, CloudWatch metrics and alerts, SageMaker Model Monitor, and Cost Explorer. 
+
+
+The AWS Well-Architected Framework cost optimization pillar covers best practices, and right-sizing your instance is the first step in cost optimization. For machine learning, it would be right-sizing your EC2 instances and your database instances. 
+
+You can monitor SageMaker notebook instances through CloudWatch custom metrics to optimize resource allocation and performance. SageMaker notebooks can be appropriately sized to minimize overutilized notebooks, which could cause errors or wasted spend. 
+
+
+> For the exam, ensure you understand how to choose the right instance family for your model, such as memory optimized, compute optimized, inference optimized, and more. I added a link under additional resources for instance families and sizes to dive deeper and ensure you know the different instance families and their general usage patterns to choose the best instance for cost and requirements. 
+
+Here are a few questions you should ask. Do you need a solution that is more compute optimized for some type of batch processing, or perhaps you need a memory-optimized instance for processing large datasets in memory. The second cost optimization pillar is to increase elasticity. Ensure you understand auto scaling and the AWS Elastic Load Balancers for your use cases, requirements, and cost optimization, too. 
+
+
+Question:
+Here's a question. How do you troubleshoot latency with your SageMaker endpoint? 
+
+Solution:
+For a single endpoint, you can use CloudWatch to monitor the latency metrics, model latency, and overhead latency for a SageMaker endpoint. If you use a SageMaker multi-model endpoint, you can also use CloudWatch to track model loading wait time, model downloading time, model loading time, and model cache hit. And then to reduce latency, ensure you benchmark the model outside of a SageMaker endpoint to test performance. If SageMaker Neo supports your model, then you can compile the model and SageMaker Neo will optimize the model to run up to twice as fast. If AWS Inferentia supports your model, then it can add up to three times higher throughput and up to 45% lower cost per inference compared to the AWS GPU-based instances. 
+
+For further troubleshooting, remember that the inference code might affect the model latency, depending on how the code handles the inference. Any delays in code, increase the latency. Also, infrequent requests might also lead to an increase in overhead latency, and an overused endpoint might cause higher model latency. To dynamically increase and decrease the number of instances that are available for an endpoint, you can add auto scaling to the endpoint. Also, the first invocation for an endpoint might have an increase in latency because of a cold start, but you can prewarm the endpoint and send test requests. 
+
+
+The third pillar for cost optimization is choosing the right pricing model. Ensure you understand the different pricing options, such as On-Demand, Savings Plans, Reserved Instances, Spot Instances, Dedicated hosts, Dedicated instances, Scheduled instances, Capacity reservations, and so on. 
+
+Question:
+For example, which pricing option would you choose if you had a batch processing job that was designed to handle interruptions and you wanted to minimize your cost? 
+
+Solution:
+My first thought is spot instances. 
+
+Question:
+What pricing option would you choose if you couldn't handle interruptions, but you wanted to save as much as possible, and you want to have the flexibility of using EC2, Fargate, or Lambda for your compute needs? 
+
+Solution:
+For this question, dive deeper into savings plans such as Compute Saving Plan, EC2 Savings Plan, and the SageMaker Saving Plan. 
+
+__TODO__ "[whatever] Savings Plan" is new to me, review online documentation
+
+The fourth pillar of cost optimization is to match your storage to your usage. Know the different use cases and requirements for different storage to match your workloads, and we talked about this under lessons for Domain 1, so go back and read those lessons if you need a refresher. 
+
+
+The fifth pillar of cost optimization is continual improvement with measuring and monitoring to optimize your architecture. You need measures in place to monitor and track your metrics, measure your usage and your cost, and set alarms to immediately take action. You can also use other services like AWS Cost Explorer, AWS Trusted Advisor, AWS Budgets, and more to help define your metrics, set target goals, define and enforce your tagging strategy, use cost allocation tags, and make sure you review regularly for any infrastructure changes. I'm gonna stop this lesson here, and in the next lesson, we'll continue to talk about task statement 4.2.

@@ -63,6 +63,7 @@ It will use the artifacts and pull a different (inference not training) model fr
 Several ways to work with SM, most common Notebook
 
 Notebook Instances on EC2 are spun up from the console
+
 Notebooks:
 
 - Has S3 Access

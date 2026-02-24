@@ -1,0 +1,50 @@
+Let's continue with task statement 3.2, which is to create and script infrastructure based on existing architecture and requirements. Let's continue talking about how to apply best practices for maintainable, scalable, and cost-efficient machine learning solutions. Let's talk about maintainability and automating the provision of your resources, communication, and security. 
+
+
+Using Infrastructure as Code, you can use AWS CloudFormation templates to specify the definitions and configurations of your infrastructure that you're going to deploy. You can also use the AWS Cloud Development kit, or AWS CDK, for repeatable deployments. Then for your pipelines, you can use continuous integration and continuous delivery to implement, test, and deploy your pipelines. 
+
+
+There's also the AWS Serverless Application model, or AWS SAM, to package and deploy serverless pipelines, such as Lambda functions, AWS Step Functions, and Amazon DynamoDB tables. 
+
+For version control in AWS CloudFormation, you can commit files to a source code repository, such as AWS CodeCommit, Amazon S3, or GitHub. Then your CI/CD pipeline can be automated to run when a new version of the file is committed to the source code repository. The goal is to optimize your code to reduce runtime for data ingestion, transformation, training, and more. 
+
+
+You can also use SageMaker Canvas ready-to-use models or bring your own model to generate predictions. The ready-to-use models in Canvas can extract insights from your data for different use cases and are powered by AWS AI services, such as Amazon Rekognition, Amazon Textract, and Amazon Comprehend. 
+
+In an earlier lesson, I said that SageMaker provides APIs, SDKs, and a command line interface that you can use to create and manage notebook instances, and train and deploy models. I added a link under additional resources for the different SDKs and example notebooks. 
+
+Another part of this task statement is building and maintaining containers. I don't wanna repeat myself because we already covered how SageMaker uses containers and more in previous lessons. But I added links under additional resources for you to dive deeper. 
+
+
+Let's also talk about another best practice, which is ensuring security and secure connections. 
+
+
+Question:
+How do you configure secure connections for your Amazon Virtual Private Cloud, or Amazon VPC, networks and your SageMaker endpoints? 
+
+Solution:
+Instead of connecting over the internet, you can configure and connect to the SageMaker API or to SageMaker Runtime through an interface endpoint. When you use a VPC interface endpoint, communication between your Amazon VPC and the SageMaker API or Runtime is within an AWS network, and these connections can be set in your CloudFormation templates, which ties back to maintainability and scalability. 
+
+
+Each VPC endpoint is represented by one or more elastic network interfaces with private IP addresses in your Amazon VPC subnets. So if you have an application inside your Amazon VPC, it uses AWS PrivateLink to communicate with SageMaker Runtime, and then SageMaker Runtime communicates with the SageMaker Endpoint. 
+__TODO__ This is not how I understood 'private link' to work.. 
+
+The VPC Interface Endpoint connects to your Amazon VPC directly to the SageMaker API or SageMaker Runtime using AWS PrivateLink without using an internet gateway, NAT device, VPN connection, or an AWS Direct Connect connection. 
+
+You can also connect to SageMaker Studio Classic and connect your notebook instances from your Amazon VPC through an interface endpoint in your Amazon VPC instead of connecting over the internet. 
+
+
+Question:
+Here's a question. You are using SageMaker notebooks to clean and train your data. You received a new security requirement that all training data must be stored in a private S3 bucket. What is your solution? 
+
+Solution:
+One solution is to host the SageMaker notebooks in a private subnet of an Amazon VPC and associate a VPC endpoint for the SageMaker notebook and Amazon S3. 
+
+Question:
+Could you host the SageMaker notebook in a private subnet of a VPC, create an outbound network access control list rule that blocks access from the public internet? 
+
+Solution:
+No, a network ACL will prevent your SageMaker notebooks from connecting to SageMaker APIs, which are needed to perform SageMaker operations. 
+
+
+We will talk more about network ACLs in Domain 4. Let's get started with the third task statement from Domain 3, which is use automated orchestration tools to set up continuous integration and continuous delivery pipelines. 

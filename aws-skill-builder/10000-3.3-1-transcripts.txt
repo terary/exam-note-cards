@@ -1,0 +1,25 @@
+Let's get started with the third task statement from Domain 3, which is to use automated orchestration tools to set up continuous integration and continuous delivery pipelines. This task statement is split into three lessons. The first two steps in the machine learning engineer lifecycle are collecting data and processing the data. After that, you use the data to train and validate the machine learning model. You can then deploy the trained and validated model as a prediction service that other applications can access through APIs. 
+
+
+Exploratory data analysis usually requires you to experiment with different models until the best model version is ready for deployment. And this leads to frequent model version deployments and data versioning. Experiment tracking and machine learning training pipeline management are important before your applications can integrate or consume the model. 
+
+In your code, MLOps is a practice that joins machine learning application development with machine learning system deployment and operations. You can use MLOps to automate and standardize processes across the machine learning lifecycle such as model development, testing, integration, release, and infrastructure management. You deploy machine learning models with the applications and services they use as part of the whole process. 
+
+
+__Ensure you understand the principles of MLOps, which are version control, automation, continuous testing, and model governance__. 
+
+AWS has MLOps Workload Orchestrator solution, and I added a link for this solution under additional resources. But I wanted to mention that the template gives you the ability to train models, upload your trained models, configure the pipeline orchestration, and monitor the pipeline's operations to increase your agility and efficiency and to help repeat successful processes at scale for both single account deployment and multi-account deployment. 
+
+
+In our last lesson, we mentioned version control. After you have your CloudFormation template definition file, you can commit that file to a source code repository such as AWS CodeCommit or GitHub. Then your CI/CD pipeline can be automated to run when a new version of a file is committed to the source code repository. 
+
+
+__For the exam, dive deeper into using code repositories in deployment environments__. 
+
+Question:
+Could you use AWS CodePipeline to deploy code maintained in AWS CodeCommit repository to a single Amazon EC2 instance? 
+
+Solution:
+Yes, your pipeline is initiated when you push a change to the CodeCommit repository, and then the pipeline deploys your changes to an Amazon EC2 instance using AWS CodeDeploy as a deployment service. You can also use CodePipeline to orchestrate each step in your release process. By defining stages in a pipeline, you can retrieve code from a source code repository, build that source code into a releaseable artifact, test the artifact and deploy it to production. 
+
+AWS Step Functions can also be used to orchestrate workflows and can handle nested workflow logic errors and retries. Ensure you know how to configure and integrate other AWS services into AWS CodePipeline to complete your machine learning pipeline and also understand the set of AWS CI/CD developer tools. I'm gonna stop this lesson here, and in the next lesson, we'll continue talking about task statement 3.3.

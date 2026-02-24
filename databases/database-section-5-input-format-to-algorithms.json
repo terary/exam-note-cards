@@ -1,0 +1,68 @@
+{
+  "databaseName": "Section 5 - SageMaker: Which algorithms support each input format?",
+  "questionsWithAnswers": [
+    {
+      "questionId": "8a531427-95d5-46f2-ba50-ae04b94d8afa",
+      "questionText": "Which algorithms support `RecordIO-protobuf`?",
+      "answerText": "Linear Learner (Float32 only), XGBoost, Seq2Seq (integer tokens), Object Detection (MXNet), Image Classification, Random Cut Forest (RCF), Neural Topic Model (NTM), LDA (Latent Dirichlet Allocation), KNN, K-Means, PCA (Principal Component Analysis), Factorization Machines (Float32 only; CSV not available).",
+      "tags": ["input-formats", "recordio", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "1c05f133-af8e-4de5-b6aa-dd6d45c59741",
+      "questionText": "Which algorithms support `CSV`?",
+      "answerText": "Linear Learner, XGBoost, LightGBM (text/CSV only), Random Cut Forest (RCF), Neural Topic Model (NTM), LDA (Latent Dirichlet Allocation), KNN, K-Means, PCA (Principal Component Analysis), IP Insights (CSV only).",
+      "tags": ["input-formats", "csv", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "e92d2728-9663-4648-9e0b-4477f293be22",
+      "questionText": "Which algorithms support `libsvm`?",
+      "answerText": "XGBoost.",
+      "tags": ["input-formats", "libsvm", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "c11fe20f-3769-463d-88ef-031a165661d5",
+      "questionText": "Which algorithms support `Parquet`?",
+      "answerText": "XGBoost (AWS extended; required for distributed GPU in 1.5), DeepAR (jsonl can be gzip or parquet).",
+      "tags": ["input-formats", "parquet", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "99ec2d45-810e-4759-9652-f237dd330a88",
+      "questionText": "Which algorithms support `JSON Lines (jsonl)`?",
+      "answerText": "DeepAR (each record: start, target; optional dynamic_feat, cat; can be gzip or parquet).",
+      "tags": ["input-formats", "jsonl", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "c121d8d6-3e81-43f0-ac34-794114f41ba5",
+      "questionText": "Which algorithms support `text` (one sentence per line) or `augmented manifest` (text)?",
+      "answerText": "BlazingText (text classification: __Label__ then label, one sentence per line; also augmented manifest text format; Word2Vec: text file with one training sentence per line).",
+      "tags": ["input-formats", "text", "augmented-manifest", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "1a9bdb29-3cf5-4d1b-bb7f-a279af15db86",
+      "questionText": "Which algorithms support `augmented manifest` (image)?",
+      "answerText": "Semantic Segmentation (supported for Pipe Mode).",
+      "tags": ["input-formats", "augmented-manifest", "image", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "43219447-cd16-43b5-a6f5-c57f78b19a97",
+      "questionText": "Which algorithms support `image` format (e.g. jpg, png)?",
+      "answerText": "Object Detection (MXNet; RecordIO or image jpg/png with JSON annotations), Image Classification (RecordIO or image format), Semantic Segmentation (jpg or png with annotations and label maps).",
+      "tags": ["input-formats", "image", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    },
+    {
+      "questionId": "a58c281d-dc2c-4d16-a924-1268388fbcfa",
+      "questionText": "Which algorithms support tokenized `JSON` (pairs or sequences of tokens)?",
+      "answerText": "Object2Vec (training data: pairs and/or sequences of tokens, e.g. JSON with label, in0, in1; data must be tokenized into integers).",
+      "tags": ["input-formats", "json", "tokenized", "section-5", "sagemaker-algorithms"],
+      "domains": ["sagemaker-algorithms"]
+    }
+  ]
+}

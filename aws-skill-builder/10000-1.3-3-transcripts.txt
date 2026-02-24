@@ -1,0 +1,43 @@
+Let's continue with task statement 1.3 and talk about data formats. The actual data format and the way you present the data to the algorithm will depend on the format that the algorithm is expecting in the framework you are using. If you're using scikit-learn, Keras, or others, you need to look at the chosen algorithm, and it will explain how it needs to have the data formatted and loaded. If you're using Python code at a lower level, you can use NumPy arrays and load that in with your data into the algorithm. You will need to complete some preprocessing of your data, such as normalization or one-hot encoding. If you're using higher level implementation of algorithms such as SageMaker, it has prebuilt algorithms that expect data in formats such as JSON documents or manifest files. Also, there are different modes that you can provide data to an algorithm. For example, an image classifier with images saved separately in an S3 bucket, and the algorithm will have the needed access. For file mode, the algorithm will need to copy the images to an Amazon EBS drive, then iteratively process each of the files. This can take longer because of the extra copying and processing of each file. For pipe mode, you can have a recordIO file format type that takes all of the images and will create one file with all of the images. This is much faster than file mode and loading individual files one at a time. You can also use data quality rules in AWS Glue DataBrew. And AWS Glue Data Quality helps to measure and monitor the quality of your data and works with the Data Quality Definition Language.
+
+
+
+
+ Here's a question. What are the two entry points for AWS Glue Data Quality? 
+ 
+ Both the AWS Glue Data Catalog and AWS Glue ETL jobs. 
+ 
+ 
+ When you create a training job in SageMaker, you specify the location of a training dataset and an input mode for accessing the dataset. For data location, SageMaker supports Amazon S3, Amazon EFS, and Amazon FSx for Lustre. 
+ 
+ The input modes determine whether to stream data files of the dataset in real time, or download the whole dataset at the start of the training job. For this task statement, also ensure you understand encryption and techniques to encrypt data in AWS. 
+ 
+ 
+ 
+ Here's a question. Your datasets contain confidential information and you must ensure that the data is encrypted and redacted. You need to build a machine learning model using these datasets. What is your solution?
+ 
+ 
+ 
+  One solution is to store your data in Amazon S3 and choose AWS Key Management Service, or AWS KMS, and use AWS Glue to redact the sensitive information within the dataset. Then create an Amazon SageMaker Notebook and choose KMS encryption for the notebook. And then to encrypt the machine learning storage volume that is attached to the notebooks, preprocessing jobs, training jobs, hyper parameter tuning jobs, batch transform jobs, and endpoints, you can pass an AWS KMS key to SageMaker.
+  
+  
+   Let's say you're using SageMaker Studio to analyze and build your models. You have five terabytes of data stored in an Amazon Redshift cluster. You need to choose a secure solution to export a subset of this data stored from your cluster and input that subset of data as your training data into Amazon S3. What is your solution? 
+   
+   
+   
+   One solution is to use SageMaker Canvas to import data from Amazon Redshift. You can integrate a data preparation flow to preprocess and feature engineer your data, and then query data from the cluster and output the results to an S3 bucket. For added security, Amazon Redshift credentials can be stored as secrets in Secret Manager and use a library to retrieve the connection credentials at runtime. 
+   
+   
+   
+   Another solution might be to create an Apache Spark job in AWS Glue to query data from the cluster and export the results to Amazon S3. 
+   
+   
+   Here's another question. You have a model that only accepts preprocessed data as input in generating real-time predictions. You are using scikit-learn to perform data processing and feature engineering on raw data before using the data for model training in SageMaker. So how can you preprocess this data most efficiently? 
+   
+   
+   
+   One solution is to reuse the scikit-learn code in the preprocessing of your data using an inference pipeline. And you can add SageMaker Spark ML Serving and scikit-learn containers that reuse the data transformers developed for the training models. Then the inference pipeline can be considered as a SageMaker model that you can use to make real-time predictions or to process batch transforms directly without any external preprocessing. 
+   
+   
+   
+   And to get us rolling into Domain 2, ensure you understand how to transform the output of a model, specifically the softmax activation function, the rectified linear unit function, and the Sigmoid function, and the hyperbolic tangent function. Let's get started with our first walkthrough question. 

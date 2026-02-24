@@ -1,0 +1,32 @@
+Let's get started with the second lesson for task statement 4.3, which is to secure AWS resources. SageMaker components including the studio, notebooks, training jobs, and hosting instances can be provisioned in an isolated __Amazon VPC with no internet access__. SageMaker Studio also gives you the ability to control the network access and internet connectivity of SageMaker Studio notebooks. 
+
+
+Direct internet access can be disabled to add an additional layer of security. And this same concept can be applied to SageMaker notebooks by choosing to launch the notebook instance in an Amazon VPC and the notebook instance can be configured with or without direct internet access. Traffic to public endpoints, such as Amazon S3 or SageMaker APIs, can be configured to travel over VPC endpoints to ensure that the traffic stays within the AWS network. You can also use VPC endpoint and endpoint policies to further limit access. 
+
+You can have your AWS resources directly with public endpoints, such as S3, CloudWatch, and SageMaker API, and SageMaker Runtime through an interface endpoint in your Amazon VPC instead of connecting over the internet. For example, access to an S3 bucket can be restricted only to a SageMaker Studio domain or set of users, and each studio domain can be restricted to have access only to a specific S3 bucket to secure SageMaker Studio connectivity using a private Amazon VPC. 
+
+You can also grant access from only within the Amazon VPC with an IAM policy that can be created to prevent users outside the Amazon VPC from accessing SageMaker Studio or SageMaker notebooks over the internet. For example, this policy can help restrict connections made only through specific VPC endpoints or a specific set of source IP addresses. This policy can be added to every user, group, or role used to access SageMaker Studio or Jupyter notebooks. 
+
+> For the exam, ensure you understand IAM users, groups, and roles, and what goes into deciding between which to use and how they might be combined. Also, dive into the best practices for controlling your access to the AWS APIs. And lastly, understand the methods, service, and tools available that help you create traceability for access to AWS resources. 
+
+You need to understand the performance and behaviors of your application components and have insights into who and what has access to your account resources and data. Do you know how to design and implement the principle of least privilege throughout the whole machine learning pipeline to ensure only those who need access have just the access they need? 
+
+
+Let's move on and talk about data security and ask a security question. 
+
+
+Question:
+How do you automate a solution to keep your data secure and prevent manual logins into instances in an auto scaling group that your application hosts? 
+
+Solution:
+One solution is to install the __CloudWatch agent__ on the instances. Set up a CloudWatch Logs subscription. Create a Lambda function to add a FOR_DELETION tag to any EC2 instance that produces an SSH login event. Create a second Lambda function using an EventBridge rule to terminate all instances that have the custom FOR_DELETION tag. I added this question even though it relates more to architecting than machine learning because I wanted to make this distinction. 
+
+__By default, when you create a SageMaker notebook instance, users that log into that notebook instance have root access__. And the reasoning is that data science is an iterative process and you might need to test and use different software tools and packages, and many notebook instance users need to have root access to be able to install these tools and packages. 
+
+__Because users with root access have administrator privileges, users can access and edit all files on a notebook instance with root access enabled__. 
+
+__To secure shared SageMaker notebook instances, you can use IAM policies when granting individuals access to notebook instances that are attached to an Amazon VPC that contains sensitive information__. So, the distinction is for Amazon EC2 instances, you have to grant all access, __but for SageMaker notebook instances, you need to secure the access__. 
+
+And also, for both you need to ensure you are using the principle of least privilege. SageMaker Studio uses file system and container permissions for access control and isolation of SageMaker Studio users and notebooks. And this ties into adding security based on access patterns. Certain services, such as Amazon S3, give you the ability to manage security for the entire buckets, but also to add controls based on specific paths or objects. 
+
+You can also add intrusion detection and prevention with AWS Gateway Load Balancer. AWS Network Firewall can be used to filter outbound traffic and supports inbound and outbound web filtering for unencrypted web traffic. For encrypted web traffic, Server Name Indication is used for blocking access to specific sites. In addition, AWS Network Firewall can filter fully qualified domain names. If access is needed to an AWS service that does not support interface VPC endpoints or to a resource outside of AWS, you can configure a NAT gateway with security groups to allow outbound connections. I'm going to stop this lesson here, and in the next lesson we'll continue talking about task statement 4.3. 
