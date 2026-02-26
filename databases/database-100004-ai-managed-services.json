@@ -1,0 +1,201 @@
+{
+  "databaseName": "AI Managed Services (100004)",
+  "questionsWithAnswers": [
+    {
+      "questionId": "d6663436-8e4c-4cc7-a2f7-768d6810d398",
+      "questionText": "What is Amazon Comprehend used for?",
+      "answerText": "A natural-language-processing (NLP) service: sentiment analysis, entity recognition, key-phrases, language detection, PII detection, custom classification and custom entity recognition.",
+      "tags": ["ai-managed-services", "comprehend", "nlp"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "fc8f6c1c-4b6f-45d5-aec6-e8bb66436c7c",
+      "questionText": "The following describes which service? \"A natural-language-processing (NLP) service: sentiment analysis, entity recognition, key-phrases, language detection, PII detection, custom classification and custom entity recognition.\"",
+      "answerText": "Amazon Comprehend",
+      "tags": ["ai-managed-services", "comprehend", "nlp"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "f135ea98-7b98-4f3d-a616-5ff8a3308f32",
+      "questionText": "What is Amazon Translate used for?",
+      "answerText": "Neural machine translation service — translates text between languages.",
+      "tags": ["ai-managed-services", "translate"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "680087a0-e7c9-469f-8786-659332fb3d90",
+      "questionText": "The following describes which service? \"Neural machine translation service — translates text between languages.\"",
+      "answerText": "Amazon Translate",
+      "tags": ["ai-managed-services", "translate"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "90a0112f-bc2d-49c4-948e-71e36b284a8b",
+      "questionText": "What is Amazon Transcribe used for?",
+      "answerText": "Speech-to-text service: converts audio into text (supports streaming & batch).",
+      "tags": ["ai-managed-services", "transcribe", "speech"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "77cfde2d-0d2b-497c-881e-a764f639a01b",
+      "questionText": "The following describes which service? \"Speech-to-text service: converts audio into text (supports streaming & batch).\"",
+      "answerText": "Amazon Transcribe",
+      "tags": ["ai-managed-services", "transcribe", "speech"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "d9270fd3-5089-4f95-95d5-ac70b057429e",
+      "questionText": "What is Amazon Polly used for?",
+      "answerText": "Text-to-speech service: convert text into spoken audio in multiple languages/voices.",
+      "tags": ["ai-managed-services", "polly", "speech"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "efdd8744-3d08-4a07-aeeb-8fe3988cab9d",
+      "questionText": "The following describes which service? \"Text-to-speech service: convert text into spoken audio in multiple languages/voices.\"",
+      "answerText": "Amazon Polly",
+      "tags": ["ai-managed-services", "polly", "speech"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "021d649f-1ac4-4ed1-8678-7a4b93e4db24",
+      "questionText": "What is Amazon Rekognition used for?",
+      "answerText": "Image and video analysis service: object/scene detection, face detection/recognition, text in images, celebrity recognition, video analysis, etc.",
+      "tags": ["ai-managed-services", "rekognition", "vision"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "236a4851-b03a-450c-a2f5-024003b55bb7",
+      "questionText": "The following describes which service? \"Image and video analysis service: object/scene detection, face detection/recognition, text in images, celebrity recognition, video analysis, etc.\"",
+      "answerText": "Amazon Rekognition",
+      "tags": ["ai-managed-services", "rekognition", "vision"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "a44a1318-7921-41b7-a453-5117141d721b",
+      "questionText": "What is Amazon Lex used for?",
+      "answerText": "Conversational AI service: build conversational bots/chatbots (text or voice) using automatic speech recognition + NLP + dialogue management.",
+      "tags": ["ai-managed-services", "lex", "chatbot"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "48e093cb-4bd9-4fb1-9e5e-2b84a91b1180",
+      "questionText": "The following describes which service? \"Conversational AI service: build conversational bots/chatbots (text or voice) using automatic speech recognition + NLP + dialogue management.\"",
+      "answerText": "Amazon Lex",
+      "tags": ["ai-managed-services", "lex", "chatbot"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "338df745-36fc-49ac-953d-a37aaacd032c",
+      "questionText": "What is Amazon Personalize used for?",
+      "answerText": "Real-time personalization & recommendation engine: you provide user/item interaction data, Personalize builds models and serves recommendations.",
+      "tags": ["ai-managed-services", "personalize", "recommendations"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "a69ab8d4-3e2a-40a4-adc3-88dcf7848d94",
+      "questionText": "The following describes which service? \"Real-time personalization & recommendation engine: you provide user/item interaction data, Personalize builds models and serves recommendations.\"",
+      "answerText": "Amazon Personalize",
+      "tags": ["ai-managed-services", "personalize", "recommendations"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "dbd612df-df37-48e3-bd35-96d9e5663a3b",
+      "questionText": "What is Amazon Textract used for?",
+      "answerText": "Document understanding service: extracts text, forms, tables, and handwritten text from scanned documents (images or PDFs).",
+      "tags": ["ai-managed-services", "textract", "document"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "8038ebb3-d2e2-49e5-8743-e0c8bb2e0153",
+      "questionText": "The following describes which service? \"Document understanding service: extracts text, forms, tables, and handwritten text from scanned documents (images or PDFs).\"",
+      "answerText": "Amazon Textract",
+      "tags": ["ai-managed-services", "textract", "document"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "05435003-a128-4206-a124-63c0ac1c506f",
+      "questionText": "What is Amazon Kendra used for?",
+      "answerText": "Intelligent enterprise search service using ML: lets you build a search index across various data sources (S3, SharePoint, databases etc) with semantic search, ranking, relevance tuning.",
+      "tags": ["ai-managed-services", "kendra", "search"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "acdfc504-58ad-4bd4-9005-b730d763fcf8",
+      "questionText": "The following describes which service? \"Intelligent enterprise search service using ML: lets you build a search index across various data sources (S3, SharePoint, databases etc) with semantic search, ranking, relevance tuning.\"",
+      "answerText": "Amazon Kendra",
+      "tags": ["ai-managed-services", "kendra", "search"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "ce07e2d7-5e91-430c-a74d-31a09d2dbfef",
+      "questionText": "What is Amazon Augmented AI (A2I) used for?",
+      "answerText": "Human-in-the-loop (HITL) service: you integrate ML services (Textract, Rekognition, etc) and when model confidence is below threshold you route to human reviewers via A2I workflow, track review, feed results back into ML.",
+      "tags": ["ai-managed-services", "a2i", "human-in-the-loop"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "7141da13-1a6b-42c6-ac36-2ee0678499a4",
+      "questionText": "The following describes which service? \"Human-in-the-loop (HITL) service: you integrate ML services (Textract, Rekognition, etc) and when model confidence is below threshold you route to human reviewers via A2I workflow, track review, feed results back into ML.\"",
+      "answerText": "Amazon Augmented AI (A2I)",
+      "tags": ["ai-managed-services", "a2i", "human-in-the-loop"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "3d3774b7-c61f-4ae2-894a-57379e752c86",
+      "questionText": "What are AWS Trainium and Inferentia (Hardware AI) used for?",
+      "answerText": "AWS provides specialized compute hardware for ML training/inference (e.g., GPU/Accelerator EC2 instances, AWS Trainium/Inferentia chips) rather than a fully managed higher-level AI service.",
+      "tags": ["ai-managed-services", "trainium", "inferentia", "hardware"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "60766522-5420-46a2-ae18-359fd2b77d9f",
+      "questionText": "The following describes which service? \"AWS provides specialized compute hardware for ML training/inference (e.g., GPU/Accelerator EC2 instances, AWS Trainium/Inferentia chips) rather than a fully managed higher-level AI service.\"",
+      "answerText": "AWS Trainium and Inferentia (Hardware AI)",
+      "tags": ["ai-managed-services", "trainium", "inferentia", "hardware"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "60e30647-6962-4ea4-940e-614ab65ee4d3",
+      "questionText": "What is Amazon Lookout for Metrics used for?",
+      "answerText": "Anomaly-detection services — you feed time-series or sensor/event data and the service finds anomalies (e.g., unusual behaviour) with minimal ML expertise required.",
+      "tags": ["ai-managed-services", "lookout", "anomaly-detection"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "e8cd0ec2-1a3a-45b0-bce7-bd21f8905f18",
+      "questionText": "The following describes which service? \"Anomaly-detection services — you feed time-series or sensor/event data and the service finds anomalies (e.g., unusual behaviour) with minimal ML expertise required.\"",
+      "answerText": "Amazon Lookout for Metrics",
+      "tags": ["ai-managed-services", "lookout", "anomaly-detection"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "90b9ebe9-1eb0-4ff7-918a-fbe5a0dbd50e",
+      "questionText": "What is Amazon Fraud Detector used for?",
+      "answerText": "Service for building fraud detection (payments, identities, accounts) using machine learning. It provides features, variable selection, model building, scoring, and deployment for fraud use cases.",
+      "tags": ["ai-managed-services", "fraud-detector"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "7a77f4c1-09d9-4703-ba3a-8d2b512ba090",
+      "questionText": "The following describes which service? \"Service for building fraud detection (payments, identities, accounts) using machine learning. It provides features, variable selection, model building, scoring, and deployment for fraud use cases.\"",
+      "answerText": "Amazon Fraud Detector",
+      "tags": ["ai-managed-services", "fraud-detector"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "a81bc1a3-f4bb-4408-a86c-7d3f020d3df2",
+      "questionText": "What is Amazon Q (Q-Business, Q-Apps, Q-Developer) used for?",
+      "answerText": "Q-Business: LLM-powered analytics on business data (insights, dashboards, etc). Q-Apps: Build conversational or agent-type applications quickly using LLM backend. Q-Developer: Provide developers more control/integration to build custom LLM-based applications or fine-tune models.",
+      "tags": ["ai-managed-services", "amazon-q", "generative-ai"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    },
+    {
+      "questionId": "cb40d510-ff49-4969-9a63-521986f08de7",
+      "questionText": "The following describes which service? \"Q-Business: LLM-powered analytics on business data (insights, dashboards, etc). Q-Apps: Build conversational or agent-type applications quickly using LLM backend. Q-Developer: Provide developers more control/integration to build custom LLM-based applications or fine-tune models.\"",
+      "answerText": "Amazon Q (Q-Business, Q-Apps, Q-Developer)",
+      "tags": ["ai-managed-services", "amazon-q", "generative-ai"],
+      "domains": ["AWS:AI:MANAGED:SERVICES"]
+    }
+  ]
+}
