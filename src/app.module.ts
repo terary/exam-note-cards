@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
+
+const envPath = join(process.cwd(), ".env");
 import { QuestionsAndAnswersController } from "./questions-and-answers.controller";
 import { AnswersController } from "./answers.controller";
 import { QuestionsService } from "./questions.service";
@@ -24,7 +26,7 @@ import {
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ".env",
+      envFilePath: envPath,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],

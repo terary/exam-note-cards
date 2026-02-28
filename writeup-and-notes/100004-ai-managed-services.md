@@ -1,4 +1,4 @@
-1. Amazon Comprehend (classification and custom entity recognition)
+1. __Amazon Comprehend (classification and custom entity recognition)__
    Description: A natural-language-processing (NLP) service: sentiment analysis, entity recognition, key-phrases, language detection, PII detection, custom classification and custom entity recognition. (AWS Documentation)
 
 Cost / pricing dimensions:
@@ -27,7 +27,7 @@ Data in transit (API calls) and at rest (S3, volumes) should be protected; you m
 
 Key point: Standard usage = no training, pay per text unit. Custom = you train model, pay training+endpoint.
 
-2. Amazon Translate (language to other language)
+2. __Amazon Translate (language to other language)__
    Description: Neural machine translation service — translates text between languages.
 
 Cost / pricing dimensions:
@@ -50,7 +50,7 @@ If you translate sensitive text, ensure source storage is secure, logs are manag
 
 Key point: Translation = pay per character, uses AWS models by default; customization possible but still managed.
 
-3. Amazon Transcribe (Speech to Text, S2T)
+3. __Amazon Transcribe (Speech to Text, S2T)__
    Description: Speech-to-text service: converts audio into text (supports streaming & batch).
 
 Cost / pricing dimensions:
@@ -73,7 +73,7 @@ Because audio may contain sensitive PII, you should apply data-governance: restr
 
 Key point: Pay per audio minute; mostly AWS model; custom vocab possible; secure your audio/text data.
 
-4. Amazon Polly (Text to Speech - T2S)
+4. __Amazon Polly (Text to Speech - T2S)__
    Description: Text-to-speech service: convert text into spoken audio in multiple languages/voices.
 
 Cost / pricing dimensions:
@@ -94,7 +94,7 @@ If you store the generated audio in S3, ensure encryption at rest, proper IAM/S3
 
 Key point: Pay per characters; AWS voices; you can embed polly in apps; secure your input/output.
 
-5. Amazon Rekognition (Image and video analysis)
+5. __Amazon Rekognition (Image and video analysis)__
    Description: Image and video analysis service: object/scene detection, face detection/recognition, text in images, celebrity recognition, video analysis, etc.
 
 Cost / pricing dimensions:
@@ -121,7 +121,7 @@ Use VPC endpoints if you want to restrict traffic, enable logging/Audit via Clou
 
 Key point: Pay per image/minute; standard model vs custom labels; strong security & privacy concerns.
 
-6. Amazon Lex (to build bots, speech recognition + dialogs ->Lambda)
+6. __Amazon Lex (to build bots, speech recognition + dialogs ->Lambda)__
    Description: Conversational AI service: build conversational bots/chatbots (text or voice) using automatic speech recognition + NLP + dialogue management.
 
 Cost / pricing dimensions:
@@ -144,7 +144,7 @@ Optionally integrate with Amazon Cognito or IAM for user authentication in your 
 
 Key point: Pay per bot usage; you configure the conversation; AWS provides underlying ML; secure user data/integrations.
 
-7. Amazon Personalize (personalizatin/recommendation engine)
+7. __Amazon Personalize (personalizatin/recommendation engine)__
    Description: Real-time personalization & recommendation engine: you provide user/item interaction data, Personalize builds models and serves recommendations.
 
 Cost / pricing dimensions:
@@ -165,7 +165,7 @@ Logs, monitoring, audit should be enabled for inference and dataset access.
 
 Key point: Pay for building and serving personalized recommendations; you train the model with your data; secure your dataset and endpoints.
 
-8. Amazon Textract (extract text from ID, Forms, Tables etc)
+8. __Amazon Textract (extract text from ID, Forms, Tables etc)__
    Description: Document understanding service: extracts text, forms, tables, and handwritten text from scanned documents (images or PDFs).
 
 Cost / pricing dimensions:
@@ -188,7 +188,7 @@ Use VPC endpoints or private networks if needed to restrict access. Audit logs v
 
 Key point: Pay per page/document processed; no training required for standard use; secure your document ingestion and result handling.
 
-9. Amazon Kendra (Semantic Search across S3, Sharepoint, DB, etc)
+9. __Amazon Kendra (Semantic Search across S3, Sharepoint, DB, etc)__
    Description: Intelligent enterprise search service using ML: lets you build a search index across various data sources (S3, SharePoint, databases etc) with semantic search, ranking, relevance tuning. (AWS Documentation)
 
 Cost / pricing dimensions:
@@ -219,7 +219,7 @@ Audit logging: use CloudTrail etc to track searches/queries if needed.
 
 Key point: Pay per index capacity + storage + queries; uses AWS-provided model; you set up ingestion, tuning; secure data, sources, queries.
 
-10. Amazon Augmented AI (A2I) (Workflow to include Human in AI review low confidence, QA, etc)
+10. __Amazon Augmented AI (A2I)__ (Workflow to include Human in AI review low confidence, QA, etc)
     Description: Human-in-the-loop (HITL) service: you integrate ML services (Textract, Rekognition, etc) and when model confidence is below threshold you route to human reviewers via A2I workflow, track review, feed results back into ML.
 
 Cost / pricing dimensions:
@@ -240,7 +240,7 @@ The underlying ML service (e.g., Textract) still uses encryption/secure transit.
 
 Key point: Pay for human review + underlying ML; no training directly in A2I; secure review workflow + data.
 
-11. “Hardware AI” (AWS infrastructure for AI/ML) (Two Chips)
+11. __“Hardware AI” (AWS infrastructure for AI/ML) (Two Chips)__
     Description: AWS provides specialized compute hardware for ML training/inference (e.g., GPU/Accelerator EC2 instances, AWS Trainium/Inferentia chips) rather than a fully managed higher-level AI service.
 
 Cost / pricing dimensions:
@@ -257,7 +257,7 @@ Standard AWS infrastructure security applies: VPC isolation, IAM control of EC2,
 
 Key point: This is infrastructure rather than managed AI service. You are responsible for entire ML pipeline — more flexibility, more responsibility.
 
-12. Amazon Lookout for Metrics (and related “Lookout” services) (Lookout\* - many services - anomoly detection, equipment, process, etc)
+12. __Amazon Lookout for Metrics (and related “Lookout” services)__ (Lookout\* - many services - anomoly detection, equipment, process, etc)
     Note: There are multiple “Lookout” services (Lookout for Equipment, Lookout for Assets, etc). I’ll summarise in general terms.
     Description: Anomaly-detection services — you feed time-series or sensor/event data and the service finds anomalies (e.g., unusual behaviour) with minimal ML expertise required.
 
@@ -277,7 +277,7 @@ Endpoint/API via TLS; storage in AWS services encrypted.
 
 Key point: Pay per metric; managed ML; you configure the service; secure your metric data.
 
-13. Amazon Fraud Detector (ID theft, Financial Transaction etc)
+13. __Amazon Fraud Detector (ID theft, Financial Transaction etc)__
     Description: Service for building fraud detection (payments, identities, accounts) using machine learning. It provides features, variable selection, model building, scoring, and deployment for fraud use cases.
 
 Cost / pricing dimensions:
@@ -296,15 +296,15 @@ Use VPC endpoints or private access if you bind to real-time transaction systems
 
 Key point: You build and train model; pay for training + event scoring; secure entire pipeline strongly.
 
-14. “Q-Business”, “Q-Apps”, “Q-Developer” (Q\* I think 'no code')
+14. __“Q-Business”, “Q-Apps”, “Q-Developer”__ (Q\* I think 'no code')
     These refer to the newer AWS generative-AI / LLM services (for example under the “Amazon Q” brand) — the exact full feature/pricing details may still be evolving. I’ll summarise as best-known:
     Description:
 
-Q-Business: LLM-powered analytics on business data (insights, dashboards, etc).
+14.a) Q-Business: LLM-powered analytics on business data (insights, dashboards, etc).
 
-Q-Apps: Build conversational or agent-type applications quickly using LLM backend.
+14.b) Q-Apps: Build conversational or agent-type applications quickly using LLM backend.
 
-Q-Developer: Provide developers more control/integration to build custom LLM-based applications or fine-tune models.
+14.c) Q-Developer: Provide developers more control/integration to build custom LLM-based applications or fine-tune models.
 
 Cost / pricing dimensions:
 
@@ -335,4 +335,3 @@ Many of these services support encryption at rest (via AWS KMS) and encryption i
 
 Exam-focus: Know the “what you pay for” (units: characters, pages, minutes, queries, capacity units) and whether you train or not. Also know that you can restrict access & encrypt.
 
-If you like, I can pull together a full table (Excel/Google-Sheet format) with all these services plus a few others (maybe ~20 services) showing: service, what it does, pricing dimension, training required (yes/no), security notes — and I can highlight the ones most likely to appear on the exam. Would you like that?

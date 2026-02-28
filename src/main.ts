@@ -11,8 +11,15 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     configService = app.get(ConfigService);
 
-    const port = configService.get<number>("PORT", 3000);
+    const port = parseInt(
+      String(configService.get("PORT") ?? 3000),
+      10,
+    );
+    if (Number.isNaN(port) || port <= 0) {
+      throw new Error(`Invalid PORT: ${configService.get("PORT")}`);
+    }
 
+    logger.log(`Listening on port ${port}`);
     await app.listen(port);
 
     logger.log(`Application is running on: http://localhost:${port}`);
