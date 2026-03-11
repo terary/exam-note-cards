@@ -122,6 +122,8 @@ L1 regularization strength; encourages sparsity and can reduce overfitting.
 
 - Linear Learner
 
+> ChatGPT says: L1 and L2 are regularization techniques. The strength of L1/L2 is controlled by hyperparameters.
+
 ---
 
 **target_precision** (float)  

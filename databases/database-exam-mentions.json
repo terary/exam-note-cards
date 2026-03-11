@@ -1,0 +1,280 @@
+{
+  "databaseName": "Exam Mentions",
+  "questionsWithAnswers": [
+    {
+      "questionId": "bb9b56f2aac4f96ccbc379a46c5c5391",
+      "questionText": "Explain, \"unigram\", \"bi-gram\", \"tri-gram\".",
+      "answerText": "- An extension of TF-IDF is to not only compute relevancy for individual words (terms) but also for bi-grams or more generally, n-grams\n- \"I love certification exams\"\n  - Unigram: \"I\", \"love\", \"certification\", \"exams\"\n  - Bi-grams: \"I love\", \"love certification\", \"certification exam\"\n  - Tri-grams: \"I love certification\", \"love certification exam\"\n\n__EXAM__ You may have a question on exam that will ask you to break a sentences into unigram, bi-grams. It's not clear to me if we are suppose to give the number of occurence of each bi-gram, tri-gram etc or if we were supposed to break but the sentences into bigram.  __trick__ in the end we are counting popularity... not actual bigram/trigram",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "38709ba9f05bbe8330daa21afb3d5319",
+      "questionText": "When imputing missing data what is the least recommended method (2)? What is the most recommend method, numeric data, categorical data?",
+      "answerText": "Least recommended\n- Dropping rows with missing data\n- Using mean value or median value\n\nMore recommended\n\nUse machine learning!\n\n- KNN: find K \"nearest\" (most similar) rows and average their values\n  - Assumes numerical data, not categorical\n  - There are ways to handle categorical data (Hamming distance), but categorical data is probably better served by...\n\n- Deep Learning (best)\n  - Build machine learning model to impute data for your machine learning model\n  - Works well for categorical data.  Really Well. But it's complicated\n\n- Regression\n  - Find linear or non-linear relationships between the missing feature and other features\n  - Most advanced technique: MICE (Multiple Imputation by Chained Equations)\n\n__EXAM__ probably not on the exam, MICE is newer, but if it is an option than it is probably the best option\n\n\n__EXAM__ The best option over 'imputing' is to get more data",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "5d2595d89b8dacda789be733b17d967e",
+      "questionText": "Outliers, what are they? how do we deal with them (3).",
+      "answerText": "Three recommendations for dealing with outlier\n1. throw out (be responsible)\n2. Standard deviation threshold (only data within one STD)\n3. Random Cut Forest (most likely answer on the exam) \n\n\n> He demonstrates with diagrams/graphs how outliers can cause the data to zoom out, missing the relationships of most of the data.  When we remove the outliers the graph zooms-in so we have a more detailed view of the data/graph\n\nOutliers are datapoints that don't necessarily fit within the 'norm' or the dat we are modelling.  Marathon participants may have outliers... Occasionally a 95 year person will run a marathon. The true mean age may be skewed, so we may want to throw out that outlier.",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "6dd36245a6337d36e4253c354abf6b77",
+      "questionText": "Describe is SageMaker Canvas.",
+      "answerText": "__No-Code machine learning for business analysts__\n> Also a user friendly application for building Generative AI, via bedrock\n\n- No-Code machine learning for business analysts\n- Upload csv data (csv only for now), select a column to predict, build it, and make predictions\n- Can join datasets\n- Classification or regression\n- Automatic data cleaning\n  - Missing values\n  - Outliers\n  - Duplicates\n- Share models and datasets with SageMaker Studio  \n- Also has generative AI support via Bedrock or JumpStart foundation models \n  - Many are fine-tunable within Canvas\n\n> Table definition and __ETL__\n\n> There is not a lot to Glue but it is important to internalize it and fully understand how it fits into the grander scheme of things.\n\n> The purpose of Glue is to extract structure from unstructured data. \n\n> The other thing Glue does is Custom ETL jobs. Uses Apache Spark under the hood\n\n__EXAM__ Glue is HUGE",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "9270350242a8127cf812c15130c82ce9",
+      "questionText": "What is Glue Studio? 8 points, and has an alternative name.",
+      "answerText": "- Visual interface for ETL workflows\n- Visual Job Editor\n  - Create DAGS for complex workflow\n  - Sources include S3, Kinesis, Kafka, JDBC\n  - Transform / sample/join data\n  - Target to S3 or Glue Data Catalog\n  - Support partitioning\n- Visual job dashboard\n\n__TODO__ What to look at the DAG editor, Observe also how it can create Schema\n\n__EXAM__ he said GLUE Studio is kinda new and not expected to be on the exam too much... However, he may not know.",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "cdf56ea2e15a58826969511f8448a040",
+      "questionText": "What is Glue DataBrew?",
+      "answerText": "__EXAM__ Probably big on the Exam\n\n> Visual Tool, for the T in ETL\n\n- Visual data prep tool\n  - UI for Pre-processing large data sets\n  - Input form S3, data warehouse, or database\n  - Output to S3\n\n- Over 250 read-made transformations\n- you create \"recipe\" of transformations that can be saved as jobs within a larger project\n- May define quality rules\n- May create datasets with custom SQL from Redshift or Snowflake\n- Security\n  - Can integrate with KMS (with customer master key only)\n  - SSL in transit\n  - IAM can restrict who can do what\n  - CloudWatch & CloudTrain\n\n__TODO__ Look at the '250 read made transformations'\n\n\n__- __Output many formats... Hence it may be a good tool for converting from one file format to another__\n\n- Run jobs immediately or Schedule for later use\n\nSession $1.00, + $0.48/per node-hour (need to verify with AWS)",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "a60fd0e9d1a72b71982aab7e4808360c",
+      "questionText": "Glue DataBrew, what are the PII important transformations (8 total)?",
+      "answerText": "- Substitutions (`REPLACE_WITH_RANDOM`)\n- Shuffle (`SHUFFLE_ROWS`)\n- Deterministic encryption (`DETERMINISTIC_ENCRYPT`)\n- Probabilistic Encryptions (`ENCRYPT`, \"Probabilistic\" encryption routine may be more than one result, not sure about this)\n- Decrypt (`DECRYPT`)\n- Nulling out or deleting (`DELETE`)\n- Masking out (`MASK_CUSTOM`, `_DATE`, `_DELIMITER`, `_RANGE`) (maybe cc ending or similar, mask first ... characters)\n- Hashing (`CRYPTOGRAPHIC_HASH`)",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "3450c4bcc436abbcb06a8d5db1c2c8a0",
+      "questionText": "In general, what are the most common File Formats in ML (5 and compressions)?",
+      "answerText": "- CSV, TSV (human readable)\n  - JSON  (human readable)\n  - ORC (columnar, splittable)\n  - Parguet (columnar, splittable)\n  - Avro (Splittable)\n  - Snappy, Zlib, LZO, Gzip Compressions (this may not be \"formats\")\n\nWhy does \"splittable\" matter?\n\n__EXAM__ all the formats and their advantages. \n\nAvro is only splittable.\n\nSplittable is good for parallelizing your data/jobs\n\nData can be structure, semi-structured, or structured.. Athena doesn't care",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "587cd2b7cf0b14ca329586965e474cc6",
+      "questionText": "What are Athena Work-groups (4)?",
+      "answerText": "- Can organize users/teams/apps workloads into Workgroups\n- Can control query access and track costs by workgroup\n- Integrate with __IAM, CloudWatch, SNS__\n- Each workgroup can have its own:\n  - Query History\n    - Data Limits (you can limit how much data queries my scan by workgroup)\n    - IAM policies\n    - Encryption Settings\n\n> Can limit the data scanned (costs) by work-group",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "5c5a6069edfbfb60510e192223fe9d89",
+      "questionText": "For Athena, What are performance best practices (3 + 1)?",
+      "answerText": "- Use columnar data (ORC or Parquet)\n- Small number of large files performs better than a large number of small files\n- Use partitions\n  - If added partitions after the face, use `MSCK REPAIR TABLE` command\n\nAlso, if using ACID (iceberg tables), doing \n```\nOPTIMIZE REWRITE DATA USING BIN_PACK WHERE CATALOG=`c1`\n```\nWill help to reduce overhead created by ACID.\n__EXAM__ may ask something like \"What to do if your Athena is getting slower over time",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "3fe382be5b54371c893971e969457e23",
+      "questionText": "Discuss S3 versioning.",
+      "answerText": "___ 0017 (S3 Versioning)\n\n- It is enabled at the bucket level _exam_\n- Two of the same key will overwrite but will also increment version (_note_ is this a number? my notes say 'increment' but I think that may not be accurate)\n- is consider \"Best Practices\"\n  -- prevents unintentional overwrite\n  -- Easy to role-back\n\n- versionId\n  -- when null bucket as has versioning enabled but the item was likely created before the policy was set\n\n```\n  - What is versionId number or hash?\n  - When 'updating' an item to we include the versionId or rely on overwrite?\n  - When deleting item do we delete all version? is there an option to set to indicates versionId:*,\n  - Is it even called `versionId`\n\n```",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "e3e5e602d98c6f7c6cff602aeac24e10",
+      "questionText": "Discuss EBS",
+      "answerText": "- EBS Volume - Network Volume. Data persists after instances are terminated\n- Mostly One instance at a time (1:1), However, there are there are advanced technique to allow multiple instances, out of scope for this cours\n- **Bound to one AZ**, can make snapshot and transport to other AZ\n- Can be de/attached to instances, fault tolerance (instance goes down, data persists)\n- Allocated in Size and/or IOPS (?), and **billed** for allocated, not used.\n- **I think** size can be increased not decreased (relevant also for billing)\n- _EXAM_ Delete on termination (think its a config option). It's common to pair EBS and instance such that once the instance is not longer needed, neither is the EBS\n- Default Behavior:\n  -- root drive (drv0) will auto delete, others do not (drv1). **THIS IS DEFAULT AND CAN BE OVERWRITTEN**, **EXAM** How to preserve root with EBS?\n\n> _tmc_ Know EBS pricing dimensions\n\n> _tmc_ Elastic Volume can not decrease size. I wonder if I have gotten EBS and EV confused on this matter",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "186f3f755e9746a621ccacbc81f030d4",
+      "questionText": "Discuss Kinesis Data Streams. - Retention? - Replay? - Realtime? - Capacity Modes?",
+      "answerText": "___ 0043 Kinesis Data Stream **EXAM**\n\n\"Real Time\"\nThere are data \"producers\" and \"Consumers\" and Kinesis Supports their interactions.\nPretty sure it's a one way relationship\n\n```\n| Real Time Data   |       |Producers |    |Consumers\n===================        |==========|    |==========\n| IoT              |       | App      |    | Application\n| Click Stream     |  -->  | Kinesis  | -->| Lambda,  Firehose, etc\n| Metrics          |       |\n| Logs             |       |\n```\n\n**Producers** -> **Kinesis Streams** -> **Consumers**\n\n- 365 days retention on stream\n- Can be **replayed**\n- **Data can not be deleted it MUST expire** _exam_\n- up to 1MB message size but smaller payload is the standard\n- **Order is Guaranteed** for data using **partitionId**\n- **Encryption**: inflight https/ssl, at rest KMS\n  > Not sure KMS, does that mean a key (keyId) must be provided?\n\nSDK Libraries:\n\n- **KPL** - Kinesis Producer Library\n- **KCL** - Kinesis Client Library\n- both optimized for standard operations (I imagine messages can be managed through API or similar but client libraries are best)\n\n(2:39)\n\n#### Capacity Modes:\n\n**Provisioned Mode**:\n\n- any number of shards\n- each shard **inbound** 1mb/s or **1000 records per second**\n- each shard **outbound** 2mb/s (didn't give limit in number of records poor notes or not applicable, not sure which).\n- Scale Manually, increase/decrease any number of shards **capacity is measured in shards**\n- **Cost per Shard provisioned**\n\n**On Demand Mode**:\n\n- provisioned automatically (autoscaled)\n- Default capacity 4. 4MB/s (4000 records per second)\n- Scales automatically based on observed throughput over past 30 days\n- **Pay per stream per hour** and **data in and out**\n\n> My notes say there is not mention of egress capacity",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "7b65a65c09123b96df22c3919c5445ea",
+      "questionText": "Discuss Firehose. **EXAM** You will need to know the differences between streams and firehose and when to use each (_tmc_) - Retention? - Replay? - Managed? Serverless? - Input Formats? - Transformers?",
+      "answerText": "___ 0045 Amazon Firehose\n\n- Collects data from producers and/or batches. **Then flushes batch/queue every so often**.\n- Producers can be anything AND aws services\n- collection, firehose can transform using Lambda. **Transforms at receiver**. Hence no batch body call 1 for each input record. The notes are unclear _tmc_ I think this means can not send in batch, in other words will always 'send' one record at a time.\n- Batch sends accumulated records to [something] then sends.\n\n- Producers can send (push) and Firehose can read some aws services. Hence a producer can be `push` or `pull`\n- Can write failed data to S3 bucket\n\n> Think Javascript watermark\n\n```\nSee notes or other for Firehouse diagram involving elements\nProducers\nAws services (many)\nwrite-out consumers\n```\n\n- used to be called \"Kinesis Firehose\"\n- Fully managed Service\n  - Autoscale\n  - Serverless\n  - Pay what you use\n- Near real time (because of the 'buffering' it does)\n- Supports:\n\n  - AWS Services:\n    - Redshift\n    - S3\n    - OpenSearch\n    - _tmc_ not clear but I believe 'others'\n  - External Services\n    - Splunk\n    - Mongo\n    - datadog\n    - New Relic\n    - Custom http\n  - Custom HTTPS\n  - **_tmc_ not clear this is 'receive data'? 'Push Data'**\n\n- Input Formats Supported:\n\n  - csv\n  - json\n  - parquet\n  - avro\n  - text\n  - bin\n\n- Output Format Supported:\n\n  - parquet/ORC\n  - compression gzip\n  - snappy\n\n- Custom transformers - use Lambda\n\n|                     Kinesis                      |                   Fire Hose                   |\n| :----------------------------------------------: | :-------------------------------------------: |\n|              Stream Data Collection              | Loads streamed data to go to many destination |\n| Produces and Consumers (probably have to write ) |                    &nbsp;                     |\n|               Provision On Demand                |         Fully Managed (Auto Scaling)          |\n|              Stored up to 365 days               |                  No Storage                   |\n|                  Replay capable                  |                   no replay                   |\n|                      &nbsp;                      |                Near Real time                 |\n\n- Not clear to me the Kinesis is \"Real Time\" or \"Near Real Time\"\n\n**EXAM** You will need to know the differences and when to use each (_tmc_)",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "88a5ac812afa125dfd4916a445477f3e",
+      "questionText": "Discus Kinesis Costs",
+      "answerText": "___ 0049 Kinesis Costs\n\n- Serverless\n  - Kinesis Process Unit (KPU) := 1kpu = 1vCPU + 4GB\n  - IAM Permissions\n  - schema discovery (_tmc_ what is this)\n\n_TMC_ I need to research costs - my notes are great and probably the video/lecture wasn't great.\n\n_EXAM_ Have to know billing/costs of Kinesis",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "68bba523b2ffe3c25c492d0a12546507",
+      "questionText": "When doing spark capacity planning, there is something that you need to account for?",
+      "answerText": "__EXAM__\n- Spark adds 10% overhead to memory requested for drivers and executors\n- Be sure initial capacity is at least 10% more than requested by the job",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "629e57254742176897a8917d1708e87e",
+      "questionText": "How to break strings into n-gram, uni-gram, bi-gram, tri-gram",
+      "answerText": "- An extension of TF-IDF is to not only compute relevancy for individual words (terms) but also for bi-grams or more generally, n-grams\n\n- \"I love certification exams\"\n  - Unigram: \"I\", \"love\", \"certification\", \"exams\"\n  - Bi-grams: \"I love\", \"love certification\", \"certification exam\"\n  - Tri-grams: \"I love certification\", \"love certification exam\"\n\n__EXAM__ You may have a question on exam that will ask you to break a sentences into unigram, bi-grams. It's not clear to me if we are suppose to give the number of occurence of each bi-gram, tri-gram etc or if we were supposed to break but the sentences into bigram.  __trick__ in the end we are counting popularity... not actual bigram/trigram",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "0f1b432dfdd69a7b078063fe99f387c8",
+      "questionText": "if the question gives the option to use RCF for outlier detection, ?",
+      "answerText": "__It's probably the correct answer__\n\n\n____ Dealing with Outliers II\n- Our old friend standard deviation provides a principled way to classify outliers\n- Find data points more than some multiple of stand deviation in our training data.\n- What multiple? Just have to use common sense\n- Remember AWS __Random Cut Forest__ algorithm creeps into may of it's services - it is made for outlier detection\n  - Found within QuickSight, Kinesis Analytics, SageMaker and more\n\n__EXAM__ if the question gives the option to use RCF for outlier detection, it is probably the correct answer",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "ca3ddc90ffc52289552ca544e13132d8",
+      "questionText": "What is One Hot Encoding?",
+      "answerText": "____ Encoding\n\n- Transforming dat into some new representation required by the model\n- One-hot encoding\n  - Create \"buckets\" for every category\n  - The bucket for your category has a 1, all others have a 0\n  - Very common in dep learning, where categories are represented by individual output \"neurons\"\n\n__EXAM__ Understand how \"One-Hot Encoding\" works, it reminds me of categorizing the numbers 0 and 5.  We take each image 'is this a 0' \n\n> This is done because a neuron is generally represented as `1` or `0`, so we're boiling to down to binary",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "5b6641027cd64fad73ae296b9916a17f",
+      "questionText": "What is Glue?",
+      "answerText": "__TODO__ Need more information about glue\n\n> Table definition and __ETL__\n\n> There is not a lot to Glue but it is important to internalize it and fully understand how it fits into the grander scheme of things.\n\n> The purpose of Glue is to extract structure from unstructured data. \n\n> The other thing Glue does is Custom ETL jobs. Uses Apache Spark under the hood\n\n__EXAM__ Glue is HUGE\n\n____ What is Glue\n- Serverless discovery and definition of table definitions and schema\n  - S3 - \"data lakes\"\n  - RDS\n  - Redshift\n  - Most other SQL database\n\n- Custom ETL Jobs\n  - Trigger-driven, on schedule or on demand\n  - Fully managed\n\n\n__OpenAi__ Definition of Glue\n**AWS Glue** is basically Amazon’s fully managed **ETL** service — which stands for *Extract, Transform, Load*. In normal human terms: it’s the thing you use when you’ve got messy data sitting all over the place and you want to clean it up and move it somewhere useful for analytics or machine learning.\n\nLet’s say your data is living in:\n\n* CSV files in S3\n* Logs from apps\n* A relational database\n* Maybe even streaming data\n\nGlue will:\n\n1. **Extract** → grab the data from wherever it lives\n2. **Transform** → clean it, join it, reformat it, remove junk, standardize fields\n3. **Load** → put it into a data warehouse or data lake (like for BI dashboards or ML models)\n\n---\n\n### The actually cool parts:\n\n🕷️ **Glue Crawlers**\nThese automatically scan your data sources and figure out the schema (like column names, types, etc.) so you don’t have to define it manually.\n\n🗂️ **Data Catalog**\nGlue stores metadata about all your datasets in a central catalog — kind of like a table of contents for your company’s data.\n\n⚙️ **ETL Jobs**\nYou write transformation logic in Python or Scala (Spark under the hood), and Glue runs it serverlessly — meaning:\n\n* no infrastructure to manage\n* auto-scaling\n* pay only when it runs\n\n📈 **Works well with analytics & ML**\nTeams often use Glue to prep data before sending it to things like:\n\n* Amazon Athena for SQL queries on S3\n* Amazon Redshift for warehousing\n* Amazon SageMaker for ML (you were asking about Clarify earlier — Glue is often what feeds SageMaker clean data)\n\n---\n\n### When would *you* use Glue?\n\n* Building a data lake\n* Cleaning logs before analysis\n* Joining multiple data sources\n* Feature engineering pipelines for ML\n* Scheduling recurring data prep jobs\n\nIf you want, I can explain how Glue compares to something like Apache Spark on EMR — that’s usually where people get stuck deciding.",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "a9f0a77ddb6682c4b9160e09a20ea0e8",
+      "questionText": "What is Glue Studio? He said it is not expected to be on the exam, but he couldn't be certain.",
+      "answerText": "**AWS Glue Studio** is the **visual UI** for building and managing your Glue ETL jobs — so instead of writing a bunch of PySpark by hand, you can drag-and-drop your data pipeline together.\n\nThink of it as:\n\n> “Glue… but with a canvas instead of code.”\n\n---\n\n### What you do inside Glue Studio:\n\nYou can visually design a pipeline that looks like:\n\n```\nS3 → Clean → Join → Filter → Aggregate → Load into Redshift\n```\n\nEach of those steps is a box (called a **node**) that you connect together.\n\nSo you might:\n\n* Pull in CSVs from S3\n* Drop null values\n* Join with another dataset\n* Rename fields\n* Convert timestamps\n* Output parquet into a data lake\n* Send the cleaned version to **Amazon Redshift**\n\nAll without touching Spark code if you don’t want to.\n\n---\n\n### Under the hood (important):\n\nEven though you're using a GUI:\n\n* Glue Studio is still generating **Apache Spark jobs**\n* It auto-writes the PySpark for you\n* You can open the script at any time and tweak it manually\n\nSo it’s beginner-friendly *and* engineer-friendly.\n\n---\n\n### Built-in goodies:\n\n✨ **Schema preview** – see your columns before running the job\n🧪 **Data sampling** – test transformations on a subset\n⏱️ **Job scheduling** – run hourly/daily pipelines\n🔁 **Reusable transforms** – save common steps\n📊 **Integrated with Data Catalog** – auto-pull schemas from crawlers\n\n---\n\n### Why teams use it:\n\n* Faster pipeline prototyping\n* Less Spark boilerplate\n* Easier handoff between data engineers & analysts\n* Great for prepping data before sending to\n  **Amazon SageMaker** (like for Clarify bias checks you asked about earlier)\n\n---\n\nRule of thumb:\n\n* Want full control & custom logic? → Glue Jobs (code-first)\n* Want speed & visibility? → Glue Studio (visual-first)\n\nIf you’re building ML feature pipelines, Glue Studio is honestly a nice middle ground before going full custom Spark.",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "0e8b5b3bda508a43a2667f17362a436d",
+      "questionText": "What is Glue DataBrew?",
+      "answerText": "> Visual Tool, for the T in ETL\n\n______ ⭐0081 Glue DataBrew (2:58)\n__EXAM__ Probably big on the Exam\n\n> Visual Tool, for the T in ETL\n\n- Visual data prep tool\n  - UI for Pre-processing large data sets\n  - Input form S3, data warehouse, or database\n  - Output to S3\n\n- Over 250 read-made transformations\n- you create \"recipe\" of transformations that can be saved as jobs within a larger project\n- May define quality rules\n- May create datasets with custom SQL from Redshift or Snowflake\n- Security\n  - Can integrate with KMS (with customer master key only)\n  - SSL in transit\n  - IAM can restrict who can do what\n  - CloudWatch & CloudTrain\n\n__TODO__ Look at the '250 read made transformations'",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "6cd7f3e10158799115a8cab7454df790",
+      "questionText": "What is Athena Work Groups? What do you manage? How to control costs?",
+      "answerText": "____ Athena Work Groups (01:33) __EXAM__\n\n- Can organize users/teams/apps workloads into Workgroups\n- Can control query access and track costs by workgroup\n- Integrate with __IAM, CloudWatch, SNS__\n- Each workgroup can have its own:\n  - Query History\n    - Data Limits (you can limit how much data queries my scan by workgroup)\n    - IAM policies\n    - Encryption Settings\n\n> Can limit the data scanned (costs) by work-group",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "ab27576591b971b99df60fbd8b3b7802",
+      "questionText": "Two Athena anti-pattern?",
+      "answerText": "______ Athena Anti-Pattern (__EXAM__)\n- Highly formatted reports / visualization\n  - That is what Quicksight is for\n- ETL\n  - use Glue instead",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    },
+    {
+      "questionId": "b208abe3d99fb673b739f6ce39dfd3cc",
+      "questionText": "Athena Optimizations (3)? What is required for ACID?",
+      "answerText": "- Use columnar data (ORC or Parquet)\n- Small number of large files performs better than a large number of small files\n- Use partitions\n  - If added partitions after the face, use `MSCK REPAIR TABLE` command\n\n__EXAM__ may ask)\n\nAlso, if using ACID (iceberg tables), doing \n```\nOPTIMIZE REWRITE DATA USING BIN_PACK WHERE CATALOG=`c1`\n```\nWill help to reduce overhead created by ACID",
+      "tags": [
+        "exam-mentions"
+      ],
+      "domains": [
+        "exam"
+      ]
+    }
+  ]
+}
