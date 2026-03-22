@@ -1,0 +1,44 @@
+{
+  "sessionId": "0b1bf238-3512-4775-838f-8b1b4c7ce839",
+  "databaseId": "database-section-2-vocabulary",
+  "databaseName": "Section 2 - Data Ingestion and Storage Vocabulary",
+  "startedAt": "2025-12-13T16:16:12.345Z",
+  "answers": [
+    {
+      "questionId": "c1569565-89bc-492a-802a-c9f5a57c56ee",
+      "questionText": "Fill in the blank: __________ is Transport Layer Security, a cryptographic protocol for secure communication. MSK uses in-flight TLS, at rest EBS encryption. S3 uses SSL/TLS and HTTPS for in-flight encryption.",
+      "actualAnswerText": "TLS (Transport Layer Security)",
+      "userAnswerText": "Bad question ",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "",
+      "recordedAt": "2025-12-13T16:16:29.349Z"
+    },
+    {
+      "questionId": "c0f87bb6-b709-47e9-8c22-e06574b9a47e",
+      "questionText": "What is \"EFS-Standard\"?",
+      "actualAnswerText": "EFS-Standard is the EFS storage class for frequent use. It supports multi-AZ and is the default tier for EFS.",
+      "userAnswerText": "Single az\n\nMultiple instances ",
+      "userCorrectnessPercentage": 15,
+      "answerNotes": "",
+      "recordedAt": "2025-12-13T16:18:52.361Z"
+    },
+    {
+      "questionId": "acab7073-0615-4863-954c-a8037110875c",
+      "questionText": "What is \"EventBridge\"?",
+      "actualAnswerText": "EventBridge is an AWS serverless event bus service. For S3 event notifications, EventBridge can send to 18 other services, allows advanced filtering (match metadata like object size, file name), and supports replay. It is one of the ETL/ELT Pipeline Orchestration Services.",
+      "userAnswerText": "Service to manage event subscription ",
+      "userCorrectnessPercentage": 66,
+      "answerNotes": "Answer should have more detail ",
+      "recordedAt": "2025-12-13T16:20:39.556Z"
+    },
+    {
+      "questionId": "24834202-02ff-4ec1-9439-052145735723",
+      "questionText": "What is \"VPN (Virtual Private Network)\"?",
+      "actualAnswerText": "VPN is Virtual Private Network. FSx for Windows and FSx for Lustre can connect via DirectConnect or VPN.",
+      "userAnswerText": "",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Answer does not align With question ",
+      "recordedAt": "2025-12-13T16:22:57.831Z"
+    }
+  ]
+}

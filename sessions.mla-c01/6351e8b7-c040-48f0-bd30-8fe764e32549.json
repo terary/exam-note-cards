@@ -1,0 +1,359 @@
+{
+  "sessionId": "6351e8b7-c040-48f0-bd30-8fe764e32549",
+  "databaseId": "database-section-2-data-ingestion-storage",
+  "databaseName": "Section 2: Data Ingestion and Storage",
+  "startedAt": "2025-12-04T14:54:53.400Z",
+  "answers": [
+    {
+      "questionId": "6ab55cfa-7464-4063-876d-360873fb6c33",
+      "questionText": "How do you gauge good Life Cycle Rules for S3?",
+      "actualAnswerText": "S3 Analytics is how to gauge good rules for lifetime. It helps determine optimal transition and expiration actions.",
+      "userAnswerText": "Depends on use case",
+      "userCorrectnessPercentage": 50,
+      "answerNotes": "Maybe a little more context in the question,  but I had no clue about the correct answer ",
+      "recordedAt": "2025-12-04T14:56:23.322Z"
+    },
+    {
+      "questionId": "8b51e9d2-1385-457e-9155-14fda3f6e8d2",
+      "questionText": "What input formats does Kinesis Firehose support?",
+      "actualAnswerText": "CSV, JSON, Parquet, AVRO, text, binary",
+      "userAnswerText": "All",
+      "userCorrectnessPercentage": 12,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:47:36.680Z"
+    },
+    {
+      "questionId": "ab44ba9b-0282-43fd-9e14-bbc2c39ef370",
+      "questionText": "What monitoring options are available for MSK? **EXAM**",
+      "actualAnswerText": "CloudWatch Metrics: basic monitoring (cluster and broker), enhanced monitoring (++ enhanced broker message), topic level metrics. Prometheus (Open Source Monitoring): open port on cluster, broker, and topic, set up JMX export metrics on node exporter (CPU and disk metrics). Broker log delivery to CloudWatch, S3, or Kinesis. **EXAM**",
+      "userAnswerText": "Cloudwatch and some internal monitors ",
+      "userCorrectnessPercentage": 19,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:48:54.158Z"
+    },
+    {
+      "questionId": "a7a88371-bedf-4be0-851a-fa8daf08366c",
+      "questionText": "What is Kinesis Data Stream? **EXAM**",
+      "actualAnswerText": "Kinesis Data Stream is for real-time data streaming. **EXAM** Producers send data to Kinesis Streams, which Consumers read from. Key characteristics: 365 days retention on stream, can be replayed, data cannot be deleted (MUST expire), up to 1MB message size (smaller payload is standard), order is guaranteed for data using partitionId, encryption: in-flight HTTPS/SSL, at rest KMS.",
+      "userAnswerText": "",
+      "userCorrectnessPercentage": 24,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:49:08.596Z"
+    },
+    {
+      "questionId": "41857bb1-f16b-4c88-b09d-c4ff0f811889",
+      "questionText": "When should you use FSx for NetApp OnTap? **EXAM**",
+      "actualAnswerText": "FSx for NetApp OnTap is \"Managed ONTAP on AWS\". Use when you need: move running workloads, broad compatibility (Mac, Linux, VMWare, Windows, AWS EC2/EKS/ECS), auto scale shrink/grow, snapshot low cost compression, point in time clones for workload transfers. **EXAM** may ask \"Suppose xyz, which is the best fit FSx file system\".",
+      "userAnswerText": "When working with ontap",
+      "userCorrectnessPercentage": 12,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:50:07.567Z"
+    },
+    {
+      "questionId": "3e087e87-640d-4eab-8df9-908a33e0586f",
+      "questionText": "What are the four FSx (Third Party File System) types that you need to know for the exam?",
+      "actualAnswerText": "Windows (fully managed Windows Share, supports NTFS and SMB), Lustre (Linux + Cluster, parallel file system optimized for Machine Learning, High Performance Compute), NetApp OnTap (managed ONTAP on AWS, broad compatibility), and OpenZFS (scales up to 1Million IOPS, 0.5ms latency, point in time clone).",
+      "userAnswerText": "Ontap\nLuster\nWindow\nOpenzf",
+      "userCorrectnessPercentage": 80,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:51:15.392Z"
+    },
+    {
+      "questionId": "b4e7bab2-eb70-46d9-9a0d-b8d8da99c31a",
+      "questionText": "What are the characteristics of S3 Access Points?",
+      "actualAnswerText": "Each Access Point has its own DNS name (unique internet name), its own policy, and manages security at scale.",
+      "userAnswerText": "Maps to prefix\nAppears as it's own bucket, with its own policies",
+      "userCorrectnessPercentage": 85,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:52:35.928Z"
+    },
+    {
+      "questionId": "1fede526-5ff7-4d71-a196-9553f982e84b",
+      "questionText": "What fees are associated with S3 Intelligent Tiering?",
+      "actualAnswerText": "S3 Intelligent Tiering has a small moving fee but no retrieval fee. It automatically moves objects between tiers.",
+      "userAnswerText": "Minor transfer fee and retrieve fee",
+      "userCorrectnessPercentage": 44,
+      "answerNotes": "Wrong about retrieval \nAlso I think there will be storage cost if no retrieval fee",
+      "recordedAt": "2025-12-04T15:54:31.851Z"
+    },
+    {
+      "questionId": "eb000858-4ab2-40a6-8842-d4c2e513ce6d",
+      "questionText": "Which S3 feature sits between Bucket and Access Point to transform data and provide different views?",
+      "actualAnswerText": "S3 Object Lambda",
+      "userAnswerText": "S3 lambda",
+      "userCorrectnessPercentage": 82,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T15:55:02.107Z"
+    },
+    {
+      "questionId": "d2619603-63b6-491a-bc6d-85ae34b723a5",
+      "questionText": "Which S3 encryption method provides CloudTrail logging for audit/compliance?",
+      "actualAnswerText": "SSE-KMS",
+      "userAnswerText": "All should",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Double check.\n\nI think any encryption would be logged?\n\nMaybe only kms",
+      "recordedAt": "2025-12-04T15:56:22.302Z"
+    },
+    {
+      "questionId": "88936858-d0be-447d-8df2-62c98cac84c7",
+      "questionText": "What is Block Public Access in S3?",
+      "actualAnswerText": "Block Public Access prevents data leaks. When \"on\" it will never be public. This serves as a master override for public access.",
+      "userAnswerText": "ACL",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "I think looking at q and a,  this looks funny ",
+      "recordedAt": "2025-12-04T15:57:43.947Z"
+    },
+    {
+      "questionId": "64a9c3ca-483f-4486-b34d-5b62ea308293",
+      "questionText": "What are the Kinesis Producer Library (KPL) and Kinesis Client Library (KCL)?",
+      "actualAnswerText": "KPL (Kinesis Producer Library) and KCL (Kinesis Client Library) are SDK libraries optimized for standard operations. Both are optimized for standard Kinesis operations. Messages can be managed through API, but client libraries are best practice.",
+      "userAnswerText": "Client library for Kinesis stream",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Not clear fire hose or stream.   Also q is very obvious looks like trick q",
+      "recordedAt": "2025-12-04T16:01:22.711Z"
+    },
+    {
+      "questionId": "0b0d520e-4788-473f-b392-95e9a02013cc",
+      "questionText": "What are the performance characteristics of FSx for Lustre?",
+      "actualAnswerText": "FSx for Lustre scales 100's GB/s, millions IOPS, sub-ms latency.",
+      "userAnswerText": "Petabyte storage\n100's gig transfer\nCluster storage\nMulti az",
+      "userCorrectnessPercentage": 39,
+      "answerNotes": "Q should be specific about detail it's asking for",
+      "recordedAt": "2025-12-04T16:04:15.472Z"
+    },
+    {
+      "questionId": "9fdbb22a-4f0e-4051-9a9d-c369a4168536",
+      "questionText": "Which S3 storage class has these properties: 99.99% availability (4-9's, 53 minutes downtime per year), used for frequent access, low latency, tolerant of 2 concurrent facility failures at AWS, use cases: big data analysis, reliable gaming, low latency, content distribution",
+      "actualAnswerText": "S3 Standard (GP) - General Purpose",
+      "userAnswerText": "Standard",
+      "userCorrectnessPercentage": 72,
+      "answerNotes": "Forgo",
+      "recordedAt": "2025-12-04T16:05:25.744Z"
+    },
+    {
+      "questionId": "545d5a81-b79c-4d14-a0f4-358d188de3be",
+      "questionText": "How can you move EBS data to another AZ?",
+      "actualAnswerText": "EBS volumes are bound to one AZ, but you can make snapshots and transport to other AZs.",
+      "userAnswerText": "Snapshot",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T16:06:02.135Z"
+    },
+    {
+      "questionId": "bbe3cea2-ff55-482f-bee4-a5a18c13282b",
+      "questionText": "Which S3 storage class has these properties: Standard retrieval (12 hours), Bulk retrieval (48 hours), min storage 180 days, lowest cost for long-term archival",
+      "actualAnswerText": "Glacier Deep Archive (G-Arch)",
+      "userAnswerText": "Infrequently access",
+      "userCorrectnessPercentage": 28,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T16:07:12.309Z"
+    },
+    {
+      "questionId": "858efcde-0a02-4819-9c2c-972a16798329",
+      "questionText": "What are common Kinesis consumer troubleshooting issues?",
+      "actualAnswerText": "Read too slow: increase number of shards, MaxRecordPerCall may be too low, code is too slow. getRecords() returns empty: normal and expected, try again. Shard Iterator expired unexpectedly: more capacity on underlying DynamoDB. Record processor falling behind: increase returning, insufficient resources, monitor with get records.",
+      "userAnswerText": "?",
+      "userCorrectnessPercentage": 10,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T17:42:10.934Z"
+    },
+    {
+      "questionId": "170fee9d-365c-4e42-9a4f-b31859afa390",
+      "questionText": "Glacier Instant Retrieval requires minimum storage of how many days?",
+      "actualAnswerText": "90 days",
+      "userAnswerText": "7",
+      "userCorrectnessPercentage": 38,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T17:42:31.156Z"
+    },
+    {
+      "questionId": "cf9ef1e0-108a-478e-9ebf-f9fc470a7661",
+      "questionText": "Which EBS volume type allows IO to increase independently of disk size: gp2 or gp3?",
+      "actualAnswerText": "gp3 (gp2 IO increases with size)",
+      "userAnswerText": "No idea",
+      "userCorrectnessPercentage": 19,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T17:42:54.601Z"
+    },
+    {
+      "questionId": "83450937-930d-48d1-bc60-1708524c348f",
+      "questionText": "What are the characteristics of Kinesis Data Stream Provisioned Mode?",
+      "actualAnswerText": "Any number of shards, each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s, scale manually, cost per shard provisioned",
+      "userAnswerText": "You define capacity ",
+      "userCorrectnessPercentage": 15,
+      "answerNotes": "",
+      "recordedAt": "2025-12-04T17:43:26.256Z"
+    },
+    {
+      "questionId": "ff3a375c-089f-4eb4-8c9c-ed5122bcd3ee",
+      "questionText": "What are the two types of S3 Life Cycle Rule actions?",
+      "actualAnswerText": "Transition Actions (move from tier to tier, e.g., after 60 days, after 6 months to Glacier) and Expiration Actions (delete objects, e.g., delete logs after 365 days, delete old versions, clean up incomplete multi-part uploads after 2 weeks). Rules can be created for prefix or tags.",
+      "userAnswerText": "Remove\nUpdate",
+      "userCorrectnessPercentage": 49,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:28:49.193Z"
+    },
+    {
+      "questionId": "a7f05c41-41c3-4e2e-a2c9-72f5ecb24105",
+      "questionText": "What does ETL stand for and what are the three stages?",
+      "actualAnswerText": "ETL stands for Extract, Transform, Load. Extract: fetch data (API, disk, etc), ensure data integrity, handle velocity (real-time, streaming, batch). Transform: convert from source to target, clean, enrich, aggregate, calculate, handle encoding/decoding, missing data. Load: move to target, velocity affects load strategy, ensure integrity and error detection.",
+      "userAnswerText": "Extract\nTransfor\nLoad",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:29:49.973Z"
+    },
+    {
+      "questionId": "d1f9308a-db5a-4fdb-a345-fec7b52100f7",
+      "questionText": "S3 Life Cycle Rules that move objects between tiers are called what, and rules that delete objects are called what?",
+      "actualAnswerText": "Transition Actions (move between tiers) and Expiration Actions (delete objects)",
+      "userAnswerText": "Transition\nExpire",
+      "userCorrectnessPercentage": 62,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:30:27.893Z"
+    },
+    {
+      "questionId": "d0a179ef-d3f5-4afb-a8dc-d3c13563b357",
+      "questionText": "How is data organized in MSK?",
+      "actualAnswerText": "Producers send data into Kafka topics, which get replicated across few/all brokers. Consumers poll broker/topic for messages. Data is organized by topic/partition.",
+      "userAnswerText": "Column",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Question needs a little context",
+      "recordedAt": "2025-12-05T00:31:13.336Z"
+    },
+    {
+      "questionId": "8d3be10b-69b2-4063-a8c7-5669bf93b81c",
+      "questionText": "What happens if an AZ fails with S3 OneZone Infrequent Access?",
+      "actualAnswerText": "If something happens to the AZ, all data is lost in S3 OneZone Infrequent Access. It has high durability in a single AZ only.",
+      "userAnswerText": "Data loss",
+      "userCorrectnessPercentage": 99,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:31:42.348Z"
+    },
+    {
+      "questionId": "f0179be9-b1e6-44f2-b337-502714f4bc82",
+      "questionText": "Which Kinesis capacity mode has these characteristics: Any number of shards, each shard inbound 1MB/s or 1000 records/second, each shard outbound 2MB/s, scale manually, cost per shard provisioned",
+      "actualAnswerText": "Kinesis Data Stream Provisioned Mode",
+      "userAnswerText": "Provision ",
+      "userCorrectnessPercentage": 63,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:32:12.701Z"
+    },
+    {
+      "questionId": "1abab7dc-217a-42e9-b667-7fc18ced666d",
+      "questionText": "Which S3 storage class has these properties: 99.5% availability, high durability in a single AZ (if AZ fails all data is lost), best for secondary backup or content that can be easily recreated",
+      "actualAnswerText": "S3 OneZone Infrequent Access (S3-1ZIA)",
+      "userAnswerText": "1z",
+      "userCorrectnessPercentage": 43,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T00:32:43.118Z"
+    },
+    {
+      "questionId": "f5ae1afe-e620-45b1-9b46-8e7803acdf86",
+      "questionText": "What is FSx for Lustre optimized for?",
+      "actualAnswerText": "Machine Learning, video processing, financial models, electrical design automation, High Performance Compute (HPC)",
+      "userAnswerText": "Large data\nTransient workload",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Question is phrased poorly",
+      "recordedAt": "2025-12-05T00:33:41.603Z"
+    },
+    {
+      "questionId": "48fa645d-f2eb-4c3a-b554-1b4408d8a7e1",
+      "questionText": "What is the difference between JDBC and ODBC?",
+      "actualAnswerText": "JDBC (Java Database Connectivity) is Platform Independent but Language Dependent (Java). ODBC (Open Database Connectivity) is Platform Dependent (drivers for many languages) but Language Independent.",
+      "userAnswerText": "Java, any os, any dg Java only\n\nMs, windows only,  any dB, any language ",
+      "userCorrectnessPercentage": 90,
+      "answerNotes": "Os is not mentioned ",
+      "recordedAt": "2025-12-05T00:35:13.687Z"
+    },
+    {
+      "questionId": "c47fee7e-5cf5-4e19-bd6f-5b92b81cfeda",
+      "questionText": "What are examples of Data Warehouse systems?",
+      "actualAnswerText": "Redshift, Google Big Data Query, Azure SQL Data warehouse",
+      "userAnswerText": "?",
+      "userCorrectnessPercentage": 11,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:35:03.150Z"
+    },
+    {
+      "questionId": "f0f052d7-0896-45e5-b094-05c6b7896f89",
+      "questionText": "What is evaluated first: Bucket Policy or Encryption Policy?",
+      "actualAnswerText": "Bucket Policy is evaluated before encryption policy. This is an EXAM topic.",
+      "userAnswerText": "Bucketpolicy",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:35:37.533Z"
+    },
+    {
+      "questionId": "b0ae43c7-966c-430c-ade5-b34d4b47adba",
+      "questionText": "What is evaluated first: Bucket Policy or Encryption Policy? **EXAM**",
+      "actualAnswerText": "Bucket Policy is evaluated before encryption policy. **EXAM**",
+      "userAnswerText": "Bucket",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:36:09.260Z"
+    },
+    {
+      "questionId": "93fd32b6-0893-49cb-ad50-48650640158d",
+      "questionText": "S3 versioning is considered best practice for what two reasons?",
+      "actualAnswerText": "Prevents unintentional overwrite and enables easy rollback",
+      "userAnswerText": "Restore",
+      "userCorrectnessPercentage": 55,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:36:46.879Z"
+    },
+    {
+      "questionId": "91926c2e-4f2c-4b2f-9c23-436314a83290",
+      "questionText": "How do S3 Access Points provide security? **EXAM**",
+      "actualAnswerText": "S3 Access Points can serve as a level of different security - S3 bucket can be less restrictive while S3 Access Point can be more restrictive, allowing different security settings for different users/groups. Each Access Point has its own DNS name, its own policy, and manages security at scale. **EXAM**",
+      "userAnswerText": "They have they're own policy",
+      "userCorrectnessPercentage": 70,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:37:33.819Z"
+    },
+    {
+      "questionId": "beda7c46-e428-42f5-99b0-0948ef6a0671",
+      "questionText": "What is special about SSE-KMS encryption logging?",
+      "actualAnswerText": "SSE-KMS usage can be logged in CloudTrail, which is good for audit/compliance.",
+      "userAnswerText": "Key access is logged ",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Want to verify accuracy ",
+      "recordedAt": "2025-12-05T07:38:36.796Z"
+    },
+    {
+      "questionId": "1f467c3d-1f59-4748-9229-df6de47f0e0c",
+      "questionText": "Is SSE-S3 enabled by default?",
+      "actualAnswerText": "SSE-S3 is default encryption and can be forced with bucket policy. It requires header x-amz-server-side-encryption: \"AES256\".",
+      "userAnswerText": "Yes",
+      "userCorrectnessPercentage": 8,
+      "answerNotes": "Answer and question seem inconsistent ",
+      "recordedAt": "2025-12-05T07:40:03.217Z"
+    },
+    {
+      "questionId": "e5fa683b-7e44-4d9b-99a2-72ec16d327a8",
+      "questionText": "What are examples of high Velocity data?",
+      "actualAnswerText": "IoT data, sensor data, high frequency trades - data that comes in very fast, requiring batch, real-time, or near real-time processing.",
+      "userAnswerText": "Click stream\nIot",
+      "userCorrectnessPercentage": 73,
+      "answerNotes": "My internal wording could have been better",
+      "recordedAt": "2025-12-05T07:42:21.693Z"
+    },
+    {
+      "questionId": "95f5e74c-a88a-4de0-8d68-4b72983a8816",
+      "questionText": "What S3 optimization technique can double throughput?",
+      "actualAnswerText": "Using multiple prefixes",
+      "userAnswerText": "Access point, prefix",
+      "userCorrectnessPercentage": 65,
+      "answerNotes": "Access point isn't necessary ",
+      "recordedAt": "2025-12-05T07:44:14.918Z"
+    },
+    {
+      "questionId": "f965ac4e-6b60-4c3e-9067-fa29fc4817c7",
+      "questionText": "Which property of data refers to size or amount: Volume, Velocity, or Variety?",
+      "actualAnswerText": "Volume",
+      "userAnswerText": "Volume",
+      "userCorrectnessPercentage": 88,
+      "answerNotes": "",
+      "recordedAt": "2025-12-05T07:44:42.435Z"
+    }
+  ]
+}

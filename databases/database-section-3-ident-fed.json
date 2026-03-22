@@ -1,0 +1,391 @@
+{
+  "databaseName": "Section 3 - Identity and Federation",
+  "databaseId": "database-section-3-ident-fed",
+  "questionsWithAnswers": [
+    {
+      "questionId": "b992ea95-f88e-4bfb-986d-8f85c9251e2c",
+      "questionText": "Elements of IAM Statement (entity) (5)? \nTwo have lists have sub lists (3 each)",
+      "answerText": "- Users: Long term credentials\n- Groups:\n- Roles: short-term credentials, uses STS\n    - EC2 Instance Roles: uses EC2 metadata service. __One Role at a time__ per instance\n    - Service Roles: API Gateway, CodeDeploy, etc\n    - Cross Account Roles\n- Policies\n    - AWS Managed\n    - Customer Managed\n    - Inline Policy\n- Resource Based Policies (S3 Bucket, SQS, etc)",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "af58dd64-60b4-4852-b496-fa525ea79c7e",
+      "questionText": "What is the anatomy of a IAM policy (5)?",
+      "answerText": "JSON doc with Effect, Action, Resource, Conditions, Policy Variables",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "964121eb-3b81-442a-b041-22928c6b7874",
+      "questionText": "What is the consequence of an Explicit DENY in a policy? (or any DENY)",
+      "answerText": "Deny takes precedent over ALLOW.  Any evaluated deny results in DENY regardless of any allows",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5b42a0f6-2846-40e3-aca9-6142ba1fd57d",
+      "questionText": "What are the 7 IAM Condition Operators",
+      "answerText": "- `String` (StringEquals, StringNotEquals, StringLike…)\n    - \"Condition\": {\"StringEquals\": {\"aws:PrincipalTag/job-category\": \"iamuser-admin\"}}\n    - \"Condition\": {\"StringLike\": {\"s3:prefix\": [ \"\", \"home/\", \"home/${aws:username}/\" ]}}\n- `Numeric` (NumericEquals, NumericNotEquals, NumericLessThan…)\n- `Date` (DateEquals, DateNotEquals, DateLessThan…)\n- `Boolean` (Bool):\n    - “Condition\": {\"Bool\": {\"aws:SecureTransport\": \"true\"}}\n    - \"Condition\": {\"Bool\": {\"aws:MultiFactorAuthPresent\": \"true\"}}\n- (Not)`IpAddress`:\n    - \"Condition\": {\"IpAddress\": {\"aws:SourceIp\": \"203.0.113.0/24\"}}\n- `ArnEquals`, ArnLike\n- `Null`: \"Condition\":{\"Null\":{\"aws:TokenIssueTime\":\"true\"}}",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "31f8ecde-4e91-4e1e-9464-7f10bbe8a8e5",
+      "questionText": "If a user has permissions A, B, and C.\n\nThen then assume a role with permissions P, Q and R\n\nWhat is the effective permissions?\n\nWhat is the pseudo-exception?",
+      "answerText": "Effective Permissions, P, Q, R.  When assuming a role we loose all the original permissions and take on the assumed role's permissions.\n\nThe pseudo-exception is Resource Policies.  When we permit using Resource Policy instead of Assumed Role, the user's permissions persists.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0c62b75d-aea8-4a71-932e-700daea02cac",
+      "questionText": "Bounders are supported for which 2 out of 3 IAM entity?",
+      "answerText": "Supported for Users and Roles, not supported for Groups",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "816a1c75-66a8-4b58-816c-dae6b5c55d00",
+      "questionText": "Permission Boundary.  Suppose Boundary has ALLOW A, B, C, and a user has permissions P, Q, R, and they attempt Q.  What will be the result?",
+      "answerText": "implied DENY (not allowed) as the boundary must also have the Q",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d509036f-51f0-43a0-ad5e-1c83f85be1c0",
+      "questionText": "What are the three use cases for IAM Permission Boundary",
+      "answerText": "- Allow users (developers) manage their own permissions\n- delegate responsibility to non-admin (people managers)\n- restrict one specific user: (instead of a whole account using Organizations & SCP)",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d28e705e-7ff5-4a8c-99be-e029a357d314",
+      "questionText": "Using IAM Access Analyzer, how to audit, validate or generate a policy?",
+      "answerText": "Step 1 - Create **Zone of Trust**",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4b3a2dda-9c98-424a-9af1-1240f908e877",
+      "questionText": "STS Temporary credentials last how long?",
+      "answerText": "15 minutes to 12 hours. I assume it's a matter of configuration",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3e96a708-d45f-448b-ad91-51a9e78e8d15",
+      "questionText": "What are the steps to set-up STS to Assume a Role (4)?",
+      "answerText": "1. Define an IAM Role within your account or cross-account\n2. Define which principals can access this IAM Role\n3. Use AWS STS (Security Token Service) to retrieve credentials and impersonate the IAM Role you have access to (AssumeRole API)\n4. Temporary credentials can be valid between 15 minutes to 12 hour",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "86c8bbe6-fa58-4a40-b980-9232544b12aa",
+      "questionText": "What are the use cases for Assume Role?",
+      "answerText": "- Provide access for an IAM user in one AWS account that you own to access\n  resources in another account that you own (self.account to self.account)\n- Provide access to IAM users in AWS accounts owned by third parties (self.account to other.account)\n- Provide access for services offered by AWS to AWS resources\n  (aws.services to self.resources)\n- Provide access for externally authenticated users (identity federation)\n  (other.user to self.account)\n\n\\* I am pretty sure there are some redundancies",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "87b8dbf1-a06d-4c97-b834-46f0b198586a",
+      "questionText": "STS - How to revoke active sessions?",
+      "answerText": "Revoke active sessions and credentials for a role (by adding a policy using a time statement – AWSRevokeOlderSessions)\n\n**TODO** - revoke active session - see this work",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "23ea9b39-b794-4e34-8763-396b3269ef9d",
+      "questionText": "Benefits of same account Assume Role (4)?\n\nSame Account",
+      "answerText": "- You must explicitly grant your users permission to assume the role.\n- Your users must actively switch to the role using the AWS Management Console or assume the role using the AWS CLI or AWS API\n- You can add multi-factor authentication (MFA) protection to the role so that only users who sign in with an MFA device can assume the role\n- Least privilege + auditing using CloudTrail",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "085be8a6-dcd6-4d7b-938a-62c4f1b3bda9",
+      "questionText": "Explain \"Confused Deputy\" and how an externalId creates an additional layer of trust.",
+      "answerText": "![Confused Deputy](https://docs.aws.amazon.com/images/IAM/latest/UserGuide/images/confuseddeputyproblem2.png \"Confused Deputy\")\n\n- Self account creates a role `ExampleRole` and provides ARN to Other account\n- Bad Actor create a Identical Role (`ExampleRole`) in their account.\n- Bad Actor provides ARN to self account, pretending it's to badActor account. Hence, other thinks they are assuming role in badActor account but actually assumes role in Self account.\n- Other account thinks it's operating in BadActor account but actually it is operating in BadActor account (hence confused deputy).\n\nSo the Self generates an external ID and shares it with the Other account. When Other requests temporary credentials, it must provided the externalId.\n\n\"self\" - my account\n\"other\" - some trusted external account\n\"badActor\" - account of the bad actor",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0f22c4c2-94fe-4503-8d0c-e21eae2cdb41",
+      "questionText": "What makes self.account-to-self.account different than self.account-to-other.account?",
+      "answerText": "Zone of Trust. The organization has a zone of trust. When going into another account (different org), we cross zone of trust boundaries, I think.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5ff02a93-dc31-43c2-8135-73e0fdb80fea",
+      "questionText": "What is the definition of Zone Of Trust - specifically what does it include",
+      "answerText": "Accounts Organizations that you own.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "8ad8e8c5-ff02-4a81-89ee-db5514670166",
+      "questionText": "What is the process of create a \"trust relationship\" between Organization/Account? Who provides what?",
+      "answerText": "- For granting access to a 3rd party:\n  - The 3rd party AWS account ID\n  - **An External ID** (secret between you and the 3rd party)\n    - To uniquely associate with the role between you and 3rd party\n    - Must be provided when defining the trust and when assuming the role\n    - Must be chosen by the 3rd party\n  - Define permissions in the IAM policy",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1580bdd1-729f-41db-a28d-fc64b78b07fe",
+      "questionText": "Important STS APIs (3 + 2)?",
+      "answerText": "- `AssumeRole`: access a role within your account or cross-account\n- `AssumeRoleWithSAML`: return credentials for users logged with SAML\n- `AssumeRoleWithWebIdentity`: return creds for users logged with an IdP\n  - Example providers include Amazon Cognito, Login with Amazon, Facebook,\n    Google, or any OpenID Connect-compatible identity provider\n  - AWS recommends using Cognito instead\n- `GetSessionToken`: for MFA, from a user or AWS account root user\n- `GetFederationToken`: obtain temporary creds for a federated user,\n  usually a proxy app that will give the creds to a distributed app inside a\n  corporate network\n\n`Assume*` - 3\n\n`Get*Token` - 2",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "087f18ad-0c33-4daa-8645-f4b37bf46f1a",
+      "questionText": "What are the four flavors or Identity Federation?",
+      "answerText": "- SAML 2.0\n- Custom Identity Broker\n- Web Identity Federation With(out) Amazon Cognito\n- IAM Identity Center",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9613a953-44fd-4379-bdec-9e852fedf0e7",
+      "questionText": "What is 'SAML 2.0 Federation'?\nWhat is IAM Identity Center Federation?",
+      "answerText": "- SAML 2.0 Federation is the **“old way”**, IAM Identity Center Federation is the **new managed and simpler way**",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ff2f1924-03a9-423e-b899-d929156abd01",
+      "questionText": "When to use Custom Identity Broker (provider) Application?",
+      "answerText": "If the IdP is not SAML compatible with SAML 2.0",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "09d7d538-9fbf-4c69-a345-7da5a8ee45b7",
+      "questionText": "What are the three flavors of AWS MicroSoft Active Directory (AD) integrations?\nWhat are the differences",
+      "answerText": "- **AWS Managed Microsoft AD**\n  - Create your own AD in AWS, manage users locally, supports MFA\n  - Establish “trust” connections with your on-premises AD\n  - **I believe this requires 2 user lists, in cloud and premise**\n\n- **AD Connector**\n  - Directory Gateway (proxy) to redirect to on-premises AD, supports MFA\n  - Users are managed on the on-premises AD\n  - **I believe this requires only one user list, on-prem, requires cloud connect to on-prem for auth, I think**\n\n- **Simple AD**\n  - AD-compatible managed directory on AWS\n  - **Cannot be joined with on-premises AD**\n  - No link to on-prem, simple, I thought he said backed by Samba - but maybe not, **cheaper**",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1e8d2d4e-2963-4732-8a50-1d2f82714c21",
+      "questionText": "What is `OrganizationAccountAccessRole` used for? When is it created?",
+      "answerText": "`OrganizationAccountAccessRole` **EXAM** understand when it is needed and when it is created.\n\n- IAM role which grants full administrator permissions in the Member account to the Management account\n- Used to perform admin tasks in the Member accounts (e.g., creating IAM users)\n- Could be assumed by IAM users in the Management account\n- Automatically added to all new Member accounts created with AWS Organizations\n- Must be created manually if you invite an existing Member account",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2c6738b0-8e2b-40b6-a608-0efc481ab957",
+      "questionText": "What is the Organization/Account \"Feature Modes\" (2)? What are the dis/advantage?",
+      "answerText": "- **Consolidated billing features**:\n  - Consolidated Billing across all accounts - single payment method\n  - Pricing benefits from aggregated usage (volume discount for EC2, S3…)\n- **All Features (Default)**:\n  - Includes consolidated billing features, SCP\n  - Invited accounts must approve enabling all features\n  - Ability to apply an SCP to prevent member accounts from leaving the org\n  - Can’t switch back to Consolidated Billing Features only\n\n> Note that when using 'all features' the added account must approve. The account can\n> **NEVER** be unassociated hence the reason for the approval.\n\nOne advantages of consolidating accounts like this is billing is consolidated yielding savings.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0d7555fb-23e6-451e-9deb-b5b9ac23bbcc",
+      "questionText": "When is the IAM policy useful/necessary?\n\n```\n        {\n            \"Sid\":\"anything\"\n            \"Effect\": \"Allow\"\n            \"Action\": \"*\"\n            \"Resource\": \"*\"\n        },\n\n```",
+      "answerText": "Service Control Policy (SCP). Children account must have explicit allow to allow parent account access. The broad allow is often coupled with specific denies.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7fa5c457-4ea7-488a-a99d-8fff7bcd22c5",
+      "questionText": "Create a conditional IAM policy using `ForAllValues` and/or `ForAnyValues`",
+      "answerText": "```\n        {\n            \"Sid\":\"anything\"\n            \"Effect\": \"Allow\"\n            \"Action\": \"something:*\"\n            \"Resource\": \"something:*\"\n            \"Conditions\": {\n                \"ForAllValues:StringEquals\": {\n                    \"aws:TagKeys\": [\"Env\", \"CostCenter\"]\n                }\n            }\n        },\n\n```",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "308b7250-85ff-4bfc-a61f-3e8f0d15f0be",
+      "questionText": "Write a IAM policy to restrict by region",
+      "answerText": "```\n        {\n            \"Sid\":\"anything\"\n            \"Effect\": \"Deny\"\n            \"Action\": \"something:*\"\n            \"Resource\": \"something:*\"\n            \"Conditions\": {\n                \"StringEquals\": {\n                    \"aws:RequestRegion\": [\"us-east-1\", \"us-east-1\"]\n                }\n            }\n        },\n```",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cbf17c37-e41a-4920-b9cd-346929588fa9",
+      "questionText": "Using IAM conditionals what does a restrict if does not have tag policy look like?",
+      "answerText": "```\n        {\n            \"Sid\":\"anything\"\n            \"Effect\": \"Deny\"\n            \"Action\": \"something:*\"\n            \"Resource\": \"something:*\"\n            \"Conditions\": {\n                \"Null\": {\n                    \"aws:RequestTag/CostCenter\": true\n                }\n            }\n        },\n```",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "565f94e0-dfa8-48ef-94e6-2cd02e2a56a3",
+      "questionText": "Organizational IAM policy to `opt-out` of AWS collection data for training purpose?",
+      "answerText": "For specific services\n\n```\n{\n  \"services\": {\n    \"default\": {\n      \"opt_out_policy\": {\n        \"@@assign\": \"optOut\"\n      }\n    },\n    \"rekognition\": {\n      \"opt_out_policy\": {\n        \"@@assign\": \"optOut\"\n      }\n    },\n    \"comprehend\": {\n      \"opt_out_policy\": {\n        \"@@assign\": \"optOut\"\n      }\n    },\n    \"textract\": {\n      \"opt_out_policy\": {\n        \"@@assign\": \"optOut\"\n      }\n    }\n  }\n}\n```\n\nFor All services\n\n```\n{\n  \"services\": {\n    \"default\": {\n      \"opt_out_policy\": {\n        \"@@assign\": \"optOut\"\n      }\n    },\n  }\n}\n```",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4f4c39a5-9ee4-4493-963f-2327dba1dbf4",
+      "questionText": "What is the service to use, to use one login in for multiple aws accounts.\n(One login for everything, EC2 Instances, multiple AWS accounts, Salesforce, etc)",
+      "answerText": "IAM Identity Service (formally known as SSO)",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2f426382-c147-4b38-85a5-2ba0300c98d9",
+      "questionText": "What are the three main use case for Identity Center Fined Grain Permissions/Assignments? Give example uses.",
+      "answerText": "- 1. Multi-Account Permissions\n  - Manage access across AWS accounts in your AWS Organization\n  - Permission Sets – a collection of one or more IAM Policies assigned to users and groups to define AWS access\n- 2. Application Assignments\n  - SSO access to many SAML 2.0 business applications (Salesforce,\n    Box, Microsoft 365, …)\n  - Provide required URLs, certificates, and metadata\n- 3. Attribute-Based Access Control (ABAC)\n  - Fine-grained permissions based on users’ attributes stored in IAM Identity Center Identity Store\n  - Example: cost center, title, locale, …\n  - Use case: Define permissions once, then modify AWS access by changing the attributes",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "de5f900b-6bc8-40be-805a-2bdc4476f384",
+      "questionText": "Regarding AWS's Control Tower\nWhat are the two types of **guardrails** and give an example use-case for both.",
+      "answerText": "- **Preventive** – using SCPs (e.g., Disallow Creation of Access Keys for the Root User)\n- **Detective** – using AWS Config (e.g., Detect Whether MFA for the Root User is Enabled)",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "eb96de12-b687-4625-b8d5-99bc5b873d79",
+      "questionText": "Regarding Control Tower Guard Rails Levels. How many levels are there? Give example use case of all, and give the source of the policy.",
+      "answerText": "- **Mandatory**\n  - Automatically enabled and enforced by AWS Control Tower\n  - Example: Disallow public Read access to the Log Archive account\n- **Strongly Recommended**\n  - Based on AWS best practices (optional)\n  - Example: Enable encryption for EBS volumes attached to EC2 instances\n- **Elective**\n  - Commonly used by enterprises (optional)\n  - Example: Disallow delete actions without MFA in S3 buckets",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "aa1f1a5c-29c9-48da-bc79-f61b3fa1cbf8",
+      "questionText": "What are the \"old\" and \"new\" ways to do Web Identity Federation?",
+      "answerText": "I believe \"Web Identity Federation\" is the old way and \"Cognito\" is the new way.",
+      "tags": [
+        "section-3"
+      ],
+      "domains": [
+        "general"
+      ]
+    }
+  ]
+}

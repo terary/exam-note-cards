@@ -1,0 +1,170 @@
+{
+  "sessionId": "a8bd3163-98b4-49eb-bf0a-867bddbf2f76",
+  "databaseId": "database-ai-managed-services",
+  "databaseName": "AWS AI Managed Services",
+  "startedAt": "2025-12-14T02:59:41.094Z",
+  "answers": [
+    {
+      "questionId": "5c8a8bc1-bc6a-4e52-8e4c-5b1b4da5fd3b",
+      "questionText": "Which AWS AI managed service converts text inputs into lifelike speech audio?",
+      "actualAnswerText": "Amazon Polly converts text into lifelike speech audio using AWS-managed voices across many languages and styles.",
+      "userAnswerText": "Polly",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:00:06.163Z"
+    },
+    {
+      "questionId": "617e3eb7-6a96-4e7f-914a-1a8ad2bfb980",
+      "questionText": "Which AWS AI managed service lets you build conversational chatbots using automatic speech recognition and NLP?",
+      "actualAnswerText": "Amazon Lex is the conversational AI service for building chatbots that combine automatic speech recognition and natural language understanding.",
+      "userAnswerText": "Lex",
+      "userCorrectnessPercentage": 100,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:00:19.339Z"
+    },
+    {
+      "questionId": "b1d6a1f5-40d6-4de9-bffe-1cc5789b20b8",
+      "questionText": "What pricing dimension does Amazon Transcribe use for its speech-to-text service?",
+      "actualAnswerText": "Amazon Transcribe charges per audio minute processed, with cost scaling by features such as standard or custom models.",
+      "userAnswerText": "Token, word",
+      "userCorrectnessPercentage": 50,
+      "answerNotes": "By minute",
+      "recordedAt": "2025-12-14T03:00:51.161Z"
+    },
+    {
+      "questionId": "26f82c16-d28d-4c3a-b525-9026c5817a74",
+      "questionText": "Which AWS AI managed service translates text between languages using neural machine translation?",
+      "actualAnswerText": "Amazon Translate is the neural machine translation service that translates text between languages using AWS-managed models.",
+      "userAnswerText": "Transcribe ",
+      "userCorrectnessPercentage": 50,
+      "answerNotes": "Translate not Transcribe",
+      "recordedAt": "2025-12-14T03:01:25.540Z"
+    },
+    {
+      "questionId": "6b7ad13e-a4d1-4f9f-b3f7-acde9f45b605",
+      "questionText": "How do you typically pay for Amazon Lookout for Metrics?",
+      "actualAnswerText": "Amazon Lookout for Metrics pricing is based on the number of metrics you monitor per month, with rates that scale by usage tier.",
+      "userAnswerText": "By metric",
+      "userCorrectnessPercentage": 75,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:02:39.301Z"
+    },
+    {
+      "questionId": "413abcc1-857f-4429-85fa-a9d723b085e2",
+      "questionText": "Which AWS AI managed service handles NLP tasks such as sentiment analysis and custom entity recognition?",
+      "actualAnswerText": "Amazon Comprehend processes natural language for sentiment, key phrases, entity recognition, and supports custom classification and entity models.",
+      "userAnswerText": "Rekognition ",
+      "userCorrectnessPercentage": 47,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:03:02.496Z"
+    },
+    {
+      "questionId": "42f9b564-fb3f-443f-a488-3fd46c220a0c",
+      "questionText": "How does Amazon Lex typically charge for bot interactions?",
+      "actualAnswerText": "Amazon Lex pricing is per request, with text and voice interactions priced differently and rates varying by region.",
+      "userAnswerText": "By word, token",
+      "userCorrectnessPercentage": 20,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:03:42.991Z"
+    },
+    {
+      "questionId": "d0a46be9-0c98-4740-9ebb-4b1949c31212",
+      "questionText": "What pricing dimension best describes Amazon Textract usage?",
+      "actualAnswerText": "Amazon Textract charges per page or document processed, depending on which Textract API you call.",
+      "userAnswerText": "Text, token",
+      "userCorrectnessPercentage": 33,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:04:00.895Z"
+    },
+    {
+      "questionId": "3b1e6199-9025-44cd-bc03-8ec7ec954f57",
+      "questionText": "Which AWS AI managed service extracts text, tables, and forms from scanned documents?",
+      "actualAnswerText": "Amazon Textract extracts text, tables, and forms from scanned documents and PDFs using managed document-understanding models.",
+      "userAnswerText": "Textract",
+      "userCorrectnessPercentage": 55,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:04:54.823Z"
+    },
+    {
+      "questionId": "c9ff8d2e-5f7f-4d2f-a0d4-4af1140a8f01",
+      "questionText": "What core capability does Amazon Kendra provide within AWS AI Managed Services?",
+      "actualAnswerText": "Amazon Kendra delivers semantic enterprise search across sources like Amazon S3, SharePoint, and databases.",
+      "userAnswerText": "Query data",
+      "userCorrectnessPercentage": 48,
+      "answerNotes": "Semantic stearch",
+      "recordedAt": "2025-12-14T03:05:54.455Z"
+    },
+    {
+      "questionId": "42434d2d-23f4-4db9-8d20-f1e9d5a5d86c",
+      "questionText": "Which AWS AI managed service orchestrates human review workflows for low-confidence predictions from ML services?",
+      "actualAnswerText": "Amazon Augmented AI (A2I) orchestrates human review workflows to handle low-confidence predictions generated by services like Textract or Rekognition.",
+      "userAnswerText": "Turk\n",
+      "userCorrectnessPercentage": 38,
+      "answerNotes": "A2i",
+      "recordedAt": "2025-12-14T03:06:29.160Z"
+    },
+    {
+      "questionId": "ae79b6df-07b4-4f1c-b495-248f90eee462",
+      "questionText": "Which AWS managed service gives you specialized ML hardware such as AWS Trainium and AWS Inferentia instances?",
+      "actualAnswerText": "AWS provides specialized ML hardware through services like AWS Trainium and AWS Inferentia instances, letting you build custom ML infrastructure rather than using a fully managed model service.",
+      "userAnswerText": "",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Bad question ",
+      "recordedAt": "2025-12-14T03:06:44.926Z"
+    },
+    {
+      "questionId": "fb74dd1d-376a-4251-a5d5-98387f0ded03",
+      "questionText": "What security responsibilities accompany using AWS Trainium or AWS Inferentia hardware for AI workloads?",
+      "actualAnswerText": "When you use AWS Trainium or AWS Inferentia infrastructure, you handle full-stack security: VPC isolation, IAM on EC2, encrypted storage, secure access, and network segmentation.",
+      "userAnswerText": "At rest,  in flight",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Bad question ",
+      "recordedAt": "2025-12-14T03:07:23.565Z"
+    },
+    {
+      "questionId": "d99a8ade-7998-4385-bcb5-9369a6eb501e",
+      "questionText": "Which AWS AI managed service helps you build and deploy fraud detection models from your event data?",
+      "actualAnswerText": "Amazon Fraud Detector helps build, train, and deploy fraud detection models using your event data and managed features.",
+      "userAnswerText": "Fraud",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Answer in question",
+      "recordedAt": "2025-12-14T03:07:50.228Z"
+    },
+    {
+      "questionId": "7de9b0dc-2d64-4c72-b010-a0d3ba83ea75",
+      "questionText": "Which AWS AI managed service family, such as Amazon Q-Business and Amazon Q-Apps, provides generative AI capabilities over enterprise data?",
+      "actualAnswerText": "Amazon Q services (including Q-Business, Q-Apps, and Q-Developer) offer managed generative AI experiences that apply AWS’s large language models to your enterprise data and applications.",
+      "userAnswerText": "Amazon q",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Bad question ",
+      "recordedAt": "2025-12-14T03:08:10.196Z"
+    },
+    {
+      "questionId": "b30e9a60-28d3-4f46-9191-7f4f0fc7c503",
+      "questionText": "Which AWS AI managed service analyzes images and videos for objects, faces, and text?",
+      "actualAnswerText": "Amazon Rekognition analyzes images and videos to detect objects, scenes, faces, text, and even supports custom labels.",
+      "userAnswerText": "Rekognition ",
+      "userCorrectnessPercentage": 77,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:08:28.741Z"
+    },
+    {
+      "questionId": "f70ab444-5373-4670-98c3-57dac2c6b2f1",
+      "questionText": "Which AWS AI managed service converts audio to text for batch and streaming workloads?",
+      "actualAnswerText": "Amazon Transcribe converts audio into text for both streaming and batch workloads, offering features like custom vocabularies.",
+      "userAnswerText": "?",
+      "userCorrectnessPercentage": 18,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:08:51.574Z"
+    },
+    {
+      "questionId": "e468fe61-5311-4406-9670-69bb3c1a3b0f",
+      "questionText": "Which AWS AI managed service builds personalized recommendations using your interaction data?",
+      "actualAnswerText": "Amazon Personalize ingests user-item interaction data to train models and deliver real-time personalized recommendations.",
+      "userAnswerText": "Reccomend",
+      "userCorrectnessPercentage": 7,
+      "answerNotes": "",
+      "recordedAt": "2025-12-14T03:09:21.624Z"
+    }
+  ]
+}

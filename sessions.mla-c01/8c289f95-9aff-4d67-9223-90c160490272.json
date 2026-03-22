@@ -1,0 +1,71 @@
+{
+  "sessionId": "8c289f95-9aff-4d67-9223-90c160490272",
+  "databaseId": "database-section-2-vocabulary",
+  "databaseName": "Section 2 - Data Ingestion and Storage Vocabulary",
+  "startedAt": "2025-12-12T04:10:21.533Z",
+  "answers": [
+    {
+      "questionId": "264074c5-f93a-465b-b78b-774cd3aab3ed",
+      "questionText": "What is \"Data Lakehouse\"?",
+      "actualAnswerText": "A data lakehouse combines the best features of both Data Warehouses and Data Lakes. It can support ACID transactions and provides the structure of a warehouse with the flexibility of a lake.",
+      "userAnswerText": "Data, Lake, house\n\nI think transformation happens at receiver ",
+      "userCorrectnessPercentage": 68,
+      "answerNotes": "Missed Acid",
+      "recordedAt": "2025-12-12T04:16:25.144Z"
+    },
+    {
+      "questionId": "b6eb9729-51bc-4c66-a9c3-4be55cb08de3",
+      "questionText": "Fill in the blank: __________ is AWS Simple Notification Service. S3 events can be sent to SNS, SQS, Lambda, or EventBridge. You must create resource policies to allow S3 to write to these services.",
+      "actualAnswerText": "SNS (Simple Notification Service)",
+      "userAnswerText": "Life cycle event",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Answer in question make question confusing ",
+      "recordedAt": "2025-12-12T04:19:51.976Z"
+    },
+    {
+      "questionId": "edf18890-9def-4c8a-808c-af25f8626d0b",
+      "questionText": "What is \"EBS (Elastic Block Store)\"?",
+      "actualAnswerText": "EBS is Elastic Block Store, a network-attached storage volume for EC2 instances. Data persists after instances are terminated. Can be configured to delete on termination. Root drive (drv0) auto-deletes by default, but this can be overwritten. Bound to one AZ, can make snapshot and transport to other AZ.",
+      "userAnswerText": "Answer",
+      "userCorrectnessPercentage": -1,
+      "answerNotes": "Answer in question ",
+      "recordedAt": "2025-12-12T04:20:18.549Z"
+    },
+    {
+      "questionId": "50901ddd-b245-4b12-a0cc-e0059fa1b5da",
+      "questionText": "Fill in the blank: __________ scales up to 1Million IOPS, 0.5ms latency, point in time clone. Same OS as NetApp/OnTap.",
+      "actualAnswerText": "FSx for OpenZFS",
+      "userAnswerText": "S3 1az",
+      "userCorrectnessPercentage": 42,
+      "answerNotes": "I did not know\nAlso question has hint which is dumb",
+      "recordedAt": "2025-12-12T04:21:35.431Z"
+    },
+    {
+      "questionId": "37d34813-d567-4864-a891-97d559357ff3",
+      "questionText": "Fill in the blank: __________ uses AWS Key Management Service. Client code specifies which key to use. Usage can be logged in CloudTrail (good for audit/compliance). Requires header: x-amz-server-side-encryption: \"aws:kms\". May require further API calls which can introduce latency.",
+      "actualAnswerText": "SSE-KMS (Server-Side Encryption with AWS KMS managed keys)",
+      "userAnswerText": "Sse kms",
+      "userCorrectnessPercentage": 89,
+      "answerNotes": "",
+      "recordedAt": "2025-12-12T04:22:38.623Z"
+    },
+    {
+      "questionId": "5e686e50-1fbf-4553-8325-fc3ef99fa795",
+      "questionText": "What is \"S3 Access Point (AP)\"?",
+      "actualAnswerText": "S3 Access Points serve as aliases for bucket prefixes. Each Access Point has its own DNS name (unique internet name), its own policy, and manages security at scale. AP Policy looks the same as S3 policy. Access Points can serve as a level of different security - S3 bucket can be less restrictive while S3 Access Point can be more restrictive, allowing different security settings for different users/groups.",
+      "userAnswerText": "Secondary access, supports own policy, maps to prefix",
+      "userCorrectnessPercentage": 82,
+      "answerNotes": "I missed a couple of points",
+      "recordedAt": "2025-12-12T04:23:44.362Z"
+    },
+    {
+      "questionId": "5fc384b3-547e-420c-896c-7ffbbe1157d0",
+      "questionText": "Fill in the blank: __________ is AWS fully managed ETL service. Data Lakes use Schema-on-Read where structure is applied after the fact using services like Athena and Glue. Glue is considered reliable for pipeline management. Data Mesh uses self-service tooling and infrastructure like Glue.",
+      "actualAnswerText": "Glue",
+      "userAnswerText": "Msk",
+      "userCorrectnessPercentage": 51,
+      "answerNotes": "Not even close, question seems good",
+      "recordedAt": "2025-12-12T04:24:24.871Z"
+    }
+  ]
+}
