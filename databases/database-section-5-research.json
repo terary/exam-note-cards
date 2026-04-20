@@ -1,0 +1,251 @@
+{
+  "databaseName": "Section 5 - Research",
+  "databaseId": "database-section-5-research",
+  "questionsWithAnswers": [
+    {
+      "questionId": "b21df56b-e0bd-4f3e-9a79-bc9883901267",
+      "questionText": "Simply look at how r53 is used to create the multi-region App Runner. Specifically, there is a DNS record of type \"latency\" that routes traffic, what is that all about",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "c88ae3fc-45e1-4f82-b923-e0075e1645da",
+      "questionText": "What is the difference between \"EKS Anywhere\" and \"ECS Anywhere\"",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "10ae18db-6cbb-449b-8f2f-5ba5fde35552",
+      "questionText": "CPU is linked to RAM. RAM limit 10GB. How do we adjust RAM we need?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "74c92316-b243-4fd3-84ac-03cd7fc00e65",
+      "questionText": "What is the effect of \"Reserved Concurrency\", kinda a throttle?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "e6c64aaa-6f76-45f1-ad1f-52927e9ea6c2",
+      "questionText": "Lambda concurrency Limit, is it for account? How would you allocation so much quota to certain Lambda but not others.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "96b63a78-ebbf-49e9-98ea-6f827932724a",
+      "questionText": "He goes on to say that lambda deployed in with the default settings will not have access to the internet, the only way to do that is with NAT/IGW.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "495fcca8-d257-491d-9076-7a7db8f02766",
+      "questionText": "He goes on to say how to configure a Lambda/Network to use NAT/IGW to get static IP. Is it possible to create one (few) IP NAT/IGW configurations so all calls from VPC use the same IPs, HOW?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "001a0d3f-dde5-4594-882f-631996bafbb2",
+      "questionText": "Does that mean they SHOULD NOT have any side effects? I think that is impossible?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "03d42031-e641-42c2-a9bc-a9f2edc394c7",
+      "questionText": "Utilizing Batch/Parallel Lambdas what are the pros and cons. It think he suggested that batch will be more robust.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "15a72cdf-91bd-4cb7-9bc9-cd802c9923ca",
+      "questionText": "What is Gateway Load Balancer (GWLB). Why is it better than NLB?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "b1a4797e-3cc8-4b32-ab2b-047e63de3a9e",
+      "questionText": "He mentions that CLB supports only one certificate. That the only way to do two-way verification is traffic passes through CLB directly to the instance. This seems strange, what will be the point of the CLB in that case? Can we configure multiple EC2 instances to use same certificate?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "3caf2364-1de1-4846-a233-907b973503fa",
+      "questionText": "Why you might choose CLB over ALB?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "b352fe5a-d48f-4f00-b3a2-2f77a5d13a7d",
+      "questionText": "What does it mean when an IP is the target (within target group)? Is that some sort of \"anything goes\"",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "62202057-263f-45e4-92b3-79b7b391991c",
+      "questionText": "Why would you use ALB as a target for NLB?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "e0eda55c-dbd6-4e5e-a279-d936e48b9553",
+      "questionText": "How/Why this is important",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "6881e88a-65f6-4391-9c9e-52e01a66e60a",
+      "questionText": "Acts 'Sticky' so long as the TCP connection is open. NLB",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "ff348f28-f914-41b5-9399-19f716b126a2",
+      "questionText": "What are the 'stages' named environment? But in the slide it shows diverting 5% of traffic from Prod to Test, but he doesn't cover the distribution mechanism. Figure out how to divert traffic from one stage to another with API-G",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "3afd5d6b-5e4a-468e-bd7d-242911a30394",
+      "questionText": "With this configuration, does the client \"follow\" the redirect URL? Does it make two requests, pre-request and actual upload request?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "8f290ea2-1da1-4cd8-a1f1-430cbde89a90",
+      "questionText": "It looks like there is only one endpoint type that is most common (Edge Optimized). I don't understand the use-case for regional vs private? Also, what if we don't want Edge Optimized, is it a choice or these are the 3 options?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "db51cbfb-251c-4a60-a865-f026feb33d6d",
+      "questionText": "He seem to make a point that response data is special somehow. Something weird about sending messages `@something`. It didn't make sense to me but I probably want to know better what he is talking about.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "a4efc787-1289-43b6-88be-9335662afaa5",
+      "questionText": "How to make API-G private",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "f10d4b5b-9104-4e61-8cb0-b87751cc7a34",
+      "questionText": "What is AppSync. The GraphQL part makes sense but I think there is more to it than that... The \"combined data sources\" part has me a little confused.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "f663b5da-44b9-4f1a-a62f-c2feac9a5115",
+      "questionText": "What is the difference between \"Alias\" and \"CNAME\" records? He explains you can map alias to root of DNS (example.com) but not CNAME?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "5809aff4-e15e-400c-abae-b1550ef37f51",
+      "questionText": "Understand why this is useful? What is the use-case",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "3c3b4fb8-4e0a-4fa0-8bc1-1bba95c88419",
+      "questionText": "He said something about only returning records for healthy resources?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "b8aaa103-0b8c-49e0-8b21-41abdb11d071",
+      "questionText": "What is the big-deal about health checks and Route 53. It seems to be a point about when records can be used for health check and not. Understand the 'why'",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "75168df2-94ee-47f9-b9f0-faa11822e5a1",
+      "questionText": "I think the deal is that you create one DNS that points to two ALB, R53 will do health checks on both before. If one is failing it will return only the working record",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "77729ef3-92ea-4828-8ce5-97b83346db65",
+      "questionText": "Want to see this in action, its pass/fail, not on status code but content?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "c0cada98-a205-4b91-a777-e9b4361d54cf",
+      "questionText": "This is a health check on a DNS record or server?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "6b080520-0720-44d9-a351-125dd241be36",
+      "questionText": "You want to know how to do this",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "8006796b-ce1b-4e5b-967f-5fc237e6e4af",
+      "questionText": "What are the points of Inbound/Outbound Resolvers. I think its a simple matter.",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "b8dac73b-e904-415d-a149-b66d2e64fd65",
+      "questionText": "This is unclear. When using global accelerator - 2 Anycast IP and they are used to route traffic? These are standard IPs that are used in DNS resolution?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "91e584eb-d827-4f1e-b893-8a7a63dbf2f4",
+      "questionText": "When to choose Accelerator vs Cloud Front",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "a26b819d-217e-4275-a2aa-610b81e60995",
+      "questionText": "These serve different purposes. Can/do they work together? What problem is each solving?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    },
+    {
+      "questionId": "59a676bb-881f-4586-999b-58f3692f0ed7",
+      "questionText": "Using ECS run time for lambda vs custom runtime?",
+      "answerText": "",
+      "tags": ["section-5", "research"],
+      "domains": ["research"]
+    }
+  ]
+}

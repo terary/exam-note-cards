@@ -1,0 +1,534 @@
+{
+  "databaseName": "Section 4",
+  "databaseId": "database-section-4",
+  "questionsWithAnswers": [
+    {
+      "questionId": "fba6e069-22eb-48c2-9966-618e99005f28",
+      "questionText": "CloudTrail - regional or global? What do I need to do to have per-region trail if for example I had different compliance standards (EU vs Au vs US)",
+      "answerText": "**TODO** I don't know how to do this.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e49f3d07-ba4c-4cf3-994e-c3bc3821ee92",
+      "questionText": "What are the three types of CloudTrail Events?\nBrief description of each.",
+      "answerText": "- Management Events:\n  - Operations that are performed on resources in your AWS account\n  - Examples:\n    - Configuring security (IAM AttachRolePolicy)\n    - Configuring rules for routing data (Amazon EC2 CreateSubnet)\n    - Setting up logging (AWS CloudTrail CreateTrail)\n  - By default, trails are configured to log management events.\n  - Can separate **Read Events** (that don’t modify resources) from **Write Events** (that may modify resources)\n- Data Events:\n  - By default, data events are not logged (**because high volume operations**)\n  - Amazon S3 object-level activity (ex: GetObject, DeleteObject, PutObject): can separate Read and Write Events\n  - AWS Lambda function execution activity (the Invoke API)\n- CloudTrail Insights Events:\n  - See next slide :)",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "298f2410-4f2a-447b-aeb4-ea0e0a56d774",
+      "questionText": "What CloudTrail related services sends events to EventBridge",
+      "answerText": "CloudTrail Insights",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a9264d60-1092-4d48-9080-6e7b44e64e07",
+      "questionText": "What is the retention period of CloudTrail events? What to do if you need them longer?",
+      "answerText": "- Events are stored for 90 days in CloudTrail\n- To keep events beyond this period, log them to S3 and use Athena",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "70823f7f-1c86-4602-b2f5-7a896cf81ea0",
+      "questionText": "Using CloudTrail, how do we notify someone of sensitive API calls (DeleteTable as example)?",
+      "answerText": "Events go to CloudTrail, then can also go to EventBridge and from there SNS.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "bd7352b6-adbd-4db3-aa10-ee4232b3cbf9",
+      "questionText": "Two paths to send message from CloudTrail. What are they what are the pros/cons.",
+      "answerText": "1. You can harvest events from the fact that CloudTrail dumps to S3 and that launches an S3 Event\n\n2. CloudTrail can send events directly so you can respond directly\n\nPros/Cons\n\n- S3 Event is generic and probably slow",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "371cb28c-6373-459e-ae9b-ab6df5f31de0",
+      "questionText": "What is S3 Object Lock?",
+      "answerText": "Out of scope of the current subject but he said Object Lock prevents objects from ever being deleted or modified.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fc2908cd-99e2-47ba-9000-8bdeeba1c718",
+      "questionText": "What are the 3 ways that CloudWatch can deliver events?\nWhat to use if you need to know the number of x in a given hour?\nWhat to use if you want the fastest reaction time?",
+      "answerText": "- EventBridge:\n  - Can be triggered for any API call in CloudTrail\n  - **The fastest, most reactive way**\n- CloudTrail Delivery in CloudWatch Logs:\n  - Events are streamed\n  - Can perform a metric filter to **analyze occurrences and detect anomalies**\n- CloudTrail Delivery in S3:\n  - Events are delivered every 5 minutes\n  - Possibility of analyzing logs integrity, deliver cross account, long-term storage",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "62bd1cda-cbd4-4d6a-aabd-34b5d75a93c8",
+      "questionText": "What are the region limitations for KMS keys?",
+      "answerText": "Keys are regional, can only be used in the region they were created in.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6fd9610e-8e6e-4945-92dd-dd9c5b4bd6c4",
+      "questionText": "Regarding KMS keys, which does most (all) AWS services use? Asymmetric or Symmetric encryption?",
+      "answerText": "- **AWS services that are integrated with KMS use Symmetric KMS keys**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f55193af-93b7-427e-b686-c41a769ba5e7",
+      "questionText": "If KMS Keys are regional, how do we have Multi-Region keys?",
+      "answerText": "It's possible to replicate the KMS key into other regions. These are replicas hence changes to the original changes the replica.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ab748b49-6bcc-4da3-be63-774773caa294",
+      "questionText": "What are the benefits for Parameter Store (7)?",
+      "answerText": "- Secure storage for configuration and secrets\n- Optional Seamless Encryption using KMS\n- Serverless, scalable, durable, easy SDK\n- **Version tracking of configurations / secrets**\n- Security through IAM\n- **Notifications with Amazon EventBridge**\n- Integration with CloudFormation",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6370fb5c-a959-418e-b569-6435e24e8eb4",
+      "questionText": "Regarding Parameter Store. How do we get/send notification of a parameter is about to expire",
+      "answerText": "**TODO** - I need to figure this out.\n\nHowever, its a feature of the \"Advanced\" parameter store and policies.\n\nI am not sure of the steps but I think\n\n1. Set-up TTL live policy\n2. Set up notification for x days before TTL\n\nAlso, we can get notified of 'no change in x days'",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f436651d-ab61-4d1f-8efd-deceb9c13748",
+      "questionText": "Compare/Contrast Secrets Manager(4) to Parameter Store (5)",
+      "answerText": "- Secrets Manager ($$$):\n  - Automatic rotation of secrets with AWS Lambda\n  - Lambda function is provided for RDS, Redshift, DocumentDB\n  - KMS encryption is mandatory\n  - Can integration with CloudFormation\n- SSM Parameter Store ($):\n  - Simple API\n  - No secret rotation (can enable rotation using Lambda triggered by EventBridge)\n  - **KMS encryption is optional**\n  - Can integration with CloudFormation\n  - Can pull a Secrets Manager secret using the SSM Parameter Store API\n\nSecrets Manager does an RDS auto-rotate key. You can get the same behavior in Parameter Store, except you have to write the code, and set-up notification to invoke the code, etc. (This would be a question of cost, if SM is very expensive and the only useful functionality is rotation... but it is not its only useful functionality)",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "83c5751e-57b1-4446-a1a3-c980df9e8d5e",
+      "questionText": "In very simple terms. What is the difference between Parameter Store, Parameter Store Advanced and Secrets Manager?",
+      "answerText": "Parameter (as the name suggests) are for parameters. You can keep credentials in it but there are perhaps better alternatives. (config values)\n\nParameter Store Advanced - Parameter store with policies. The policies are focused on rotation/expiration of the parameter.\n\nSecrets Manager - deals more with \"secrets\" and auto rotation. (credential values)",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f4ba2c05-1618-4300-8af6-a5c102c001df",
+      "questionText": "What are the 7 RDS security points?",
+      "answerText": "- KMS encryption at rest for underlying EBS volumes / snapshots\n- Transparent Data Encryption (TDE) **for Oracle and SQL Server**\n- SSL encryption to RDS is possible for **all** DB (in-flight)\n- IAM authentication for MySQL, PostgreSQL and MariaDB\n- **Authorization still happens within RDS (not in IAM)**\n- Can copy an un-encrypted RDS snapshot into an encrypted one\n- CloudTrail cannot be used to track queries made within RDS",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "865d57a2-6b2a-4e61-9e37-d4ce5f4dc46a",
+      "questionText": "Regarding \"SSL/ SNI (Server Name Indicator)\" Limitations. Discuss why SNI is useful and what are the service limitations?",
+      "answerText": "Note:\n\n- Only works for ALB & NLB (newer generation), CloudFront\n- Does not work for CLB (older gen) (CLB \"Classic Load Balancer\")\n\n> This is related to the fact that https protocol original dictated that host name should be encrypted and therefore servers couldn't identify the correct server to serve the correct certificate\n\n> The graphic suggest Target Groups determines certificate.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "de62c831-a676-4c2c-871e-bc57cbfade52",
+      "questionText": "How to avoid Man-in-the-middle attacks (SSL)?",
+      "answerText": "1. Don’t use public-facing HTTP, use HTTPS (meaning, use SSL/TLS certificates)\n2. Use a DNS that has DNSSEC\n   - To send a client to a pirate server, a DNS response needs to be “forged” by a server which intercepts them\n\n- It is possible to protect your domain name by configuring `DNSSEC`\n- Amazon Route 53 supports DNSSEC for domain registration.\n- Route 53 supports DNSSEC for DNS service as of December 2020 (using KMS)\n- You could also run a custom DNS server on Amazon EC2 for example (Bind is the most popular, dnsmasq, KnotDNS, PowerDNS).\n\n> Because Route53 didn't used to support DNSSEC running an alterative DNS server may have been an option, but its not longer necessary.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b5ac8603-416e-4f99-8bda-f10b67a13a58",
+      "questionText": "Which services auto-load certificate?",
+      "answerText": "- Load Balancers\n- CloudFormation Distributions\n- APIs on API Geteways\n\n> He said, anywhere there is a need for certificate, ACM integrates with it",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f82cde01-3d9c-4b60-8a68-36fdf8d46a2c",
+      "questionText": "Are certificates region or global?",
+      "answerText": "They are regional. If you have multi-region app you'll need to create certificate for each region",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "8215d3f6-59ee-4458-b771-39a460d8ba9d",
+      "questionText": "What is CloudHSM (10)?",
+      "answerText": "- KMS => AWS manages the software for encryption\n- CloudHSM => AWS provisions encryption hardware\n- Dedicated Hardware **(HSM = Hardware Security Module)**\n- You manage your own encryption keys entirely (**not AWS**)\n- HSM device is tamper resistant, FIPS 140-2 Level 3 compliance\n- Supports both symmetric and asymmetric encryption (SSL/TLS keys)\n- No free tier available\n- Must use the CloudHSM Client Software\n- Redshift supports CloudHSM for database encryption and key management\n- Good option to use with **SSE-C encryption**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6aec2bd9-d125-4edf-b2b3-385607dea223",
+      "questionText": "Discuss some quarks of SSE-KMS (3 points)?",
+      "answerText": "- Key usage appears in CloudTrail\n- objects made public can never be read\n- On s3:PutObject, make the permission kms:GenerateDataKey is allowed",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "14d526bc-9327-4738-9f54-e2bc5f68d513",
+      "questionText": "What is the quark about S3-Glacier?",
+      "answerText": "Glacier: all data is AES-256 encrypted, key under AWS control\n**TODO** As I read it, there is nothing for users to do for encryption in glacier. What if we encrypt using SSE-KMS, and our life cycle rules move to Glacier? What happens to the encryption then?\n\nAI Said:\n\n```\nSummary (what AWS exams expect)\n\nGlacier + encryption rules:\n\n- Always encrypted at rest\n- SSE-S3 simplest\n- SSE-KMS requires key access at restore time\n- If KMS key deleted → data unrecoverable\n- Cross-account requires KMS policy\n- Encryption unchanged during lifecycle transitions\n- SSE-C risky for long-term Glacier storage\n```",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "660a3f13-27ca-464d-8d32-a54413aeefea",
+      "questionText": "How to enforce s3 https?",
+      "answerText": "To enforce HTTPS, use a Bucket Policy with aws:SecureTransport",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "62b5488d-801a-4bae-acb9-20a1a98ec523",
+      "questionText": "Give some example use-cases for bucket policies (7)?",
+      "answerText": "- Use S3 bucket for policy to:\n  - Grant public access to the bucket\n  - Force objects to be encrypted at upload\n  - Grant access to another account (Cross Account)\n\n- Optional Conditions on:\n  - SourceIp: Public IP or Elastic IP | VpcSourceIp: Private IP (through VPC Endpoint)\n  - Source VPC or Source VPC Endpoint – only works with VPC Endpoints\n  - CloudFront Origin Identity\n  - MFA",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e430d6ad-cea7-4cc9-ad83-b16fba3a32dc",
+      "questionText": "How to restrict S3 Access to a VPC?",
+      "answerText": "**TODO** not sure, but involves a `VCP Endpoint Gateway`",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "da8036a8-2fa0-48f8-a699-a1bb9d564ee0",
+      "questionText": "How to enforce WORM on S3 or Glacier?",
+      "answerText": "**TODO** I don't really know, use \"Object Lock\" or \"Glacier Vault Lock\"\n\n`use \"Object Lock\" or \"Glacier Vault Lock\"` is the correct answer\n\n```\nKey difference (exam tip)\nS3 Object Lock → object-level WORM\nGlacier Vault Lock → vault-level policy WORM\n```\n\n```\n1) S3 → Object Lock\n\nUse S3 Object Lock when data is in S3.\n\nModes:\n  - Governance mode (can override with special permissions)\n  - Compliance mode (cannot be overridden at all)\nCan set:\n  - Retention period\n  - Legal holds\n\n👉 This is the most common modern answer\n\n\n2) Glacier → Vault Lock\n\nUse Glacier Vault Lock (for Amazon S3 Glacier)\n\n- Lets you enforce policies like:\n  - “No deletes for X days”\n- Once locked:\n  - Policy becomes immutable\n\n👉 This is more “old-school Glacier” but still appears in exams\n\n\n```",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "695cc8c1-e72c-47bf-9a79-c810c79fa982",
+      "questionText": "How to restrict access to an S3 bucket (access point) to certain VPC?",
+      "answerText": "• **We can define the access point to be accessible only from within the VPC**\n• You must create a VPC Endpoint to access the Access Point (Gateway or Interface Endpoint)\n• The VPC Endpoint Policy must allow access to the target bucket and Access Point\n\n**TODO** not really sure but I need to try this",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a26d42c9-9c63-475e-954b-cb31fb48196e",
+      "questionText": "Multi-region Access Point (S3), What are the advantages/use-cases?",
+      "answerText": "- Provide a global endpoint that span S3 buckets in multiple AWS regions\n- Dynamically route requests to the nearest S3 bucket (lowest latency)\n- Bi-directional S3 bucket replication rules are created to keep data in sync across regions\n- **Failover Controls** – allows you to shift requests across S3 buckets in different AWS regions within minutes (Active-Active or Active-Passive)",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "072e7d90-8b6b-4646-874a-b26e7279de0a",
+      "questionText": "What is the 'sync' status of multi-region access points?",
+      "answerText": "They're suppose to be bi-directional.. effectively making the buckets mirrors (**TODO** confirm this)\n\n- Create 2 buckets, different regions\n- Create \"Multi Region Access Point\"\n  - \"Add Buckets\"\n  - \"Block public access\" options\n  - \"Create Multi Region Access Point\" - click the button\n  - Takes some time to create, 30 minutes to 24 hours\n\nMultiple Region Access Point seem to be doing Cross Region Replication under the hood.\n\nHence, this exercise is just about setting up access points with some automagic replication.\n\nIt's not possible to filter what will be replicated by configuring the access point. But you can filter when doing replication. If you wanted to, that's a bit off topic a curiosity.\n\nIn creating MRAP you DO NEED to create replication rules. Data doesn't replicate without them I guess.\n\nReplication isn't strictly necessary but data will be out of sync and you'll get 404's when requesting data outside of region. Further, different regions will experience different 404s.\n\n**Bucket Versioning is Require!**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "66b05e48-5a61-4b16-8092-202ed3c79a02",
+      "questionText": "What are the different DDoS attacks? System(4)/Application(2)?\n\nThere are 4 attacks and a couple of other considerations.",
+      "answerText": "- Distributed Denial of Service (DDoS):\n  - When your service is unavailable because it’s receiving too many requests\n  - `SYN Flood` (Layer 4): send too many TCP connection requests\n  - `UDP Reflection` (Layer 4): get other servers to send many big UDP requests\n  - `DNS flood attack`: overwhelm the DNS so legitimate users can’t find the site\n  - `Slow Loris attack`: a lot of HTTP connections are opened and maintained\n- Application level attacks:\n  - more complex, more specific (HTTP level)\n  - Cache bursting strategies: overload the backend database by invalidating cache",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9f437d5f-eb02-4ce5-92c4-6c3c0fc98994",
+      "questionText": "Which anti-DDoS service is enabled by default?",
+      "answerText": "`AWS Shield Standard`: protects against DDoS attack for your website and\napplications, for all customers at no additional costs",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0f0ee4a2-02ce-4f79-ae2e-5c857ac3353a",
+      "questionText": "What services and technique are suggested to mitigate and/or prevent DDoS (6)?",
+      "answerText": "- `AWS Shield Standard`: protects against DDoS attack for your website and\n  applications, for all customers at no additional costs\n- `AWS Shield Advanced`: 24/7 premium DDoS protection\n- `AWS WAF`: Filter specific requests based on rules\n- `CloudFront and Route 53`:\n  - Availability protection using global edge network\n  - Combined with AWS Shield, provides DDoS attack mitigation at the edge\n- `Be ready to scale` – leverage AWS Auto Scaling\n- `Separate static resources` (S3 / CloudFront) from dynamic ones (EC2 / ALB)\n- Read the whitepaper for details:\n  https://d1.awsstatic.com/whitepapers/Security/DDoS_White_Paper.pdf",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ff802027-8b20-4641-9ac3-6703ad308f76",
+      "questionText": "What is the difference between Shield and Shield Advanced? More specifically what is the fee what do you get for the fee?",
+      "answerText": "- **AWS Shield Standard**:\n  - Free service that is activated for every AWS customer\n  - Provides protection from attacks such as SYN/UDP Floods, Reflection attacks and other layer 3/layer 4 attacks\n- **AWS Shield Advanced**:\n  - Optional DDoS mitigation service ($3,000 per month per organization)\n  - Protect against more sophisticated attack on Amazon EC2, Elastic Load Balancing (ELB), Amazon CloudFront, AWS Global Accelerator, Route 53\n  - 24/7 access to AWS DDoS response team (DRP)\n  - Protect against higher fees during usage spikes due to DDoS\n\n> This doesn't make a lot of sense to me 'Protect against higher fees'. If unit costs go down with the more you use, wouldn't the fees then go down? I think he means there is insurance, that you'll be protected against the \"additional\" costs incurred by DDoS attack.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "96fb6f55-909a-4d42-a344-d9e018865f34",
+      "questionText": "What is the relationship between CloudFront and WAF? He says you can run WAF on CloudFront",
+      "answerText": "**TODO** find the answer to this question",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "66ce1609-5801-4952-9218-36a03d937926",
+      "questionText": "Given the network stack, what level does WAF operate on, what level does Shield mostly work on.",
+      "answerText": "WAF - Layer 7\nShield - Layer 4",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ec2993d3-6121-46b7-bd42-f4f8dd81031d",
+      "questionText": "What is the functional difference between Shield and WAF?",
+      "answerText": "WAF is Layer 7 (http) so it's going to to monitor Layer 7 activity.\n\nShield is Layer 4 so it will monitory monitor network signals (SYN flood, DNS DDoS)\n\nHTTP/S is layer 7.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cc5589ff-d333-486a-a2cf-8f890dd690b2",
+      "questionText": "What is one very significant purposes of WAF rule Action `COUNT`?",
+      "answerText": "It can be used to determine the effectiveness of a rule. Count how many of a thing happen to know if you are looking at the right things.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b77a0858-0cc1-48ca-96c2-18f584e952db",
+      "questionText": "WAF predefined rule Managed Rules. What are the 4 main groups?",
+      "answerText": "**EXAM**\n\n- **Baseline Rule Groups**\n- **Use-case Specific Rule Groups**\n- **IP Reputation Rule Groups** (EXAM)\n- **Bot Control Managed Rule Group**\n\nProbably the exam will want you to know about \"IP Reputation Rule Groups\" in some detail but basic idea for the others\n\n- **Baseline Rule Groups** – general protection from common threats\n  - `AWSManagedRulesCommonRuleSet`, `AWSManagedRulesAdminProtectionRuleSet`, …\n- **Use-case Specific Rule Groups** – protection for many AWS WAF use cases - `AWSManagedRulesSQLiRuleSet`, `AWSManagedRulesWindowsRuleSet`,\n  `AWSManagedRulesPHPRuleSet`, `AWSManagedRulesWordPressRuleSet`, …\n- **IP Reputation Rule Groups** – block requests based on source (e.g., malicious IPs)\n  - `AWSManagedRulesAmazonIpReputationList`, `AWSManagedRulesAnonymousIpList`\n- **Bot Control Managed Rule Group** – block and manage requests from bots\n  - `AWSManagedRulesBotControlRuleSet`",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5187aba0-ebdc-4a8f-bbac-fda3736e2efe",
+      "questionText": "AWS Firewall Manager.\nRules are regional or global? What services can rules apply to?",
+      "answerText": "- Manage rules in **all accounts** of an AWS Organization\n- Security policy: common set of security rules\n  - WAF rules (Application Load Balancer, API Gateways, CloudFront)\n  - AWS Shield Advanced (ALB, CLB, NLB, Elastic IP, CloudFront)\n  - Security Groups for EC2, Application Load Balancer and ENI resources in VPC\n  - AWS Network Firewall (VPC Level)\n  - Amazon Route 53 Resolver DNS Firewall\n  - Policies are created at the region level\n- **Rules are applied to new resources as they are created (good for compliance) across all and future accounts in your Organization**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c305fef8-c380-4ac0-9fca-b2ee06f82bec",
+      "questionText": "What is the differences between: WAF, Firewall Mangers, Shield?",
+      "answerText": "- **WAF, Shield and Firewall Manager are used together for comprehensive protection**\n- Define your Web ACL rules in WAF\n- For granular protection of your resources, WAF alone is the correct choice\n- If you want to use AWS WAF across accounts, accelerate WAF configuration,\n  automate the protection of new resources, use Firewall Manager with AWS WAF\n- Shield Advanced adds additional features on top of AWS WAF, such as dedicated\n  support from the Shield Response Team (SRT) and advanced reporting.\n- **If you’re prone to frequent DDoS attacks, consider purchasing Shield Advanced**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7eb962a1-2041-453e-87c4-4caa8d2ae019",
+      "questionText": "Adding WAF to a system makes NACLs useless. Where/How does adding a WAF to a system make the NACLs useless",
+      "answerText": "When adding WAF for ip-address filtering to CloudFront. I assume NACLs become redundant.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4f43033f-1a10-4422-aba0-d1571eb537f5",
+      "questionText": "Amazon Inspector \"Automated Security Assessments\". What are the three groups of things it can be used with? What are the advantages?",
+      "answerText": "- For EC2 instances\n  - Leveraging the AWS System Manager (SSM) agent\n  - Analyze against unintended network accessibility\n  - Analyze the running OS against known vulnerabilities\n- For Container Images push to Amazon ECR\n  - Assessment of Container Images as they are pushed\n- For Lambda Functions\n  - Identifies software vulnerabilities in function code and package\n    dependencies\n  - Assessment of functions as they are deployed\n\nI am only guessing that Lambda and ECR does one scan on push, whereas EC2 instances run an agent (not sure if that takes up processing power).\n\n- Reporting & integration with AWS Security Hub\n- Send findings to **Amazon Event Bridge**",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "96ec2ec1-6aaa-45e4-9d7b-d33122a6197d",
+      "questionText": "What does Amazon Inspector evaluate?",
+      "answerText": "- Remember: only for EC2 instances, Container Images & Lambda functions\n- Continuous scanning of the infrastructure, only when needed\n- Package vulnerabilities (EC2, ECR & Lambda) – database of CVE\n- Network reachability (EC2)\n- A risk score is associated with all vulnerabilities for prioritization",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5065e6db-467a-4d9a-a5cb-26cf55a67b8f",
+      "questionText": "- What are some of the questions we can answer when using AWS Config?\n- What is the one notification type AWS Config supports?",
+      "answerText": "- Is there unrestricted SSH access to my security groups?\n  - Do my buckets have any public access?\n  - How has my ALB configuration changed over time?\n\nThe think to remember, AWS Config, is not an \"enforcer\" it is an \"observer\" for compliance issues/monitoring/reporting.\n\nHe says \"can receive SNS Topic\" notification. He did not mention other services.\n\n**TODO** Can AWS Config send events to EventBridge or other services? SNS only (later he mentions Event Bridge)?",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "87083f60-4a55-4ecf-81de-7c848acc3285",
+      "questionText": "AWS Config Rules - how to build a custom rule?",
+      "answerText": "- Can make custom config rules (must be defined in AWS Lambda)",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "0cd24726-d74e-4a28-8064-9b6b647c9ea8",
+      "questionText": "What are the various logs, where do they write the logs, what activity do they log (7)?",
+      "answerText": "- Load Balancer Access Logs (ALB, NLB, CLB) => to S3\n  - Access logs for your Load Balancers\n- CloudTrail Logs => to S3 and CloudWatch Logs\n  - Logs for API calls made within your account\n- VPC Flow Logs => to S3, CloudWatch Logs, Kinesis Data Firehose\n  - Information about IP traffic going to and from network interfaces in your VPC\n- Route 53 Access Logs => to CloudWatch Logs\n  - Log information about the queries that Route 53 receives\n- S3 Access Logs => to S3\n  - Server access logging provides detailed records for the requests that are made to a bucket\n- CloudFront Access Logs => to S3\n  - Detailed information about every user request that CloudFront receives\n- AWS Config => to S3",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b2b2247e-bbac-44c6-a716-5819adfbbd40",
+      "questionText": "How to access an instances via SSH without the identify file (key)?",
+      "answerText": "EC2 Instance Connect (SendSSHPublicKey API).\n\nThere is a 60 second TTL on the file.",
+      "tags": [
+        "section-4"
+      ],
+      "domains": [
+        "general"
+      ]
+    }
+  ]
+}

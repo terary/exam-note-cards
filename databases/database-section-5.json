@@ -1,0 +1,921 @@
+{
+  "databaseName": "Section 5",
+  "databaseId": "database-section-5",
+  "questionsWithAnswers": [
+    {
+      "questionId": "927904aa-e8fe-4988-983d-bbccea420311",
+      "questionText": "What are the instance families? What does each mean (7)?\nT2/T3, etc.\nHint \"P\" is an instance type family but not in this exam.",
+      "answerText": "- R: applications that needs a lot of **[R]AM** – in-memory caches\n- C: applications that needs good **[C]PU** – compute / databases\n- M: applications that are balanced (think **“medium”**) – general / web app\n- I: applications that need good local **I/O** (instance storage) – databases\n- G: applications that need a **[G]PU** – video rendering / machine learning\n- T2 / T3: **burstable** instances (up to a capacity)\n- T2 / T3 - unlimited: **unlimited burst**",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "68fd3a89-11be-4d13-a7b8-85bb7cd80dd5",
+      "questionText": "What are the three EC2 placement strategies? What advantages?",
+      "answerText": "- Group Strategies:\n  - Cluster—clusters instances into a low-latency group in a single Availability Zone\n  - Spread—spreads instances across underlying hardware (max 7 instances per group per\n    AZ) – critical applications\n  - Partition—spreads instances across many different partitions (which rely on different sets\n    of racks) within an AZ. Scales to 100s of EC2 instances per group (Hadoop, Cassandra,\n    Kafka)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "32db9ec8-fea1-4f2a-be06-f0e5e15dc6af",
+      "questionText": "**EXAM** how to move an instance from one placement group to another?",
+      "answerText": "- You can move an instance into or out of a placement group\n  - Your first need to stop it\n  - You then need to use the CLI (modify-instance-placement)\n  - You can then start your instance",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a8a2606d-811d-4cf5-b9f9-291c2c953410",
+      "questionText": "What are the various \"Launch Types\"(5)? What are the advantages of each?",
+      "answerText": "- **On Demand** Instances: short workload, predictable pricing, reliable\n- **Spot Instances**: short workloads, for cheap, can lose instances (not reliable)\n- **Reserved**: (MINIMUM 1 year)\n  - Reserved Instances: long workloads\n  - **Convertible Reserved Instances**: long workloads with flexible instances\n  - Highest to lowest discount: All Upfront payment, Partial Upfront payment, no Upfront\n- **Dedicated Instances**: no other customers will share your hardware\n- **Dedicated Hosts**: book an entire physical server, control instance placement\n  - Great for software licenses that operate at the core, or CPU socket level\n  - Can define host affinity so that instance reboots are kept on the same host",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e0c094d7-8c13-4915-8cf4-0d7adca2e1ee",
+      "questionText": "What are the EC2 Metrics (4)? What is one thing that is not a metric that you would expect? One metric is valid only for Instance Store instances?",
+      "answerText": "- `CPU`: CPU Utilization + Credit Usage / Balance\n- `Network`: Network In / Out\n- `Status Check`:\n  - Instance status = check the EC2 VM\n  - System status = check the underlying hardware\n- `Disk`: Read / Write for Ops / Bytes (**only for instance store** otherwise you get these metrics directly)\n\n- RAM is NOT included in the AWS EC2 metrics (**EXAM**)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a7276a5a-9919-4c28-ad77-c5fa0d422804",
+      "questionText": "With instance recovery, what instance properties are restored?",
+      "answerText": "- Recovery: Same Private, Public, Elastic IP, metadata, placement group\n\n> I think AMI is missing from this list",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "27907083-3bde-4bb8-b7aa-1ddf8577e0ac",
+      "questionText": "What are good metrics to scale on (4)?",
+      "answerText": "- **CPUUtilization**: Average CPU utilization across your instances\n- **RequestCountPerTarget**: to make sure the number of requests per EC2 instances is stable\n- **Average Network In / Out** (if you’re application is network bound)\n- **Any custom metric (that you push using CloudWatch)**",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "16425b82-1edb-4c6e-8740-346b5085b676",
+      "questionText": "Good to know about Auto Scaling, 3 facts?",
+      "answerText": "- Spot Fleet support (mix on Spot and On-Demand instances)\n- Lifecycle Hooks:\n  - Perform actions before an instance is in service, or before it is terminated\n  - Examples: cleanup, log extraction, special health checks\n- To upgrade an AMI, must update the launch configuration / template\n  - Then terminate instances manually (CloudFormation can help)\n  - Or use EC2 Instance Refresh for Auto Scaling",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "896a808b-2003-490c-a4cf-28d9322c83e9",
+      "questionText": "What is the clever way to Refresh Instances (using their updated launch configuration)?",
+      "answerText": "- Goal: update launch template and then re-creating all EC2 instances\n- For this we can use the native feature of Instance Refresh\n- Setting of minimum healthy percentage\n- Specify warm-up time (how long until the instance is ready to use)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "424229f3-7255-4d99-90a7-2983ab6aa4a4",
+      "questionText": "What are the Auto Scaling Processes (9)?",
+      "answerText": "- **Launch**: Add a new EC2 to the group, increasing the capacity\n- **Terminate**: Removes an EC2 instance from the group, decreasing its capacity.\n- **HealthCheck**: Checks the health of the instances\n- **ReplaceUnhealthy**: Terminate unhealthy instances and re-create them\n- **AZRebalance**: Balancer the number of EC2 instances across AZ\n- **AlarmNotification**: Accept notification from CloudWatch\n- **ScheduledActions**: Performs scheduled actions that you create.\n- **AddToLoadBalancer**: Adds instances to the load balancer or target group\n- **InstanceRefresh**: Perform an instance refresh\n\n- **We can suspend these processes!**",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "466a8155-c62f-42da-9295-e9d379969923",
+      "questionText": "What is a bad health check? What happens if you have a poorly planned health check?",
+      "answerText": "One that has to do a lot of work. It should be a simple thing that returns simple status.\n\nIf the health check is overly complicated and takes time to respond it may cause the Load Balancer to determine the instance is unhealthy and cause it to replace the instance. Since all instances use the same health check, they'll likely all get replaced, over-and-over.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "103ba250-e173-4cb7-8c77-8e09f4a065dd",
+      "questionText": "What are the available Health Checks (3)?",
+      "answerText": "- Health checks available:\n  - EC2 Status Checks\n  - ELB Health Checks (HTTP)\n  - Custom Health Checks – send instance’s health to an ASG using AWS CLI or AWS SDK (set-instance-health)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "51022049-7340-4301-8db9-d6ff8f50f192",
+      "questionText": "What are the three \"update scaling group\" methods? What are the pros/cons?\n**EXAM**",
+      "answerText": "1. Simple\n   - How to:\n     - Increase capacity (I assume)\n     - Update launch configuration\n       - At this point one launch group one alb, inconsistent config\n   - Pros:\n     - It's easy\n   - Cons:\n     - Increase capacity a little (could be pro or con)\n     - inconsistent config state\n\n2. Two Target Groups\n   - How to:\n     - Create second scaling group\n     - configure ALB to send \"small amount of traffic\"\n   - Pros\n     - Less infrastructure configuration (no R53)\n   - Cons\n     - Probably extra capacity\n     - inconsistent instance configuration (launch template 1 / launch template 2)\n\n3. Two ALB\n   - How To:\n     - Set-up second ALB and second Scaling Group\n     - Use Route53 + CNAME record weights to divide traffic between old/new\n     - Before engaging R53 changes, you can test the new group at the second ALB\n   - Pros:\n     - Not sure the \"pros\" perhaps a better UX experience it is \"all or none\"\n   - Cons:\n     - More infrastructure. During the two-systems you'll likely require twice the bandwidth\n     - Due to lack of consistency in clients and the requirement that clients are \"well behaved\", **migration is slow**\n\n**TODO** Maybe better understand the pro/cons all options a little better. Specifically, what is so bad about the first option, slight increase in capacity, update launch config?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b15454cf-a196-4879-b1f7-2f87d732daae",
+      "questionText": "How does AWS determine who gets 'spot' instances",
+      "answerText": "- Define max spot price and get the instance **while current spot price < max**\n  - The hourly spot price varies based on offer and capacity\n  - If the current spot price > your max price you can choose to stop or terminate your instance with a 2 minutes grace period.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5273fb9c-9c52-41b8-827d-e726b5db5ae5",
+      "questionText": "Spot Instance Flee / Spot Fleet.\nWhat are the strategies for determine the 'next instance', how does it choose between spot/on-demand?",
+      "answerText": "- **Strategies to allocate Spot Instances**:\n  - lowestPrice: from the pool with the lowest price (cost optimization, short workload)\n  - diversified: distributed across all pools (great for availability, long workloads)\n  - capacityOptimized: pool with the optimal capacity for the number of instances\n  - priceCapacityOptimized (recommended): pools with highest capacity available, then select the pool with the lowest price (best choice for most workloads)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7059af7d-8c19-4d33-b087-82e9fdb5b813",
+      "questionText": "What are the dis/advantages of spot fleets?",
+      "answerText": "**TODO** What are the dis/advantages of spot fleets?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "409cc67f-428a-406b-b10d-3de5bb4c56d9",
+      "questionText": "What are the main concepts/terms of ECS(5)?",
+      "answerText": "- **ECS Cluster** – logical grouping of EC2 instances\n- **ECS Service** – defines how many tasks should run and how they should\n  be run\n- **Task Definitions** – metadata in JSON form to tell ECS how to run a\n  Docker container (image name, CPU, RAM, …)\n- **ECS Task** – an instance of a Task Definition, a running Docker container(s)\n- **ECS IAM Roles**\n  - EC2 Instance Profile – used by the EC2 instance (e.g., make API calls to ECS, send logs, …)\n  - ECS Task IAM Role – allow each task to have a specific role (e.g., make",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "aadfc484-828b-466b-999a-0f129cae6b48",
+      "questionText": "What are the different networking types for ECS Tasks (4)?",
+      "answerText": "- **none** – no network connectivity, no port mappings\n- **bridge** – uses Docker’s virtual container-based network\n- **host** – bypass Docker’s network, uses the underlying host network interface\n- **awsvpc**\n  - Every tasks launched on the instance gets its own ENI and a private IP address\n  - Simplified networking, enhanced security, Security Groups, monitoring, VPC Flow Logs\n  - Default mode for Fargate tasks",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9a653993-2f55-4442-a396-9f5f487e97e9",
+      "questionText": "How to use Spot Instances with ECS or Fargate? What are the pros and cons?",
+      "answerText": "**TODO** Answer that question",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f7d6a09c-8cda-4f66-bd20-ad3751c6c9e5",
+      "questionText": "What are the different Container Services offered by AWS? What are the pros/cons?",
+      "answerText": "**TODO** Answer that question.\nI think there are three services but it's unclear why/when a person would use one or the other.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "911a731b-b392-4d04-a72a-872ade5cd55d",
+      "questionText": "Regarding ECR Image Scanning. What are the two option, what are the pros/cons",
+      "answerText": "- Manual Scan or Scan on Push\n- Basic Scanning – Common CVE\n- Enhanced Scanning – Leverages Amazon Inspector (OS & Programming\n  Language vulnerabilities)\n- Scan results can be retrieved from within the AWS console",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c0173b1f-cb2c-4886-bc0b-3a324becd03e",
+      "questionText": "For EKS What are the the three Node Types, what is the differences?",
+      "answerText": "- Managed Node Groups\n  - Creates and manages Nodes (EC2 instances) for you\n  - Nodes are part of an ASG managed by EKS\n  - Supports On-Demand or Spot Instances\n- Self-Managed Nodes\n  - Nodes created by you and registered to the EKS cluster and managed by an ASG\n  - You can use prebuilt AMI - Amazon EKS Optimized AMI\n  - Supports On-Demand or Spot Instances\n- AWS Fargate\n  - No maintenance required; no nodes managed",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fda849ed-3816-4a8a-af32-cfa90007b813",
+      "questionText": "How to attache Data Volumes to EKS, what volume types are support (only one works for Fargate)",
+      "answerText": "- Need to specify **StorageClass** manifest on your EKS cluster\n- Leverages a **Container Storage Interface (CSI)** compliant driver\n\n- Support for…\n- Amazon EBS\n- Amazon EFS (works with Fargate)\n- Amazon FSx for Lustre\n- Amazon FSx for NetApp ONTAP",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f5d5682e-7de6-4616-8087-10de4534b871",
+      "questionText": "What is app runner? What are the use cases and advantages?",
+      "answerText": "- Fully managed service that makes it easy to deploy web\n  applications and APIs at scale\n- No infrastructure experience required\n- Start with your source code or container image\n- Automatically builds and deploy the web app\n- Automatic scaling, highly available, load balancer, encryption\n- VPC access support\n- Connect to database, cache, and message queue services\n\n- Use cases: web apps, APIs, microservices, rapid production\n  deployments",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "18151138-40a6-4313-8a48-c7f8c82521d6",
+      "questionText": "Using AWS ECS how to launch a task on premise?",
+      "answerText": "- Easily run containers on Customer-managed infrastructure (on-premises, VMs, …)\n- Allows customers to deploy native Amazon ECS tasks in any environment\n- Fully-managed Amazon ECS Control Plane\n- ECS Container Agent and SSM Agent needs to be installed\n- **“EXTERNAL”** Launch Type\n- **Must have a stable connection to the AWS Region**\n- Use cases:\n  - Meet compliance, regulatory, and latency requirements\n  - Run apps outside AWS Regions and closer to their other services\n  - On-premises ML, video processing, data processing, …",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d04f2b7a-31c1-464c-ad22-d614ddd904fd",
+      "questionText": "What is the difference between \"EKS Anywhere\" and \"ECS Anywhere\".\n\nWhat are the connection requirements?",
+      "answerText": "**RESEARCH** What is the difference between \"EKS Anywhere\" and \"ECS Anywhere\"\n\nI think key is running task on premise within AWS vs running task in AWS in OnPrem",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a59f7cbc-a82c-4501-8e2f-c9b2e692287f",
+      "questionText": "What are the Lambda limitations (10)?",
+      "answerText": "- RAM – 128 MB to 10,240 MB (10 GB)\n- CPU – is linked to RAM (cannot be set manually)\n  - 2 vCPUs are allocated at 1,769 MB of RAM\n  - 6 vCPUs are allocated at 10,240 MB of RAM\n- Timeout – up to 15 minutes\n- /tmp Storage – 10,240 MB\n- Deployment Package – 50 MB (zipped) , 250 MB (unzipped) including layers\n- Concurrent Executions – 1000 (soft limit that can be increased)\n- Container Image Size – 10 GB\n- Invocation Payload (request/response) – 6 MB (sync), 256 KB (async)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b938f681-7137-4cb6-b75f-28b89accf174",
+      "questionText": "What are concurrency limit? How to set a limit, what happens when limit is exceeded?",
+      "answerText": "- Concurrency limit: up to 1000 concurrent executions\n\n- Can set a “reserved concurrency” at the function level (=limit)\n- Each invocation over the concurrency limit will trigger a “Throttle”\n- Can request a quota increase in AWS Service Quotas\n\n**RESEARCH** What is the effect of \"Reserved Concurrency\", kinda a throttle?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f3bc0f1b-7a5a-41ce-bd49-0204212c12c8",
+      "questionText": "What is the advantage of using CodeDeploy to deploy Lambda",
+      "answerText": "- CodeDeploy can help you automate traffic shift for Lambda aliases\n- Feature is integrated within the SAM framework\n\n- Linear: grow traffic every N minutes until 100%\n  - Linear10PercentEvery3Minutes\n  - Linear10PercentEvery10Minutes\n\n- Canary: try X percent then 100%\n  - Canary10Percent5Minutes\n  - Canary10Percent30Minutes\n- AllAtOnce: immediate\n- Can create Pre & Post Traffic hooks to check the health of the Lambda function",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "29ae161b-abba-4c5e-84b4-0c8980ad163b",
+      "questionText": "What tools are used to for monitoring/observability?",
+      "answerText": "Cloudwatch Monitor\n\nXRay for Observability",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "11805654-618a-49bb-b0b9-d318178c99e3",
+      "questionText": "When and Why is Idempotent matter for Lambda.",
+      "answerText": "Async Lambda calls will need to be idempotent. Lambda will retry 3 times on failure.\n\n**RESEARCH** Does that mean they SHOULD NOT have any side effects? I think that is impossible?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "aff40209-18b4-4802-bf6f-88c377afa778",
+      "questionText": "If SQS is in the mixed, is the Lambda Batch or Parallel?",
+      "answerText": "Because SQS has some delay (Batch)? We can say it's Batched",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4e168846-1ce1-4f68-a34a-496b7f66d6f1",
+      "questionText": "What are the 4 Load Balancer Types?\nDis/Advantages?",
+      "answerText": "- AWS has 4 kinds of managed Load Balancers\n- Classic Load Balancer (v1 - old generation) – 2009 – CLB\n  - HTTP, HTTPS, TCP, SSL (secure TCP)\n- Application Load Balancer (v2 - new generation) – 2016 – ALB\n  - HTTP, HTTPS, WebSocket\n- Network Load Balancer (v2 - new generation) – 2017 – NLB\n  - TCP, TLS (secure TCP), UDP\n- Gateway Load Balancer – 2020 – GWLB\n  - Operates at layer 3 (Network layer) – IP Protocol\n\n- Overall, it is recommended to use the newer generation load balancers as they provide more features",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "659dde58-99a9-4df9-ab82-1465fb507050",
+      "questionText": "Why use ALB over CLB and visa/versa",
+      "answerText": "**RESEARCH** Why you might choose CLB over ALB?\n\nYou will want ALB in most cases because it uses SNI, to direct traffic to the right certificate.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "17ae6cfa-7362-4e77-b2fb-0283899d59e6",
+      "questionText": "What are the target Groups of ALB (5)?",
+      "answerText": "- EC2 instances (can be managed by an Auto Scaling Group) – HTTP\n- ECS tasks (managed by ECS itself) – HTTP\n- Lambda functions – HTTP request is translated into a JSON event\n- IP Addresses – must be private IPs\n- ALB can route to multiple target groups",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5543eea1-390e-403e-89fc-7800a41dccf5",
+      "questionText": "Why would you choose NLB over ALB",
+      "answerText": "**NLB are used for extreme performance, TCP or UDP traffic**\n\n- Forward TCP/UDP to instances\n\n- Less latency ~100 ms (vs 400 ms for ALB)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3d9b8e18-2b50-4e0b-bfdb-6d3b3f96ec65",
+      "questionText": "What are the target groups of NLB?",
+      "answerText": "- EC2 instances\n- IP Addresses – must be private IPs (usually something like 10.x.x.x)\n- Application Load Balancer",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7460c520-bb79-47bc-92f8-c0c1640ef4b1",
+      "questionText": "Discuss name resolution when using NLB? Because it maps to several instances different IP, it will resolve to to all IPs, but what if you want just a regional IP (AZ).",
+      "answerText": "**RESEARCH** How/Why this is important\n\nThis is related to routing traffic back to local AZ, costs/latency.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "370fc3a0-9046-4a24-8f3a-43a100e9a5d3",
+      "questionText": "What is the purpose of Gateway Load Balancer (GLB)?",
+      "answerText": "It operations on Level 3, can inspect packets. Used for sending traffic to 3rd party security services.\n\nYou would configure GLB to sit in front of your app and send packets to the GLB for security inspection.\n\nIf all is good, it forwards the packets back to the application.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "39fe9796-64f7-47c1-82f6-63d9aac0392b",
+      "questionText": "What targets does GLB support?",
+      "answerText": "- EC2 instances\n- IP Addresses – must be private IPs (10.x.x.x)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6ad159f5-f3fb-421d-a575-77f17719182e",
+      "questionText": "Which of the four Load Balancers is Cross-Zone distribution enabled?\nWhich ones charge?",
+      "answerText": "- Classic Load Balancer\n  - Disabled by default\n  - No charges for inter AZ data if enabled\n- Application Load Balancer\n  - Always on (can’t be disabled)\n  - No charges for inter AZ data\n- Network Load Balancer\n  - Disabled by default\n  - You pay charges ($) for inter AZ data if enabled\n- Gateway Load Balancer\n  - Disabled by default\n  - You pay charges ($) for inter AZ data if enabled",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2b0edfc8-6169-4768-8ab4-5bbf7ac0c0af",
+      "questionText": "Which LB support 'sticky'? Why would you not want to use it?",
+      "answerText": "- It is possible to implement stickiness so that the same client is always redirected to the same instance behind a load balancer\n- This works for Classic Load Balancers & Application Load Balancers\n- The “cookie” used for stickiness has an expiration date you control\n- Use case: make sure the user doesn’t lose his session data\n- Enabling stickiness may bring imbalance to the load over the backend EC2 instances",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e702fda7-d51a-4c8d-bfdb-2768c51d7f4c",
+      "questionText": "What are the three request routing routines, which apply to which LB",
+      "answerText": "`Least Outstanding` - ALB, CLB. Instances with the least outstanding requests (better \"work\" distribution)\n\n`Round Robin` - ALB, CLB\n\n`Flow Hash` - Belongs with NLB, has kinda sticky effect",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "397c6b65-9ad9-47bc-a6a1-12ede8e5e6de",
+      "questionText": "API Gateway limits to know (2)?\n\nWhat are some of the advantages (8)?",
+      "answerText": "- Limits to know: **EXAM**\n  - 29 seconds timeout\n  - 10 MB max payload size\n\n- Advantages:\n  - API versioning,\n  - authorization,\n  - traffic management (API keys, throttles),\n  - huge scale,\n  - serverless,\n  - req/resp transformations,\n  - OpenAPI spec,\n  - CORS",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6c011dee-6174-45f9-8d30-d4dca5502841",
+      "questionText": "Three points about API Gateway Deployments",
+      "answerText": "- API changes are deployed to “Stages” (as many as you want)\n- Use the naming you like for stages (dev, test, prod)\n- Stages can be rolled back as a history of deployments is kept",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "342a78c7-17a9-4a9c-a3f3-a8d9a055bdca",
+      "questionText": "What are the three API-G Integrations?",
+      "answerText": "- HTTP\n  - Expose HTTP endpoints in the backend\n  - Example: internal HTTP API on premise, Application Load Balancer…\n  - Why? Add rate limiting, caching, user authentications, API keys, etc…\n- Lambda Function\n  - Invoke Lambda function\n  - Easy way to expose REST API backed by AWS Lambda\n- AWS Service\n  - Expose any AWS API through the API Gateway?\n  - Example: start an AWS Step Function workflow, post a message to SQS\n  - Why? Add authentication, deploy publicly, rate control…",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "a16fa046-5f53-47ff-89aa-db8716623dba",
+      "questionText": "If implementing a solution with API-G and S3. What is one of the S3 concerns? How to get around it.",
+      "answerText": "10MB API-G Limit is a concern. You can set-up a \"pre-request\" to get a pre-signed upload URL, and directly upload to S3.\n\nLambda generates the Pre-sign URL",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "95223821-f01f-440d-9c34-777e8e21a621",
+      "questionText": "What are the 3 types of API-G Endpoints? When to use which?",
+      "answerText": "- Edge-Optimized (default): For global clients\n  - Requests are routed through the CloudFront Edge locations (improves latency)\n  - The API Gateway still lives in only one region\n- Regional:\n  - For clients within the same region\n  - Could manually combine with CloudFront (more control over the caching strategies and the distribution)\n- Private:\n  - Can only be accessed from your VPC using an interface VPC endpoint (ENI)\n  - Use a resource policy to define access",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9d300b4c-7820-4b0a-9350-7e5812ac147e",
+      "questionText": "Eight points about API-G Caching?",
+      "answerText": "- Caching reduces the number of calls made to the backend\n- Default TTL (time to live) is 300 seconds (min: 0s, max: 3600s)\n- Caches are defined per stage\n- Possible to override cache settings per method\n- Clients can invalidate the cache with header: Cache-Control: max-age=0 (with proper IAM authorization)\n- Able to flush the entire cache (invalidate it) immediately\n- Cache encryption option\n- Cache capacity between 0.5GB to 237GB",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "59d3e283-33fe-4134-8356-f4fe7db53777",
+      "questionText": "What are the 3 5xx errors and their meaning mentioned in the lecture?",
+      "answerText": "- 5xx means Server errors\n  - 502: Bad Gateway Exception, usually for an incompatible output returned from a Lambda proxy integration backend and occasionally for out-of-order invocations due to heavy loads.\n  - 503: Service Unavailable Exception\n  - 504: Integration Failure – ex Endpoint Request Timed-out Exception API Gateway requests time out after 29 second maximum",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "40b9db4b-b0d6-490f-94c6-9b3a2b4e0df8",
+      "questionText": "Four points of security for API-G?",
+      "answerText": "- Load SSL certificates and use Route53 to define a CNAME\n- Resource Policy (~S3 Bucket Policy):\n  - control who can access the API\n  - Users from AWS accounts, IP or CIDR blocks, VPC or VPC Endpoints\n- IAM Execution Roles for API Gateway at the API level\n  - To invoke a Lambda Function, an AWS service…\n- CORS (Cross-origin resource sharing):\n  - Browser based security\n  - Control which domains can call your API",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1edee1aa-3457-4bbd-b5b8-018bb60ad9f3",
+      "questionText": "What are the three main Authorization Techniques used by API-G?",
+      "answerText": "- IAM based access (AWS_IAM)\n  - Good for providing access within your infrastructure\n  - Pass IAM credentials in headers through Sig V4\n- Lambda Authorizer (formerly Custom Authorizer)\n  - Use Lambda to verify a custom OAuth / SAML / 3rd party authentication\n\n- Cognito User Pools\n  - Client authenticates with Cognito\n  - Client passes the token to API Gateway\n  - API Gateway knows out-of-the-box how to verify to token",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "51989c7b-71b7-4dd3-90e1-b34e0c1817b3",
+      "questionText": "What are the 3 logging methods? Something special about some/most of them?",
+      "answerText": "- CloudWatch Logs:\n  - Enable CloudWatch logging at the Stage level (with Log Level – ERROR, INFO)\n  - Can log full requests / responses data\n  - Can send API Gateway Access Logs (customizable)\n  - Can send logs directly into Kinesis Data Firehose (as an alternative to CW logs)\n- CloudWatch Metrics:\n  - Metrics are by stage, possibility to enable detailed metrics\n  - IntegrationLatency, Latency, CacheHitCount, CacheMissCount\n- X-Ray:\n  - Enable tracing to get extra information about requests in API Gateway\n  - X-Ray API Gateway + AWS Lambda gives you the full picture\n\n> The \"per stage\" sounds pretty special and worth remembering",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "03dd6210-e728-4b8a-b327-0546059887e8",
+      "questionText": "What are the 4 DNS records discussed in the lectures?",
+      "answerText": "- A – maps a hostname to **IPv4**\n- AAAA – maps a hostname to **IPv6**\n- CNAME – maps a hostname to another hostname\n- The target is a domain name which must have an A or AAAA record\n  - Can’t create a CNAME record for the top node of a DNS namespace (Zone\n    Apex)\n  - Example: you can’t create for example.com, but you can create for\n    www.example.com\n- NS – Name Servers for the Hosted Zone\n  - Control how traffic is routed for a domain\n\n> Remember which ones for IPv6 vs IPv4",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9933578f-87c6-4f3f-b12b-5bfeab51b6b8",
+      "questionText": "What is the services/resources you CAN NOT set alias to?",
+      "answerText": "EC2 DNS names",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c2b8203f-9af6-4739-bbf6-1d30c421e8ee",
+      "questionText": "Which DNS records do not have TTL.\n\nWhat is the benefit/cost of long/short TTL",
+      "answerText": "ALIAS records are they only DNS records that do not require TTL\n\nWhen longer TTL fewer looks ups, less money spent on R53.\nShorter TTL more look ups more R53 money.\n\nLong TTL can be a pain when trying to update names",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "77df4343-2b84-4f8a-b1f8-3ffdde7add92",
+      "questionText": "Four points about simple DNS routing.",
+      "answerText": "- Typically, route traffic to a single resource\n- Can’t be associated with Health Checks\n- Can specify multiple values in the same record\n- If multiple values are returned, a random one is chosen by the client",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1f20f20b-253d-468f-93d2-8565c8f94583",
+      "questionText": "With \"Lowest Latency\" routing. How is latency determined?",
+      "answerText": "Latency is based on traffic between users and AWS Regions\n\nHence, it makes sense if a user is in Germany, and the APP is in Asia, that the user is routed through US.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "2dd53491-fc57-4def-98f4-68172e9def71",
+      "questionText": "What is the use-case for geolocation over latency based routing?",
+      "answerText": "Geolocation can be used to restrict access within geoloaction (compliance). To assure users within a certain area access certain resource",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b2811c5c-5c5a-45cb-9c87-3e194c80596b",
+      "questionText": "What are the 6 traffic routing methods? What are the use-cases pros and cons?",
+      "answerText": "### Routing Policies – Simple (4:10)\n\n### Routing Policies – Weighted (4:53)\n\n### Routing Policies – Latency-based (5:22)\n\n### Routing Policies – Failover (Active-Passive) (6:08)\n\n### Routing Policies – Geolocation (6:36)\n\n### Routing Policies – Geoproximity (7:14)\n\n### Routing Policies – IP-based Routing (9:51)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "336dc7de-20fa-4ad1-9cde-73684e595a84",
+      "questionText": "R53 Zones, how many? What are they?",
+      "answerText": "- Public Hosted Zones – contains records that specify how to route traffic on the Internet (public domain names) application1.mypublicdomain.com\n- Private Hosted Zones – contain records that specify how you route traffic within one or more VPCs (private domain names)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "9c9eb6b9-3808-4f50-8264-5636c0877505",
+      "questionText": "Three \"good to know\" R53 points ?",
+      "answerText": "- For internal private DNS (Private Hosted Zone), you must enable the VPC settings enableDnsHostnames and enableDnsSupport\n- DNS Security Extensions (DNSSEC)\n  - A protocol for securing DNS traffic, verifies DNS data integrity and origin\n  - Protects against Man in the Middle (MITM) attacks\n  - Route 53 supports both DNSSEC for Domain Registeration and DNSSEC Signing\n  - Works only with Public Hosted Zones\n- Route 53 with 3rd Registrar\n  - You can buy the domain out of AWS and use Route 53 as the DNS provider\n  - Update the NS records on the 3rd party Registrar",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "8b32c41e-f1de-4bc2-8815-7f063745e498",
+      "questionText": "How to establish failover with R53/health checks",
+      "answerText": "**RESEARCH** I think the deal is that you create one DNS that points to two ALB, R53 will do health checks on both before. If one is failing it will return only the working record",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e4a453a4-ad13-4fcd-9ec2-8c6fa9079edd",
+      "questionText": "How to implement Health Check on Private Hosted Zone",
+      "answerText": "- You can create a CloudWatch Metric and associate a CloudWatch Alarm, then create a Health Check that checks the alarm itself\n\n**RESEARCH** This is a health check on a DNS record or server?",
+      "tags": [
+        "section-5",
+        "research"
+      ],
+      "domains": [
+        "general",
+        "research"
+      ]
+    },
+    {
+      "questionId": "50f2322a-8262-4904-b327-d2ea49f61881",
+      "questionText": "What is R53 - Hybrid DNS?",
+      "answerText": "- Hybrid DNS – resolving DNS queries between VPC (Route 53 Resolver) and your networks (other DNS Resolvers)\n\n> I think when you have a resolver for one network that includes private resources (IPs), and you want dns look-up into other private networks (on prem as example)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4ab1ba7f-0f75-48ec-863c-78b3771a6ac5",
+      "questionText": "What are the 3 R53 Resolver rule types?",
+      "answerText": "- Control which DNS queries are forwarded to DNS Resolvers on your network\n- **Conditional** Forwarding Rules (Forwarding Rules)\n  - Forward DNS queries for a specified domain and all its subdomains to target IP addresses\n- **System Rules**\n  - Selectively overriding the behavior defined in Forwarding Rules (e.g., don’t forward DNS queries for a subdomain acme.example.com)\n- **Auto-defined System Rules**\n  - Defines how DNS queries for selected domains are resolved (e.g., AWS internal domain names, Privated Hosted Zones)\n- If multiple rules matched, Route 53 Resolver chooses the most specific match\n- **Resolver Rules can be shared across accounts using AWS RAM**\n  - Manage them centrally in one account\n  - Send DNS queries from multiple VPC to the target IP defined in the rule",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7de446f7-59b9-4934-ae2d-61a6c6d8c360",
+      "questionText": "What is \"Anycast IP\"?",
+      "answerText": "**RESEARCH** This is unclear. When using global accelerator - 2 Anycast IP and they are used to route traffic? These are standard IPs that are used in DNS resolution?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cf2c2547-8edb-4cbf-bbc8-4e553d227ab5",
+      "questionText": "What are the advantages of Global Accelerator and one limitation?",
+      "answerText": "- Works with Elastic IP, EC2 instances, ALB, NLB, public or private\n- Supports Client IP Address Preservation **except EIPs endpoints**\n- Consistent Performance\n  - Intelligent routing to lowest latency and fast regional failover\n  - No issue with client cache (because the IP doesn’t change)\n  - Internal AWS network\n- Health Checks\n  - Global Accelerator performs a health check of your applications\n  - Helps make your application global (failover less than 1 minute for unhealthy)\n  - Great for disaster recovery (thanks to the health checks)\n- Security\n  - only 2 external IP need to be whitelisted\n  - DDoS protection thanks to AWS Shield",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6d714eaa-d6ae-4eeb-a8fa-e97552c009e4",
+      "questionText": "What protocols does Global Accelerator support?",
+      "answerText": "TCP and UDP, which means, good fit for non-http use case, UDP, MQTT (IoT), VOIP. Also good for HTTP.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e3bd7d6d-b132-487a-af97-227305f1a229",
+      "questionText": "What are the 9 basic architecture for the application/web layer?\nEC2/ALB/API-G,etc configurations?",
+      "answerText": "- EC2 on its own with Elastic IP\n- EC2 with Route53\n- ALB + ASG\n- ALB + ECS on EC2\n- ALB + ECS on Fargate\n- ALB + Lambda\n- API Gateway + Lambda\n- API Gateway + AWS Service\n- API Gateway + HTTP backend (ex: ALB)",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3aee62d4-c0a1-4c9f-99b9-a3b196826f85",
+      "questionText": "Dis(2)/Advantages(3) of using \"EC2 with Elastic IP\" architecture",
+      "answerText": "- Quick failover\n- The client should not see the change happen\n- Helpful if the client needs to resolve by static Public IP address\n- **Does not scale**\n- **Cheap**",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "d4779120-283b-4bba-ac04-144af99a8598",
+      "questionText": "When to use CloudFront vs Accelerator",
+      "answerText": "**RESEARCH** These serve different purposes. Can/do they work together? What problem is each solving?",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "771f6342-f16a-4c71-be0f-ff1acb7b7b10",
+      "questionText": "Dis/advantages of \"Stateless web app - scaling horizontally\"?",
+      "answerText": "Advantage:\n\n- “DNS-based load balancing”\n- Ability to use multiple instances\n  Disadvantage\n- Route53 TTL implies client may get outdated information\n- Clients must have logic to deal with hostname resolution failures\n- Adding an instance may not receive full traffic right away due to DNS\n  TTL\n\n> I don't think this is a real architecture plan but rather an example of how it \"could be\" done.\n>",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "4dc0823b-34d1-4c3a-9165-182b6aab8b78",
+      "questionText": "Dis/advantage of \"ALB + ASG\". Also hint/best-practice regarding utilization.",
+      "answerText": "There isn't necessary \"Dis/advantages\" but rather points to consider\n\n- Scales well, classic architecture\n- New instances are in service right away.\n- Users are not sent to instances that are out-of-service\n- Time to scale is slow (EC2 instance startup + bootstrap) – AMI can help\n- ALB is elastic but can’t handle sudden, huge peak of demand (pre-warm)\n- Could lose a few requests if instances are overloaded\n- CloudWatch used for scaling\n- Cross-Zone balancing for even traffic distribution\n\n- Target utilization should be between\n  40% and 70%",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "bfe3ceb2-6ff4-411e-8928-618595cb0434",
+      "questionText": "Dis/advantage of \"ALB + ECS on EC2 (backed by ASG)\". Also, need to be able to compare/contrast to \"ALB + ASG\". How to over come the limitations?",
+      "answerText": "- Same properties as ALB + ASG\n- Application is run on Docker\n- **ASG + ECS allows to have dynamic port mappings**\n- Tough to orchestrate ECS service auto-scaling + ASG auto-scaling\n\nTo overcome limitations use Fargate...",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b4f7a3ab-325e-4f41-8d0d-8aa51d178748",
+      "questionText": "Dis/advantages of \"ALB + ECS on Fargate\"?\nMostly it's just one disadvantage.",
+      "answerText": "- Application is run on Docker\n- Service Auto Scaling is easy\n- Time to be in-service is quick (no need to launch an EC2 instance in advance)\n- Still limited by the ALB in case of sudden peaks\n- “serverless” application tier\n- “managed” load balancer",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "f552a689-55e6-464b-b2dd-a44e199a0ab6",
+      "questionText": "Dis/advantages of \"ALB + Lambda\"?",
+      "answerText": "- Limited to Lambda’s runtimes\n- Seamless scaling thanks to Lambda\n- Simple way to expose Lambda functions as HTTP/S **without all the features from API Gateway**\n- Can combine with WAF (Web Application Firewall)\n- Good for hybrid microservices\n- Example: use ECS for some requests, use Lambda for others\n\n> He mentions that can use custom docker/image if using docker strongly recommended to use ECS run time.\n\n> He said it's a very useful and under appreciated?\n>",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b95866bf-cd46-4e68-ba3c-d0722deae1fb",
+      "questionText": "Dis/advantages of using \"API Gateway + Lambda\"",
+      "answerText": "- Pay per request, seamless scaling, fully serverless\n- Soft limits: 10000/s API Gateway, 1000 concurrent Lambda\n- API Gateway features: authentication, rate limiting, caching, etc…\n- Lambda Cold Start time may increase latency for some requests\n- Fully integrated with X-Ray",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "feacbd37-41a3-4c14-9b3d-87f052febc32",
+      "questionText": "Dis/advantages of using \"API Gateway + AWS Service\"?",
+      "answerText": "- Lower latency, cheaper\n- Not using Lambda concurrent capacity, no custom code\n- Expose AWS APIs securely through API Gateway\n- SQS, SNS, Step Functions…\n- Remember API Gateway has a payload limit of 10 MB (can be\n  a problem for S3 proxy)\n\n> Really the point seems API-G + Lamaba + AWS service doesn't make much sense if you can skip the Lambda",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "cef5adce-0de8-46f9-bda7-909cecca3923",
+      "questionText": "Dis/advantages of \"API Gateway + HTTP backend\"?\n(something about onprem)",
+      "answerText": "- Can connect to…\n- on-premises service\n- Application Load Balancer\n- 3rd party HTTP service",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c0bf390c-d712-4587-9181-90c27fb897c7",
+      "questionText": "What is AWS Outpost",
+      "answerText": "System to deal with on-prem infrastructure. AWS Gives it a cute name \"Outpost\" and logically represent your \"rack\".\n\nYou can run EC2 instances on both. I am sure there are further service integrations.",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "b1482d33-f822-4bee-9ddd-00233a934836",
+      "questionText": "What is AWS WaveLength?",
+      "answerText": "Deploy resources on 5G networks (the telecommunications networks). From what I understand physically located in the telecom. The idea is that this is the nearest you can get to mobile users hence lowest letency. Can put several AWS services: ECS, EBS, VPC? etc",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "e6b25565-19d0-401d-9841-6217f132fc21",
+      "questionText": "What are \"Local Zone\"",
+      "answerText": "Local Available Zones, as in Denver, Chicago, Los Angeles. Basically, you are extending a zone that is more local for lower latency. It appears it fits into the VPC as an regular AZ",
+      "tags": [
+        "section-5"
+      ],
+      "domains": [
+        "general"
+      ]
+    }
+  ]
+}
