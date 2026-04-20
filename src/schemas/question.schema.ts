@@ -5,13 +5,13 @@ export type QuestionDocument = Question & Document;
 
 @Schema({ _id: false })
 export class Question {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   questionId: string;
 
   @Prop({ required: true })
   questionText: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false, default: "" })
   answerText: string;
 
   @Prop({ type: [String], default: [] })

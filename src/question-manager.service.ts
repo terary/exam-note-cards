@@ -116,8 +116,8 @@ export class QuestionManagerService {
     };
 
     // Validate required fields
-    if (!updatedQuestion.questionId || !updatedQuestion.questionText || !updatedQuestion.answerText) {
-      throw new Error("Missing required fields: questionId, questionText, or answerText");
+    if (!updatedQuestion.questionId || !updatedQuestion.questionText) {
+      throw new Error("Missing required fields: questionId or questionText");
     }
     if (!updatedQuestion.domains || updatedQuestion.domains.length === 0) {
       throw new Error("At least one domain is required");

@@ -51,22 +51,40 @@ async function migrateDatabases(
           questionsWithAnswers: any[];
         };
 
+        const normalizedQuestions = (parsed.questionsWithAnswers || []).map((q) => ({
+          ...q,
+          questionId:
+            typeof q.questionId === "string" && q.questionId.trim().length > 0
+              ? q.questionId
+              : uuid(),
+          questionText:
+            typeof q.questionText === "string" ? q.questionText : "",
+          answerText:
+            typeof q.answerText === "string" ? q.answerText : "",
+          timesAsked: q.timesAsked ?? 0,
+          averageScore: q.averageScore ?? null,
+          lastScore: q.lastScore ?? null,
+          bad: q.bad ?? false,
+        }));
+
+        // Avoid importing empty databases (especially empty research files),
+        // which can collide with older unique indexes on nested questionId.
+        if (normalizedQuestions.length === 0) {
+          logger.log(
+            `Database '${databaseId}' has no questions in JSON, skipping import`
+          );
+          continue;
+        }
+
         const database = new databaseModel({
           databaseId,
           databaseName: parsed.databaseName ?? databaseId,
-          questionsWithAnswers: parsed.questionsWithAnswers.map((q) => ({
-            ...q,
-            questionId: q.questionId || uuid(), // Generate UUID if missing
-            timesAsked: q.timesAsked ?? 0,
-            averageScore: q.averageScore ?? null,
-            lastScore: q.lastScore ?? null,
-            bad: q.bad ?? false,
-          })),
+          questionsWithAnswers: normalizedQuestions,
         });
 
         await database.save();
         logger.log(
-          `Migrated database '${databaseId}' with ${parsed.questionsWithAnswers.length} questions`
+          `Migrated database '${databaseId}' with ${normalizedQuestions.length} questions`
         );
       } catch (error) {
         const message =
