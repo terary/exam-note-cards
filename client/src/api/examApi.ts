@@ -92,6 +92,32 @@ export async function fetchWriteupById(id: string): Promise<WriteupPayload> {
   return handleResponse<WriteupPayload>(response);
 }
 
+// Read progress APIs
+export interface ReadProgressPayload {
+  writeUpId: string;
+  scrollPercent: number;
+  updatedAt: string;
+}
+
+export async function fetchReadProgress(
+  writeUpId: string
+): Promise<ReadProgressPayload | null> {
+  const response = await fetch(`/read-progress/${writeUpId}`);
+  if (response.status === 404) return null;
+  return handleResponse<ReadProgressPayload>(response);
+}
+
+export async function saveReadProgress(
+  writeUpId: string,
+  scrollPercent: number
+): Promise<void> {
+  await fetch(`/read-progress/${writeUpId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ scrollPercent }),
+  });
+}
+
 export async function fetchExternalIp(): Promise<{ ip: string }> {
   const response = await fetch(`${BASE_PATH}/external-ip`);
   return handleResponse<{ ip: string }>(response);

@@ -13,6 +13,7 @@ import { WriteupsController } from "./writeups.controller";
 import { QuestionStatsService } from "./question-stats.service";
 import { QuestionManagerService } from "./question-manager.service";
 import { QuestionManagerController } from "./question-manager.controller";
+import { ReadProgressController } from "./read-progress.controller";
 import {
   Database,
   DatabaseSchema,
@@ -21,6 +22,10 @@ import {
   AnswerSession,
   AnswerSessionSchema,
 } from "./schemas/answer-session.schema";
+import {
+  ReadProgress,
+  ReadProgressSchema,
+} from "./schemas/read-progress.schema";
 
 @Module({
   imports: [
@@ -40,6 +45,7 @@ import {
     MongooseModule.forFeature([
       { name: Database.name, schema: DatabaseSchema },
       { name: AnswerSession.name, schema: AnswerSessionSchema },
+      { name: ReadProgress.name, schema: ReadProgressSchema },
     ]),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, "..", "client", "dist"),
@@ -50,6 +56,7 @@ import {
     AnswersController,
     WriteupsController,
     QuestionManagerController,
+    ReadProgressController,
   ],
   providers: [
     QuestionsService,
