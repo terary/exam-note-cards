@@ -18,8 +18,17 @@ interface WriteupPayload {
 
 interface CategorizedWriteups {
   writeups: WriteupListItem[];
+  questions: WriteupListItem[];
   vocabulary: WriteupListItem[];
-  todo: WriteupListItem[];
+}
+
+type WriteupCategory = "writeups" | "questions" | "vocabulary" | "skip";
+
+interface DiscoveredFile {
+  id: string;
+  filename: string;
+  filePath: string;
+  category: WriteupCategory;
 }
 
 @Controller("write-up-notes")
@@ -28,68 +37,138 @@ export class WriteupsController {
     return join(process.cwd(), "writeup-and-notes");
   }
 
+  private categorize(filename: string): WriteupCategory {
+    if (filename.endsWith("-vocab.md")) {
+      return "vocabulary";
+    }
+    if (filename.endsWith(".all.md")) {
+      return "skip";
+    }
+    if (
+      filename.endsWith("-research-questions-tod.md") ||
+      filename.endsWith("-todo-questions-tod.md")
+    ) {
+      return "skip";
+    }
+    if (
+      filename.endsWith("-questions-tod.md") ||
+      filename.endsWith("-questions-todo.md")
+    ) {
+      return "questions";
+    }
+    return "writeups";
+  }
+
+  private async walkMarkdownFiles(dir: string): Promise<DiscoveredFile[]> {
+    const discovered: DiscoveredFile[] = [];
+
+    const walk = async (currentDir: string): Promise<void> => {
+      const entries = await fs.readdir(currentDir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = join(currentDir, entry.name);
+        if (entry.isDirectory()) {
+          await walk(fullPath);
+          continue;
+        }
+        if (entry.isFile() && extname(entry.name).toLowerCase() === ".md") {
+          if (entry.name.startsWith("x")) {
+            continue;
+          }
+          const category = this.categorize(entry.name);
+          if (category === "skip") {
+            continue;
+          }
+          discovered.push({
+            id: basename(entry.name, ".md"),
+            filename: entry.name,
+            filePath: fullPath,
+            category,
+          });
+        }
+      }
+    };
+
+    if (existsSync(dir)) {
+      await walk(dir);
+    }
+    return discovered;
+  }
+
+  private pathPriority(filePath: string): number {
+    return /\/section-\d+\//.test(filePath) ? 2 : 1;
+  }
+
+  private dedupeById(files: DiscoveredFile[]): DiscoveredFile[] {
+    const byId = new Map<string, DiscoveredFile>();
+    for (const file of files) {
+      const existing = byId.get(file.id);
+      if (!existing) {
+        byId.set(file.id, file);
+        continue;
+      }
+      if (this.pathPriority(file.filePath) > this.pathPriority(existing.filePath)) {
+        byId.set(file.id, file);
+      }
+    }
+    return Array.from(byId.values());
+  }
+
+  private sortItems(items: WriteupListItem[]): WriteupListItem[] {
+    return items.sort((a, b) =>
+      a.id.localeCompare(b.id, undefined, {
+        numeric: false,
+        sensitivity: "base",
+      })
+    );
+  }
+
   @Get()
   async listWriteups(): Promise<CategorizedWriteups> {
     const dir = this.getDir();
-    if (!existsSync(dir)) {
-      return { writeups: [], vocabulary: [], todo: [] };
-    }
-    const files = await fs.readdir(dir);
-    const mdFiles = files.filter(
-      (f) => extname(f).toLowerCase() === ".md" && !f.startsWith("x")
-    );
-    const items = await Promise.all(
-      mdFiles.map(async (filename) => {
-        const id = basename(filename, ".md");
-        const stats = await fs.stat(join(dir, filename));
-        return {
-          id,
-          filename,
+    const files = this.dedupeById(await this.walkMarkdownFiles(dir));
+
+    const result: CategorizedWriteups = {
+      writeups: [],
+      questions: [],
+      vocabulary: [],
+    };
+
+    await Promise.all(
+      files.map(async (file) => {
+        const stats = await fs.stat(file.filePath);
+        const item: WriteupListItem = {
+          id: file.id,
+          filename: file.filename,
           lastModified: stats.mtime.toISOString(),
-        } as WriteupListItem;
+        };
+        result[file.category].push(item);
       })
     );
-    
-    const vocabulary: WriteupListItem[] = [];
-    const todo: WriteupListItem[] = [];
-    const writeups: WriteupListItem[] = [];
 
-    for (const item of items) {
-      if (item.filename.endsWith("-vocab.md")) {
-        vocabulary.push(item);
-      } else if (item.filename.endsWith("-questions-todo.md")) {
-        todo.push(item);
-      } else {
-        writeups.push(item);
-      }
-    }
+    result.writeups = this.sortItems(result.writeups);
+    result.questions = this.sortItems(result.questions);
+    result.vocabulary = this.sortItems(result.vocabulary);
 
-    // Sort each category alphabetically by id/filename (not by date)
-    vocabulary.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
-    todo.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
-    writeups.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: false, sensitivity: 'base' }));
-
-    return { writeups, vocabulary, todo };
+    return result;
   }
 
   @Get(":id")
   async getWriteup(@Param("id") id: string): Promise<WriteupPayload> {
     const dir = this.getDir();
-    const filename = `${id}.md`;
-    const filePath = join(dir, filename);
-    try {
-      const content = await fs.readFile(filePath, "utf8");
-      const stats = await fs.stat(filePath);
-      return {
-        id,
-        filename,
-        content,
-        lastModified: stats.mtime.toISOString(),
-      };
-    } catch {
+    const files = this.dedupeById(await this.walkMarkdownFiles(dir));
+    const match = files.find((file) => file.id === id);
+
+    if (!match) {
       throw new NotFoundException(`Write-up '${id}' not found`);
     }
+
+    const content = await fs.readFile(match.filePath, "utf8");
+    const stats = await fs.stat(match.filePath);
+    return {
+      id,
+      filename: match.filename,
+      content,
+      lastModified: stats.mtime.toISOString(),
+    };
   }
 }
-
-

@@ -486,7 +486,6 @@ What are the benefits for Parameter Store (7)?
 **QUESTION**
 Regarding Parameter Store. How do we get/send notification of a parameter is about to expire
 **ANSWER**
-**TODO** - I need to figure this out.
 
 However, its a feature of the "Advanced" parameter store and policies.
 
@@ -496,6 +495,8 @@ I am not sure of the steps but I think
 2. Set up notification for x days before TTL
 
 Also, we can get notified of 'no change in x days'
+
+> These are events sent to cloudwatch "Create notification policies to send notifications from CloudWatch Events. Notifications can be based on when this parameter expires, or if the parameter has not changed for a given period of time." From there I imaging you set-up filter/metric then alarm
 
 **QUESTION_END**
 
@@ -1951,7 +1952,15 @@ Graphic not available
 # ---
 
 **QUESTION**
+Discuss GuardData protection/costs
 **ANSWER**
+GuardDuty Pricing Plan,
+
+- runtime $1.50/vCPU/month first 500 vcpu
+- S3 $0.80/1 million events/
+- eks $1.60/1 million events/
+
+It's costly. "Events" Are cloudwatch log items. Things like S3 GetObject. GD monitors those events in effort to detect bad actors.
 
 **QUESTION_END**
 
@@ -2060,6 +2069,17 @@ There is a 60 second TTL on the file.
 
 **TODO** Setup security Hub (and cost)
 
+**QUESTION**
+Discuss Security Hub costs
+**ANSWER**
+You buy a "Plan" which includes some features. Additionally you pay for more of what you use in terms of "Pricing is anchored on Amazon EC2 instances as 1 resource unit".
+
+AWS Lambda functions at 1/12 of a resource unit (12 functions = 1 resource unit), Amazon ECR container images at 1/18 of a resource (18 images = 1 resource unit), and AWS IAM users and roles at 1/125 of a resource (125 IAM resources = 1 resource unit).
+
+I think to determine costs requires knowing what/how-many you need to cover.
+
+**QUESTION_END**
+
 # ---
 
 **QUESTION**
@@ -2068,6 +2088,8 @@ There is a 60 second TTL on the file.
 **QUESTION_END**
 
 ![Alt text](image-url.jpg "Optional title")
+
+**RESEARCH**
 
 # Section 4: Security - Amazon Detective
 

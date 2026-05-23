@@ -78,8 +78,8 @@ export interface WriteupPayload {
 
 export interface CategorizedWriteups {
   writeups: WriteupListItem[];
+  questions: WriteupListItem[];
   vocabulary: WriteupListItem[];
-  todo: WriteupListItem[];
 }
 
 export async function fetchWriteups(): Promise<CategorizedWriteups> {

@@ -1,0 +1,292 @@
+{
+  "databaseName": "Section 6",
+  "databaseId": "database-section-6",
+  "questionsWithAnswers": [
+    {
+      "questionId": "761c835b-b9c4-450b-8316-ea12e7e5d3e7",
+      "questionText": "The following describes which volume/drive?\n\n- Network drive you attach to ONE instance only\n- Linked to a specific availability zone (transfer: snapshot => restore)\n- Volumes can be resized (ONLY UP)\n- **Make sure you choose an instance type that is EBS optimized to enjoy maximum throughput**",
+      "answerText": "EBS",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5d68d544-366f-462d-8538-d51f33df6091",
+      "questionText": "What are the 4 EBS volume types? Which can be used as boot devices?",
+      "answerText": "- EBS Volumes come in 6 types\n- `gp2 / gp3 (SSD)`: General purpose SSD volume that balances price and performance for a wide variety of workloads\n- `io1 / io2` Block Express: Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads\n- `st1 (HDD)`: Low cost HDD volume designed for frequently accessed, throughput-intensive workloads\n- `sc1 (HDD)`: Lowest cost HDD volume designed for less frequently accessed workloads\n\n- EBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec)\n- When in doubt always consult the AWS documentation – it’s good!\n- Only gp2/gp3 and io1/io2 can be used as boot volumes",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6f04a5fc-622a-4db3-9a00-3657639e2fe4",
+      "questionText": "What is the AWS feature to make snap-shots rapidly available (no warm up)",
+      "answerText": "- **EBS volumes restored by snapshots need to be pre-warmed (use the Fast\n  Snapshot Restore FSR feature or fio/dd command to read the entire volume)**",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "c29b09d0-20e6-4a16-9122-4b2e797ac234",
+      "questionText": "What is \"Data Life Cycle Manager\" (3)? What is are the limitations (2)",
+      "answerText": "- Automate the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs\n- Schedule backups, cross-account snapshot copies, delete outdated backups, …\n- Uses resource tags to identify the resources (EC2 instances, EBS volumes)\n- Can’t be used to manage snapshots/AMIs created outside DLM\n- Can’t be used to manage instance-store backed AMIs",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3a2766a0-c89d-4eab-a616-71545acf1ae8",
+      "questionText": "What is the difference between \"Data Lifecycle Manager\" and \"AWS Backup\"?",
+      "answerText": "- Use Data Lifecycle Manager - when you want to automate the creation, retention, and deletion of\n  EBS Snapshots\n\n- Use AWS Backup\n  - to manage and monitor backups across the AWS services you use, including EBS volumes, from a single place",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "53d76f98-2b4e-4f98-affb-5f218cdb81b8",
+      "questionText": "How to encrypt EBS volumes?",
+      "answerText": "- New Amazon EBS volumes aren’t encrypted by default\n- There’s an account-level setting to encrypt automatically new EBS volumes and Snapshots\n- This setting needs to be enabled on a per-region basis",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "85725375-36ec-4a98-a274-25fe1c08ffbf",
+      "questionText": "What is the catch to multi-attache EBS",
+      "answerText": "- Attach the same EBS volume to multiple\n  EC2 instances in the same AZ\n- Each instance has full read & write\n  permissions to the volume\n- Use Cases:\n\n- Achieve higher application availability in clustered Linux applications (ex: Teradata)\n- Applications must manage concurrent write operations",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "87a37fd9-4104-4029-923d-7884eed99f8e",
+      "questionText": "What are the pros/cons of Local EC2 Instances Store (device attached to EC2 instances)",
+      "answerText": "- Physical disk attached to the physical server where your EC2 is\n- Very High IOPS (because physical)\n- Disks up to 7.5 TiB (can change over time), stripped to reach 60 TiB (can change over time…)\n- Block Storage (just like EBS)\n- Cannot be increased in size\n- Risk of data loss if hardware fails",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "fcb7ca0a-9020-4e56-ae64-c31457fb7c6d",
+      "questionText": "Compare Contrast EBS to Instance Store?",
+      "answerText": "- Instance store is physically attached to the machine (**ephemeral storage**)\n- EBS is a network drive (persistent)\n- Pros:\n  - Better I/O performance (EBS gp2 has a max IOPS of 16000, io1 of 64000, io2\n    Block Express of 256000)\n  - Good for buffer / cache / scratch data / temporary content\n  - Data survives reboots\n- Cons:\n  - On **stop or termination**, the instance store is lost\n  - You can’t resize the instance store\n  - Backups must be operated by the user",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "ca7fb092-96a4-4823-9ea1-8f6f09eaeb7f",
+      "questionText": "7 Points to remember about EFS?",
+      "answerText": "- Use cases: content management, web serving, data sharing, WordPress\n- Compatible with Linux based AMI (not Windows), POSIX-compliant\n- Uses NFSv4.1 protocol\n- Uses security group to control access to EFS\n- Encryption at rest using KMS\n- POSIX file system (~Linux) that has a standard file API\n- File system scales automatically, pay-per-use, no capacity planning!",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7f5fc1ff-064d-42f5-9f39-b34eb130093d",
+      "questionText": "Using EFS How can we save 90%?\nWhat is the cheapest/fastest, and the problems with it?",
+      "answerText": "- Storage Tiers (lifecycle management feature – move file after N days)\n- Standard: for frequently accessed files\n- Infrequent access (EFS-IA): cost to retrieve files, lower price to store.\n- Archive: rarely accessed data (few times each year), 50% cheaper\n- Implement lifecycle policies to move files between storage tiers\n\n- Availability and durability\n- Standard: Multi-AZ, great for prod\n- One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA)\n\n- Over 90% in cost savings",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "1e1971b2-caad-450f-ab64-32023b9e90a2",
+      "questionText": "What are the 4 S3 Anti patterns",
+      "answerText": "- Anti patterns:\n  - Lots of small files\n  - POSIX file system (use EFS instead), file locks\n  - Search features, queries, rapidly changing data\n  - Website with dynamic content",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "18393329-e427-4b68-b859-0a76621eeecb",
+      "questionText": "Performance Stats for S3? (3) - base line performance.\nAnd 3 performance optimizations?",
+      "answerText": "- Amazon S3 automatically scales to high request rates, **latency 100-200 ms**\n- Your application can achieve at least 3,500 PUT/COPY/POST/DELETE or\n  5,500 GET/HEAD requests per second per prefix in a bucket.\n- There are no limits to the number of prefixes in a bucket.\n\nMulti-Part upload:\n\n    - recommended for files > 100MB, must use for files > 5GB\n    - Can help parallelize uploads (speed up transfers)\n\nS3 Transfer Acceleration - Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the\ntarget region - Compatible with multi-part upload\n\nS3 Byte-Range Fetches (8:01)",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "254fa132-3cdf-47cf-9837-636c2495fc16",
+      "questionText": "What is storage lens (5)",
+      "answerText": "missing answer",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "923fb331-9342-433a-8cd3-d1d7c3762b18",
+      "questionText": "What is the first step to create LifeCycle Rules (or improve them?",
+      "answerText": "- May be seen as “Storage Class Analysis” at the exam\n- Help you decide when to transition objects to the right storage class\n- Recommendations for Standard and Standard IA\n  - Does NOT work for One-Zone IA or Glacier\n- Report is updated daily\n- 24 to 48 hours to start seeing data analysis\n- Visualize data in Amazon QuickSight\n- Good first step to put together Lifecycle Rules (or\n  improve them)",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "303537ed-7847-425f-8864-6cbf5067348f",
+      "questionText": "What are the 8 default S3 Lens metrics (4 with use cases)?",
+      "answerText": "- Summary Metrics\n  - **Use cases: identify the fastest-growing (or not used) buckets and prefixes**\n- Cost-Optimization Metrics\n  - **Use cases: identify buckets with incomplete multipart uploaded older than 7 days, Identify which objects could be transitioned to lower-cost storage class**\n\n- Data-Protection Metrics\n  - **Use cases: identify buckets that aren’t following data-protection best practices**\n- Access-management Metrics\n  - **Use cases: identify which Object Ownership settings your buckets use**\n- Event Metrics\n  - no Use case mentioned\n- Performance Metrics\n  - no Use case mentioned\n- Activity Metrics\n  - no Use case mentioned\n- Detailed Status Code Metrics\n  - no Use case mentioned",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "8ed74a25-3bed-4cb5-9683-75971a4f24da",
+      "questionText": "What are the two deployment options for FSx-Luster? What are the stats for each?",
+      "answerText": "- Scratch File System\n  - Temporary storage\n  - Data is not replicated (doesn’t persist if file server fails)\n  - High burst (6x faster, 200MBps per TiB)\n  - Usage: short-term processing, optimize costs\n\n- Persistent File System\n  - Long-term storage\n  - Data is replicated within same AZ\n  - Replace failed files within minutes\n  - Usage: long-term processing, sensitive data\n\n> Notice that this is FSx-Luster not FSx - something else",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "7726f090-9329-4ba6-aaca-61dd9fcd50b1",
+      "questionText": "How to migrate FSx (windows) singleAz to MultiAx? Two Approaches.",
+      "answerText": "> from Single AZ to Multi AZ\n> Basically, you have to put your data someplace... Then the MultiAz FS will read/initialize from it.\n\nTwo approaches:\nA) FSx SingleAz -> AWS DataSync -> FSx MultiAz\nB) FSx SingleAz -> backup -> FSx Multi Az",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "6acdf458-d261-493e-b614-7b0b1542699f",
+      "questionText": "How to shrink FSx Volume? hint: It will require using special service.",
+      "answerText": "- If you take a backup, you can only restore to a same size\n- You can only increase the amount of storage capacity for a file system; you cannot decrease storage capacity.\n- Instead, create a new FSx (smaller), use DataSync to sync data and then migrate your app over\n\n> Similar to migrating from single->multiple Az, You can't actually resize the volume but you stick the data some other place, start a new volume and move to the data to new volume. Must use DataSync to migrate data",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "639cc2d4-d930-4159-a5b8-7eb6912d5527",
+      "questionText": "What is Lustre \"Data Lazy Loading\" and what is the advantage?",
+      "answerText": "- Any data processing job on Lustre with S3 as an input data source can be started without Lustre doing a full download of the dataset first\n- Data is lazy loaded: only the data that is actually processed is loaded, meaning you can decrease your costs and latency\n- Data is also loaded only once, therefore you reduce your requests on Amazon S3\n  > Hint - this is source data S3\n  >",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "17587af5-89e3-4f4b-aa93-5fcc86b48b86",
+      "questionText": "What is DataSync? What is it used for? Transfer rates?\nWhat are the 3 targets?",
+      "answerText": "- Move large amount of data to and from\n  - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3 API…) – needs agent\n  - AWS to AWS (different storage services) – no agent needed\n- Can synchronize to:\n  - Amazon S3 (any storage classes – including Glacier)\n  - Amazon EFS\n  - Amazon FSx (Windows, Lustre, NetApp, OpenZFS...)\n- Replication tasks can be scheduled hourly, daily, weekly\n- **File permissions and metadata are preserved (NFS POSIX, SMB…)**\n- One agent task can use 10 Gbps, can setup a bandwidth limit\n\n**EXAM** Expect \"**File permissions and metadata are preserved (NFS POSIX, SMB…)**\" to be on the exam",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3e05d337-5906-4e93-aef6-22470e5f050d",
+      "questionText": "In regards to DataSync - what is \"Snowcone\" how/why is it used?",
+      "answerText": "> If network does not have bandwidth use the AWS Snowcone (agent pre-installed).",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "977dae64-d043-46de-8389-bdaba1c13cf8",
+      "questionText": "What is \"Data Exchange\"?",
+      "answerText": "- Find, subscribe to, and use third-party data in the cloud\n  - Reuters, who curate data from over 2.2 million unique news stories per year in\n    multiple languages\n  - Change Healthcare, who process and anonymize more than 14 billion healthcare\n    transactions and $1 trillion in claims annually\n  - Dun & Bradstreet, who maintain a database of more than 330 million global\n    business records;\n  - Foursquare, whose location data is derived from 220 million unique consumers\n    and includes more than 60 million global commercial venues.\n\n- Once subscribed to a data product, you can use the AWS Data\n  Exchange API to load data directly into Amazon S3 and then analyze it\n  with a wide variety of AWS analytics and machine learning services",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "37120c0a-5836-41bb-89b2-846d84d74a54",
+      "questionText": "Suppose you have an ML project and requires data of a certain shape (user response, movie review, router news). How can AWS provide you that data.",
+      "answerText": "\"Data Exchange\" A service AWS provides to \"broker\" data from source. (routers, foursquare, etc.)",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "5eb28827-cd2f-49dd-b5cb-8e5ddb4ed56a",
+      "questionText": "How to move data from S3 or EFS using FTP (the AWS solution not simple set-up ftp server).",
+      "answerText": "- A fully-managed service for file transfers into and out of Amazon S3 or\n  Amazon EFS using the FTP protocol\n- Supported Protocols\n  - **AWS Transfer for FTP** (File Transfer Protocol (FTP))\n  - **AWS Transfer for FTPS** (File Transfer Protocol over SSL (FTPS))\n  - **AWS Transfer for SFTP** (Secure File Transfer Protocol (SFTP))\n- Managed infrastructure, Scalable, Reliable, Highly Available (multi-AZ)\n- Pay per provisioned endpoint per hour + data transfers in GB\n- Store and manage users’ credentials within the service\n- Integrate with existing authentication systems (Microsoft Active Directory, LDAP, Okta, Amazon Cognito, custom)\n- Usage: sharing files, public datasets, CRM, ERP,",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    },
+    {
+      "questionId": "3143d581-bda1-4b97-8c8a-382728d30519",
+      "questionText": "List 8 storage classes most to least expensive.",
+      "answerText": "- EBS io2, io1\n- EFS Standard / EFS OneZone\n- EBS gp2, gp3,\n- EBS st1\n- EFS Standard IA/ S3 Standard\n- EBS sc1\n- EFS OneZone IA\n- S3 Standard IA (cheapest)\n\n**RESEARCH** use cases - I would expect EFS to be more expensive",
+      "tags": [
+        "section-6"
+      ],
+      "domains": [
+        "general"
+      ]
+    }
+  ]
+}

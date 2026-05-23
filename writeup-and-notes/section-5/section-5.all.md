@@ -2998,8 +2998,16 @@ You can run EC2 instances on both. I am sure there are further service integrati
 - Use S3 APIs to store and retrieve data locally on AWS Outposts
 - Keeping data close to on-premises applications
 - Reduce data transfers to AWS Regions
-- S3 Storage Class named S3 Outposts
+- **S3 Storage Class named S3 Outposts**
 - Default encryption using SSE-S3
+
+**QUESTION**
+What are the two options to integration S3 with Outputs?
+**ANSWER**
+
+Use access point or DataSync.
+
+**QUESTION_END**
 
 # ---
 

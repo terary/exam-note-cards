@@ -35,30 +35,40 @@ If a section is split across multiple lecture files, concatenate them in a sensi
 
 ## Extraction tool (this repo)
 
-Script: `scripts/extract-section3-ident-fed-qa.py`
+Script: `scripts/extract-section3-ident-fed-qa.py` (invoked via npm — do not run Python directly).
 
-It implements parsing, stripping, and writes three artifacts. For **new sections**, pass explicit paths (defaults are section-3–specific):
+**Preferred command** after finishing a section:
+
+```bash
+npm run section:build -- 4 5 6
+```
+
+This concatenates lecture files, extracts all four outputs (lecture write-up, questions, research, todo), writes JSON under `databases/`, and runs `migrate:mongodb`.
+
+Outputs per section under `writeup-and-notes/section-N/`:
+
+| Output | File | Format |
+|--------|------|--------|
+| Combined source | `section-N.all.md` | raw (hidden from app) |
+| Full write-up | `section-N.md` | readable prose |
+| Research | `section-N-research.md` | readable list (not Q/A) |
+| Todo | `section-N-todo.md` | readable list (not Q/A) |
+| Questions | `section-N-questions-tod.md` | `__QUESTION__` / `__ANSWER__` blocks + `databases/database-section-N.json` |
+
+Only `__QUESTION__` blocks become quiz questions. Research and todo are write-ups to read, not quizzes.
+
+Advanced: pass explicit paths to the Python script only when customizing defaults:
 
 ```bash
 python3 scripts/extract-section3-ident-fed-qa.py \
   --input writeup-and-notes/<section>.all.md \
-  --todo-out writeup-and-notes/<section>-questions-tod.md \
-  --json-out databases/<database-name>.json \
-  --lecture-out writeup-and-notes/<section>.md
+  ...
 ```
-
-Optional: `--database-name` and `--database-id` for the JSON metadata.
-
-JSON shape matches existing databases: `databaseName`, `databaseId`, `questionsWithAnswers[]` with `questionId` (UUID v4), `questionText`, `answerText`, `tags`, `domains`.
-
-**Note:** Re-running regenerates new UUIDs unless the script is later changed to use stable IDs.
 
 ## Agent checklist when the user finishes a section
 
-1. Confirm or create the combined input `*.all.md` (if notes are split across files).
-2. Choose output filenames (`questions-tod`, `database-*.json`, lecture-only `.md`) consistent with the section/chapter.
-3. Run the script with `--input` / `--todo-out` / `--json-out` / `--lecture-out` (and DB metadata if needed).
-4. Quick sanity check: questions file has expected count; lecture file has no remaining `__QUESTION__` / `**QUESTION**` / `_QUESTION_` markers (unless a malformed tail was left intentionally).
+1. Run `npm run section:build -- <section-number>` (e.g. `7` or `07`).
+2. Quick sanity check: write-ups include lecture, research, and todo; questions file uses `__QUESTION__` blocks; quizzes only for the main questions database.
 
 ## Extending for many sections
 

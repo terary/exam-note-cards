@@ -140,6 +140,11 @@ _RE_RESEARCH_MARKER = re.compile(
     re.IGNORECASE,
 )
 
+_RE_TODO_MARKER = re.compile(
+    r"\*\*todo\*\*|__todo__|(?<!_)_todo_(?!_)",
+    re.IGNORECASE,
+)
+
 
 def _next_non_empty_line(text: str, pos: int) -> str:
     remainder = text[pos:]
@@ -177,6 +182,12 @@ def _is_structural_line(line: str) -> bool:
         "_QUESTION_",
         "_ANSWER_",
         "_END_QUESTION",
+        "**RESEARCH**",
+        "__RESEARCH__",
+        "_RESEARCH_",
+        "**TODO**",
+        "__TODO__",
+        "_TODO_",
         "**TOPIC:**",
         "**DURATION:**",
         "**SECTION:**",
@@ -184,9 +195,9 @@ def _is_structural_line(line: str) -> bool:
     return any(upper.startswith(marker) for marker in structural_markers)
 
 
-def extract_research_prompts(text: str) -> list[ResearchPrompt]:
+def _extract_marker_prompts(text: str, marker_regex: re.Pattern[str]) -> list[ResearchPrompt]:
     prompts: list[ResearchPrompt] = []
-    for m in _RE_RESEARCH_MARKER.finditer(text):
+    for m in marker_regex.finditer(text):
         marker_end = m.end()
 
         line_end = text.find("\n", marker_end)
@@ -204,6 +215,81 @@ def extract_research_prompts(text: str) -> list[ResearchPrompt]:
 
         prompts.append(ResearchPrompt(question=candidate))
     return prompts
+
+
+def extract_research_prompts(text: str) -> list[ResearchPrompt]:
+    return _extract_marker_prompts(text, _RE_RESEARCH_MARKER)
+
+
+def extract_todo_prompts(text: str) -> list[ResearchPrompt]:
+    return _extract_marker_prompts(text, _RE_TODO_MARKER)
+
+
+def _marker_removal_ranges(text: str, marker_regex: re.Pattern[str]) -> list[tuple[int, int]]:
+    ranges: list[tuple[int, int]] = []
+    for m in marker_regex.finditer(text):
+        marker_start = m.start()
+        marker_end = m.end()
+
+        line_end = text.find("\n", marker_end)
+        if line_end == -1:
+            line_end = len(text)
+        inline = _clean_research_candidate(text[marker_end:line_end])
+
+        if inline:
+            end = line_end
+            if line_end < len(text) and text[line_end] == "\n":
+                end = line_end + 1
+            ranges.append((marker_start, end))
+            continue
+
+        next_line = _next_non_empty_line(text, marker_end)
+        if next_line and not _is_structural_line(next_line):
+            next_pos = text.find(next_line, marker_end)
+            if next_pos != -1:
+                next_end = text.find("\n", next_pos)
+                if next_end == -1:
+                    next_end = len(text)
+                else:
+                    next_end += 1
+                ranges.append((marker_start, next_end))
+                continue
+
+        end = marker_end
+        if marker_end < len(text) and text[marker_end - 1 : marker_end + 1].endswith("\n"):
+            end = marker_end
+        elif line_end < len(text) and text[line_end] == "\n":
+            end = line_end + 1
+        else:
+            end = line_end
+        ranges.append((marker_start, end))
+    return ranges
+
+
+def strip_marker_prompts(text: str, marker_regex: re.Pattern[str]) -> str:
+    ranges = _marker_removal_ranges(text, marker_regex)
+    if not ranges:
+        return text
+    ranges.sort(key=lambda pair: pair[0])
+    merged: list[tuple[int, int]] = []
+    for start, end in ranges:
+        if merged and start <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+        else:
+            merged.append((start, end))
+    out: list[str] = []
+    pos = 0
+    for start, end in merged:
+        out.append(text[pos:start])
+        pos = end
+    out.append(text[pos:])
+    return "".join(out)
+
+
+def strip_prose_markers(text: str) -> str:
+    cleaned = strip_marker_prompts(text, _RE_RESEARCH_MARKER)
+    cleaned = strip_marker_prompts(cleaned, _RE_TODO_MARKER)
+    return cleaned
 
 
 def _parse_csv_values(raw: str | None, fallback: list[str]) -> list[str]:
@@ -323,7 +409,7 @@ def strip_question_blocks(text: str) -> str:
     return "".join(out)
 
 
-def write_todo_md(path: Path, blocks: list[QuestionBlock], *, title: str) -> None:
+def write_questions_md(path: Path, blocks: list[QuestionBlock], *, title: str) -> None:
     lines: list[str] = [
         f"# {title}",
         "",
@@ -348,27 +434,25 @@ def write_todo_md(path: Path, blocks: list[QuestionBlock], *, title: str) -> Non
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
-def write_research_todo_md(path: Path, prompts: list[ResearchPrompt], *, title: str) -> None:
+def write_reading_list_md(path: Path, prompts: list[ResearchPrompt], *, title: str) -> None:
+    """Write a start-to-finish readable document (not Q/A format)."""
     lines: list[str] = [
         f"# {title}",
         "",
     ]
-    for i, prompt in enumerate(prompts, start=1):
-        lines.extend(
-            [
-                f"## Question {i:03d}",
-                "",
-                "__QUESTION__",
-                "",
-                prompt.question,
-                "",
-                "__ANSWER__",
-                "",
-                "",
-                "__QUESTION_END__",
-                "",
-            ]
-        )
+    if not prompts:
+        lines.append("_No items._")
+        lines.append("")
+    else:
+        for i, prompt in enumerate(prompts, start=1):
+            lines.extend(
+                [
+                    f"## {i}",
+                    "",
+                    prompt.question,
+                    "",
+                ]
+            )
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
@@ -406,35 +490,6 @@ def write_database_json(
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def write_research_database_json(
-    path: Path,
-    prompts: list[ResearchPrompt],
-    *,
-    database_name: str,
-    database_id: str,
-    tags: list[str],
-    domains: list[str],
-) -> None:
-    items = []
-    for prompt in prompts:
-        items.append(
-            {
-                "questionId": str(uuid.uuid4()),
-                "questionText": prompt.question,
-                "answerText": "",
-                "tags": list(tags),
-                "domains": list(domains),
-            }
-        )
-
-    payload = {
-        "databaseName": database_name,
-        "databaseId": database_id,
-        "questionsWithAnswers": items,
-    }
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -461,9 +516,10 @@ def main() -> None:
         help="Write concatenated raw lecture notes for the section.",
     )
     parser.add_argument(
-        "--todo-out",
+        "--questions-out",
         type=Path,
         default=None,
+        help="Write extracted __QUESTION__ blocks markdown.",
     )
     parser.add_argument(
         "--json-out",
@@ -480,13 +536,13 @@ def main() -> None:
         "--research-out",
         type=Path,
         default=None,
-        help="Write research-only extracted questions markdown.",
+        help="Write research items as a readable write-up.",
     )
     parser.add_argument(
-        "--research-json-out",
+        "--todo-items-out",
         type=Path,
         default=None,
-        help="Write research-only database JSON.",
+        help="Write TODO items as a readable write-up.",
     )
     parser.add_argument(
         "--database-name",
@@ -507,15 +563,23 @@ def main() -> None:
         help="Comma-separated base domains for all questions (research is auto-appended).",
     )
     parser.add_argument(
-        "--todo-title",
+        "--questions-title",
         default=None,
-        help="Markdown title for the extracted questions file.",
+        help="Markdown title for the extracted __QUESTION__ file.",
     )
     parser.add_argument(
         "--research-title",
         default=None,
-        help="Markdown title for the research-only extracted questions file.",
+        help="Markdown title for the research write-up.",
     )
+    parser.add_argument(
+        "--todo-items-title",
+        default=None,
+        help="Markdown title for the TODO write-up.",
+    )
+    # Legacy alias
+    parser.add_argument("--todo-out", type=Path, default=None, help=argparse.SUPPRESS)
+    parser.add_argument("--todo-title", default=None, help=argparse.SUPPRESS)
     args = parser.parse_args()
 
     section_num: int | None = None
@@ -547,9 +611,13 @@ def main() -> None:
     default_out_dir = Path(f"writeup-and-notes/{section_label}")
 
     all_out = args.all_out or default_out_dir / f"{section_label}.all.md"
-    todo_out = args.todo_out or default_out_dir / f"{section_label}-questions-tod.md"
-    research_out = args.research_out or default_out_dir / f"{section_label}-research-questions-tod.md"
-    research_json_out = args.research_json_out or Path(f"databases/database-{section_label}-research.json")
+    questions_out = (
+        args.questions_out
+        or args.todo_out
+        or default_out_dir / f"{section_label}-questions-tod.md"
+    )
+    research_out = args.research_out or default_out_dir / f"{section_label}-research.md"
+    todo_items_out = args.todo_items_out or default_out_dir / f"{section_label}-todo.md"
     lecture_out = args.lecture_out or default_out_dir / f"{section_label}.md"
     json_out = args.json_out or Path(f"databases/database-{section_label}.json")
 
@@ -557,24 +625,29 @@ def main() -> None:
     database_id = args.database_id or f"database-{section_label}"
     tags = _parse_csv_values(args.tags, [section_label])
     domains = _parse_csv_values(args.domains, ["general"])
-    research_tags = [section_label, "research"]
-    research_domains = ["research"]
-    todo_title = args.todo_title or f"Section {section_num} — extracted questions"
-    research_title = args.research_title or f"Section {section_num} — research questions"
+    questions_title = (
+        args.questions_title
+        or args.todo_title
+        or f"Section {section_num} — questions"
+    )
+    research_title = args.research_title or f"Section {section_num} — research"
+    todo_items_title = args.todo_items_title or f"Section {section_num} — todo"
 
     blocks = extract_blocks(text)
     research_prompts = extract_research_prompts(text)
+    todo_prompts = extract_todo_prompts(text)
 
     all_out.parent.mkdir(parents=True, exist_ok=True)
-    todo_out.parent.mkdir(parents=True, exist_ok=True)
+    questions_out.parent.mkdir(parents=True, exist_ok=True)
     research_out.parent.mkdir(parents=True, exist_ok=True)
-    research_json_out.parent.mkdir(parents=True, exist_ok=True)
+    todo_items_out.parent.mkdir(parents=True, exist_ok=True)
     lecture_out.parent.mkdir(parents=True, exist_ok=True)
     json_out.parent.mkdir(parents=True, exist_ok=True)
 
     all_out.write_text(text, encoding="utf-8")
-    write_todo_md(todo_out, blocks, title=todo_title)
-    write_research_todo_md(research_out, research_prompts, title=research_title)
+    write_questions_md(questions_out, blocks, title=questions_title)
+    write_reading_list_md(research_out, research_prompts, title=research_title)
+    write_reading_list_md(todo_items_out, todo_prompts, title=todo_items_title)
     write_database_json(
         json_out,
         blocks,
@@ -583,26 +656,20 @@ def main() -> None:
         tags=tags,
         domains=domains,
     )
-    write_research_database_json(
-        research_json_out,
-        research_prompts,
-        database_name=f"Section {section_num} - Research",
-        database_id=f"database-{section_label}-research",
-        tags=research_tags,
-        domains=research_domains,
-    )
-    lecture_out.write_text(strip_question_blocks(text), encoding="utf-8")
+    lecture_text = strip_prose_markers(strip_question_blocks(text))
+    lecture_out.write_text(lecture_text, encoding="utf-8")
 
     tagged_block_research_count = sum(1 for block in blocks if block.is_research)
     print(
         f"Extracted {len(blocks)} Q/A pairs "
         f"({tagged_block_research_count} tagged research blocks)"
     )
-    print(f"Extracted {len(research_prompts)} standalone research prompts")
+    print(f"Extracted {len(research_prompts)} research items (write-up)")
+    print(f"Extracted {len(todo_prompts)} todo items (write-up)")
     print(f"Wrote {all_out}")
-    print(f"Wrote {todo_out}")
+    print(f"Wrote {questions_out}")
     print(f"Wrote {research_out}")
-    print(f"Wrote {research_json_out}")
+    print(f"Wrote {todo_items_out}")
     print(f"Wrote {json_out}")
     print(f"Wrote {lecture_out}")
 

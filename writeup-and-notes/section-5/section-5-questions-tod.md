@@ -1,4 +1,4 @@
-# Section 5 — extracted questions
+# Section 5 — questions
 
 ## Question 001
 
@@ -1435,6 +1435,18 @@ __QUESTION_END__
 
 __QUESTION__
 
+What are the two options to integration S3 with Outputs?
+
+__ANSWER__
+
+Use access point or DataSync.
+
+__QUESTION_END__
+
+## Question 083
+
+__QUESTION__
+
 What is AWS WaveLength?
 
 __ANSWER__
@@ -1443,7 +1455,7 @@ Deploy resources on 5G networks (the telecommunications networks). From what I u
 
 __QUESTION_END__
 
-## Question 083
+## Question 084
 
 __QUESTION__
 

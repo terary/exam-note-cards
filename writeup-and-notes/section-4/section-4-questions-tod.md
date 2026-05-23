@@ -1,4 +1,4 @@
-# Section 4 — extracted questions
+# Section 4 — questions
 
 ## Question 001
 
@@ -189,8 +189,6 @@ Regarding Parameter Store. How do we get/send notification of a parameter is abo
 
 __ANSWER__
 
-**TODO** - I need to figure this out.
-
 However, its a feature of the "Advanced" parameter store and policies.
 
 I am not sure of the steps but I think
@@ -199,6 +197,8 @@ I am not sure of the steps but I think
 2. Set up notification for x days before TTL
 
 Also, we can get notified of 'no change in x days'
+
+> These are events sent to cloudwatch "Create notification policies to send notifications from CloudWatch Events. Notifications can be based on when this parameter expires, or if the parameter has not changed for a given period of time." From there I imaging you set-up filter/metric then alarm
 
 __QUESTION_END__
 
@@ -862,6 +862,24 @@ __QUESTION_END__
 
 __QUESTION__
 
+Discuss GuardData protection/costs
+
+__ANSWER__
+
+GuardDuty Pricing Plan,
+
+- runtime $1.50/vCPU/month first 500 vcpu
+- S3 $0.80/1 million events/
+- eks $1.60/1 million events/
+
+It's costly. "Events" Are cloudwatch log items. Things like S3 GetObject. GD monitors those events in effort to detect bad actors.
+
+__QUESTION_END__
+
+## Question 049
+
+__QUESTION__
+
 How to access an instances via SSH without the identify file (key)?
 
 __ANSWER__
@@ -869,5 +887,21 @@ __ANSWER__
 EC2 Instance Connect (SendSSHPublicKey API).
 
 There is a 60 second TTL on the file.
+
+__QUESTION_END__
+
+## Question 050
+
+__QUESTION__
+
+Discuss Security Hub costs
+
+__ANSWER__
+
+You buy a "Plan" which includes some features. Additionally you pay for more of what you use in terms of "Pricing is anchored on Amazon EC2 instances as 1 resource unit".
+
+AWS Lambda functions at 1/12 of a resource unit (12 functions = 1 resource unit), Amazon ECR container images at 1/18 of a resource (18 images = 1 resource unit), and AWS IAM users and roles at 1/125 of a resource (125 IAM resources = 1 resource unit).
+
+I think to determine costs requires knowing what/how-many you need to cover.
 
 __QUESTION_END__

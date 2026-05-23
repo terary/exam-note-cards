@@ -26,7 +26,8 @@
     "fix:question-ids": "ts-node -r tsconfig-paths/register scripts/fix-null-question-ids.ts",
     "delete:database": "ts-node -r tsconfig-paths/register scripts/delete-database-from-mongodb.ts",
     "list:databases": "ts-node -r tsconfig-paths/register scripts/delete-database-from-mongodb.ts -- --list",
-    "database:delete-all-records": "ts-node -r tsconfig-paths/register scripts/delete-all-mongodb-records.ts"
+    "database:delete-all-records": "ts-node -r tsconfig-paths/register scripts/delete-all-mongodb-records.ts",
+    "section:build": "bash scripts/build-section.sh"
   },
   "keywords": [],
   "author": "",

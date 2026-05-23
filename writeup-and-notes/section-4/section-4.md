@@ -72,7 +72,6 @@
 
 
 
-**TODO** Use Athena to look at CloudTrail events in S3
 
 ### Study notes
 
@@ -131,7 +130,6 @@ S3 Enhancements:
 
 ![CloudTrail Flow](https://images.viblo.asia/e4a82481-81aa-4c3a-a32d-f990cd845a4a.png "CloudTrail Flow")
 
-**TODO** Do this, all, try with cloudformation
 
 
 
@@ -159,7 +157,6 @@ Observations:
 - Ex: Count of API calls per user
 - Ex: Detect high level of Denied API calls
 
-**TODO** Set-up alert for an activity using CT, CT-Logs, cw alarm, sns
 
 ### CloudTrail – Solution Architecture: Organizational Trail (5:09)
 
@@ -365,7 +362,6 @@ Observations:
 - Allow to assign a TTL to a parameter (expiration date) to force updating or deleting sensitive data such as passwords
 - Can assign multiple policies at a time
 
-**TODO** Figure out how advanced parameter store sends notification to EventBridge
 
 > Can have TTL policies but also policy to send notification to event bridge (about to expire)
 
@@ -399,7 +395,6 @@ Observations:
 
 [graphic not available]
 
-**TODO** Build two cloudformation template - A) Create a secret manager secret and B) one to read secret manager secret
 
 ### Secrets Manager – Sharing Across Accounts
 
@@ -409,7 +404,6 @@ To share across accounts we must set-up a IAM policy to allow it. The IAM policy
 
 There are two permission policy, 1. getSecretValue (which will be encrypted), and 2) access to the decrypt key (decrypt functionality).
 
-**TODO** Maybe try to do this but it may be time consuming and not all that valuable.
 
 - Secrets Manager ($$$):
   - Automatic rotation of secrets with AWS Lambda
@@ -451,7 +445,6 @@ There are two permission policy, 1. getSecretValue (which will be encrypted), an
 - Can copy an un-encrypted RDS snapshot into an encrypted one
 - CloudTrail cannot be used to track queries made within RDS
 
-**TODO** understand better about what IAM can/not do for the different databases. Oracle and MSSQL support TDE (which doesn't sound like user auth), but Mysql Psql, maria all have IAM but the other two do not?
 
 OpenAI said:
 
@@ -620,7 +613,6 @@ When HTTPS there is a certificate exchange, therefore server verification. Howev
 
 > Renewals - if you bring-your-own, then you must renew (upload new certs), acm automatically does this for you
 
-**TODO** how does ACM work with CloudFront. He said we don't have to worry about certs if using CloudFront.
 
 OpenAI said:
 
@@ -865,7 +857,6 @@ However, using a VPC Endpoint Gateway is another way to restrict S3 access. In t
   - its own DNS name (Internet Origin or VPC Origin)
   - an access point policy (similar to bucket policy) – manage security at scale
 
-**TODO** the graphic shows user in the Analytics Group have access to two prefixes `/finance/` and `/sales`, Is this one Access point? or is it the case there is a policy for the group? Can access points reference more than one prefix?
 
 ### S3 – Access Points – VPC Origin (2:33)
 
@@ -922,7 +913,6 @@ However, using a VPC Endpoint Gateway is another way to restrict S3 access. In t
 
 Hands On - set-up buckets, multi-region access points
 
-**TODO** do this hands on
 
 
 
@@ -943,9 +933,7 @@ Hands On - set-up buckets, multi-region access points
   - Converting across data formats, such as converting XML to JSON.
   - Resizing and watermarking images on the fly using caller-specific details, such as the user who requested the object. **One example given was water mark specific to user**.
 
-**TODO** Are access points necessary to create Object Lambda, he said Object Lambda are another reason for Access Points
 
-**TODO** Does S3 Object Lambdas need "warm-up"? Also, can we call cron to do warm-ups? I mean we can schedule lambda same as cron? can we do warm up there? When doing "warm-up" does it make sense to send arguments `isWarmUp` which then quick-returns.
 
 # Section 4: Security - DDoS and AWS Shield
 
@@ -1046,7 +1034,6 @@ He describes typical DDoS attach, except he introduces a level of "master" compu
 
 
 
-**TODO** Set-up WAF, get to know "Rule Actions: Count | Allow | Block | CAPTCHA | Challenge"
 
 
 
@@ -1078,7 +1065,6 @@ He describes typical DDoS attach, except he introduces a level of "master" compu
 
 **EXAM** YOU WILL NEED TO KNOW HOW TO DO THIS
 
-**TODO** VERY IMPORTANT - TO DO THIS.
 
 VERY VERY VERY IMPORTANT TO BE ABLE TO SET-up THIS SET-up.
 
@@ -1243,7 +1229,6 @@ He makes the point that if adding CloudFront
 
 
 
-**TODO** Set-up AWS Config see it in action
 
 ### AWS Config Rules (2:36)
 
@@ -1323,7 +1308,6 @@ He makes the point that if adding CloudFront
 - EventBridge rules can target AWS Lambda or SNS
 - Can **protect against CryptoCurrency attacks** (has a dedicated “finding” for it)
 
-**TODO** Set-up Guard Duty, find cost information. This looks like a must-have service, try find reasons not to use it (devils advocate).
 
 ### Amazon GuardDuty (1:59)
 
@@ -1397,7 +1381,6 @@ Basically Instance Connect pushes an identity file to the instances (I guess it 
 
 
 
-**TODO** Set-up this, always
 
 # ---
 
@@ -1430,13 +1413,16 @@ Basically Instance Connect pushes an identity file to the instances (I guess it 
   - AWS Partner Network Solutions
 - **Must first enable the AWS Config Service**
 
-**TODO** Setup security Hub (and cost)
+
+
 
 # ---
 
 
 
 ![Alt text](image-url.jpg "Optional title")
+
+
 
 # Section 4: Security - Amazon Detective
 

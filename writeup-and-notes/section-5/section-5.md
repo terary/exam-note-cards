@@ -115,7 +115,6 @@ Most of these layers are hierarchical, except the static layer, it connects to C
   - Great for software licenses that operate at the core, or CPU socket level
   - Can define host affinity so that instance reboots are kept on the same host
 
-**TODO** He says repeated "Up to 7 per AZ" where does this limit come from
 
 
 
@@ -206,7 +205,6 @@ Use-cases:
   - Spot Instances / Spot Fleets for cost savings + Auto Scaling
 - EC2 **Placement Groups**: Cluster for good network performance
 
-**TODO** I thought placement group was a logical grouping. This the slide suggest that they are physically near "Placement Group Cluster, low latency, same rack, same az" (2:14)
 
 ### Compute and Networking (2:37)
 
@@ -225,7 +223,6 @@ Use-cases:
   - Leverages Message Passing Interface (MPI) standard
   - Bypasses the underlying Linux OS to provide low-latency, reliable transport
 
-**TODO** He makes the claim that "Bypasses the underlying Linux OS to provide low-latency" Learn more about this
 
 ### Storage (4:28)
 
@@ -239,9 +236,7 @@ Use-cases:
     - HPC optimized distributed file system, millions of IOPS
     - Backed by S3
 
-**TODO** Know this, This was suppose to be HPC related but they're throwing in 'general' options 'EBS', is that really "high performance"?, Not also, I thought a limitation of FSx for Lustre - was bound to single AZ.
 
-**TODO** Get a better appreciation of GB/s vs IOPS. I think we shouldn't intermingle. I get GB/s (or rate), but IOPS is a little fuzzy why it would be used in similar context.
 
 ### Automation and Orchestration (5:28)
 
@@ -309,7 +304,6 @@ Use-cases:
   - Then terminate instances manually (CloudFormation can help)
   - Or use EC2 Instance Refresh for Auto Scaling
 
-**TODO** Spot vs On Demand - Is there a ratio? How bad of an idea to mix 50% spot/demand?
 
 
 
@@ -448,7 +442,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
 
 
 
-**TODO** Look at setting up a spot fleet. It can be deployed across multiple AZ and uses a combo of on-demand and spot. Look at how to set-up the whole system in terms of Forms.
 
 # ---
 
@@ -501,7 +494,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
   - Dockerize legacy applications running on-premises
   - Move Docker containers to run on Amazon ECS
 
-**TODO** What is "Easy Service Discovery features to enhance communication"
 
 ### Amazon ECS – Concepts (2:05)
 
@@ -528,7 +520,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
   - Maximize utilization of CPU / cores
   - Ability to perform rolling upgrades without impacting app uptime
 
-**TODO** Setup ECS and ALB, with a couple of tasks
 
 ### AWS Fargate (6:10)
 
@@ -541,7 +532,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
 - AWS runs containers for you based on the CPU / RAM you need
 - To scale, just increase the number of tasks. Simple! No more EC2 instances
 
-**TODO** Setup fargate with the same couple of tasks from ECS
 
 ### Amazon ECS – Security & Networking (6:50)
 
@@ -577,7 +567,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
 - Step Scaling – scale based on a specified CloudWatch Alarm
 - Scheduled Scaling – scale based on a specified date/time (predictable changes)
 
-**TODO** What is the point here. I am not sure I understand. We must increase capacity, manually? Why does "serverless" make it easier?
 
 - ECS Service Auto Scaling (task level) ≠ EC2 Auto Scaling (EC2 instance level)
 - Fargate Auto Scaling is much easier to setup (because Serverless)
@@ -687,7 +676,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
 - node - EC2 instance (maybe others)
 - Autoscaling spans AZs, group adds/removes ec2 nodes
 
-**TODO** better understand the underlying architecture
 
 ### Amazon EKS – Node Types (2:22)
 
@@ -704,7 +692,6 @@ The advantage of this method, is that we can test the new ALB/Target Group at th
 
 
 
-**TODO** Set-up EKS at least one time.
 
 ### Amazon EKS – Data Volumes
 
@@ -754,7 +741,6 @@ https://aws.amazon.com/blogs/containers/architecting-for-resiliency-on-aws-app-r
 
 ![App Runner Multi-Region Architecture](https://aws.amazon.com/blogs/containers/architecting-for-resiliency-on-aws-app-runner/ "App Runner Multi-Region Architecture")
 
-**RESEARCH** Simply look at how r53 is used to create the multi-region App Runner. Specifically, there is a DNS record of type "latency" that routes traffic, what is that all about
 
 # ---
 
@@ -762,7 +748,7 @@ https://aws.amazon.com/blogs/containers/architecting-for-resiliency-on-aws-app-r
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - ECS Anywhere & EKS Anywhere
 
@@ -807,7 +793,7 @@ https://aws.amazon.com/blogs/containers/architecting-for-resiliency-on-aws-app-r
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Lambda - Part 1
 
@@ -868,7 +854,6 @@ Use EventBridge to act as a cron job to fire a lambda every hour
 
 
 
-**RESEARCH** CPU is linked to RAM. RAM limit 10GB. How do we adjust RAM we need?
 
 ### Lambda Concurrency and Throttling (3:10)
 
@@ -886,7 +871,6 @@ Use EventBridge to act as a cron job to fire a lambda every hour
 
 He explains that given so many application vectors (API Gateway, Application Load Balancer, SDK). If all of them are calling Lambda there is a risk of exceeding limits. However, each app will use a small portion of the total quota.
 
-**RESEARCH** Lambda concurrency Limit, is it for account? How would you allocation so much quota to certain Lambda but not others.
 
 ### Lambda & CodeDeploy (4:41)
 
@@ -925,7 +909,7 @@ He explains that given so many application vectors (API Gateway, Application Loa
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Lambda - Part 2
 
@@ -945,9 +929,7 @@ Deploying Lambda in a private network Lambda will get a security group and will 
 
 You would leverage NAT/IGW in the private network to get access to internet
 
-**RESEARCH** He goes on to say that lambda deployed in with the default settings will not have access to the internet, the only way to do that is with NAT/IGW.
 
-**TODO** Set-up lambda - use it to access internal resources and internet. Look at deployment strategies and various pros/cons.
 
 ### Lambda – Fixed Public IP for external comms (1:47)
 
@@ -955,9 +937,7 @@ You would leverage NAT/IGW in the private network to get access to internet
 
 By default Lambda get random external IP. Those who monitory the API it may call, will see a random IP. If you want tight security (lock down API to accept from known IP), you have put the Lambda in a VPC
 
-**TODO** Make a lambda with fixed IP
 
-**RESEARCH** He goes on to say how to configure a Lambda/Network to use NAT/IGW to get static IP. Is it possible to create one (few) IP NAT/IGW configurations so all calls from VPC use the same IPs, HOW?
 
 ### Lambda – Synchronous Invocations (3:15)
 
@@ -983,7 +963,6 @@ By default Lambda get random external IP. Those who monitory the API it may call
 
 
 
-**RESEARCH** Utilizing Batch/Parallel Lambdas what are the pros and cons. It think he suggested that batch will be more robust.
 
 # ---
 
@@ -991,7 +970,7 @@ By default Lambda get random external IP. Those who monitory the API it may call
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Elastic Load Balancers - Part 1
 
@@ -1019,7 +998,6 @@ By default Lambda get random external IP. Those who monitory the API it may call
 
 
 
-**RESEARCH** What is Gateway Load Balancer (GWLB). Why is it better than NLB?
 
 ### Classic Load Balancers (v1)
 
@@ -1032,7 +1010,6 @@ By default Lambda get random external IP. Those who monitory the API it may call
 - TCP => TCP passes all the traffic to the EC2 instance
   - Only way to use 2-way SSL authentication
 
-**RESEARCH** He mentions that CLB supports only one certificate. That the only way to do two-way verification is traffic passes through CLB directly to the instance. This seems strange, what will be the point of the CLB in that case? Can we configure multiple EC2 instances to use same certificate?
 
 
 
@@ -1045,7 +1022,6 @@ By default Lambda get random external IP. Those who monitory the API it may call
 - Support redirects (from HTTP to HTTPS for example)
 - Routing Rules for path, headers, query string
 
-**TODO** VERY IMPORTANT Set-up ALB with websocket. Also see multiple certificate in play
 
 ### Application Load Balancer (v2) Target Groups (3:09)
 
@@ -1080,9 +1056,7 @@ By default Lambda get random external IP. Those who monitory the API it may call
 
 
 
-**RESEARCH** What does it mean when an IP is the target (within target group)? Is that some sort of "anything goes"
 
-**RESEARCH** Why would you use ALB as a target for NLB?
 
 ### Network Load Balancer – Zonal DNS Name (6:00)
 
@@ -1124,7 +1098,7 @@ By default Lambda get random external IP. Those who monitory the API it may call
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Elastic Load Balancers - Part 2
 
@@ -1191,7 +1165,6 @@ Hence, with zone LB you get better distribution, better utilization.
 - Works with **Network Load Balancer**
   > Acts 'Sticky' so long as the TCP connection is open.
 
-**RESEARCH** Acts 'Sticky' so long as the TCP connection is open. NLB
 
 
 
@@ -1201,7 +1174,7 @@ Hence, with zone LB you get better distribution, better utilization.
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - API Gateway
 
@@ -1229,7 +1202,6 @@ Hence, with zone LB you get better distribution, better utilization.
 
 
 
-**RESEARCH** What are the 'stages' named environment? But in the slide it shows diverting 5% of traffic from Prod to Test, but he doesn't cover the distribution mechanism. Figure out how to divert traffic from one stage to another with API-G
 
 ### API Gateway – Integrations (3:20)
 
@@ -1254,7 +1226,6 @@ Hence, with zone LB you get better distribution, better utilization.
 [diagram not available, but the trick is same as FS does, use pre-sign UPload URL]
 
 
-**RESEARCH** With this configuration, does the client "follow" the redirect URL? Does it make two requests, pre-request and actual upload request?
 
 ### API Gateway - Endpoint Types (6:29)
 
@@ -1270,7 +1241,6 @@ Hence, with zone LB you get better distribution, better utilization.
 
 
 
-**RESEARCH** It looks like there is only one endpoint type that is most common (Edge Optimized). I don't understand the use-case for regional vs private? Also, what if we don't want Edge Optimized, is it a choice or these are the 3 options?
 
 ### Caching API responses (7:30)
 
@@ -1351,7 +1321,7 @@ Hence, with zone LB you get better distribution, better utilization.
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - API Gateway - Part 2
 
@@ -1379,7 +1349,6 @@ Hence, with zone LB you get better distribution, better utilization.
   - Account level throttling across all APIs in a region
   - Clients must implement retry mechanisms
 
-**TODO** Set-up API-G to use API Keys
 
 ### API Gateway – WebSocket API – Overview (1:23)
 
@@ -1397,7 +1366,6 @@ Hence, with zone LB you get better distribution, better utilization.
 WebSocket URL wss://abcdef.execute-api.us-west-1.amazonaws.com/dev
 
 [diagram not available]
-**RESEARCH** He seem to make a point that response data is special somehow. Something weird about sending messages `@something`. It didn't make sense to me but I probably want to know better what he is talking about.
 
 ### API Gateway – Private APIs (3:28)
 
@@ -1408,15 +1376,14 @@ WebSocket URL wss://abcdef.execute-api.us-west-1.amazonaws.com/dev
 - Allow or deny access to API from selected VPCs and VPC Endpoints, including across AWS accounts
 - aws:SourceVpc and aws:SourceVpce
 
-> He makes the point that you can make the API private. He talks about "Endpoint Policy" and "Interface Endpoint" which wouldn't apply if you rely only on resource policy **RESEARCH** How to make API-G private
-
+> He makes the point that you can make the API private. He talks about "Endpoint Policy" and "Interface Endpoint" which wouldn't apply if you rely only on resource policy 
 # ---
 
 
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS AppSync
 
@@ -1439,13 +1406,11 @@ WebSocket URL wss://abcdef.execute-api.us-west-1.amazonaws.com/dev
 - For mobile apps: local data access & data synchronization
 - It all starts with uploading one GraphQL schema
 
-**RESEARCH** What is AppSync. The GraphQL part makes sense but I think there is more to it than that... The "combined data sources" part has me a little confused.
 
 ### AppSync Diagram
 
 [diagram not available]
 
-**TODO** Setup AppSync
 
 **EXAM** AppSync is going to be used when ever you see GraphQL or real-time data
 
@@ -1462,7 +1427,7 @@ WebSocket URL wss://abcdef.execute-api.us-west-1.amazonaws.com/dev
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Route 53 - Part 1
 
@@ -1504,7 +1469,6 @@ WebSocket URL wss://abcdef.execute-api.us-west-1.amazonaws.com/dev
   - Free of charge
   - Native health check
 
-**RESEARCH** What is the difference between "Alias" and "CNAME" records? He explains you can map alias to root of DNS (example.com) but not CNAME?
 
 ### Route 53 – Alias Records Targets (2:28)
 
@@ -1587,7 +1551,6 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 - Non-AWS resources (specify Latitude and Longitude)
 - You must use Route 53 Traffic Flow to use this feature
 
-**RESEARCH** Understand why this is useful? What is the use-case
 
 
 
@@ -1599,7 +1562,6 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 - Can be applied to different Route 53 Hosted Zones (different domain names)
 - Supports versioning
 
-**TODO** Look at "Traffic Flow" I think it's just a visual tool.
 
 ### Routing Policies – Multi-Value
 
@@ -1609,9 +1571,7 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 - Up to 8 healthy records are returned for each Multi-Value query
 - Multi-Value is not a substitute for having an ELB
 
-**RESEARCH** He said something about only returning records for healthy resources?
 
-**RESEARCH** What is the big-deal about health checks and Route 53. It seems to be a point about when records can be used for health check and not. Understand the 'why'
 
 ### Routing Policies – IP-based Routing (9:51)
 
@@ -1626,7 +1586,7 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Route 53 - Part 2
 
@@ -1684,7 +1644,6 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 - Specify how many of the health checks need to pass to make the parent pass
 - Usage: perform maintenance to your website without causing all health checks to fail
 
-**TODO** Look at "calculated health checks"
 
 ### Health Checks – Monitor an Endpoint
 
@@ -1693,8 +1652,7 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 - Health Checks pass only when the
   endpoint responds with the 2xx and 3xx
   status codes
-- Health Checks can be setup to pass / fail based on the text in the first 5120 bytes of the response **EXAM** **RESEARCH** Want to see this in action, its pass/fail, not on status code but content?
-
+- Health Checks can be setup to pass / fail based on the text in the first 5120 bytes of the response **EXAM** 
 ### Health Checks – Private Hosted Zones
 
 - Route 53 health checkers are outside the VPC
@@ -1706,8 +1664,6 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 ### Health Checks Solution Architecture RDS multi-region failover (4:37)
 
 [diagram not available]
-**RESEARCH** You want to know how to do this
-**TODO** Create a "Multi Region fail over strategy for RDS"
 
 # ---
 
@@ -1715,7 +1671,7 @@ The trick here is R53 does the health check. R53 is configured with two DNS reco
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Route 53 - Resolvers & Hybrid DNS
 
@@ -1758,7 +1714,6 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 [diagram not available]
 
-**RESEARCH** What are the points of Inbound/Outbound Resolvers. I think its a simple matter.
 
 ### Route 53 – Resolver Rules
 
@@ -1784,7 +1739,7 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Global Accelerator
 
@@ -1838,7 +1793,6 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 
 
-**RESEARCH** When to choose Accelerator vs Cloud Front
 
 # ---
 
@@ -1846,7 +1800,7 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - Comparison of Solutions Architecture
 
@@ -1941,7 +1895,6 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 > He mentions that can use custom docker/image if using docker strongly recommended to use ECS run time.
 
-**RESEARCH** Using ECS run time for lambda vs custom runtime?
 
 
 
@@ -1983,7 +1936,7 @@ It's a bit complicated but I think the gist of it is the resolvers are configure
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Outposts
 
@@ -2023,8 +1976,10 @@ Hybrid Cloud: businesses that keep an on- premises infrastructure alongside a cl
 - Use S3 APIs to store and retrieve data locally on AWS Outposts
 - Keeping data close to on-premises applications
 - Reduce data transfers to AWS Regions
-- S3 Storage Class named S3 Outposts
+- **S3 Storage Class named S3 Outposts**
 - Default encryption using SSE-S3
+
+
 
 # ---
 
@@ -2032,7 +1987,7 @@ Hybrid Cloud: businesses that keep an on- premises infrastructure alongside a cl
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Wavelength
 
@@ -2067,7 +2022,7 @@ Hybrid Cloud: businesses that keep an on- premises infrastructure alongside a cl
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+
 
 # Section 5: Compute & Load Balancing - AWS Local Zones
 
@@ -2096,4 +2051,4 @@ Hybrid Cloud: businesses that keep an on- premises infrastructure alongside a cl
 
 ![Alt text](image-url.jpg "Optional title")
 
-**RESEARCH**
+

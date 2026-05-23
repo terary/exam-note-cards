@@ -12,8 +12,8 @@ function DatabaseListPage() {
   const [pendingDatabaseId, setPendingDatabaseId] = useState<string>();
   const [categorizedWriteups, setCategorizedWriteups] = useState<CategorizedWriteups>({
     writeups: [],
+    questions: [],
     vocabulary: [],
-    todo: [],
   });
   const [writeupsStatus, setWriteupsStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [writeupsError, setWriteupsError] = useState<string>();
@@ -40,12 +40,15 @@ function DatabaseListPage() {
         if (categorized && typeof categorized === "object") {
           setCategorizedWriteups({
             writeups: Array.isArray(categorized.writeups) ? categorized.writeups : [],
+            questions: Array.isArray(categorized.questions) ? categorized.questions : [],
             vocabulary: Array.isArray(categorized.vocabulary) ? categorized.vocabulary : [],
-            todo: Array.isArray(categorized.todo) ? categorized.todo : [],
           });
         } else {
-          // Fallback for unexpected format
-          setCategorizedWriteups({ writeups: [], vocabulary: [], todo: [] });
+          setCategorizedWriteups({
+            writeups: [],
+            questions: [],
+            vocabulary: [],
+          });
         }
         setWriteupsStatus("ready");
       } catch (error) {
@@ -96,6 +99,42 @@ function DatabaseListPage() {
   const handleStartQuiz = (databaseId: string) => {
     setPendingDatabaseId(databaseId);
     dispatch(startQuiz({ databaseId }));
+  };
+
+  const renderWriteupTable = (title: string, items: typeof categorizedWriteups.writeups) => {
+    if (items.length === 0) {
+      return null;
+    }
+    return (
+      <>
+        <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>{title}</h2>
+        <table className="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Last Updated</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((w) => (
+              <tr key={w.id}>
+                <td>{w.id}</td>
+                <td>{new Date(w.lastModified).toLocaleString()}</td>
+                <td>
+                  <button
+                    onClick={() => navigate(`/write-up-notes/${w.id}`)}
+                    className="table-button"
+                  >
+                    Open
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
   };
 
   return (
@@ -191,74 +230,22 @@ function DatabaseListPage() {
       )}
 
       {/* Write-ups Table */}
-      {writeupsStatus === "ready" && categorizedWriteups.writeups.length > 0 && (
-        <>
-          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>Write-ups & Notes</h2>
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Write-up Name</th>
-                <th>Last Updated</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categorizedWriteups.writeups.map((w) => (
-                <tr key={w.id}>
-                  <td>{w.id}</td>
-                  <td>{new Date(w.lastModified).toLocaleString()}</td>
-                  <td>
-                    <button
-                      onClick={() => navigate(`/write-up-notes/${w.id}`)}
-                      className="table-button"
-                    >
-                      Open Write-up
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
+      {writeupsStatus === "ready" &&
+        renderWriteupTable("Write-ups", categorizedWriteups.writeups)}
 
-      {/* Vocab Files Table */}
-      {writeupsStatus === "ready" && categorizedWriteups.vocabulary.length > 0 && (
-        <>
-          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>Vocabulary Files</h2>
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Vocab File Name</th>
-                <th>Last Updated</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categorizedWriteups.vocabulary.map((w) => (
-                <tr key={w.id}>
-                  <td>{w.id}</td>
-                  <td>{new Date(w.lastModified).toLocaleString()}</td>
-                  <td>
-                    <button
-                      onClick={() => navigate(`/write-up-notes/${w.id}`)}
-                      className="table-button"
-                    >
-                      Open File
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
-      )}
+      {writeupsStatus === "ready" &&
+        renderWriteupTable("Questions (__QUESTION__ blocks)", categorizedWriteups.questions)}
 
       {writeupsStatus === "ready" &&
         categorizedWriteups.writeups.length === 0 &&
+        categorizedWriteups.questions.length === 0 &&
         categorizedWriteups.vocabulary.length === 0 && (
           <p style={{ marginTop: "2rem" }}>No write-ups or vocab files found.</p>
         )}
+
+      {/* Vocab Files Table */}
+      {writeupsStatus === "ready" &&
+        renderWriteupTable("Vocabulary Files", categorizedWriteups.vocabulary)}
       {quizState.status === "error" && (
         <div className="error-message">
           <p>Unable to start quiz: {quizState.error}</p>
