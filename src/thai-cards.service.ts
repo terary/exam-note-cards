@@ -8,7 +8,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { createHash } from "crypto";
 import { existsSync } from "fs";
-import { mkdir, writeFile } from "fs/promises";
+import { mkdir, readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { v4 as uuid } from "uuid";
 import { Database, DatabaseDocument } from "./schemas/database.schema";
@@ -109,6 +109,45 @@ export class ThaiCardsService {
     return question;
   }
 
+  async importSoundbiteBundle(bundleDir: string): Promise<{
+    inserted: number;
+    skipped: number;
+  }> {
+    const manifestPath = join(bundleDir, "manifest.json");
+    if (!existsSync(manifestPath)) {
+      throw new BadRequestException(`Bundle manifest not found: ${manifestPath}`);
+    }
+    const parsed = JSON.parse(await readFile(manifestPath, "utf8")) as {
+      version?: number;
+      items?: Array<{ english?: string; thai?: string; audio?: string }>;
+    };
+    if (parsed.version !== 1 || !Array.isArray(parsed.items)) {
+      throw new BadRequestException("Bundle manifest must be version 1 with an items list");
+    }
+
+    const counts = { inserted: 0, skipped: 0 };
+    for (const item of parsed.items) {
+      const english = cleanLine(item.english);
+      const thai = cleanLine(item.thai);
+      const audioName = typeof item.audio === "string" ? item.audio : "";
+      if (!english || !thai || !/^[a-z0-9]+(?:-[a-z0-9]+)*\.m4a$/.test(audioName)) {
+        throw new BadRequestException(
+          "Each bundle item needs english, thai, and an .m4a file name"
+        );
+      }
+      const audioPath = join(bundleDir, "audio", audioName);
+      const result = await this.insertBundledSoundbite({
+        english,
+        thai,
+        audioPath,
+        audioName,
+      });
+      counts[result] += 1;
+      this.logger.log(`Batch sound bite ${result}: ${english}`);
+    }
+    return counts;
+  }
+
   async listSoundbites(): Promise<Question[]> {
     const database = await this.databaseModel
       .findOne({ databaseId: THAI_SOUNDBITES_ID })
@@ -149,6 +188,46 @@ export class ThaiCardsService {
     }
     const fullPath = join(AUDIO_DIR, filename);
     return existsSync(fullPath) ? fullPath : null;
+  }
+
+  private async insertBundledSoundbite(input: {
+    english: string;
+    thai: string;
+    audioPath: string;
+    audioName: string;
+  }): Promise<"inserted" | "skipped"> {
+    const database = await this.databaseModel
+      .findOne({ databaseId: THAI_SOUNDBITES_ID })
+      .exec();
+    const questions = database?.questionsWithAnswers ?? [];
+    if (soundbiteAlreadyPresent(questions, input.english, input.thai)) {
+      return "skipped";
+    }
+    if (!existsSync(input.audioPath)) {
+      throw new BadRequestException(`Audio file not found: ${input.audioName}`);
+    }
+
+    const buffer = await readFile(input.audioPath);
+    const questionAudio = await this.saveAudio({
+      buffer,
+      originalname: input.audioName,
+      mimetype: "audio/mp4",
+    });
+    await this.addQuestions(THAI_SOUNDBITES_ID, "Thai Sound Bites", [
+      {
+        questionId: uuid(),
+        questionText: "What was said?",
+        answerText: `${input.thai}\n\n${input.english}`,
+        questionAudio,
+        tags: ["thai", "soundbite", `bundle-en:${input.english}`],
+        domains: ["thai"],
+        timesAsked: 0,
+        averageScore: null,
+        lastScore: null,
+        bad: false,
+      },
+    ]);
+    return "inserted";
   }
 
   private async saveAudio(file: AudioUpload | undefined): Promise<string> {
@@ -196,6 +275,24 @@ export class ThaiCardsService {
       await raced.save();
     }
   }
+}
+
+function soundbiteAlreadyPresent(
+  questions: Question[],
+  english: string,
+  thai: string
+): boolean {
+  const tag = `bundle-en:${english}`;
+  return questions.some((question) => {
+    if (question.tags?.includes(tag)) {
+      return true;
+    }
+    const lines = (question.answerText || "")
+      .split(/\n+/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+    return lines.includes(thai) || lines.includes(english);
+  });
 }
 
 function cleanLine(value: unknown): string {
