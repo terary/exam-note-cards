@@ -4,7 +4,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "npm run client:build && nest build",
-    "tmc:deploy": "rsync -az --delete --exclude node_modules /mypart/tmc/projects/exam-note-cards/ 192.168.0.198:~/exam-note-cards/",
+    "tmc:deploy": "rsync -az --delete --exclude node_modules ./ 192.168.0.198:~/exam-note-cards/",
     "client:build": "npm run build --prefix client",
     "client:dev": "npm run dev --prefix client",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

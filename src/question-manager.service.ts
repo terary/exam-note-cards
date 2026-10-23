@@ -109,6 +109,8 @@ export class QuestionManagerService {
       answerText: updates.answerText ?? existingQuestion.answerText,
       domains: updates.domains ?? existingQuestion.domains,
       tags: updates.tags !== undefined ? updates.tags : existingQuestion.tags,
+      questionAudio: existingQuestion.questionAudio,
+      groupId: existingQuestion.groupId,
       timesAsked: updates.timesAsked !== undefined ? updates.timesAsked : (existingQuestion.timesAsked ?? 0),
       averageScore: updates.averageScore !== undefined ? updates.averageScore : existingQuestion.averageScore,
       lastScore: updates.lastScore !== undefined ? updates.lastScore : existingQuestion.lastScore,

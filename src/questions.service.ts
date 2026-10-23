@@ -65,17 +65,9 @@ export class QuestionsService {
     // Convert to interface format (Database interface doesn't require databaseId)
     return {
       databaseName: database.databaseName,
-      questionsWithAnswers: (database.questionsWithAnswers || []).map(q => ({
-        questionId: q.questionId,
-        questionText: q.questionText,
-        answerText: q.answerText,
-        tags: q.tags,
-        domains: q.domains,
-        timesAsked: q.timesAsked,
-        averageScore: q.averageScore,
-        lastScore: q.lastScore,
-        bad: q.bad,
-      })),
+      questionsWithAnswers: (database.questionsWithAnswers || []).map((q) =>
+        this.toQuestion(q)
+      ),
     };
   }
 
@@ -85,7 +77,9 @@ export class QuestionsService {
 
     databases.forEach((database) => {
       if (database.questionsWithAnswers) {
-      allQuestions.push(...database.questionsWithAnswers);
+        allQuestions.push(
+          ...database.questionsWithAnswers.map((q) => this.toQuestion(q))
+        );
       }
     });
 
@@ -116,8 +110,24 @@ export class QuestionsService {
         this.logger.log(
           `Found question '${questionId}' in database '${database.databaseName}'`
         );
-        return question;
+        return this.toQuestion(question);
       }
+
+  private toQuestion(q: Question): Question {
+    return {
+      questionId: q.questionId,
+      questionText: q.questionText,
+      answerText: q.answerText,
+      questionAudio: q.questionAudio,
+      groupId: q.groupId,
+      tags: q.tags,
+      domains: q.domains,
+      timesAsked: q.timesAsked,
+      averageScore: q.averageScore,
+      lastScore: q.lastScore,
+      bad: q.bad,
+    };
+  }
 
   async getRandomQuestionFromDatabase(databaseId: string): Promise<Question> {
     const database = await this.getDatabaseById(databaseId);

@@ -219,6 +219,18 @@ function QuizPage() {
             </ReactMarkdown>
           </div>
 
+          {currentQuestion.questionAudio && (
+            <audio
+              key={currentQuestion.questionId}
+              className="question-audio"
+              controls
+              preload="auto"
+              src={currentQuestion.questionAudio}
+            >
+              Your browser cannot play this audio.
+            </audio>
+          )}
+
           <div className="correctness-section">
             <label htmlFor="user-answer-input" className="label">
               Your answer

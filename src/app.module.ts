@@ -14,6 +14,8 @@ import { QuestionStatsService } from "./question-stats.service";
 import { QuestionManagerService } from "./question-manager.service";
 import { QuestionManagerController } from "./question-manager.controller";
 import { ReadProgressController } from "./read-progress.controller";
+import { ThaiCardsController } from "./thai-cards.controller";
+import { ThaiCardsService } from "./thai-cards.service";
 import {
   Database,
   DatabaseSchema,
@@ -57,12 +59,14 @@ import {
     WriteupsController,
     QuestionManagerController,
     ReadProgressController,
+    ThaiCardsController,
   ],
   providers: [
     QuestionsService,
     QuestionStatsService,
     AnswerSessionsService,
     QuestionManagerService,
+    ThaiCardsService,
   ],
 })
 export class AppModule {}

@@ -143,13 +143,17 @@ function DatabaseListPage() {
         <div>
         <h1>Exam Note Cards</h1>
         <p>Select a quiz to start practicing.</p>
-          <button
-            className="link-button"
-            onClick={() => navigate("/question-manager")}
-            style={{ marginTop: "0.5rem" }}
-          >
-            Manage Questions →
-          </button>
+          <div className="header-links">
+            <button
+              className="link-button"
+              onClick={() => navigate("/question-manager")}
+            >
+              Manage Questions →
+            </button>
+            <button className="link-button" onClick={() => navigate("/thai")}>
+              Add Thai cards →
+            </button>
+          </div>
         </div>
         {ipStatus === "ready" && externalIp && (
           <p style={{ fontSize: "0.9rem", color: "#64748b", marginTop: "0.5rem" }}>

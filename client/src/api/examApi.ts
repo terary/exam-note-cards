@@ -260,6 +260,75 @@ export async function fetchQuestionAnswerHistory(
   return handleResponse<AnswerHistoryRecord[]>(response);
 }
 
+async function handleThaiResponse<T>(response: Response): Promise<T> {
+  if (!response.ok) {
+    const message = await response.text();
+    let readable = message || response.statusText;
+    try {
+      const parsed = JSON.parse(message) as { message?: unknown };
+      if (typeof parsed.message === "string") {
+        readable = parsed.message;
+      } else if (Array.isArray(parsed.message)) {
+        readable = parsed.message.join(", ");
+      }
+    } catch {
+      // Response body is already plain text.
+    }
+    throw new Error(readable);
+  }
+  return response.json() as Promise<T>;
+}
+
+export async function createThaiPhrase(input: {
+  english: string;
+  thai: string;
+  phonetic?: string;
+  romanization?: string;
+}): Promise<Question[]> {
+  const response = await fetch("/thai/phrases", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(input),
+  });
+  return handleThaiResponse<Question[]>(response);
+}
+
+export async function fetchThaiSoundbites(): Promise<Question[]> {
+  const response = await fetch("/thai/soundbites");
+  return handleThaiResponse<Question[]>(response);
+}
+
+export async function createThaiSoundbite(input: {
+  thai: string;
+  englishGloss?: string;
+  audio: File;
+}): Promise<Question> {
+  const body = new FormData();
+  body.set("thai", input.thai);
+  if (input.englishGloss) {
+    body.set("englishGloss", input.englishGloss);
+  }
+  body.set("audio", input.audio);
+  const response = await fetch("/thai/soundbites", {
+    method: "POST",
+    body,
+  });
+  return handleThaiResponse<Question>(response);
+}
+
+export async function replaceThaiSoundbiteAudio(
+  questionId: string,
+  audio: File
+): Promise<Question> {
+  const body = new FormData();
+  body.set("audio", audio);
+  const response = await fetch(`/thai/soundbites/${questionId}/audio`, {
+    method: "PUT",
+    body,
+  });
+  return handleThaiResponse<Question>(response);
+}
+
 export async function deleteAnswerHistoryRecord(
   questionId: string,
   sessionId: string,

@@ -14,6 +14,12 @@ export class Question {
   @Prop({ required: false, default: "" })
   answerText: string;
 
+  @Prop({ required: false })
+  questionAudio?: string;
+
+  @Prop({ required: false })
+  groupId?: string;
+
   @Prop({ type: [String], default: [] })
   tags?: string[];
 

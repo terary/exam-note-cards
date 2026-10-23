@@ -4,6 +4,7 @@ import QuizPage from "./pages/QuizPage";
 import WriteUpPage from "./pages/WriteUpPage";
 import QuestionManagerPage from "./pages/QuestionManagerPage";
 import QuestionListPage from "./pages/QuestionListPage";
+import ThaiAddPage from "./pages/ThaiAddPage";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<DatabaseListPage />} />
       <Route path="/quiz/:databaseId/:questionId?" element={<QuizPage />} />
       <Route path="/write-up-notes/:writeUpId" element={<WriteUpPage />} />
+      <Route path="/thai" element={<ThaiAddPage />} />
       <Route path="/question-manager" element={<QuestionManagerPage />} />
       <Route path="/question-manager/:databaseId" element={<QuestionManagerPage />} />
       <Route path="/question-manager/:databaseId/questions/:questionId?" element={<QuestionListPage />} />

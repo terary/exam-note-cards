@@ -10,6 +10,8 @@ export interface Question {
   questionId: string;
   questionText: string;
   answerText: string;
+  questionAudio?: string;
+  groupId?: string;
   tags?: string[];
   domains: string[];
   timesAsked?: number;
