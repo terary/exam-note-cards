@@ -9,6 +9,7 @@ import {
 } from "../api/examApi";
 import "../App.css";
 
+const CHEAT_SHEET_ID = "Thai pronunciation cheat sheet";
 const SCROLL_SAVE_INTERVAL_MS = 1000;
 const MIN_SCROLL_PERCENT_TO_SAVE = 0.01;
 
@@ -108,7 +109,14 @@ function WriteUpPage() {
           <p>{error}</p>
         </div>
       )}
-      {status === "ready" && data && (
+      {status === "ready" && data && writeUpId === CHEAT_SHEET_ID && (
+        <iframe
+          className="cheat-sheet-frame"
+          title="Thai pronunciation cheat sheet"
+          src="/pronunciation-cheat-sheet/index.html"
+        />
+      )}
+      {status === "ready" && data && writeUpId !== CHEAT_SHEET_ID && (
         <>
           <h2 style={{ marginTop: 0 }}>{data.id}</h2>
           <p style={{ color: "#64748b" }}>

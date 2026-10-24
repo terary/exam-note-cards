@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
+import { ThaiPhraseBreakdown } from "../interfaces";
 
 export type QuestionDocument = Question & Document;
 
@@ -16,6 +17,9 @@ export class Question {
 
   @Prop({ required: false })
   questionAudio?: string;
+
+  @Prop({ type: MongooseSchema.Types.Mixed, required: false })
+  wordBreakdown?: ThaiPhraseBreakdown;
 
   @Prop({ required: false })
   groupId?: string;

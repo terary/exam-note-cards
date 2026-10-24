@@ -119,6 +119,7 @@ export class QuestionsService {
       questionText: q.questionText,
       answerText: q.answerText,
       questionAudio: q.questionAudio,
+      wordBreakdown: q.wordBreakdown,
       groupId: q.groupId,
       tags: q.tags,
       domains: q.domains,

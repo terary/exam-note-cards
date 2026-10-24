@@ -110,6 +110,7 @@ export class QuestionManagerService {
       domains: updates.domains ?? existingQuestion.domains,
       tags: updates.tags !== undefined ? updates.tags : existingQuestion.tags,
       questionAudio: existingQuestion.questionAudio,
+      wordBreakdown: existingQuestion.wordBreakdown,
       groupId: existingQuestion.groupId,
       timesAsked: updates.timesAsked !== undefined ? updates.timesAsked : (existingQuestion.timesAsked ?? 0),
       averageScore: updates.averageScore !== undefined ? updates.averageScore : existingQuestion.averageScore,

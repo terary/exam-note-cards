@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import QuizStats from "../components/QuizStats";
+import WordBreakdown from "../components/WordBreakdown";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import {
   revealAnswer,
@@ -120,6 +121,8 @@ function QuizPage() {
     }
   }, [quizState.status, navigate]);
 
+  const isPronunciation = databaseId === "database-thai-pronunciation";
+
   if (!databaseId) {
     return (
       <div className="page-container">
@@ -231,6 +234,13 @@ function QuizPage() {
             </audio>
           )}
 
+          {currentQuestion.questionAudio && currentQuestion.wordBreakdown && (
+            <WordBreakdown
+              breakdown={currentQuestion.wordBreakdown}
+              answerText={isPronunciation ? currentQuestion.answerText : undefined}
+            />
+          )}
+
           <div className="correctness-section">
             <label htmlFor="user-answer-input" className="label">
               Your answer
@@ -253,17 +263,19 @@ function QuizPage() {
 
           {answerRevealed && (
             <>
-              <div className="answer-section">
-                <h3>Answer</h3>
-                <div className="answer-text markdown-body">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeSanitize]}
-                  >
-                    {currentQuestion.answerText}
-                  </ReactMarkdown>
+              {!isPronunciation && (
+                <div className="answer-section">
+                  <h3>Answer</h3>
+                  <div className="answer-text markdown-body">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeSanitize]}
+                    >
+                      {currentQuestion.answerText}
+                    </ReactMarkdown>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="correctness-section">
                 <label htmlFor="correctness-input" className="label">

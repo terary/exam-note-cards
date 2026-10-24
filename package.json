@@ -27,7 +27,9 @@
     "list:databases": "ts-node -r tsconfig-paths/register scripts/delete-database-from-mongodb.ts -- --list",
     "database:delete-all-records": "ts-node -r tsconfig-paths/register scripts/delete-all-mongodb-records.ts",
     "section:build": "bash scripts/build-section.sh",
-    "import-batch-phrases": "ts-node -r tsconfig-paths/register scripts/import-batch-phrases.ts"
+    "import-batch-phrases": "ts-node -r tsconfig-paths/register scripts/import-batch-phrases.ts",
+    "fill:word-breakdowns": "ts-node -r tsconfig-paths/register scripts/fill-word-breakdowns.ts",
+    "import:pronunciation-practice": "ts-node -r tsconfig-paths/register scripts/import-pronunciation-practice.ts"
   },
   "keywords": [],
   "author": "",

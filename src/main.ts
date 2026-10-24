@@ -12,7 +12,7 @@ async function bootstrap() {
     configService = app.get(ConfigService);
 
     const port = parseInt(
-      String(configService.get("PORT") ?? 3000),
+      String(configService.get("PORT") ?? 3005),
       10,
     );
     if (Number.isNaN(port) || port <= 0) {
@@ -28,7 +28,7 @@ async function bootstrap() {
     );
   } catch (error) {
     if (error.code === "EADDRINUSE") {
-      const port = configService?.get("PORT", 3000) || 3000;
+      const port = configService?.get("PORT", 3005) || 3005;
       logger.error(
         `Port ${port} is already in use. Please stop the existing application or use a different port.`
       );

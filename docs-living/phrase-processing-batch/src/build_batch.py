@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Turn one English phrase list into Thai clips and a zip, then offer to copy it to the server.
 
-This script does not use phrase-processing. Each input file is its own batch.
+Translation uses the macOS Translation framework on this machine. The script does not
+call Google. It speaks the Thai with the Kanya voice. It does not use phrase-processing.
 """
 
 from __future__ import annotations
@@ -13,11 +14,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import time
 import unicodedata
-import urllib.error
-import urllib.parse
-import urllib.request
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -29,7 +26,8 @@ REMOTE = "192.168.0.198"
 REMOTE_DIR = "/home/terary/exam-note-cards/docs-living/phrase-processing-batch/output"
 AUDIO_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.m4a$")
 LIST_MARKER = re.compile(r"^(?:[-*]|\d+\.)\s+")
-TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single"
+TRANSLATOR_SWIFT = Path(__file__).with_name("translate_thai.swift")
+TRANSLATOR_BIN = OUTPUT_DIR / ".cache" / "translate-thai"
 
 
 @dataclass
@@ -41,7 +39,7 @@ class PhraseRow:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Translate a phrase list, record .m4a clips, and write a zip."
+        description="Translate a phrase list on this Mac, record .m4a clips, and write a zip."
     )
     parser.add_argument(
         "input",
@@ -92,50 +90,115 @@ def main() -> int:
 
     existing = read_table(table_path)
     rows: list[PhraseRow] = []
-    taken = reserved_filenames(audio_dir, existing, phrases)
-    failures: list[str] = []
+    taken = reserved_filenames(audio_dir, existing, [english for english, _thai in phrases])
+    needs_translation = any(
+        not supplied_thai and (args.refresh or english not in existing)
+        for english, supplied_thai in phrases
+    )
+    if needs_translation:
+        try:
+            prepare_translator()
+        except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
+            return stop(f"Translation is unavailable: {exc}")
 
     print(f"{len(phrases)} phrase(s) from {input_path.name}")
-    for index, english in enumerate(phrases, start=1):
+    for index, (english, supplied_thai) in enumerate(phrases, start=1):
         prefix = f"[{index}/{len(phrases)}]"
         prior = existing.get(english)
         try:
-            if prior and (audio_dir / prior.audio).is_file() and not args.refresh:
+            audio_ready = prior and (audio_dir / prior.audio).is_file()
+            if (
+                prior
+                and audio_ready
+                and not args.refresh
+                and (not supplied_thai or supplied_thai == prior.thai)
+            ):
                 print(f"{prefix} kept {prior.audio}")
                 rows.append(prior)
                 continue
 
-            if prior and not args.refresh:
+            if supplied_thai:
+                thai = supplied_thai
+            elif prior and not args.refresh:
                 thai = prior.thai
-                audio_name = prior.audio
-                print(f"{prefix} recording existing translation -> {audio_name}")
             else:
+                print(f"{prefix} translating {english}")
                 thai = translate_to_thai(english)
-                audio_name = prior.audio if prior else allocate_name(english, taken)
-                taken.add(audio_name)
-                print(f"{prefix} {english}")
-                print(f"    {thai} -> {audio_name}")
 
+            audio_name = prior.audio if prior else allocate_name(english, taken)
+            taken.add(audio_name)
+            print(f"{prefix} {english}")
+            print(f"    {thai} -> {audio_name}")
             synthesize(thai, audio_dir / audio_name, args.voice)
             rows.append(PhraseRow(english, thai, audio_name))
         except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
-            print(f"{prefix} failed: {exc}", file=sys.stderr)
-            failures.append(english)
+            return stop(f"{prefix} failed: {exc}")
 
     write_table(table_path, input_path, rows)
     write_zip(zip_path, input_path, rows, audio_dir)
     print(f"Wrote {table_path}")
     print(f"Wrote {zip_path}")
-    if failures:
-        print(f"Failed: {len(failures)}. Zip was not pushed.", file=sys.stderr)
-        return 1
-
     offer_push(zip_path)
     return 0
 
 
-def read_phrases(path: Path) -> list[str]:
-    phrases: list[str] = []
+def stop(message: str) -> int:
+    print(message, file=sys.stderr)
+    print("Stopped. No zip was written.", file=sys.stderr)
+    return 1
+
+
+def prepare_translator() -> None:
+    if shutil.which("swiftc") is None:
+        raise RuntimeError("swiftc is not installed. Install the Xcode Command Line Tools.")
+    binary = translator_binary()
+    result = subprocess.run([str(binary), "--check"], capture_output=True, text=True, check=False)
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip() or "translation check failed"
+        raise RuntimeError(detail)
+
+
+def translator_binary() -> Path:
+    TRANSLATOR_BIN.parent.mkdir(parents=True, exist_ok=True)
+    swift_mtime = TRANSLATOR_SWIFT.stat().st_mtime
+    if TRANSLATOR_BIN.is_file() and TRANSLATOR_BIN.stat().st_mtime >= swift_mtime:
+        return TRANSLATOR_BIN
+    print("Compiling the local translator…")
+    subprocess.run(
+        [
+            "swiftc",
+            "-O",
+            "-parse-as-library",
+            "-o",
+            str(TRANSLATOR_BIN),
+            str(TRANSLATOR_SWIFT),
+        ],
+        check=True,
+    )
+    return TRANSLATOR_BIN
+
+
+def translate_to_thai(text: str) -> str:
+    if len(text) > 500:
+        raise RuntimeError(f"phrase is longer than 500 characters: {text!r}")
+    result = subprocess.run(
+        [str(translator_binary())],
+        input=text + "\n",
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip() or "translation failed"
+        raise RuntimeError(detail)
+    thai = result.stdout.strip()
+    if not thai:
+        raise RuntimeError(f"empty translation for {text!r}")
+    return thai
+
+
+def read_phrases(path: Path) -> list[tuple[str, str]]:
+    phrases: list[tuple[str, str]] = []
     seen: set[str] = set()
     text = path.read_text(encoding="utf-8-sig")
     for raw in text.splitlines():
@@ -143,13 +206,21 @@ def read_phrases(path: Path) -> list[str]:
         if not line or line.startswith("#"):
             continue
         line = LIST_MARKER.sub("", line, count=1).strip()
-        if not line or line in seen:
-            if line in seen:
-                print(f"Skipping duplicate: {line}")
+        english, thai = split_phrase(line)
+        if not english or english in seen:
+            if english in seen:
+                print(f"Skipping duplicate: {english}")
             continue
-        seen.add(line)
-        phrases.append(line)
+        seen.add(english)
+        phrases.append((english, thai))
     return phrases
+
+
+def split_phrase(line: str) -> tuple[str, str]:
+    if "|" not in line:
+        return line.strip(), ""
+    english, thai = line.split("|", 1)
+    return english.strip(), thai.strip()
 
 
 def read_table(path: Path) -> dict[str, PhraseRow]:
@@ -293,41 +364,6 @@ def voice_installed(voice: str) -> bool:
     )
     listing = f"{result.stdout}\n{result.stderr}"
     return re.search(rf"^{re.escape(voice)}(?:\s|\()", listing, re.MULTILINE) is not None
-
-
-def translate_to_thai(text: str) -> str:
-    last_error: Exception | None = None
-    for attempt in range(2):
-        try:
-            return request_translation(text)
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, RuntimeError) as exc:
-            last_error = exc
-            if attempt == 0:
-                time.sleep(1)
-    raise RuntimeError(f"translation failed for {text!r}: {last_error}") from last_error
-
-
-def request_translation(text: str) -> str:
-    if len(text) > 500:
-        raise RuntimeError(f"phrase is longer than 500 characters: {text!r}")
-    query = urllib.parse.urlencode(
-        {"client": "gtx", "sl": "en", "tl": "th", "dt": "t", "q": text}
-    )
-    request = urllib.request.Request(
-        f"{TRANSLATE_URL}?{query}",
-        headers={"User-Agent": "Mozilla/5.0"},
-    )
-    with urllib.request.urlopen(request, timeout=30) as response:
-        payload = json.loads(response.read().decode("utf-8"))
-    segments = payload[0] if isinstance(payload, list) and payload else None
-    if not isinstance(segments, list):
-        raise RuntimeError(f"unexpected translation response for {text!r}")
-    thai = "".join(
-        segment[0] for segment in segments if segment and isinstance(segment[0], str)
-    ).strip()
-    if not thai:
-        raise RuntimeError(f"empty translation for {text!r}")
-    return thai
 
 
 def synthesize(thai: str, destination: Path, voice: str) -> None:

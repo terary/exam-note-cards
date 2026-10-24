@@ -16,6 +16,7 @@ import { Question } from "./interfaces";
 
 export const THAI_PHRASES_ID = "database-thai-phrases";
 export const THAI_SOUNDBITES_ID = "database-thai-soundbites";
+export const THAI_PRONUNCIATION_ID = "database-thai-pronunciation";
 
 const AUDIO_DIR = join(process.cwd(), "media", "thai");
 const AUDIO_NAME = /^[a-f0-9]{64}\.m4a$/;

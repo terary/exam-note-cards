@@ -1,0 +1,100 @@
+:root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.45;
+}
+
+body {
+  margin: 0;
+  background: #f4efe6;
+  color: #1d1a16;
+}
+
+main {
+  margin: 2rem auto 3rem;
+  padding: 0 1.25rem;
+  max-width: 100rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin-top: 2.25rem;
+  font-size: 1.25rem;
+}
+
+h3 {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+p {
+  max-width: 46rem;
+}
+
+#error {
+  color: #8a1f1f;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #d9d0c3;
+  background: #fffdf8;
+}
+
+table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font-size: 0.95rem;
+}
+
+th,
+td {
+  padding: 0.4rem 0.7rem;
+  border-bottom: 1px solid #e4dcd0;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+th {
+  background: #efe6d8;
+  font-weight: 600;
+}
+
+.thai {
+  font-size: 1.2rem;
+}
+
+.ipa {
+  white-space: normal;
+  min-width: 12rem;
+  max-width: 22rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+}
+
+.clip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.clip audio {
+  width: 14rem;
+  height: 2rem;
+}
+
+.clip a {
+  color: #1d1a16;
+  font-size: 0.85rem;
+}

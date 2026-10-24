@@ -14,7 +14,7 @@ export class AnswerRecord {
   @Prop({ required: true })
   actualAnswerText: string;
 
-  @Prop({ required: true })
+  @Prop({ type: String, default: "" })
   userAnswerText: string;
 
   @Prop({ required: true, type: Number })
